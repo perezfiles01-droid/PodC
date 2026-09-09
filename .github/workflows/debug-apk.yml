@@ -1,0 +1,92 @@
+name: Debug APK
+
+# The repo's other workflows publish only from main or a manual dispatch, and
+# build_check keeps its APK inside the run. Neither puts a build on a phone
+# from a working branch, which is what this one is for: every push to main or
+# claude/** republishes the same fixed prerelease, so the download link never
+# changes.
+
+on:
+  push:
+    branches:
+      - main
+      - 'claude/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and publish debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant gradlew execute permission
+        run: chmod +x gradlew
+
+      # Unit tests gate the build: the Konsist architecture suite plus the
+      # PodC guards (nav graph, English-only catalog, story limits, narrator
+      # filters, chapter splitting). A red suite must not produce a link.
+      - name: Unit tests
+        run: ./gradlew :app:test
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Stage APK
+        id: stage
+        run: |
+          set -euo pipefail
+          src=$(find app/build/outputs/apk/debug -name '*.apk' | head -n1)
+          test -n "$src"
+          mkdir -p dist
+          cp "$src" dist/PodC-debug.apk
+          echo "size=$(stat -c%s dist/PodC-debug.apk)" >> "$GITHUB_OUTPUT"
+          echo "Built $(stat -c%s dist/PodC-debug.apk) bytes from $src"
+
+      - name: Publish to the fixed debug-latest prerelease
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: debug-latest
+          name: Debug build (latest)
+          body: |
+            Rolling debug build of `${{ github.ref_name }}` at ${{ github.sha }}.
+            Debug-signed, universal APK. Installs alongside a release build.
+          prerelease: true
+          files: dist/PodC-debug.apk
+
+      # A workflow that reports success while publishing nothing is the
+      # failure mode this whole job exists to avoid, so read the asset back
+      # and fail loudly if it is missing or a different size than we built.
+      - name: Verify the published asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EXPECTED: ${{ steps.stage.outputs.size }}
+        run: |
+          set -euo pipefail
+          sleep 5
+          published=$(gh api "repos/${{ github.repository }}/releases/tags/debug-latest" \
+            --jq '.assets[] | select(.name == "PodC-debug.apk") | .size')
+          echo "published=$published expected=$EXPECTED"
+          test -n "$published"
+          test "$published" = "$EXPECTED"
+          echo "Asset verified: $published bytes"
