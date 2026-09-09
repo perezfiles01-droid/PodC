@@ -5,6 +5,7 @@ import co.touchlab.kermit.Logger
 import dev.ahmedmohamed.hayaitts.core.dispatchers.DispatcherProvider
 import dev.ahmedmohamed.hayaitts.domain.model.CatalogManifest
 import dev.ahmedmohamed.hayaitts.domain.model.VoiceCard
+import dev.ahmedmohamed.hayaitts.domain.model.englishOnly
 import dev.ahmedmohamed.hayaitts.domain.repo.CatalogRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,9 @@ import okhttp3.Request
  * Loads the catalog from the bundled asset on construction, then attempts a
  * one-shot network refresh in the background. [refresh] re-runs the network
  * fetch on demand.
+ *
+ * Both paths pass through [englishOnly]: PodC ships English narration only,
+ * and the upstream manifest is multilingual.
  *
  * The remote URL is a `raw.githubusercontent.com` link to the same JSON we
  * bundle as an asset; once the catalog is hosted there it can be updated
@@ -64,8 +68,9 @@ class CatalogRepositoryImpl(
     private fun loadFromAsset(): List<VoiceCard> {
         val raw = context.assets.open(ASSET_PATH).bufferedReader().use { it.readText() }
         val manifest = catalogJson.decodeFromString<CatalogManifest>(raw)
-        log.i { "Loaded bundled catalog (v${manifest.version}, ${manifest.voices.size} voices)" }
-        return manifest.voices
+        val voices = manifest.voices.englishOnly()
+        log.i { "Loaded bundled catalog (v${manifest.version}, ${voices.size} English voices)" }
+        return voices
     }
 
     private fun fetchFromNetwork(): List<VoiceCard>? = try {
@@ -80,8 +85,12 @@ class CatalogRepositoryImpl(
                 // downloader can apply the strict checksum policy (see
                 // VoiceDownloadWorker). The JSON itself never carries this
                 // field; we synthesize it here from the transport.
+                // The upstream manifest still carries every language. Gate it
+                // here as well as in the bundled asset, or one background
+                // refresh silently reinstates the non-English catalog.
                 catalogJson.decodeFromString<CatalogManifest>(body)
                     .voices
+                    .englishOnly()
                     .map { it.copy(fromRemote = true) }
             }
         }

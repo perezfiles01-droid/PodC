@@ -1075,6 +1075,21 @@ def enrich_voices(voices: list[Voice], *, cache_dir: str | None,
     log("Enrichment pass complete.")
 
 
+def is_english_tag(tag: str) -> bool:
+    """True when ``tag``'s primary subtag is ``en``.
+
+    The catalog splits ``en_US`` into ``["en", "us"]``, so region fragments
+    like ``us``/``gb`` never stand alone for an English voice — matching the
+    primary subtag keeps Welsh (``cy``/``gb``) and Ukrainian (``uk``/``ua``)
+    out while keeping every ``en``-tagged voice in.
+    """
+    return str(tag).strip().replace("_", "-").split("-")[0].lower() == "en"
+
+
+def is_english_voice(v: "Voice") -> bool:
+    return any(is_english_tag(t) for t in v.languages)
+
+
 def build_voices(pages: list[tuple[str, str]], *, limit: int | None,
                  cache_dir: str | None, skip_hash: bool, no_enrich: bool,
                  workers: int, stats: RunStats) -> list[Voice]:
@@ -1116,6 +1131,15 @@ def build_voices(pages: list[tuple[str, str]], *, limit: int | None,
     log(f"Total unique voices (incl. release-only): {len(by_id)}")
 
     ordered = sorted(by_id.values(), key=lambda x: x.id)
+
+    # PodC ships English narration only. Gate here, before the enrichment and
+    # hash passes, so the weekly refresh neither reintroduces the multilingual
+    # catalog nor spends CI time hashing bundles the app will never show.
+    # The app applies the same rule at load time (see EnglishOnly.kt) — this
+    # is the second half of that pair, not a substitute for it.
+    before_gate = len(ordered)
+    ordered = [v for v in ordered if is_english_voice(v)]
+    log(f"English-only gate: {before_gate} -> {len(ordered)} voices")
 
     if cache_dir:
         os.makedirs(cache_dir, exist_ok=True)
