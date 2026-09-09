@@ -17,7 +17,7 @@ package dev.ahmedmohamed.hayaitts.data.ssml
  * v2.0.0-b1.
  *
  * The parser is a regex sweep over the input, not a real XML parser. Good
- * enough for hand-authored test snippets and the Studio editor; rich docs
+ * enough for hand-authored test snippets and imported text; rich docs
  * should go through a real lexer.
  */
 class SsmlPreprocessor {

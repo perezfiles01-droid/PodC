@@ -50,7 +50,7 @@ class VoiceDetailViewModel(
         /**
          * `true` from the moment the user taps Play until the runtime
          * returns audio (synthesis only, no playback). Mirrors the
-         * Playground/Studio "generating" affordance so multi-speaker
+         * preview "generating" affordance so multi-speaker
          * Kokoros that take ~3 s to synthesise don't look hung.
          */
         val generating: Boolean = false,

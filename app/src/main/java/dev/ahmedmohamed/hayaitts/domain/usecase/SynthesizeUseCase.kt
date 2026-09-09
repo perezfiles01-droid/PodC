@@ -13,7 +13,7 @@ import dev.ahmedmohamed.hayaitts.core.result.asSuccess
  * For v2.0.0-b1 the body is a thin pass-through over [SynthesisGateway] —
  * subsequent commits inside the same branch will layer in the additional
  * concerns. Keeping the seam in place now means `HayaiTtsService` and the
- * Studio screen call the same entry point.
+ * narration pipeline call the same entry point.
  */
 class SynthesizeUseCase(
     private val gateway: SynthesisGateway,

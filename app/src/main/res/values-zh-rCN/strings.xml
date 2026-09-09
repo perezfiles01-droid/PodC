@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">安装语音</string>
     <string name="voice_detail_cancel_primary">取消下载</string>
     <string name="voice_detail_uninstall_action">卸载</string>
-    <string name="voice_detail_open_playground">在 Playground 中打开</string>
     <string name="voice_detail_coming_soon_hint">当前 sherpa-onnx 构建尚不支持该模型系列。未来的更新将启用它。</string>
 
     <string name="uninstall_confirm_title">卸载语音？</string>
@@ -330,13 +329,9 @@
     <string name="speak_selection_label">用 HayaiTTS 朗读</string>
     <string name="nav_library">库</string>
     <string name="nav_browse">浏览</string>
-    <string name="nav_studio">工作室</string>
     <string name="nav_activity">活动</string>
     <string name="nav_settings">设置</string>
-    <string name="studio_title">工作室</string>
     <string name="studio_subtitle">调整 · A/B · 导出</string>
-    <string name="studio_no_voices">在「浏览」中安装一个音色，开始使用工作室。</string>
-    <string name="studio_swap_voice">切换语音</string>
     <string name="activity_title">活动</string>
     <string name="activity_subtitle">下载 · 生成 · 缓存</string>
     <string name="activity_pane_downloads">下载</string>

@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">تثبيت الصوت</string>
     <string name="voice_detail_cancel_primary">إلغاء التنزيل</string>
     <string name="voice_detail_uninstall_action">إلغاء التثبيت</string>
-    <string name="voice_detail_open_playground">فتح في Playground</string>
     <string name="voice_detail_coming_soon_hint">لا تدعم نسخة sherpa-onnx الحالية عائلة النماذج هذه. سيتم تفعيلها في تحديث لاحق.</string>
 
     <string name="uninstall_confirm_title">إلغاء تثبيت الصوت؟</string>
@@ -330,13 +329,9 @@
     <string name="speak_selection_label">انطق باستخدام HayaiTTS</string>
     <string name="nav_library">المكتبة</string>
     <string name="nav_browse">استعراض</string>
-    <string name="nav_studio">الاستوديو</string>
     <string name="nav_activity">النشاط</string>
     <string name="nav_settings">الإعدادات</string>
-    <string name="studio_title">الاستوديو</string>
     <string name="studio_subtitle">ضبط · مقارنة · تصدير</string>
-    <string name="studio_no_voices">ثبّت صوتًا من قسم الاستعراض لاستخدام الاستوديو.</string>
-    <string name="studio_swap_voice">تبديل الصوت</string>
     <string name="activity_title">النشاط</string>
     <string name="activity_subtitle">التنزيلات · التوليد · الذاكرة المؤقتة</string>
     <string name="activity_pane_downloads">التنزيلات</string>

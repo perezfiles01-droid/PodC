@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">Установить голос</string>
     <string name="voice_detail_cancel_primary">Отменить загрузку</string>
     <string name="voice_detail_uninstall_action">Удалить</string>
-    <string name="voice_detail_open_playground">Открыть в Playground</string>
     <string name="voice_detail_coming_soon_hint">Это семейство моделей пока не поддерживается текущей сборкой sherpa-onnx. Будущее обновление включит его.</string>
 
     <string name="uninstall_confirm_title">Удалить голос?</string>
@@ -330,13 +329,9 @@
     <string name="speak_selection_label">Прочитать через HayaiTTS</string>
     <string name="nav_library">Библиотека</string>
     <string name="nav_browse">Обзор</string>
-    <string name="nav_studio">Студия</string>
     <string name="nav_activity">Активность</string>
     <string name="nav_settings">Настройки</string>
-    <string name="studio_title">Студия</string>
     <string name="studio_subtitle">Настройка · A/B · Экспорт</string>
-    <string name="studio_no_voices">Установите голос в «Обзоре», чтобы использовать Студию.</string>
-    <string name="studio_swap_voice">Сменить голос</string>
     <string name="activity_title">Активность</string>
     <string name="activity_subtitle">Загрузки · Генерации · Кэш</string>
     <string name="activity_pane_downloads">Загрузки</string>

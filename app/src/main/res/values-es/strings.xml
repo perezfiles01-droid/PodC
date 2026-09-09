@@ -107,7 +107,6 @@
     <string name="voice_detail_install_primary">Instalar voz</string>
     <string name="voice_detail_cancel_primary">Cancelar descarga</string>
     <string name="voice_detail_uninstall_action">Desinstalar</string>
-    <string name="voice_detail_open_playground">Abrir en el Playground</string>
     <string name="voice_detail_coming_soon_hint">Esta familia de modelos aún no es compatible con la versión actual de sherpa-onnx. Una próxima actualización la habilitará.</string>
 
     <!-- Uninstall -->
@@ -347,13 +346,9 @@
     <string name="speak_selection_label">Leer con HayaiTTS</string>
     <string name="nav_library">Biblioteca</string>
     <string name="nav_browse">Explorar</string>
-    <string name="nav_studio">Estudio</string>
     <string name="nav_activity">Actividad</string>
     <string name="nav_settings">Ajustes</string>
-    <string name="studio_title">Estudio</string>
     <string name="studio_subtitle">Ajustes · A/B · Exportar</string>
-    <string name="studio_no_voices">Instala una voz desde Explorar para usar el Estudio.</string>
-    <string name="studio_swap_voice">Cambiar voz</string>
     <string name="activity_title">Actividad</string>
     <string name="activity_subtitle">Descargas · Generación · Caché</string>
     <string name="activity_pane_downloads">Descargas</string>

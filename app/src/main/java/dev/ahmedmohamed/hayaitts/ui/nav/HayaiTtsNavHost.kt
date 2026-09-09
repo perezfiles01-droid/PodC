@@ -9,7 +9,6 @@ import androidx.compose.material.icons.outlined.Bolt
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -37,12 +36,11 @@ import dev.ahmedmohamed.hayaitts.ui.detail.VoiceDetailScreen
 import dev.ahmedmohamed.hayaitts.ui.library.LibraryScreen
 import dev.ahmedmohamed.hayaitts.ui.onboarding.OnboardingScreen
 import dev.ahmedmohamed.hayaitts.ui.settings.SettingsScreen
-import dev.ahmedmohamed.hayaitts.ui.studio.StudioScreen
 import java.net.URLEncoder
 
 /**
  * Top-level navigation: a [NavigationBar] hosts five top-level destinations
- * (Library / Browse / Studio / Activity / Settings). Each tab pushes detail
+ * (Library / Browse / Activity / Settings). Each tab pushes detail
  * routes (voice detail, custom import) on top of itself without disturbing
  * the bottom bar.
  *
@@ -129,12 +127,6 @@ fun HayaiTtsNavHost(
                     onOpenQuickSwitch = onOpenQuickSwitch,
                 )
             }
-            composable(Routes.STUDIO) {
-                StudioScreen(
-                    onBack = { navController.popBackStack() },
-                    onOpenQuickSwitch = onOpenQuickSwitch,
-                )
-            }
             composable(
                 route = Routes.ACTIVITY,
                 deepLinks = listOf(navDeepLink { uriPattern = "hayaitts://downloads" }),
@@ -153,7 +145,6 @@ fun HayaiTtsNavHost(
                     voiceId = id,
                     onBack = { navController.popBackStack() },
                     onOpenQuickSwitch = onOpenQuickSwitch,
-                    onOpenPlayground = { navController.navigate(Routes.STUDIO) },
                     onOpenCloning = { navController.navigate(Routes.voiceCloning(id)) },
                 )
             }
@@ -190,7 +181,6 @@ private data class Tab(
 private val Tabs = listOf(
     Tab(Routes.LIBRARY, Icons.Outlined.LibraryMusic, R.string.nav_library),
     Tab(Routes.BROWSE, Icons.Outlined.Search, R.string.nav_browse),
-    Tab(Routes.STUDIO, Icons.Outlined.Tune, R.string.nav_studio),
     Tab(Routes.ACTIVITY, Icons.Outlined.Bolt, R.string.nav_activity),
     Tab(Routes.SETTINGS, Icons.Outlined.Settings, R.string.nav_settings),
 )
@@ -201,7 +191,6 @@ object Routes {
     const val ONBOARDING = "onboarding"
     const val LIBRARY = "library"
     const val BROWSE = "browse"
-    const val STUDIO = "studio"
     const val ACTIVITY = "activity"
     const val SETTINGS = "settings"
     const val ARG_VOICE_ID = "voiceId"
