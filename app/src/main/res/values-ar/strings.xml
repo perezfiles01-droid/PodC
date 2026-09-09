@@ -415,4 +415,26 @@
     <string name="home_import_failed_type">اختر ملف ‎.txt‎.</string>
     <string name="home_import_failed_empty">هذا الملف فارغ.</string>
     <string name="home_import_failed_storage">تعذّرت قراءة هذا الملف.</string>
+    <string name="narrator_step_upload">الرفع</string>
+    <string name="narrator_step_voice">اختيار الصوت</string>
+    <string name="narrator_step_listen">الاستماع</string>
+    <string name="narrator_title">اختر راوياً</string>
+    <string name="narrator_subtitle">اختر صوتاً يمنح قصتك الحياة.</string>
+    <string name="narrator_filter_all">الكل</string>
+    <string name="narrator_filter_female">أنثى</string>
+    <string name="narrator_filter_male">ذكر</string>
+    <string name="narrator_filter_neutral">محايد</string>
+    <string name="narrator_start">ابدأ الاستماع</string>
+    <string name="narrator_empty">لا توجد أصوات مثبّتة تطابق هذا المرشّح. تصفّح لإضافة صوت.</string>
+    <string name="player_chapters">الفصول</string>
+    <string name="player_sleep_timer">مؤقت النوم</string>
+    <string name="player_sleep_off">إيقاف</string>
+    <string name="player_sleep_minutes">%1$d دقيقة</string>
+    <string name="player_chapter_of">الفصل %1$d من %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">جارٍ تحضير السرد…</string>
+    <string name="player_failed">تعذّر سرد هذه القصة.</string>
+    <string name="player_action_previous">الفصل السابق</string>
+    <string name="player_action_next">الفصل التالي</string>
+    <string name="player_action_pause">إيقاف مؤقت</string>
 </resources>

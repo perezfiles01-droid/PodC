@@ -432,4 +432,26 @@
     <string name="home_import_failed_type">Elige un archivo .txt.</string>
     <string name="home_import_failed_empty">Ese archivo está vacío.</string>
     <string name="home_import_failed_storage">No se pudo leer ese archivo.</string>
+    <string name="narrator_step_upload">Subir</string>
+    <string name="narrator_step_voice">Elegir voz</string>
+    <string name="narrator_step_listen">Escuchar</string>
+    <string name="narrator_title">Elige un narrador</string>
+    <string name="narrator_subtitle">Elige una voz que dé vida a tu historia.</string>
+    <string name="narrator_filter_all">Todas</string>
+    <string name="narrator_filter_female">Femenina</string>
+    <string name="narrator_filter_male">Masculina</string>
+    <string name="narrator_filter_neutral">Neutra</string>
+    <string name="narrator_start">Empezar a escuchar</string>
+    <string name="narrator_empty">Ninguna voz instalada coincide con este filtro. Explora para añadir una.</string>
+    <string name="player_chapters">Capítulos</string>
+    <string name="player_sleep_timer">Temporizador</string>
+    <string name="player_sleep_off">Desactivado</string>
+    <string name="player_sleep_minutes">%1$d min</string>
+    <string name="player_chapter_of">Capítulo %1$d de %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">Preparando la narración…</string>
+    <string name="player_failed">No se pudo narrar esa historia.</string>
+    <string name="player_action_previous">Capítulo anterior</string>
+    <string name="player_action_next">Capítulo siguiente</string>
+    <string name="player_action_pause">Pausa</string>
 </resources>

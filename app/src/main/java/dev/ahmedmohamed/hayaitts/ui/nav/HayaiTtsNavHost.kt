@@ -33,6 +33,8 @@ import dev.ahmedmohamed.hayaitts.ui.browse.BrowseScreen
 import dev.ahmedmohamed.hayaitts.ui.custom.CustomImportScreen
 import dev.ahmedmohamed.hayaitts.ui.detail.VoiceDetailScreen
 import dev.ahmedmohamed.hayaitts.ui.home.HomeScreen
+import dev.ahmedmohamed.hayaitts.ui.narrator.NarratorScreen
+import dev.ahmedmohamed.hayaitts.ui.player.PlayerScreen
 import dev.ahmedmohamed.hayaitts.ui.library.LibraryScreen
 import dev.ahmedmohamed.hayaitts.ui.onboarding.OnboardingScreen
 import dev.ahmedmohamed.hayaitts.ui.settings.SettingsScreen
@@ -118,6 +120,33 @@ fun HayaiTtsNavHost(
                     onVoiceClick = { id -> navController.navigate(Routes.voiceDetail(id)) },
                     onBrowse = { navController.navigate(Routes.BROWSE) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                    onStoryClick = { storyId -> navController.navigate(Routes.narrator(storyId)) },
+                )
+            }
+            composable(
+                route = Routes.NARRATOR,
+                arguments = listOf(navArgument(Routes.ARG_STORY_ID) { type = NavType.LongType }),
+            ) { entry ->
+                val storyId = entry.arguments?.getLong(Routes.ARG_STORY_ID) ?: 0L
+                NarratorScreen(
+                    storyId = storyId,
+                    onBack = { navController.popBackStack() },
+                    onStartListening = { voiceId ->
+                        navController.navigate(Routes.player(storyId, voiceId))
+                    },
+                )
+            }
+            composable(
+                route = Routes.PLAYER,
+                arguments = listOf(
+                    navArgument(Routes.ARG_STORY_ID) { type = NavType.LongType },
+                    navArgument(Routes.ARG_VOICE_ID) { type = NavType.StringType },
+                ),
+            ) { entry ->
+                PlayerScreen(
+                    storyId = entry.arguments?.getLong(Routes.ARG_STORY_ID) ?: 0L,
+                    voiceId = entry.arguments?.getString(Routes.ARG_VOICE_ID).orEmpty(),
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.LIBRARY) {
@@ -217,10 +246,16 @@ object Routes {
     const val VOICE_DETAIL = "voiceDetail/{$ARG_VOICE_ID}"
     const val VOICE_CLONING = "voiceCloning/{$ARG_VOICE_ID}"
 
+    const val ARG_STORY_ID = "storyId"
+    const val NARRATOR = "narrator/{$ARG_STORY_ID}"
+    const val PLAYER = "player/{$ARG_STORY_ID}/{$ARG_VOICE_ID}"
+
     const val ARG_ENCODED_URI = "encodedUri"
     const val CUSTOM_IMPORT = "customImport/{$ARG_ENCODED_URI}"
 
     fun voiceDetail(voiceId: String): String = "voiceDetail/$voiceId"
+    fun narrator(storyId: Long): String = "narrator/$storyId"
+    fun player(storyId: Long, voiceId: String): String = "player/$storyId/$voiceId"
     fun voiceCloning(voiceId: String): String = "voiceCloning/$voiceId"
 
     /**

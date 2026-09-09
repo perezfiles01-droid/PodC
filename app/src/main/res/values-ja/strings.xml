@@ -415,4 +415,26 @@
     <string name="home_import_failed_type">.txt ファイルを選んでください。</string>
     <string name="home_import_failed_empty">このファイルは空です。</string>
     <string name="home_import_failed_storage">このファイルを読み取れませんでした。</string>
+    <string name="narrator_step_upload">追加</string>
+    <string name="narrator_step_voice">音声を選択</string>
+    <string name="narrator_step_listen">再生</string>
+    <string name="narrator_title">ナレーターを選ぶ</string>
+    <string name="narrator_subtitle">物語に命を吹き込む音声を選びましょう。</string>
+    <string name="narrator_filter_all">すべて</string>
+    <string name="narrator_filter_female">女性</string>
+    <string name="narrator_filter_male">男性</string>
+    <string name="narrator_filter_neutral">ニュートラル</string>
+    <string name="narrator_start">再生を始める</string>
+    <string name="narrator_empty">この条件に合う音声がありません。探すから追加してください。</string>
+    <string name="player_chapters">チャプター</string>
+    <string name="player_sleep_timer">スリープタイマー</string>
+    <string name="player_sleep_off">オフ</string>
+    <string name="player_sleep_minutes">%1$d 分</string>
+    <string name="player_chapter_of">チャプター %1$d / %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">ナレーションを準備しています…</string>
+    <string name="player_failed">この物語を読み上げられませんでした。</string>
+    <string name="player_action_previous">前のチャプター</string>
+    <string name="player_action_next">次のチャプター</string>
+    <string name="player_action_pause">一時停止</string>
 </resources>

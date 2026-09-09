@@ -453,4 +453,26 @@
     <string name="home_import_failed_type">Choose a .txt file.</string>
     <string name="home_import_failed_empty">That file is empty.</string>
     <string name="home_import_failed_storage">Could not read that file.</string>
+    <string name="narrator_step_upload">Upload</string>
+    <string name="narrator_step_voice">Choose Voice</string>
+    <string name="narrator_step_listen">Listen</string>
+    <string name="narrator_title">Choose a Narrator</string>
+    <string name="narrator_subtitle">Select a voice to bring your story to life.</string>
+    <string name="narrator_filter_all">All</string>
+    <string name="narrator_filter_female">Female</string>
+    <string name="narrator_filter_male">Male</string>
+    <string name="narrator_filter_neutral">Neutral</string>
+    <string name="narrator_start">Start Listening</string>
+    <string name="narrator_empty">No installed voices match this filter. Browse to add one.</string>
+    <string name="player_chapters">Chapters</string>
+    <string name="player_sleep_timer">Sleep Timer</string>
+    <string name="player_sleep_off">Off</string>
+    <string name="player_sleep_minutes">%1$d min</string>
+    <string name="player_chapter_of">Chapter %1$d of %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">Preparing narration…</string>
+    <string name="player_failed">That story could not be narrated.</string>
+    <string name="player_action_previous">Previous chapter</string>
+    <string name="player_action_next">Next chapter</string>
+    <string name="player_action_pause">Pause</string>
 </resources>

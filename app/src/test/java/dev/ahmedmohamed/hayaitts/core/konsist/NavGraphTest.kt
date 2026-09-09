@@ -107,6 +107,27 @@ class NavGraphTest {
     }
 
     @Test
+    fun `the listening flow is connected end to end`() {
+        // Upload -> Choose Voice -> Listen only works if each step actually
+        // navigates to the next. A screen that exists but that nothing routes
+        // to compiles perfectly well and is dead on the device, so assert the
+        // two hops rather than the destinations existing.
+        assertTrue(
+            "Home no longer opens the narrator step",
+            Regex("""onStoryClick\s*=\s*\{[^}]*Routes\.narrator\(""")
+                .containsMatchIn(navHost.text),
+        )
+        assertTrue(
+            "The narrator step no longer starts playback",
+            Regex("""onStartListening\s*=\s*\{[\s\S]{0,200}?Routes\.player\(""")
+                .containsMatchIn(navHost.text),
+        )
+        listOf("NARRATOR", "PLAYER").forEach { route ->
+            assertTrue("Routes.$route is not hosted", route in hostedRoutes())
+        }
+    }
+
+    @Test
     fun `no production code references the retired Studio surface`() {
         sources.files.assertFalse { file ->
             Regex("""Routes\.STUDIO|ui\.studio|StudioScreen""").containsMatchIn(file.text)

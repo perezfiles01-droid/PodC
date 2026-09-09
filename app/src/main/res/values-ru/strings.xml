@@ -415,4 +415,26 @@
     <string name="home_import_failed_type">Выберите файл .txt.</string>
     <string name="home_import_failed_empty">Этот файл пуст.</string>
     <string name="home_import_failed_storage">Не удалось прочитать файл.</string>
+    <string name="narrator_step_upload">Загрузка</string>
+    <string name="narrator_step_voice">Выбор голоса</string>
+    <string name="narrator_step_listen">Прослушивание</string>
+    <string name="narrator_title">Выберите рассказчика</string>
+    <string name="narrator_subtitle">Выберите голос, который оживит вашу историю.</string>
+    <string name="narrator_filter_all">Все</string>
+    <string name="narrator_filter_female">Женские</string>
+    <string name="narrator_filter_male">Мужские</string>
+    <string name="narrator_filter_neutral">Нейтральные</string>
+    <string name="narrator_start">Начать прослушивание</string>
+    <string name="narrator_empty">Нет установленных голосов по этому фильтру. Добавьте через обзор.</string>
+    <string name="player_chapters">Главы</string>
+    <string name="player_sleep_timer">Таймер сна</string>
+    <string name="player_sleep_off">Выкл.</string>
+    <string name="player_sleep_minutes">%1$d мин</string>
+    <string name="player_chapter_of">Глава %1$d из %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">Готовим озвучку…</string>
+    <string name="player_failed">Не удалось озвучить эту историю.</string>
+    <string name="player_action_previous">Предыдущая глава</string>
+    <string name="player_action_next">Следующая глава</string>
+    <string name="player_action_pause">Пауза</string>
 </resources>

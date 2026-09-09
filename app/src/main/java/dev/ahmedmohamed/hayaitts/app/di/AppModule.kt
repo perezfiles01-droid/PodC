@@ -23,6 +23,8 @@ import dev.ahmedmohamed.hayaitts.data.telemetry.SynthesisTelemetryRepository
 import dev.ahmedmohamed.hayaitts.data.tts.SherpaSynthesisGateway
 import dev.ahmedmohamed.hayaitts.ui.activity.ActivityViewModel
 import dev.ahmedmohamed.hayaitts.ui.home.HomeViewModel
+import dev.ahmedmohamed.hayaitts.ui.narrator.NarratorViewModel
+import dev.ahmedmohamed.hayaitts.ui.player.PlayerViewModel
 import dev.ahmedmohamed.hayaitts.domain.repo.CatalogRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DefaultsRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DownloadRepository
@@ -177,6 +179,17 @@ val appModule = module {
 
     viewModel { LibraryViewModel(get(), get(), get(), get(), get()) }
     viewModel { HomeViewModel(stories = get()) }
+    viewModel { (storyId: Long) ->
+        NarratorViewModel(storyId = storyId, voices = get(), stories = get())
+    }
+    viewModel { (storyId: Long, voiceId: String) ->
+        PlayerViewModel(
+            storyId = storyId,
+            voiceId = voiceId,
+            stories = get(),
+            player = get(),
+        )
+    }
     viewModel { BrowseViewModel(androidContext(), get(), get(), get(), get()) }
     viewModel { (voiceId: String) ->
         VoiceDetailViewModel(

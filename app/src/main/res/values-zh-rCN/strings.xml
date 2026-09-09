@@ -415,4 +415,26 @@
     <string name="home_import_failed_type">请选择 .txt 文件。</string>
     <string name="home_import_failed_empty">该文件为空。</string>
     <string name="home_import_failed_storage">无法读取该文件。</string>
+    <string name="narrator_step_upload">上传</string>
+    <string name="narrator_step_voice">选择语音</string>
+    <string name="narrator_step_listen">聆听</string>
+    <string name="narrator_title">选择旁白</string>
+    <string name="narrator_subtitle">选择一个声音，让故事鲜活起来。</string>
+    <string name="narrator_filter_all">全部</string>
+    <string name="narrator_filter_female">女声</string>
+    <string name="narrator_filter_male">男声</string>
+    <string name="narrator_filter_neutral">中性</string>
+    <string name="narrator_start">开始聆听</string>
+    <string name="narrator_empty">没有符合该筛选条件的已安装语音，请前往浏览添加。</string>
+    <string name="player_chapters">章节</string>
+    <string name="player_sleep_timer">睡眠定时</string>
+    <string name="player_sleep_off">关闭</string>
+    <string name="player_sleep_minutes">%1$d 分钟</string>
+    <string name="player_chapter_of">第 %1$d 章，共 %2$d 章</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_preparing">正在准备朗读…</string>
+    <string name="player_failed">无法朗读该故事。</string>
+    <string name="player_action_previous">上一章</string>
+    <string name="player_action_next">下一章</string>
+    <string name="player_action_pause">暂停</string>
 </resources>
