@@ -242,23 +242,6 @@
     <string name="update_no_changelog">No se proporcionaron notas de la versión.</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_skip">Omitir</string>
-    <string name="onboarding_next">Siguiente</string>
-    <string name="onboarding_welcome_title">Te damos la bienvenida a HayaiTTS</string>
-    <string name="onboarding_welcome_body">Síntesis de voz neuronal sin conexión para Android. Cada voz se ejecuta en tu dispositivo: sin nube, sin telemetría, sin cuotas.</string>
-    <string name="onboarding_engine_title">Establece HayaiTTS como tu motor</string>
-    <string name="onboarding_engine_body">Abre Ajustes → Sistema → Idiomas e introducción de texto → Motores de texto a voz y elige HayaiTTS como motor preferido. Las apps que lean texto en voz alta usarán HayaiTTS automáticamente.</string>
-    <string name="onboarding_engine_action">Abrir ajustes del sistema TTS</string>
-    <string name="onboarding_tier_title">Elige voces para tu dispositivo</string>
-    <string name="onboarding_tier_recommendation_low">Recomendado para tu dispositivo: Bajo. Los modelos bajos funcionan incluso en hardware de gama básica.</string>
-    <string name="onboarding_tier_recommendation_mid">Recomendado para tu dispositivo: Medio. Los modelos medios equilibran velocidad y calidad en la mayoría de los teléfonos.</string>
-    <string name="onboarding_tier_recommendation_high">Recomendado para tu dispositivo: Alto. Tu hardware puede ejecutar nuestros modelos más grandes con comodidad.</string>
-    <string name="onboarding_tier_low">Bajo — el más rápido y ligero, funciona en cualquier teléfono</string>
-    <string name="onboarding_tier_mid">Medio — equilibrio entre velocidad y calidad (recomendado)</string>
-    <string name="onboarding_tier_high">Alto — máxima calidad, necesita al menos 4 GB de RAM</string>
-    <string name="onboarding_ready_title">Listo para explorar</string>
-    <string name="onboarding_ready_body">Explora más de 188 voces en 8 familias de modelos. O importa tu propio paquete desde la pestaña Biblioteca.</string>
-    <string name="onboarding_ready_action">Empezar</string>
 
     <!-- Help -->
     <string name="help_title">Ayuda y preguntas frecuentes</string>

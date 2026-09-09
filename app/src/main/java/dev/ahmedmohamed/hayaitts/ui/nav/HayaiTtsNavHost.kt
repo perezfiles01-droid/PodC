@@ -36,7 +36,6 @@ import dev.ahmedmohamed.hayaitts.ui.home.HomeScreen
 import dev.ahmedmohamed.hayaitts.ui.narrator.NarratorScreen
 import dev.ahmedmohamed.hayaitts.ui.player.PlayerScreen
 import dev.ahmedmohamed.hayaitts.ui.library.LibraryScreen
-import dev.ahmedmohamed.hayaitts.ui.onboarding.OnboardingScreen
 import dev.ahmedmohamed.hayaitts.ui.settings.SettingsScreen
 import java.net.URLEncoder
 
@@ -48,10 +47,7 @@ import java.net.URLEncoder
  * routes (voice detail, custom import) on top of itself without disturbing
  * the bottom bar.
  *
- * The Onboarding route is special — it renders without the bottom bar so
- * the first-launch flow is uncluttered. The graph picks it as the start
- * destination on the very first launch only; subsequent launches start on
- * Library.
+ * PodC has no first-launch flow, so every launch starts on Home.
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -59,7 +55,6 @@ fun HayaiTtsNavHost(
     navController: NavHostController,
     onOpenQuickSwitch: () -> Unit,
     startDestination: String = Routes.HOME,
-    onCompleteOnboarding: () -> Unit = {},
 ) {
     val currentEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentEntry?.destination?.route
@@ -104,17 +99,6 @@ fun HayaiTtsNavHost(
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            composable(Routes.ONBOARDING) {
-                OnboardingScreen(
-                    onComplete = {
-                        onCompleteOnboarding()
-                        navController.navigate(Routes.HOME) {
-                            popUpTo(Routes.ONBOARDING) { inclusive = true }
-                            launchSingleTop = true
-                        }
-                    },
-                )
-            }
             composable(Routes.HOME) {
                 HomeScreen(
                     onVoiceClick = { id -> navController.navigate(Routes.voiceDetail(id)) },
@@ -236,7 +220,6 @@ private val Tabs = listOf(
 private val BOTTOM_BAR_ROUTES = Tabs.map { it.route }.toSet()
 
 object Routes {
-    const val ONBOARDING = "onboarding"
     const val HOME = "home"
     const val LIBRARY = "library"
     const val BROWSE = "browse"

@@ -229,23 +229,6 @@
     <string name="update_download_failed">فشل التنزيل: %1$s</string>
     <string name="update_no_changelog">لا توجد ملاحظات إصدار.</string>
 
-    <string name="onboarding_skip">تخطّي</string>
-    <string name="onboarding_next">التالي</string>
-    <string name="onboarding_welcome_title">مرحبًا بك في HayaiTTS</string>
-    <string name="onboarding_welcome_body">تحويل النصّ إلى كلام بشبكات عصبية يعمل دون اتصال على Android. كل الأصوات تعمل على جهازك — بدون سحابة أو قياسات أو حصص.</string>
-    <string name="onboarding_engine_title">اجعل HayaiTTS محرّكك</string>
-    <string name="onboarding_engine_body">افتح الإعدادات → النظام → اللغات والإدخال → محرّكات النصّ إلى كلام واختر HayaiTTS كمحرّك مفضّل. ستمرّ التطبيقات التي تقرأ النصوص تلقائيًا عبر HayaiTTS.</string>
-    <string name="onboarding_engine_action">فتح إعدادات TTS في النظام</string>
-    <string name="onboarding_tier_title">اختر أصواتًا لجهازك</string>
-    <string name="onboarding_tier_recommendation_low">موصى به لجهازك: منخفضة. النماذج المنخفضة تعمل حتى على العتاد البسيط.</string>
-    <string name="onboarding_tier_recommendation_mid">موصى به لجهازك: متوسّطة. النماذج المتوسّطة توازن بين السرعة والجودة على معظم الأجهزة.</string>
-    <string name="onboarding_tier_recommendation_high">موصى به لجهازك: عالية. عتادك قادر على تشغيل أكبر نماذجنا بسلاسة.</string>
-    <string name="onboarding_tier_low">منخفضة — الأسرع والأخف، تعمل على أي هاتف</string>
-    <string name="onboarding_tier_mid">متوسّطة — توازن بين السرعة والجودة (موصى به)</string>
-    <string name="onboarding_tier_high">عالية — أفضل جودة، تحتاج 4 جيجابايت رام على الأقل</string>
-    <string name="onboarding_ready_title">جاهز للاستكشاف</string>
-    <string name="onboarding_ready_body">تصفّح أكثر من 188 صوتًا عبر 8 عائلات نماذج. أو استورد حزمتك الخاصة من تبويب «المكتبة».</string>
-    <string name="onboarding_ready_action">ابدأ</string>
 
     <string name="help_title">المساعدة والأسئلة الشائعة</string>
     <string name="help_subtitle">البدء، الأصوات، استكشاف الأخطاء</string>

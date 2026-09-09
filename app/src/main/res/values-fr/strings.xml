@@ -242,23 +242,6 @@
     <string name="update_no_changelog">Aucune note de version fournie.</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_skip">Passer</string>
-    <string name="onboarding_next">Suivant</string>
-    <string name="onboarding_welcome_title">Bienvenue sur HayaiTTS</string>
-    <string name="onboarding_welcome_body">Synthèse vocale neuronale hors ligne pour Android. Chaque voix tourne sur votre appareil — sans cloud, sans télémétrie, sans quota.</string>
-    <string name="onboarding_engine_title">Définissez HayaiTTS comme moteur</string>
-    <string name="onboarding_engine_body">Ouvrez Paramètres → Système → Langues et saisie → Moteurs de synthèse vocale et choisissez HayaiTTS comme moteur préféré. Les applications qui lisent du texte à voix haute passeront automatiquement par HayaiTTS.</string>
-    <string name="onboarding_engine_action">Ouvrir les paramètres TTS du système</string>
-    <string name="onboarding_tier_title">Choisissez des voix pour votre appareil</string>
-    <string name="onboarding_tier_recommendation_low">Recommandé pour votre appareil : Bas. Les modèles bas tournent même sur du matériel d\'entrée de gamme.</string>
-    <string name="onboarding_tier_recommendation_mid">Recommandé pour votre appareil : Moyen. Les modèles moyens équilibrent vitesse et qualité sur la plupart des téléphones.</string>
-    <string name="onboarding_tier_recommendation_high">Recommandé pour votre appareil : Haut. Votre matériel peut faire tourner confortablement nos plus gros modèles.</string>
-    <string name="onboarding_tier_low">Bas — le plus rapide et le plus léger, fonctionne sur n\'importe quel téléphone</string>
-    <string name="onboarding_tier_mid">Moyen — équilibre vitesse / qualité (recommandé)</string>
-    <string name="onboarding_tier_high">Haut — meilleure qualité, nécessite au moins 4 Go de RAM</string>
-    <string name="onboarding_ready_title">Prêt à explorer</string>
-    <string name="onboarding_ready_body">Parcourez plus de 188 voix dans 8 familles de modèles. Ou importez votre propre paquet depuis l\'onglet Bibliothèque.</string>
-    <string name="onboarding_ready_action">Commencer</string>
 
     <!-- Help -->
     <string name="help_title">Aide et FAQ</string>

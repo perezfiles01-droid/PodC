@@ -229,23 +229,6 @@
     <string name="update_download_failed">Ошибка загрузки: %1$s</string>
     <string name="update_no_changelog">Заметки к выпуску отсутствуют.</string>
 
-    <string name="onboarding_skip">Пропустить</string>
-    <string name="onboarding_next">Далее</string>
-    <string name="onboarding_welcome_title">Добро пожаловать в HayaiTTS</string>
-    <string name="onboarding_welcome_body">Офлайн нейросетевой синтез речи для Android. Каждый голос работает на вашем устройстве — без облака, без телеметрии, без квот.</string>
-    <string name="onboarding_engine_title">Сделать HayaiTTS вашим движком</string>
-    <string name="onboarding_engine_body">Откройте Настройки → Система → Языки и ввод → Синтез речи и выберите HayaiTTS как предпочитаемый движок. Приложения, читающие текст вслух, будут использовать HayaiTTS.</string>
-    <string name="onboarding_engine_action">Открыть системные настройки TTS</string>
-    <string name="onboarding_tier_title">Выберите голоса для своего устройства</string>
-    <string name="onboarding_tier_recommendation_low">Рекомендовано для вашего устройства: Низкий. Модели уровня «низкий» работают даже на начальном железе.</string>
-    <string name="onboarding_tier_recommendation_mid">Рекомендовано для вашего устройства: Средний. «Средние» модели сочетают скорость и качество на большинстве телефонов.</string>
-    <string name="onboarding_tier_recommendation_high">Рекомендовано для вашего устройства: Высокий. Ваше железо без проблем запустит самые большие модели.</string>
-    <string name="onboarding_tier_low">Низкий — самые быстрые и лёгкие, работают на любом телефоне</string>
-    <string name="onboarding_tier_mid">Средний — баланс скорости и качества (рекомендуется)</string>
-    <string name="onboarding_tier_high">Высокий — лучшее качество, нужно минимум 4 ГБ ОЗУ</string>
-    <string name="onboarding_ready_title">Готово к просмотру</string>
-    <string name="onboarding_ready_body">Просмотрите 188+ голосов в 8 семействах моделей. Или импортируйте свой пакет на вкладке «Библиотека».</string>
-    <string name="onboarding_ready_action">Начать</string>
 
     <string name="help_title">Помощь и FAQ</string>
     <string name="help_subtitle">Первые шаги, голоса, диагностика</string>

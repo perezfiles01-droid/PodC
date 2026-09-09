@@ -10,7 +10,6 @@ import dev.ahmedmohamed.hayaitts.data.stories.StoryRepositoryImpl
 import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import dev.ahmedmohamed.hayaitts.data.defaults.DefaultsRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.download.DownloadRepositoryImpl
-import dev.ahmedmohamed.hayaitts.data.onboarding.OnboardingPreferences
 import dev.ahmedmohamed.hayaitts.data.playground.SampleHistoryRepository
 import dev.ahmedmohamed.hayaitts.data.playground.VoiceTuningRepository
 import dev.ahmedmohamed.hayaitts.data.preview.VoicePreviewPlayer
@@ -31,7 +30,6 @@ import dev.ahmedmohamed.hayaitts.domain.repo.DownloadRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.SettingsRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.VoiceRepository
 import dev.ahmedmohamed.hayaitts.domain.usecase.InstallVoiceUseCase
-import dev.ahmedmohamed.hayaitts.domain.usecase.RecommendTierUseCase
 import dev.ahmedmohamed.hayaitts.domain.usecase.RefreshCatalogUseCase
 import dev.ahmedmohamed.hayaitts.domain.usecase.SynthesisGateway
 import dev.ahmedmohamed.hayaitts.domain.usecase.SynthesizeUseCase
@@ -158,9 +156,6 @@ val appModule = module {
     // P2: DataStore-backed completion history for the Downloads Manager.
     single { DownloadsHistory(androidContext()) }
 
-    // First-launch onboarding flag, separate DataStore so a future "reset
-    // onboarding" action can wipe it without touching engine settings.
-    single { OnboardingPreferences(androidContext()) }
 
     // Auto-updater. Uses the shared OkHttp + SettingsRepository so the channel
     // preference + 6h cooldown live in the existing hayai_settings DataStore.
@@ -174,7 +169,6 @@ val appModule = module {
     single<SynthesisGateway> { SherpaSynthesisGateway(androidContext(), get()) }
     factory { InstallVoiceUseCase(catalog = get(), downloads = get()) }
     factory { RefreshCatalogUseCase(catalog = get()) }
-    factory { RecommendTierUseCase() }
     factory { SynthesizeUseCase(gateway = get()) }
 
     viewModel { LibraryViewModel(get(), get(), get(), get(), get()) }

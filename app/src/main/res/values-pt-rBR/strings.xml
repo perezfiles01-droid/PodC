@@ -229,23 +229,6 @@
     <string name="update_download_failed">Falha no download: %1$s</string>
     <string name="update_no_changelog">Sem notas de versão.</string>
 
-    <string name="onboarding_skip">Pular</string>
-    <string name="onboarding_next">Avançar</string>
-    <string name="onboarding_welcome_title">Bem-vindo ao HayaiTTS</string>
-    <string name="onboarding_welcome_body">Síntese de fala neural offline para Android. Cada voz roda no seu aparelho — sem nuvem, sem telemetria, sem cota.</string>
-    <string name="onboarding_engine_title">Defina o HayaiTTS como seu motor</string>
-    <string name="onboarding_engine_body">Abra Configurações → Sistema → Idiomas e entrada → Mecanismos de texto para voz e escolha HayaiTTS como o motor preferido. Apps que lêem texto em voz alta passarão pelo HayaiTTS automaticamente.</string>
-    <string name="onboarding_engine_action">Abrir configurações de TTS do sistema</string>
-    <string name="onboarding_tier_title">Escolha vozes para o seu aparelho</string>
-    <string name="onboarding_tier_recommendation_low">Recomendado para o seu aparelho: Baixa. Modelos baixos funcionam até em hardware básico.</string>
-    <string name="onboarding_tier_recommendation_mid">Recomendado para o seu aparelho: Média. Modelos médios equilibram velocidade e qualidade na maioria dos celulares.</string>
-    <string name="onboarding_tier_recommendation_high">Recomendado para o seu aparelho: Alta. Seu hardware roda nossos modelos maiores com folga.</string>
-    <string name="onboarding_tier_low">Baixa — a mais rápida e leve, roda em qualquer celular</string>
-    <string name="onboarding_tier_mid">Média — equilíbrio entre velocidade e qualidade (recomendado)</string>
-    <string name="onboarding_tier_high">Alta — melhor qualidade, precisa de ao menos 4 GB de RAM</string>
-    <string name="onboarding_ready_title">Pronto para explorar</string>
-    <string name="onboarding_ready_body">Explore mais de 188 vozes em 8 famílias de modelos. Ou importe seu próprio pacote pela aba Biblioteca.</string>
-    <string name="onboarding_ready_action">Começar</string>
 
     <string name="help_title">Ajuda e FAQ</string>
     <string name="help_subtitle">Primeiros passos, vozes, solução de problemas</string>

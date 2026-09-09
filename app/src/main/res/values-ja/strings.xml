@@ -229,23 +229,6 @@
     <string name="update_download_failed">ダウンロード失敗: %1$s</string>
     <string name="update_no_changelog">リリースノートはありません。</string>
 
-    <string name="onboarding_skip">スキップ</string>
-    <string name="onboarding_next">次へ</string>
-    <string name="onboarding_welcome_title">HayaiTTS へようこそ</string>
-    <string name="onboarding_welcome_body">Android 向けのオフライン・ニューラル音声合成。すべての音声はオンデバイスで動作 — クラウドなし、テレメトリなし、利用制限なし。</string>
-    <string name="onboarding_engine_title">HayaiTTS をエンジンに設定</string>
-    <string name="onboarding_engine_body">設定 → システム → 言語と入力 → 音声合成エンジンを開き、HayaiTTS を優先エンジンに設定してください。読み上げを行うアプリは自動的に HayaiTTS を経由します。</string>
-    <string name="onboarding_engine_action">システムの TTS 設定を開く</string>
-    <string name="onboarding_tier_title">あなたの端末に合う音声を選ぶ</string>
-    <string name="onboarding_tier_recommendation_low">このデバイスへの推奨: 低。低品質モデルはエントリーモデルでも動作します。</string>
-    <string name="onboarding_tier_recommendation_mid">このデバイスへの推奨: 中。中品質モデルは多くの端末で速度と品質を両立します。</string>
-    <string name="onboarding_tier_recommendation_high">このデバイスへの推奨: 高。最大規模のモデルも快適に動作します。</string>
-    <string name="onboarding_tier_low">低 — 最も高速で軽量、どの端末でも動作</string>
-    <string name="onboarding_tier_mid">中 — 速度と品質のバランス（推奨）</string>
-    <string name="onboarding_tier_high">高 — 最高品質、RAM 4 GB 以上が必要</string>
-    <string name="onboarding_ready_title">準備完了</string>
-    <string name="onboarding_ready_body">8 ファミリー 188+ の音声をどうぞ。ライブラリタブから独自パッケージのインポートも可能。</string>
-    <string name="onboarding_ready_action">はじめる</string>
 
     <string name="help_title">ヘルプと FAQ</string>
     <string name="help_subtitle">はじめかた・音声・トラブルシューティング</string>

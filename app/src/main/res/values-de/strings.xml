@@ -242,23 +242,6 @@
     <string name="update_no_changelog">Keine Versionshinweise verfügbar.</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_skip">Überspringen</string>
-    <string name="onboarding_next">Weiter</string>
-    <string name="onboarding_welcome_title">Willkommen bei HayaiTTS</string>
-    <string name="onboarding_welcome_body">Offline-Neuronale-Sprachausgabe für Android. Jede Stimme läuft auf deinem Gerät — keine Cloud, keine Telemetrie, kein Kontingent.</string>
-    <string name="onboarding_engine_title">HayaiTTS als Engine festlegen</string>
-    <string name="onboarding_engine_body">Öffne Einstellungen → System → Sprache und Eingabe → Text-zu-Sprache-Engines und wähle HayaiTTS als bevorzugte Engine. Apps, die Text vorlesen, nutzen dann automatisch HayaiTTS.</string>
-    <string name="onboarding_engine_action">System-TTS-Einstellungen öffnen</string>
-    <string name="onboarding_tier_title">Stimmen für dein Gerät wählen</string>
-    <string name="onboarding_tier_recommendation_low">Empfohlen für dein Gerät: Niedrig. Niedrige Modelle laufen auch auf Einstiegs-Hardware.</string>
-    <string name="onboarding_tier_recommendation_mid">Empfohlen für dein Gerät: Mittel. Mittlere Modelle bieten ein Gleichgewicht aus Tempo und Qualität auf den meisten Smartphones.</string>
-    <string name="onboarding_tier_recommendation_high">Empfohlen für dein Gerät: Hoch. Deine Hardware kann unsere größten Modelle problemlos ausführen.</string>
-    <string name="onboarding_tier_low">Niedrig — am schnellsten und kompaktesten, läuft auf jedem Smartphone</string>
-    <string name="onboarding_tier_mid">Mittel — Gleichgewicht aus Tempo und Qualität (empfohlen)</string>
-    <string name="onboarding_tier_high">Hoch — beste Qualität, benötigt mindestens 4 GB RAM</string>
-    <string name="onboarding_ready_title">Bereit zum Stöbern</string>
-    <string name="onboarding_ready_body">Stöbere durch über 188 Stimmen aus 8 Modellfamilien. Oder importiere dein eigenes Paket aus dem Bibliotheks-Tab.</string>
-    <string name="onboarding_ready_action">Loslegen</string>
 
     <!-- Help -->
     <string name="help_title">Hilfe und FAQ</string>

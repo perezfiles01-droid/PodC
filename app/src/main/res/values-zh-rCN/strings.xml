@@ -229,23 +229,6 @@
     <string name="update_download_failed">下载失败：%1$s</string>
     <string name="update_no_changelog">没有提供发布说明。</string>
 
-    <string name="onboarding_skip">跳过</string>
-    <string name="onboarding_next">下一步</string>
-    <string name="onboarding_welcome_title">欢迎使用 HayaiTTS</string>
-    <string name="onboarding_welcome_body">Android 上的离线神经文本转语音。所有语音都在你的设备上运行——无云端、无遥测、无配额。</string>
-    <string name="onboarding_engine_title">将 HayaiTTS 设为你的引擎</string>
-    <string name="onboarding_engine_body">打开「设置 → 系统 → 语言和输入 → 文字转语音引擎」，将 HayaiTTS 设为首选引擎。需要朗读文本的应用会自动通过 HayaiTTS。</string>
-    <string name="onboarding_engine_action">打开系统 TTS 设置</string>
-    <string name="onboarding_tier_title">为你的设备挑选语音</string>
-    <string name="onboarding_tier_recommendation_low">为你的设备推荐：低。低质量模型在入门级硬件上也能运行。</string>
-    <string name="onboarding_tier_recommendation_mid">为你的设备推荐：中。中质量模型在大多数手机上兼顾速度和质量。</string>
-    <string name="onboarding_tier_recommendation_high">为你的设备推荐：高。你的硬件可以轻松运行我们最大的模型。</string>
-    <string name="onboarding_tier_low">低 — 最快最小，在任何手机上都能运行</string>
-    <string name="onboarding_tier_mid">中 — 速度与质量的平衡（推荐）</string>
-    <string name="onboarding_tier_high">高 — 最佳质量，至少需要 4 GB 内存</string>
-    <string name="onboarding_ready_title">准备好开始浏览</string>
-    <string name="onboarding_ready_body">浏览 8 个模型系列、188+ 个语音。也可以在「库」标签页导入自己的语音包。</string>
-    <string name="onboarding_ready_action">开始</string>
 
     <string name="help_title">帮助和常见问题</string>
     <string name="help_subtitle">入门、语音、排错</string>

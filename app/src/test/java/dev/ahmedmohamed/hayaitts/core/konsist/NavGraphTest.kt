@@ -128,6 +128,18 @@ class NavGraphTest {
     }
 
     @Test
+    fun `there is no first-launch onboarding flow`() {
+        // PodC opens on Home, always. This asserts the whole surface is gone
+        // rather than just the route: the screen, the DataStore flag that
+        // gated it, and the callback that set the flag. Re-adding any one of
+        // them has to be a deliberate edit here.
+        sources.files.assertFalse { file ->
+            Regex("""Routes\.ONBOARDING|OnboardingScreen|OnboardingPreferences|onCompleteOnboarding""")
+                .containsMatchIn(file.text)
+        }
+    }
+
+    @Test
     fun `no production code references the retired Studio surface`() {
         sources.files.assertFalse { file ->
             Regex("""Routes\.STUDIO|ui\.studio|StudioScreen""").containsMatchIn(file.text)

@@ -230,23 +230,6 @@
     <string name="update_download_failed">Download non riuscito: %1$s</string>
     <string name="update_no_changelog">Nessuna nota di rilascio fornita.</string>
 
-    <string name="onboarding_skip">Salta</string>
-    <string name="onboarding_next">Avanti</string>
-    <string name="onboarding_welcome_title">Benvenuto in HayaiTTS</string>
-    <string name="onboarding_welcome_body">Sintesi vocale neurale offline per Android. Ogni voce gira sul tuo dispositivo: niente cloud, niente telemetria, nessuna quota.</string>
-    <string name="onboarding_engine_title">Imposta HayaiTTS come motore</string>
-    <string name="onboarding_engine_body">Apri Impostazioni → Sistema → Lingua e immissione → Motori di sintesi vocale e seleziona HayaiTTS come motore preferito. Le app che leggono testi ad alta voce passeranno automaticamente per HayaiTTS.</string>
-    <string name="onboarding_engine_action">Apri impostazioni TTS di sistema</string>
-    <string name="onboarding_tier_title">Scegli voci per il tuo dispositivo</string>
-    <string name="onboarding_tier_recommendation_low">Consigliato per il tuo dispositivo: Bassa. I modelli bassi girano anche su hardware base.</string>
-    <string name="onboarding_tier_recommendation_mid">Consigliato per il tuo dispositivo: Media. I modelli medi bilanciano velocità e qualità sulla maggior parte degli smartphone.</string>
-    <string name="onboarding_tier_recommendation_high">Consigliato per il tuo dispositivo: Alta. Il tuo hardware può far girare comodamente i nostri modelli più grandi.</string>
-    <string name="onboarding_tier_low">Bassa — più veloce e compatta, gira su qualsiasi smartphone</string>
-    <string name="onboarding_tier_mid">Media — equilibrio tra velocità e qualità (consigliato)</string>
-    <string name="onboarding_tier_high">Alta — qualità migliore, richiede almeno 4 GB di RAM</string>
-    <string name="onboarding_ready_title">Pronto per esplorare</string>
-    <string name="onboarding_ready_body">Sfoglia oltre 188 voci in 8 famiglie di modelli. Oppure importa il tuo pacchetto dalla scheda Libreria.</string>
-    <string name="onboarding_ready_action">Inizia</string>
 
     <string name="help_title">Aiuto e FAQ</string>
     <string name="help_subtitle">Primi passi, voci, risoluzione problemi</string>

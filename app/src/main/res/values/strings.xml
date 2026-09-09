@@ -228,24 +228,6 @@
     <string name="update_download_failed">Download failed: %1$s</string>
     <string name="update_no_changelog">No release notes provided.</string>
 
-    <!-- P4: First-launch onboarding flow (onboarding_*) -->
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
-    <string name="onboarding_welcome_title">Welcome to HayaiTTS</string>
-    <string name="onboarding_welcome_body">Offline neural text-to-speech for Android. Every voice runs on your device — no cloud, no telemetry, no quota.</string>
-    <string name="onboarding_engine_title">Set HayaiTTS as your engine</string>
-    <string name="onboarding_engine_body">Open Settings → System → Languages &amp; input → Text-to-speech engines and pick HayaiTTS as your preferred engine. Apps that read text aloud will route through HayaiTTS automatically.</string>
-    <string name="onboarding_engine_action">Open system TTS settings</string>
-    <string name="onboarding_tier_title">Pick voices for your device</string>
-    <string name="onboarding_tier_recommendation_low">Recommended for your device: Low. Low models work even on entry-level hardware.</string>
-    <string name="onboarding_tier_recommendation_mid">Recommended for your device: Mid. Mid models balance speed and quality on most phones.</string>
-    <string name="onboarding_tier_recommendation_high">Recommended for your device: High. Your hardware can run our largest models comfortably.</string>
-    <string name="onboarding_tier_low">Low — fastest, smallest, runs on any phone</string>
-    <string name="onboarding_tier_mid">Mid — balanced speed and quality (recommended)</string>
-    <string name="onboarding_tier_high">High — best quality, needs at least 4 GB RAM</string>
-    <string name="onboarding_ready_title">Ready to browse</string>
-    <string name="onboarding_ready_body">Browse 188+ voices across 8 model families. Or import your own bundle from the Library tab.</string>
-    <string name="onboarding_ready_action">Get started</string>
 
     <!-- P4: Help / FAQ screen (help_*) -->
     <string name="help_title">Help &amp; FAQ</string>
