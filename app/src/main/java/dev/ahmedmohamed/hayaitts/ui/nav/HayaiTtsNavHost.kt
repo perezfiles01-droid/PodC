@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -32,6 +32,7 @@ import dev.ahmedmohamed.hayaitts.ui.activity.ActivityScreen
 import dev.ahmedmohamed.hayaitts.ui.browse.BrowseScreen
 import dev.ahmedmohamed.hayaitts.ui.custom.CustomImportScreen
 import dev.ahmedmohamed.hayaitts.ui.detail.VoiceDetailScreen
+import dev.ahmedmohamed.hayaitts.ui.home.HomeScreen
 import dev.ahmedmohamed.hayaitts.ui.library.LibraryScreen
 import dev.ahmedmohamed.hayaitts.ui.onboarding.OnboardingScreen
 import dev.ahmedmohamed.hayaitts.ui.settings.SettingsScreen
@@ -39,7 +40,9 @@ import java.net.URLEncoder
 
 /**
  * Top-level navigation: a [NavigationBar] hosts five top-level destinations
- * (Library / Browse / Settings). Each tab pushes detail
+ * (Home / Library / Profile). Browse and the download/activity screens are
+ * pushed from those tabs rather than owning a tab of their own. Each tab
+ * pushes detail
  * routes (voice detail, custom import) on top of itself without disturbing
  * the bottom bar.
  *
@@ -53,7 +56,7 @@ import java.net.URLEncoder
 fun HayaiTtsNavHost(
     navController: NavHostController,
     onOpenQuickSwitch: () -> Unit,
-    startDestination: String = Routes.LIBRARY,
+    startDestination: String = Routes.HOME,
     onCompleteOnboarding: () -> Unit = {},
 ) {
     val currentEntry by navController.currentBackStackEntryAsState()
@@ -103,11 +106,18 @@ fun HayaiTtsNavHost(
                 OnboardingScreen(
                     onComplete = {
                         onCompleteOnboarding()
-                        navController.navigate(Routes.LIBRARY) {
+                        navController.navigate(Routes.HOME) {
                             popUpTo(Routes.ONBOARDING) { inclusive = true }
                             launchSingleTop = true
                         }
                     },
+                )
+            }
+            composable(Routes.HOME) {
+                HomeScreen(
+                    onVoiceClick = { id -> navController.navigate(Routes.voiceDetail(id)) },
+                    onBrowse = { navController.navigate(Routes.BROWSE) },
+                    onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }
             composable(Routes.LIBRARY) {
@@ -187,15 +197,18 @@ private data class Tab(
 )
 
 private val Tabs = listOf(
+    Tab(Routes.HOME, Icons.Outlined.Home, R.string.nav_home),
     Tab(Routes.LIBRARY, Icons.Outlined.LibraryMusic, R.string.nav_library),
-    Tab(Routes.BROWSE, Icons.Outlined.Search, R.string.nav_browse),
-    Tab(Routes.SETTINGS, Icons.Outlined.Settings, R.string.nav_settings),
+    // Settings is the Profile tab in PodC: same screen, same route, and it
+    // carries the Downloads entry that replaced the Activity tab.
+    Tab(Routes.SETTINGS, Icons.Outlined.Person, R.string.nav_profile),
 )
 
 private val BOTTOM_BAR_ROUTES = Tabs.map { it.route }.toSet()
 
 object Routes {
     const val ONBOARDING = "onboarding"
+    const val HOME = "home"
     const val LIBRARY = "library"
     const val BROWSE = "browse"
     const val ACTIVITY = "activity"

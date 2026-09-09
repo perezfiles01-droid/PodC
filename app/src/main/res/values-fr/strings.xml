@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <!-- Library -->
     <string name="library_empty_title">Aucune voix installée</string>
@@ -412,4 +412,10 @@
     <string name="voice_detail_sample_play">Écouter l\'exemple</string>
     <string name="voice_detail_sample_loading">Chargement…</string>
     <string name="voice_detail_sample_stop">Arrêter l\'exemple</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_profile">Profil</string>
+    <string name="home_tagline">Transformez vos histoires en moments d’écoute</string>
+    <string name="home_section_featured">À la une</string>
+    <string name="home_see_all">Tout voir</string>
+    <string name="home_browse_voices">Parcourir les voix</string>
 </resources>

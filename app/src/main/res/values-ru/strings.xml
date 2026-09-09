@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">Голоса ещё не установлены</string>
     <string name="library_empty_subtitle">Откройте каталог, чтобы скачать офлайн-голоса нейросети</string>
@@ -395,4 +395,10 @@
     <string name="voice_detail_sample_play">Прослушать образец</string>
     <string name="voice_detail_sample_loading">Загрузка…</string>
     <string name="voice_detail_sample_stop">Остановить образец</string>
+    <string name="nav_home">Главная</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="home_tagline">Превратите свои истории в моменты прослушивания</string>
+    <string name="home_section_featured">Избранное</string>
+    <string name="home_see_all">Показать все</string>
+    <string name="home_browse_voices">Обзор голосов</string>
 </resources>

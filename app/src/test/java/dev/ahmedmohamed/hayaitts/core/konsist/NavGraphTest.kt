@@ -41,7 +41,7 @@ class NavGraphTest {
     @Test
     fun `bottom bar exposes exactly the expected tabs`() {
         assertEquals(
-            listOf("LIBRARY", "BROWSE", "SETTINGS"),
+            listOf("HOME", "LIBRARY", "SETTINGS"),
             declaredTabs(),
         )
     }
@@ -91,6 +91,19 @@ class NavGraphTest {
                 """SettingsScreen\([\s\S]{0,600}?onOpenDownloads\s*=\s*\{\s*navController\.navigate\(Routes\.ACTIVITY\)""",
             ).containsMatchIn(navHost.text),
         )
+    }
+
+    @Test
+    fun `browse stays reachable after losing its tab`() {
+        // Browse is where voices are downloaded. It gave up its tab in the
+        // PodC bar, so the only thing keeping it reachable is a callback from
+        // Home and from Library — if both go, the download surface is
+        // orphaned with no compile error to say so.
+        val entries = Regex("""onBrowse\s*=\s*\{\s*navController\.navigate\(Routes\.BROWSE\)""")
+            .findAll(navHost.text)
+            .count()
+        assertTrue("Nothing navigates to Routes.BROWSE any more", entries >= 1)
+        assertTrue("Routes.BROWSE is no longer hosted", "BROWSE" in hostedRoutes())
     }
 
     @Test

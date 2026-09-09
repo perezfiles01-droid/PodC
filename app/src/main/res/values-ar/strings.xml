@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">لم يتم تثبيت أي صوت بعد</string>
     <string name="library_empty_subtitle">تصفّح الفهرس لتنزيل أصوات عصبية تعمل دون اتصال</string>
@@ -395,4 +395,10 @@
     <string name="voice_detail_sample_play">استماع إلى العينة</string>
     <string name="voice_detail_sample_loading">جارٍ التحميل…</string>
     <string name="voice_detail_sample_stop">إيقاف العينة</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_profile">الملف الشخصي</string>
+    <string name="home_tagline">حوّل قصصك إلى لحظات استماع</string>
+    <string name="home_section_featured">مميزة</string>
+    <string name="home_see_all">عرض الكل</string>
+    <string name="home_browse_voices">تصفح الأصوات</string>
 </resources>

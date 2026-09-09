@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                     // this never produces a visible flash.
                     val resolved = onboardingComplete ?: return@Surface
 
-                    val startDestination = if (resolved) Routes.LIBRARY else Routes.ONBOARDING
+                    val startDestination = if (resolved) Routes.HOME else Routes.ONBOARDING
 
                     HayaiTtsNavHost(
                         navController = navController,

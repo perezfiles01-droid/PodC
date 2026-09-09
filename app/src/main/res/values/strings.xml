@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="PluralsCandidate">
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
     <string name="library_empty_title">No voices installed yet</string>
     <string name="library_empty_subtitle">Browse the catalog to download offline neural voices</string>
     <string name="library_browse_action">Browse models</string>
@@ -433,4 +433,10 @@
     <string name="voice_detail_base_model">Fine-tuned from %1$s</string>
     <string name="voice_detail_source_link">View source</string>
     <string name="voice_detail_use_cases">Best for</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="home_tagline">Turn your stories into listening moments</string>
+    <string name="home_section_featured">Featured</string>
+    <string name="home_see_all">See All</string>
+    <string name="home_browse_voices">Browse voices</string>
 </resources>

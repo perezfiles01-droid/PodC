@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">音声がまだインストールされていません</string>
     <string name="library_empty_subtitle">カタログを開いてオフラインのニューラル音声をダウンロードしましょう</string>
@@ -395,4 +395,10 @@
     <string name="voice_detail_sample_play">サンプルを再生</string>
     <string name="voice_detail_sample_loading">読み込み中…</string>
     <string name="voice_detail_sample_stop">サンプルを停止</string>
+    <string name="nav_home">ホーム</string>
+    <string name="nav_profile">プロフィール</string>
+    <string name="home_tagline">あなたの物語を聴く時間に</string>
+    <string name="home_section_featured">おすすめ</string>
+    <string name="home_see_all">すべて表示</string>
+    <string name="home_browse_voices">音声を探す</string>
 </resources>

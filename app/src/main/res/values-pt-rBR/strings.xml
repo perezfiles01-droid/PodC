@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">Nenhuma voz instalada ainda</string>
     <string name="library_empty_subtitle">Explore o catálogo para baixar vozes neurais offline</string>
@@ -395,4 +395,10 @@
     <string name="voice_detail_sample_play">Ouvir amostra</string>
     <string name="voice_detail_sample_loading">Carregando…</string>
     <string name="voice_detail_sample_stop">Parar amostra</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="home_tagline">Transforme suas histórias em momentos de escuta</string>
+    <string name="home_section_featured">Destaques</string>
+    <string name="home_see_all">Ver tudo</string>
+    <string name="home_browse_voices">Explorar vozes</string>
 </resources>
