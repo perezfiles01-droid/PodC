@@ -58,7 +58,9 @@ class StreamingNarrator(
         sid: Int,
         text: String,
         speed: Float,
-        startUnit: Int = 0,
+        // No defaults here: the interface declares them, and an override
+        // repeating them does not compile.
+        startUnit: Int,
         listener: Narrator.Listener,
     ) {
         val units = SentenceSplitter.units(text)
