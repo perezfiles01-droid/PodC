@@ -115,8 +115,8 @@ fun HayaiTtsNavHost(
                 NarratorScreen(
                     storyId = storyId,
                     onBack = { navController.popBackStack() },
-                    onStartListening = { voiceId ->
-                        navController.navigate(Routes.player(storyId, voiceId))
+                    onStartListening = { voiceId, sid ->
+                        navController.navigate(Routes.player(storyId, voiceId, sid))
                     },
                 )
             }
@@ -125,11 +125,13 @@ fun HayaiTtsNavHost(
                 arguments = listOf(
                     navArgument(Routes.ARG_STORY_ID) { type = NavType.LongType },
                     navArgument(Routes.ARG_VOICE_ID) { type = NavType.StringType },
+                    navArgument(Routes.ARG_SID) { type = NavType.IntType },
                 ),
             ) { entry ->
                 PlayerScreen(
                     storyId = entry.arguments?.getLong(Routes.ARG_STORY_ID) ?: 0L,
                     voiceId = entry.arguments?.getString(Routes.ARG_VOICE_ID).orEmpty(),
+                    sid = entry.arguments?.getInt(Routes.ARG_SID) ?: 0,
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -231,14 +233,16 @@ object Routes {
 
     const val ARG_STORY_ID = "storyId"
     const val NARRATOR = "narrator/{$ARG_STORY_ID}"
-    const val PLAYER = "player/{$ARG_STORY_ID}/{$ARG_VOICE_ID}"
+    const val ARG_SID = "sid"
+    const val PLAYER = "player/{$ARG_STORY_ID}/{$ARG_VOICE_ID}/{$ARG_SID}"
 
     const val ARG_ENCODED_URI = "encodedUri"
     const val CUSTOM_IMPORT = "customImport/{$ARG_ENCODED_URI}"
 
     fun voiceDetail(voiceId: String): String = "voiceDetail/$voiceId"
     fun narrator(storyId: Long): String = "narrator/$storyId"
-    fun player(storyId: Long, voiceId: String): String = "player/$storyId/$voiceId"
+    fun player(storyId: Long, voiceId: String, sid: Int): String =
+        "player/$storyId/$voiceId/$sid"
     fun voiceCloning(voiceId: String): String = "voiceCloning/$voiceId"
 
     /**

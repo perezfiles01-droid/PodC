@@ -415,7 +415,6 @@
     <string name="player_sleep_minutes">%1$d 分</string>
     <string name="player_chapter_of">チャプター %1$d / %2$d</string>
     <string name="player_speed">%1$s×</string>
-    <string name="player_preparing">ナレーションを準備しています…</string>
     <string name="player_failed">この物語を読み上げられませんでした。</string>
     <string name="player_action_previous">前のチャプター</string>
     <string name="player_action_next">次のチャプター</string>

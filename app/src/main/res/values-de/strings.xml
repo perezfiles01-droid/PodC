@@ -432,7 +432,6 @@
     <string name="player_sleep_minutes">%1$d Min.</string>
     <string name="player_chapter_of">Kapitel %1$d von %2$d</string>
     <string name="player_speed">%1$s×</string>
-    <string name="player_preparing">Erzählung wird vorbereitet…</string>
     <string name="player_failed">Diese Geschichte konnte nicht vorgelesen werden.</string>
     <string name="player_action_previous">Vorheriges Kapitel</string>
     <string name="player_action_next">Nächstes Kapitel</string>

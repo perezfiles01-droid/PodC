@@ -3,7 +3,10 @@ package dev.ahmedmohamed.hayaitts.domain.model
 /**
  * Chips on the "Choose a Narrator" step.
  *
- * Each chip maps to a predicate over data the voice actually carries. The
+ * Each chip maps to a predicate over data the speaker actually carries.
+ * Filtering happens per speaker rather than per voice, which is what makes
+ * the chips useful on a bundle like Kokoro: its 11 speakers split into
+ * female and male sets, where the whole bundle would match both. The
  * PodC mockup also shows "Youth" and "Narrator" chips; neither has a signal
  * in the catalog — there is no age field, and `recommendedUseCases` is absent
  * on most voices — so rather than ship chips that filter nothing, the set
@@ -16,17 +19,14 @@ enum class NarratorFilter {
     NEUTRAL,
     ;
 
-    fun matches(voice: InstalledVoice): Boolean = when (this) {
+    fun matches(option: NarratorOption): Boolean = when (this) {
         ALL -> true
-        FEMALE -> voice.hasSpeakerOf(Gender.FEMALE)
-        MALE -> voice.hasSpeakerOf(Gender.MALE)
-        NEUTRAL -> voice.hasSpeakerOf(Gender.NEUTRAL)
+        FEMALE -> option.gender == Gender.FEMALE
+        MALE -> option.gender == Gender.MALE
+        NEUTRAL -> option.gender == Gender.NEUTRAL
     }
-
-    private fun InstalledVoice.hasSpeakerOf(gender: Gender): Boolean =
-        speakers.any { Gender.parse(it.gender) == gender }
 }
 
 /** Applies [chip] to the receiver, preserving order. */
-fun List<InstalledVoice>.filteredBy(chip: NarratorFilter): List<InstalledVoice> =
-    filter { voice -> chip.matches(voice) }
+fun List<NarratorOption>.filteredBy(chip: NarratorFilter): List<NarratorOption> =
+    filter { option -> chip.matches(option) }

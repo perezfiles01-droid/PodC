@@ -48,17 +48,19 @@ import org.koin.core.parameter.parametersOf
 /**
  * Step 3: the listening screen.
  *
- * The chapter is the unit of everything here — synthesis, the progress
- * readout and the skip buttons — because nothing is rendered ahead of the
- * listener, so there is no timeline to scrub within.
+ * Playback starts on its own: reaching this screen is the instruction to
+ * listen, so there is no "preparing" state and no first tap. The chapter is
+ * the navigation unit; narration itself streams continuously across chapter
+ * boundaries, a sentence-unit at a time.
  */
 @Composable
 fun PlayerScreen(
     storyId: Long,
     voiceId: String,
+    sid: Int,
     onBack: () -> Unit,
 ) {
-    val viewModel: PlayerViewModel = koinViewModel { parametersOf(storyId, voiceId) }
+    val viewModel: PlayerViewModel = koinViewModel { parametersOf(storyId, voiceId, sid) }
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     var sleepMenuOpen by remember { mutableStateOf(false) }
     var speedMenuOpen by remember { mutableStateOf(false) }
@@ -111,15 +113,6 @@ fun PlayerScreen(
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp, vertical = 8.dp),
             )
-
-            if (state.isPreparing) {
-                Text(
-                    text = stringResource(R.string.player_preparing),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 24.dp),
-                )
-            }
 
             Row(
                 modifier = Modifier

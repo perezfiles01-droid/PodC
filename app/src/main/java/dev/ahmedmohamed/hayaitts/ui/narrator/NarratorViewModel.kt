@@ -2,9 +2,10 @@ package dev.ahmedmohamed.hayaitts.ui.narrator
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.ahmedmohamed.hayaitts.domain.model.InstalledVoice
 import dev.ahmedmohamed.hayaitts.domain.model.NarratorFilter
+import dev.ahmedmohamed.hayaitts.domain.model.NarratorOption
 import dev.ahmedmohamed.hayaitts.domain.model.filteredBy
+import dev.ahmedmohamed.hayaitts.domain.model.toNarratorOptions
 import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.VoiceRepository
 import kotlinx.coroutines.flow.map
@@ -29,15 +30,17 @@ class NarratorViewModel(
 
     data class UiState(
         val storyTitle: String = "",
-        val voices: List<InstalledVoice> = emptyList(),
+        /** One row per speaker, not per voice. */
+        val options: List<NarratorOption> = emptyList(),
         val filter: NarratorFilter = NarratorFilter.ALL,
-        val selectedVoiceId: String? = null,
+        val selected: NarratorOption? = null,
     ) {
-        val canStart: Boolean get() = selectedVoiceId != null
+        val canStart: Boolean get() = selected != null
     }
 
     private val filter = MutableStateFlow(NarratorFilter.ALL)
-    private val selected = MutableStateFlow<String?>(null)
+    /** Selection key: a voice alone is not enough now that sid matters. */
+    private val selected = MutableStateFlow<Pair<String, Int>?>(null)
 
     private val title = stories.stories
         .map { list -> list.firstOrNull { it.id == storyId }?.title.orEmpty() }
@@ -47,20 +50,20 @@ class NarratorViewModel(
         filter,
         selected,
         title,
-    ) { installed, chip, selectedId, storyTitle ->
-        val visible = installed.filteredBy(chip)
+    ) { installed, chip, selectedKey, storyTitle ->
+        val visible = installed.toNarratorOptions().filteredBy(chip)
         UiState(
             storyTitle = storyTitle,
-            voices = visible,
+            options = visible,
             filter = chip,
-            // Keep the selection only while it is still on screen, so the
-            // Start button can never fire on a voice the filter has hidden.
-            selectedVoiceId = selectedId?.takeIf { id -> visible.any { it.voiceId == id } }
-                ?: visible.firstOrNull()?.voiceId,
+            // Keep the selection only while it is still on screen, so Start
+            // can never fire on a speaker the filter has hidden.
+            selected = visible.firstOrNull { (it.voiceId to it.sid) == selectedKey }
+                ?: visible.firstOrNull(),
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), UiState())
 
     fun setFilter(chip: NarratorFilter) = filter.update { chip }
 
-    fun select(voiceId: String) = selected.update { voiceId }
+    fun select(option: NarratorOption) = selected.update { option.voiceId to option.sid }
 }

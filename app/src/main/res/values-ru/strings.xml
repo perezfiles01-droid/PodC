@@ -415,7 +415,6 @@
     <string name="player_sleep_minutes">%1$d мин</string>
     <string name="player_chapter_of">Глава %1$d из %2$d</string>
     <string name="player_speed">%1$s×</string>
-    <string name="player_preparing">Готовим озвучку…</string>
     <string name="player_failed">Не удалось озвучить эту историю.</string>
     <string name="player_action_previous">Предыдущая глава</string>
     <string name="player_action_next">Следующая глава</string>

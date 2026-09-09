@@ -6,7 +6,13 @@ import dev.ahmedmohamed.hayaitts.data.catalog.CatalogRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleAnalyzer
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleInstaller
 import dev.ahmedmohamed.hayaitts.data.db.HayaiTtsDatabase
+import dev.ahmedmohamed.hayaitts.data.narration.AudioSink
+import dev.ahmedmohamed.hayaitts.data.narration.AudioTrackSink
+import dev.ahmedmohamed.hayaitts.data.narration.SherpaNarrationEngine
+import dev.ahmedmohamed.hayaitts.data.narration.StreamingNarrator
 import dev.ahmedmohamed.hayaitts.data.stories.StoryRepositoryImpl
+import dev.ahmedmohamed.hayaitts.domain.repo.NarrationEngine
+import dev.ahmedmohamed.hayaitts.domain.repo.Narrator
 import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import dev.ahmedmohamed.hayaitts.data.defaults.DefaultsRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.download.DownloadRepositoryImpl
@@ -120,6 +126,10 @@ val appModule = module {
     }
     single<DefaultsRepository> { DefaultsRepositoryImpl(get()) }
     single<StoryRepository> { StoryRepositoryImpl(androidContext(), get(), get()) }
+    single<NarrationEngine> { SherpaNarrationEngine(androidContext(), get()) }
+    single<AudioSink> { AudioTrackSink() }
+    // One narrator for the app: two would fight over the audio track.
+    single<Narrator> { StreamingNarrator(engine = get(), sink = get(), dispatchers = get()) }
 
     // Phase 4b: short-lived AudioTrack helper for Voice Detail previews.
     single { VoicePreviewPlayer(androidContext(), get()) }
@@ -176,12 +186,13 @@ val appModule = module {
     viewModel { (storyId: Long) ->
         NarratorViewModel(storyId = storyId, voices = get(), stories = get())
     }
-    viewModel { (storyId: Long, voiceId: String) ->
+    viewModel { (storyId: Long, voiceId: String, sid: Int) ->
         PlayerViewModel(
             storyId = storyId,
             voiceId = voiceId,
+            sid = sid,
             stories = get(),
-            player = get(),
+            narrator = get(),
         )
     }
     viewModel { BrowseViewModel(androidContext(), get(), get(), get(), get()) }

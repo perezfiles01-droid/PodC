@@ -39,14 +39,16 @@ import org.koin.core.parameter.parametersOf
  * Step 2 of the listening flow, per the PodC layout: a step rail, the filter
  * chips, the narrator list, and one primary action.
  *
- * The chip set follows [NarratorFilter] — see its doc for why the mockup's
- * "Youth" and "Narrator" chips are not among them.
+ * Rows are **speakers**, not voices: a bundle like Kokoro contributes 11
+ * rows, each carrying the sid that reaches synthesis. The chip set follows
+ * [NarratorFilter] — see its doc for why the mockup's "Youth" and "Narrator"
+ * chips are not among them.
  */
 @Composable
 fun NarratorScreen(
     storyId: Long,
     onBack: () -> Unit,
-    onStartListening: (voiceId: String) -> Unit,
+    onStartListening: (voiceId: String, sid: Int) -> Unit,
 ) {
     val viewModel: NarratorViewModel = koinViewModel { parametersOf(storyId) }
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -95,7 +97,7 @@ fun NarratorScreen(
                     }
                 }
 
-                if (state.voices.isEmpty()) {
+                if (state.options.isEmpty()) {
                     item("empty") {
                         Text(
                             text = stringResource(R.string.narrator_empty),
@@ -105,12 +107,15 @@ fun NarratorScreen(
                         )
                     }
                 } else {
-                    items(state.voices, key = { "narrator_" + it.voiceId }) { voice ->
-                        val selected = voice.voiceId == state.selectedVoiceId
+                    items(
+                        state.options,
+                        key = { option -> "narrator_" + option.voiceId + "_" + option.sid },
+                    ) { option ->
+                        val selected = option == state.selected
                         ListItem(
                             modifier = Modifier.selectable(
                                 selected = selected,
-                                onClick = { viewModel.select(voice.voiceId) },
+                                onClick = { viewModel.select(option) },
                             ),
                             leadingContent = {
                                 Icon(
@@ -119,14 +124,12 @@ fun NarratorScreen(
                                     modifier = Modifier.size(32.dp),
                                 )
                             },
-                            headlineContent = { Text(voice.title) },
-                            supportingContent = {
-                                Text(voice.languages.joinToString("  ·  "))
-                            },
+                            headlineContent = { Text(option.label) },
+                            supportingContent = { Text(option.subtitle) },
                             trailingContent = {
                                 RadioButton(
                                     selected = selected,
-                                    onClick = { viewModel.select(voice.voiceId) },
+                                    onClick = { viewModel.select(option) },
                                 )
                             },
                         )
@@ -135,7 +138,9 @@ fun NarratorScreen(
             }
 
             Button(
-                onClick = { state.selectedVoiceId?.let(onStartListening) },
+                onClick = {
+                    state.selected?.let { option -> onStartListening(option.voiceId, option.sid) }
+                },
                 enabled = state.canStart,
                 modifier = Modifier
                     .fillMaxWidth()

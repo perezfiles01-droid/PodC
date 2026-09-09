@@ -415,7 +415,6 @@
     <string name="player_sleep_minutes">%1$d분</string>
     <string name="player_chapter_of">챕터 %1$d / %2$d</string>
     <string name="player_speed">%1$s×</string>
-    <string name="player_preparing">내레이션 준비 중…</string>
     <string name="player_failed">이 이야기를 읽어줄 수 없습니다.</string>
     <string name="player_action_previous">이전 챕터</string>
     <string name="player_action_next">다음 챕터</string>

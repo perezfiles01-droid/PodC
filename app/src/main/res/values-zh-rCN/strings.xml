@@ -415,7 +415,6 @@
     <string name="player_sleep_minutes">%1$d 分钟</string>
     <string name="player_chapter_of">第 %1$d 章，共 %2$d 章</string>
     <string name="player_speed">%1$s×</string>
-    <string name="player_preparing">正在准备朗读…</string>
     <string name="player_failed">无法朗读该故事。</string>
     <string name="player_action_previous">上一章</string>
     <string name="player_action_next">下一章</string>

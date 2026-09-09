@@ -5,80 +5,73 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * Every chip on the narrator step must map to a predicate that actually
- * discriminates. The failure this guards against is a chip added later
- * pointing at a field the voice does not carry: it would render, filter
- * nothing, and look like it worked.
+ * Narrator rows are speakers, and the chips filter speakers.
  *
- * The chip set is enumerated from the enum at runtime, so a new one is
- * covered without editing this test's machinery.
+ * The chip set is enumerated from the enum at runtime, so a chip added later
+ * is covered without editing this test's machinery. The property asserted is
+ * that every chip both matches something and excludes something — a chip
+ * backed by a field the data does not carry would fail that, having rendered
+ * perfectly well and filtered nothing.
  */
 class NarratorFilterTest {
 
-    private fun voice(id: String, vararg genders: String) = InstalledVoice(
+    private fun option(id: String, sid: Int, gender: Gender) = NarratorOption(
         voiceId = id,
-        family = ModelFamily.PIPER,
-        title = id,
+        sid = sid,
+        voiceTitle = id,
+        speakerName = "spk$sid",
+        gender = gender,
         languages = listOf("en-US"),
-        speakers = genders.mapIndexed { i, g -> Speaker(id = i, name = "s$i", gender = g) },
-        sampleRateHz = 22_050,
-        installedPath = "/tmp/$id",
-        tier = Tier.MID,
-        installedAt = 0L,
     )
 
-    private val library = listOf(
-        voice("female-only", "F"),
-        voice("male-only", "M"),
-        voice("neutral-only", "N"),
-        voice("mixed", "F", "M"),
-        voice("unknown", ""),
+    private val options = listOf(
+        option("kokoro", 0, Gender.FEMALE),
+        option("kokoro", 1, Gender.FEMALE),
+        option("kokoro", 5, Gender.MALE),
+        option("other", 0, Gender.NEUTRAL),
+        option("mystery", 0, Gender.UNKNOWN),
     )
 
     @Test
-    fun `all admits everything`() {
-        assertEquals(library, library.filteredBy(NarratorFilter.ALL))
+    fun `all admits every speaker`() {
+        assertEquals(options, options.filteredBy(NarratorFilter.ALL))
     }
 
     @Test
-    fun `gender chips select on any speaker`() {
+    fun `gender chips select individual speakers, not whole voices`() {
+        // The point of speaker-level filtering: Kokoro's female and male
+        // speakers land in different chips, where the bundle matched both.
         assertEquals(
-            listOf("female-only", "mixed"),
-            library.filteredBy(NarratorFilter.FEMALE).map { it.voiceId },
+            listOf(0, 1),
+            options.filteredBy(NarratorFilter.FEMALE).map { it.sid },
         )
         assertEquals(
-            listOf("male-only", "mixed"),
-            library.filteredBy(NarratorFilter.MALE).map { it.voiceId },
+            listOf(5),
+            options.filteredBy(NarratorFilter.MALE).map { it.sid },
         )
-        assertEquals(
-            listOf("neutral-only"),
-            library.filteredBy(NarratorFilter.NEUTRAL).map { it.voiceId },
-        )
+        assertEquals(1, options.filteredBy(NarratorFilter.NEUTRAL).size)
     }
 
     @Test
-    fun `a voice with no gender signal is not claimed by a gender chip`() {
+    fun `a speaker with no gender signal is not claimed by a gender chip`() {
         NarratorFilter.entries
             .filter { it != NarratorFilter.ALL }
             .forEach { chip ->
                 assertTrue(
-                    "$chip should not match an unknown-gender voice",
-                    library.filteredBy(chip).none { it.voiceId == "unknown" },
+                    "$chip should not match an unknown-gender speaker",
+                    options.filteredBy(chip).none { it.voiceId == "mystery" },
                 )
             }
     }
 
     @Test
-    fun `every chip discriminates over a real library`() {
-        // A chip that matches everything, or nothing, is a chip with no
-        // backing data - the exact shape of a filter that silently does not
-        // work. ALL is the deliberate exception.
+    fun `every chip discriminates`() {
         NarratorFilter.entries
             .filter { it != NarratorFilter.ALL }
             .forEach { chip ->
-                val hits = library.filteredBy(chip)
+                val hits = options.filteredBy(chip)
                 assertTrue("$chip matched nothing", hits.isNotEmpty())
-                assertTrue("$chip matched everything", hits.size < library.size)
+                assertTrue("$chip matched everything", hits.size < options.size)
             }
     }
 }

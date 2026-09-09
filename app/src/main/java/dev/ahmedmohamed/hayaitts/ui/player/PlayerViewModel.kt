@@ -3,10 +3,11 @@ package dev.ahmedmohamed.hayaitts.ui.player
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.ahmedmohamed.hayaitts.core.result.Outcome
+import dev.ahmedmohamed.hayaitts.domain.repo.Narrator
 import dev.ahmedmohamed.hayaitts.data.playground.VoiceTuning
-import dev.ahmedmohamed.hayaitts.data.preview.VoicePreviewPlayer
 import dev.ahmedmohamed.hayaitts.domain.model.Chapter
 import dev.ahmedmohamed.hayaitts.domain.model.ChapterSplitter
+import dev.ahmedmohamed.hayaitts.domain.model.SentenceSplitter
 import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -17,18 +18,25 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
- * Step 3: narrate an imported story, one chapter at a time.
+ * Step 3: narrate an imported story.
  *
- * Synthesis is per chapter rather than per file, so playback starts after the
- * first chunk is rendered instead of after the whole book. The chapter is
- * also the seek unit — there is no sample-accurate scrub, because nothing is
- * rendered ahead of where the listener is.
+ * Narration is streamed sentence-unit by sentence-unit through the
+ * [Narrator], so audio starts about one short sentence after the
+ * screen opens rather than one chapter, and a 50,000-word story costs the
+ * same to start as a 500-word one. There is deliberately no "preparing"
+ * state: playback begins on its own when the screen opens, and the transport
+ * is there to stop it, not to start it.
+ *
+ * Chapters remain the navigation unit. Because narration is continuous
+ * across chapter boundaries, seeking maps a chapter onto the sentence unit
+ * it begins at and restarts the stream there.
  */
 class PlayerViewModel(
     private val storyId: Long,
     private val voiceId: String,
+    private val sid: Int,
     private val stories: StoryRepository,
-    private val player: VoicePreviewPlayer,
+    private val narrator: Narrator,
 ) : ViewModel() {
 
     data class UiState(
@@ -36,12 +44,12 @@ class PlayerViewModel(
         val chapters: List<Chapter> = emptyList(),
         val currentIndex: Int = 0,
         val isPlaying: Boolean = false,
-        /** True while a chapter is being synthesized and has no audio yet. */
-        val isPreparing: Boolean = false,
         val speed: Float = 1.0f,
         /** Remaining sleep-timer minutes, or null when off. */
         val sleepMinutes: Int? = null,
         val failed: Boolean = false,
+        /** Milliseconds from tap to first audio, once known. */
+        val firstAudioMillis: Long? = null,
     ) {
         val current: Chapter? get() = chapters.getOrNull(currentIndex)
         val hasNext: Boolean get() = currentIndex < chapters.lastIndex
@@ -51,20 +59,51 @@ class PlayerViewModel(
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    private var playback: Job? = null
+    /** Full story text, held once: at the 5 MB import cap this is bounded. */
+    private var text: String = ""
+
+    /** Sentence-unit index each chapter starts at, for seeking. */
+    private var chapterUnitStarts: List<Int> = emptyList()
+
     private var sleepTimer: Job? = null
+
+    private val listener = object : Narrator.Listener {
+        override fun onFirstAudio(millisSinceStart: Long) {
+            _uiState.update { it.copy(firstAudioMillis = millisSinceStart) }
+        }
+
+        override fun onUnitStarted(index: Int, total: Int) {
+            // Map the unit back onto a chapter so the readout follows the
+            // narration without the two being separately tracked.
+            val chapterIndex = chapterUnitStarts
+                .indexOfLast { start -> start <= index }
+                .coerceAtLeast(0)
+            _uiState.update { it.copy(currentIndex = chapterIndex) }
+        }
+
+        override fun onFinished() {
+            _uiState.update { it.copy(isPlaying = false) }
+        }
+
+        override fun onFailed(cause: Throwable) {
+            _uiState.update { it.copy(isPlaying = false, failed = true) }
+        }
+    }
 
     init {
         viewModelScope.launch {
-            when (val text = stories.readText(storyId)) {
-                is Outcome.Success ->
-                    _uiState.update { it.copy(chapters = ChapterSplitter.split(text.value)) }
-                is Outcome.Failure ->
-                    _uiState.update { it.copy(failed = true) }
+            when (val loaded = stories.readText(storyId)) {
+                is Outcome.Success -> {
+                    text = loaded.value
+                    val chapters = ChapterSplitter.split(text)
+                    chapterUnitStarts = unitStartsFor(chapters)
+                    _uiState.update { it.copy(chapters = chapters) }
+                    // Start Listening plays. Nothing else has to be tapped.
+                    if (chapters.isNotEmpty()) play()
+                }
+                is Outcome.Failure -> _uiState.update { it.copy(failed = true) }
             }
         }
-        // Title tracks the same repository the Home list edits, so a rename
-        // while listening is reflected here.
         viewModelScope.launch {
             stories.stories.collect { list ->
                 val match = list.firstOrNull { story -> story.id == storyId }
@@ -78,39 +117,22 @@ class PlayerViewModel(
     }
 
     fun play() {
-        if (_uiState.value.chapters.isEmpty()) return
-        playback?.cancel()
-        _uiState.update { it.copy(isPlaying = true) }
-        playback = viewModelScope.launch {
-            var index = _uiState.value.currentIndex
-            while (index <= _uiState.value.chapters.lastIndex) {
-                val chapter = _uiState.value.chapters[index]
-                _uiState.update { it.copy(currentIndex = index, isPreparing = true) }
-                val output = player.synthesizeTuned(
-                    voiceId = voiceId,
-                    text = chapter.text,
-                    sid = 0,
-                    tuning = VoiceTuning(speed = _uiState.value.speed),
-                )
-                _uiState.update { it.copy(isPreparing = false) }
-                if (output == null) {
-                    _uiState.update { it.copy(isPlaying = false, failed = true) }
-                    return@launch
-                }
-                // Returns when the chapter has finished playing, so the loop
-                // advances at the right moment without a completion callback.
-                player.playSamples(output.samples, output.sampleRate)
-                index++
-            }
-            _uiState.update { it.copy(isPlaying = false) }
-        }
+        if (text.isBlank()) return
+        _uiState.update { it.copy(isPlaying = true, failed = false) }
+        narrator.start(
+            scope = viewModelScope,
+            voiceId = voiceId,
+            sid = sid,
+            text = text,
+            speed = _uiState.value.speed,
+            startUnit = chapterUnitStarts.getOrElse(_uiState.value.currentIndex) { 0 },
+            listener = listener,
+        )
     }
 
     fun pause() {
-        playback?.cancel()
-        playback = null
-        player.stop()
-        _uiState.update { it.copy(isPlaying = false, isPreparing = false) }
+        viewModelScope.launch { narrator.stop() }
+        _uiState.update { it.copy(isPlaying = false) }
     }
 
     fun skipToNext() = seekTo(_uiState.value.currentIndex + 1)
@@ -118,22 +140,25 @@ class PlayerViewModel(
     fun skipToPrevious() = seekTo(_uiState.value.currentIndex - 1)
 
     fun seekTo(index: Int) {
-        val chapters = _uiState.value.chapters
-        if (index !in chapters.indices) return
+        if (index !in _uiState.value.chapters.indices) return
         val wasPlaying = _uiState.value.isPlaying
-        pause()
-        _uiState.update { it.copy(currentIndex = index) }
-        if (wasPlaying) play()
+        viewModelScope.launch {
+            narrator.stop()
+            _uiState.update { it.copy(currentIndex = index, isPlaying = false) }
+            if (wasPlaying) play()
+        }
     }
 
     fun setSpeed(speed: Float) {
         val clamped = speed.coerceIn(VoiceTuning.SPEED_MIN, VoiceTuning.SPEED_MAX)
         val wasPlaying = _uiState.value.isPlaying
-        pause()
-        _uiState.update { it.copy(speed = clamped) }
-        // Speed is applied at synthesis time, so the current chapter is
-        // re-rendered rather than resampled.
-        if (wasPlaying) play()
+        viewModelScope.launch {
+            narrator.stop()
+            // Speed is a synthesis parameter, so the stream restarts from the
+            // current chapter rather than being resampled.
+            _uiState.update { it.copy(speed = clamped, isPlaying = false) }
+            if (wasPlaying) play()
+        }
     }
 
     /** Pass null to cancel. */
@@ -153,10 +178,25 @@ class PlayerViewModel(
         }
     }
 
+    /**
+     * The sentence-unit index each chapter begins at. Chapters and units are
+     * split by different rules, so the mapping is computed by counting the
+     * units each chapter's own text produces rather than assumed.
+     */
+    private fun unitStartsFor(chapters: List<Chapter>): List<Int> {
+        var running = 0
+        return chapters.map { chapter ->
+            val start = running
+            running += SentenceSplitter.units(chapter.text).size
+            start
+        }
+    }
+
     override fun onCleared() {
-        playback?.cancel()
         sleepTimer?.cancel()
-        player.stop()
+        // Synchronous: viewModelScope is already cancelled here, so a
+        // launched stop would never run and the track would play on.
+        narrator.cancel()
         super.onCleared()
     }
 }
