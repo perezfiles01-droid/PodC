@@ -401,4 +401,18 @@
     <string name="home_section_featured">Избранное</string>
     <string name="home_see_all">Показать все</string>
     <string name="home_browse_voices">Обзор голосов</string>
+    <string name="home_upload_title">Загрузите текстовый файл</string>
+    <string name="home_upload_body">Выберите файл .txt, чтобы начать слушать свою историю.</string>
+    <string name="home_choose_file">Выбрать файл</string>
+    <string name="home_upload_hint">Поддерживаемый формат: .txt (до 5 МБ)</string>
+    <string name="home_section_recent">Недавние файлы</string>
+    <string name="home_recent_empty">Импортированные истории появятся здесь.</string>
+    <string name="home_story_rename">Переименовать</string>
+    <string name="home_story_delete">Удалить</string>
+    <string name="home_rename_title">Переименовать историю</string>
+    <string name="home_action_save">Сохранить</string>
+    <string name="home_import_failed_too_large">Этот файл больше 5 МБ.</string>
+    <string name="home_import_failed_type">Выберите файл .txt.</string>
+    <string name="home_import_failed_empty">Этот файл пуст.</string>
+    <string name="home_import_failed_storage">Не удалось прочитать файл.</string>
 </resources>

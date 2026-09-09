@@ -401,4 +401,18 @@
     <string name="home_section_featured">おすすめ</string>
     <string name="home_see_all">すべて表示</string>
     <string name="home_browse_voices">音声を探す</string>
+    <string name="home_upload_title">テキストファイルを追加</string>
+    <string name="home_upload_body">.txt ファイルを選ぶと物語の再生を始められます。</string>
+    <string name="home_choose_file">ファイルを選択</string>
+    <string name="home_upload_hint">対応形式: .txt（最大 5 MB）</string>
+    <string name="home_section_recent">最近のファイル</string>
+    <string name="home_recent_empty">取り込んだ物語がここに表示されます。</string>
+    <string name="home_story_rename">名前を変更</string>
+    <string name="home_story_delete">削除</string>
+    <string name="home_rename_title">物語の名前を変更</string>
+    <string name="home_action_save">保存</string>
+    <string name="home_import_failed_too_large">このファイルは 5 MB を超えています。</string>
+    <string name="home_import_failed_type">.txt ファイルを選んでください。</string>
+    <string name="home_import_failed_empty">このファイルは空です。</string>
+    <string name="home_import_failed_storage">このファイルを読み取れませんでした。</string>
 </resources>

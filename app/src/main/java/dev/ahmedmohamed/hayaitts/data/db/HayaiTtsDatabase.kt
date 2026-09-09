@@ -12,6 +12,7 @@ import dev.ahmedmohamed.hayaitts.data.db.dao.DownloadStateDao
 import dev.ahmedmohamed.hayaitts.data.db.dao.InstalledVoiceDao
 import dev.ahmedmohamed.hayaitts.data.db.dao.PlaygroundSampleDao
 import dev.ahmedmohamed.hayaitts.data.db.dao.PronunciationDao
+import dev.ahmedmohamed.hayaitts.data.db.dao.StoryDao
 import dev.ahmedmohamed.hayaitts.data.db.dao.VoiceProfileDao
 import dev.ahmedmohamed.hayaitts.data.db.entities.AppRouteEntity
 import dev.ahmedmohamed.hayaitts.data.db.entities.DefaultVoiceEntity
@@ -19,6 +20,7 @@ import dev.ahmedmohamed.hayaitts.data.db.entities.DownloadStateEntity
 import dev.ahmedmohamed.hayaitts.data.db.entities.InstalledVoiceEntity
 import dev.ahmedmohamed.hayaitts.data.db.entities.PlaygroundSampleEntity
 import dev.ahmedmohamed.hayaitts.data.db.entities.PronunciationEntity
+import dev.ahmedmohamed.hayaitts.data.db.entities.StoryEntity
 import dev.ahmedmohamed.hayaitts.data.db.entities.VoiceProfileEntity
 
 @Database(
@@ -30,8 +32,9 @@ import dev.ahmedmohamed.hayaitts.data.db.entities.VoiceProfileEntity
         VoiceProfileEntity::class,
         PronunciationEntity::class,
         AppRouteEntity::class,
+        StoryEntity::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
 )
 abstract class HayaiTtsDatabase : RoomDatabase() {
@@ -42,6 +45,7 @@ abstract class HayaiTtsDatabase : RoomDatabase() {
     abstract fun voiceProfileDao(): VoiceProfileDao
     abstract fun pronunciationDao(): PronunciationDao
     abstract fun appRouteDao(): AppRouteDao
+    abstract fun storyDao(): StoryDao
 
     companion object {
         private const val DB_NAME = "hayai_tts.db"
@@ -122,9 +126,28 @@ abstract class HayaiTtsDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * v4 -> v5 (PodC): the `stories` table backing the Home upload flow.
+         * Metadata only - the imported text itself lives in `filesDir/stories`.
+         * Empty on first run after the bump, so nothing migrates.
+         */
+        private val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `stories` (" +
+                        "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                        "`title` TEXT NOT NULL, " +
+                        "`sizeBytes` INTEGER NOT NULL, " +
+                        "`importedAt` INTEGER NOT NULL, " +
+                        "`path` TEXT NOT NULL" +
+                        ")",
+                )
+            }
+        }
+
         fun build(context: Context): HayaiTtsDatabase = Room
             .databaseBuilder(context.applicationContext, HayaiTtsDatabase::class.java, DB_NAME)
-            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
             .build()
     }
 }

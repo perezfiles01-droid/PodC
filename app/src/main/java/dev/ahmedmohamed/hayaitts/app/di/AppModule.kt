@@ -6,6 +6,8 @@ import dev.ahmedmohamed.hayaitts.data.catalog.CatalogRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleAnalyzer
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleInstaller
 import dev.ahmedmohamed.hayaitts.data.db.HayaiTtsDatabase
+import dev.ahmedmohamed.hayaitts.data.stories.StoryRepositoryImpl
+import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import dev.ahmedmohamed.hayaitts.data.defaults.DefaultsRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.download.DownloadRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.onboarding.OnboardingPreferences
@@ -20,6 +22,7 @@ import dev.ahmedmohamed.hayaitts.data.voices.VoiceRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.telemetry.SynthesisTelemetryRepository
 import dev.ahmedmohamed.hayaitts.data.tts.SherpaSynthesisGateway
 import dev.ahmedmohamed.hayaitts.ui.activity.ActivityViewModel
+import dev.ahmedmohamed.hayaitts.ui.home.HomeViewModel
 import dev.ahmedmohamed.hayaitts.domain.repo.CatalogRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DefaultsRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DownloadRepository
@@ -88,6 +91,7 @@ val appModule = module {
     single { get<HayaiTtsDatabase>().voiceProfileDao() }
     single { get<HayaiTtsDatabase>().pronunciationDao() }
     single { get<HayaiTtsDatabase>().appRouteDao() }
+    single { get<HayaiTtsDatabase>().storyDao() }
 
     // Phase 7c: SSML preprocessor singleton — purely functional, no Android deps.
     single { dev.ahmedmohamed.hayaitts.data.ssml.SsmlPreprocessor() }
@@ -115,6 +119,7 @@ val appModule = module {
         )
     }
     single<DefaultsRepository> { DefaultsRepositoryImpl(get()) }
+    single<StoryRepository> { StoryRepositoryImpl(androidContext(), get(), get()) }
 
     // Phase 4b: short-lived AudioTrack helper for Voice Detail previews.
     single { VoicePreviewPlayer(androidContext(), get()) }
@@ -171,6 +176,7 @@ val appModule = module {
     factory { SynthesizeUseCase(gateway = get()) }
 
     viewModel { LibraryViewModel(get(), get(), get(), get(), get()) }
+    viewModel { HomeViewModel(stories = get()) }
     viewModel { BrowseViewModel(androidContext(), get(), get(), get(), get()) }
     viewModel { (voiceId: String) ->
         VoiceDetailViewModel(

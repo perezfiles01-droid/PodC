@@ -418,4 +418,18 @@
     <string name="home_section_featured">Empfohlen</string>
     <string name="home_see_all">Alle ansehen</string>
     <string name="home_browse_voices">Stimmen durchsuchen</string>
+    <string name="home_upload_title">Textdatei hochladen</string>
+    <string name="home_upload_body">Wähle eine .txt-Datei, um deine Geschichte zu hören.</string>
+    <string name="home_choose_file">Datei wählen</string>
+    <string name="home_upload_hint">Unterstütztes Format: .txt (max. 5 MB)</string>
+    <string name="home_section_recent">Zuletzt verwendet</string>
+    <string name="home_recent_empty">Deine importierten Geschichten erscheinen hier.</string>
+    <string name="home_story_rename">Umbenennen</string>
+    <string name="home_story_delete">Löschen</string>
+    <string name="home_rename_title">Geschichte umbenennen</string>
+    <string name="home_action_save">Speichern</string>
+    <string name="home_import_failed_too_large">Diese Datei ist größer als 5 MB.</string>
+    <string name="home_import_failed_type">Wähle eine .txt-Datei.</string>
+    <string name="home_import_failed_empty">Diese Datei ist leer.</string>
+    <string name="home_import_failed_storage">Diese Datei konnte nicht gelesen werden.</string>
 </resources>

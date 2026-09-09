@@ -401,4 +401,18 @@
     <string name="home_section_featured">مميزة</string>
     <string name="home_see_all">عرض الكل</string>
     <string name="home_browse_voices">تصفح الأصوات</string>
+    <string name="home_upload_title">ارفع ملفاً نصياً</string>
+    <string name="home_upload_body">اختر ملف ‎.txt‎ لتبدأ الاستماع إلى قصتك.</string>
+    <string name="home_choose_file">اختر ملفاً</string>
+    <string name="home_upload_hint">الصيغة المدعومة: ‎.txt‎ (بحد أقصى 5 ميغابايت)</string>
+    <string name="home_section_recent">الملفات الأخيرة</string>
+    <string name="home_recent_empty">ستظهر قصصك المستوردة هنا.</string>
+    <string name="home_story_rename">إعادة تسمية</string>
+    <string name="home_story_delete">حذف</string>
+    <string name="home_rename_title">إعادة تسمية القصة</string>
+    <string name="home_action_save">حفظ</string>
+    <string name="home_import_failed_too_large">هذا الملف أكبر من 5 ميغابايت.</string>
+    <string name="home_import_failed_type">اختر ملف ‎.txt‎.</string>
+    <string name="home_import_failed_empty">هذا الملف فارغ.</string>
+    <string name="home_import_failed_storage">تعذّرت قراءة هذا الملف.</string>
 </resources>

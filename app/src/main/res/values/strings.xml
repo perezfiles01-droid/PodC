@@ -439,4 +439,18 @@
     <string name="home_section_featured">Featured</string>
     <string name="home_see_all">See All</string>
     <string name="home_browse_voices">Browse voices</string>
+    <string name="home_upload_title">Upload a Text File</string>
+    <string name="home_upload_body">Choose a .txt file to start listening to your story.</string>
+    <string name="home_choose_file">Choose File</string>
+    <string name="home_upload_hint">Supported format: .txt (Max 5 MB)</string>
+    <string name="home_section_recent">Recent Files</string>
+    <string name="home_recent_empty">Your imported stories will appear here.</string>
+    <string name="home_story_rename">Rename</string>
+    <string name="home_story_delete">Delete</string>
+    <string name="home_rename_title">Rename story</string>
+    <string name="home_action_save">Save</string>
+    <string name="home_import_failed_too_large">That file is larger than 5 MB.</string>
+    <string name="home_import_failed_type">Choose a .txt file.</string>
+    <string name="home_import_failed_empty">That file is empty.</string>
+    <string name="home_import_failed_storage">Could not read that file.</string>
 </resources>

@@ -401,4 +401,18 @@
     <string name="home_section_featured">精选</string>
     <string name="home_see_all">查看全部</string>
     <string name="home_browse_voices">浏览语音</string>
+    <string name="home_upload_title">上传文本文件</string>
+    <string name="home_upload_body">选择一个 .txt 文件，开始聆听你的故事。</string>
+    <string name="home_choose_file">选择文件</string>
+    <string name="home_upload_hint">支持格式：.txt（最大 5 MB）</string>
+    <string name="home_section_recent">最近文件</string>
+    <string name="home_recent_empty">导入的故事会显示在这里。</string>
+    <string name="home_story_rename">重命名</string>
+    <string name="home_story_delete">删除</string>
+    <string name="home_rename_title">重命名故事</string>
+    <string name="home_action_save">保存</string>
+    <string name="home_import_failed_too_large">该文件超过 5 MB。</string>
+    <string name="home_import_failed_type">请选择 .txt 文件。</string>
+    <string name="home_import_failed_empty">该文件为空。</string>
+    <string name="home_import_failed_storage">无法读取该文件。</string>
 </resources>

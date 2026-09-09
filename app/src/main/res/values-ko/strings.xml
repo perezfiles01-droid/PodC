@@ -401,4 +401,18 @@
     <string name="home_section_featured">추천</string>
     <string name="home_see_all">모두 보기</string>
     <string name="home_browse_voices">음성 찾아보기</string>
+    <string name="home_upload_title">텍스트 파일 올리기</string>
+    <string name="home_upload_body">.txt 파일을 선택하면 이야기를 들을 수 있습니다.</string>
+    <string name="home_choose_file">파일 선택</string>
+    <string name="home_upload_hint">지원 형식: .txt (최대 5MB)</string>
+    <string name="home_section_recent">최근 파일</string>
+    <string name="home_recent_empty">가져온 이야기가 여기에 표시됩니다.</string>
+    <string name="home_story_rename">이름 변경</string>
+    <string name="home_story_delete">삭제</string>
+    <string name="home_rename_title">이야기 이름 변경</string>
+    <string name="home_action_save">저장</string>
+    <string name="home_import_failed_too_large">이 파일은 5MB를 넘습니다.</string>
+    <string name="home_import_failed_type">.txt 파일을 선택하세요.</string>
+    <string name="home_import_failed_empty">이 파일은 비어 있습니다.</string>
+    <string name="home_import_failed_storage">파일을 읽을 수 없습니다.</string>
 </resources>
