@@ -30,8 +30,16 @@ concurrency:
 jobs:
   build:
     name: Build app
-    runs-on: blacksmith-8vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     environment: build
+
+    env:
+      # Every signing and publishing step below is gated on this. A fork
+      # without the signing secrets would otherwise take the nightly path on
+      # each push to main, fail in "Sign APKs", and leave a red build plus a
+      # half-made release. The `secrets` context is not readable from a
+      # step-level `if`, so it is resolved once here.
+      HAS_SIGNING_KEY: ${{ secrets.SIGNING_KEY != '' }}
 
     steps:
       - name: Clone repo
@@ -42,19 +50,13 @@ jobs:
 
       - name: Setup Android SDK
         run: |
-          ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "build-tools;36.0.0" "platforms;android-36"
+          ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager "build-tools;36.0.0" "platforms;android-36"
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: temurin
-
-      - name: Mount Gradle home (sticky disk)
-        uses: useblacksmith/stickydisk@v1
-        with:
-          key: ${{ github.repository }}-gradle-home
-          path: ~/.gradle
 
       - name: Copy CI gradle.properties
         run: |
@@ -63,8 +65,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-disabled: true
 
       - name: Grant gradlew execute permission
         run: chmod +x gradlew
@@ -92,7 +92,10 @@ jobs:
 
       # NIGHTLY (every push to main, no version tag — produces artifacts only)
       - name: Prepare nightly build
-        if: steps.branch_name.outputs.NAME == 'main' && github.event.inputs.version == ''
+        if: >-
+          steps.branch_name.outputs.NAME == 'main'
+          && github.event.inputs.version == ''
+          && env.HAS_SIGNING_KEY == 'true'
         run: |
           echo "VERSION_TAG=r$(git rev-list --count HEAD)" >> $GITHUB_ENV
           echo "RELEASE_STAGE=release" >> $GITHUB_ENV

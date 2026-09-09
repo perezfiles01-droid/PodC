@@ -27,6 +27,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Bolt
+import androidx.compose.material.icons.outlined.CloudDownload
 import androidx.compose.material.icons.outlined.CleaningServices
 import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.outlined.Gavel
@@ -132,6 +133,13 @@ fun SettingsScreen(
     onBack: () -> Unit,
     viewModel: SettingsViewModel = koinViewModel(),
     updateViewModel: UpdateViewModel = koinViewModel(),
+    /**
+     * Opens the Activity screen (downloads / extractions / generations).
+     * Null when Settings is hosted standalone from `SettingsActivity` — the
+     * system TTS cog entry point has no nav graph to push onto — in which
+     * case the entry is simply not rendered.
+     */
+    onOpenDownloads: (() -> Unit)? = null,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val cacheClearedBytes by viewModel.cacheClearedBytes.collectAsStateWithLifecycle()
@@ -162,6 +170,8 @@ fun SettingsScreen(
     // label set is the headline + supporting text of one ListItem; the
     // section-header check just folds across its items' labels.
     val labelDownloadsSection = stringResource(R.string.settings_section_downloads)
+    val labelActivity = stringResource(R.string.activity_title) +
+        " " + stringResource(R.string.activity_pane_downloads)
     val labelWifi = stringResource(R.string.settings_wifi_only) +
         " " + stringResource(R.string.settings_wifi_only_subtitle)
     val labelStorageLoc = stringResource(R.string.settings_storage_location)
@@ -212,7 +222,7 @@ fun SettingsScreen(
     fun matches(vararg parts: String): Boolean =
         q.isEmpty() || parts.any { it.contains(q, ignoreCase = true) }
 
-    val showDownloadsSection = matches(labelWifi, labelStorageLoc, labelStorageInternal, labelStorageExternal)
+    val showDownloadsSection = matches(labelWifi, labelStorageLoc, labelStorageInternal, labelStorageExternal, labelActivity)
     val showDefaultsSection = matches(
         labelDefaultsEmpty,
         labelAllowedLanguages,
@@ -284,6 +294,20 @@ fun SettingsScreen(
             contentPadding = PaddingValues(top = topInset, bottom = 16.dp),
         ) {
             if (showDownloadsSection) item("downloads_header") { SectionHeader(labelDownloadsSection) }
+            if (onOpenDownloads != null && showDownloadsSection && matches(labelActivity)) {
+                item("activity_entry") {
+                    ListItem(
+                        modifier = Modifier.clickable(onClick = onOpenDownloads),
+                        leadingContent = {
+                            Icon(Icons.Outlined.CloudDownload, contentDescription = null)
+                        },
+                        headlineContent = { Text(stringResource(R.string.activity_title)) },
+                        supportingContent = {
+                            Text(stringResource(R.string.activity_pane_downloads))
+                        },
+                    )
+                }
+            }
             if (showDownloadsSection && matches(labelWifi)) item("wifi_only") {
                 ListItem(
                     leadingContent = { Icon(Icons.Outlined.Wifi, contentDescription = null) },

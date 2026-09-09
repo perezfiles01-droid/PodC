@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">Nenhuma voz instalada ainda</string>
     <string name="library_empty_subtitle">Explore o catálogo para baixar vozes neurais offline</string>
@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">Instalar voz</string>
     <string name="voice_detail_cancel_primary">Cancelar download</string>
     <string name="voice_detail_uninstall_action">Desinstalar</string>
-    <string name="voice_detail_open_playground">Abrir no Playground</string>
     <string name="voice_detail_coming_soon_hint">Esta família de modelos ainda não é suportada pela build atual do sherpa-onnx. Uma atualização futura habilitará.</string>
 
     <string name="uninstall_confirm_title">Desinstalar voz?</string>
@@ -230,23 +229,6 @@
     <string name="update_download_failed">Falha no download: %1$s</string>
     <string name="update_no_changelog">Sem notas de versão.</string>
 
-    <string name="onboarding_skip">Pular</string>
-    <string name="onboarding_next">Avançar</string>
-    <string name="onboarding_welcome_title">Bem-vindo ao HayaiTTS</string>
-    <string name="onboarding_welcome_body">Síntese de fala neural offline para Android. Cada voz roda no seu aparelho — sem nuvem, sem telemetria, sem cota.</string>
-    <string name="onboarding_engine_title">Defina o HayaiTTS como seu motor</string>
-    <string name="onboarding_engine_body">Abra Configurações → Sistema → Idiomas e entrada → Mecanismos de texto para voz e escolha HayaiTTS como o motor preferido. Apps que lêem texto em voz alta passarão pelo HayaiTTS automaticamente.</string>
-    <string name="onboarding_engine_action">Abrir configurações de TTS do sistema</string>
-    <string name="onboarding_tier_title">Escolha vozes para o seu aparelho</string>
-    <string name="onboarding_tier_recommendation_low">Recomendado para o seu aparelho: Baixa. Modelos baixos funcionam até em hardware básico.</string>
-    <string name="onboarding_tier_recommendation_mid">Recomendado para o seu aparelho: Média. Modelos médios equilibram velocidade e qualidade na maioria dos celulares.</string>
-    <string name="onboarding_tier_recommendation_high">Recomendado para o seu aparelho: Alta. Seu hardware roda nossos modelos maiores com folga.</string>
-    <string name="onboarding_tier_low">Baixa — a mais rápida e leve, roda em qualquer celular</string>
-    <string name="onboarding_tier_mid">Média — equilíbrio entre velocidade e qualidade (recomendado)</string>
-    <string name="onboarding_tier_high">Alta — melhor qualidade, precisa de ao menos 4 GB de RAM</string>
-    <string name="onboarding_ready_title">Pronto para explorar</string>
-    <string name="onboarding_ready_body">Explore mais de 188 vozes em 8 famílias de modelos. Ou importe seu próprio pacote pela aba Biblioteca.</string>
-    <string name="onboarding_ready_action">Começar</string>
 
     <string name="help_title">Ajuda e FAQ</string>
     <string name="help_subtitle">Primeiros passos, vozes, solução de problemas</string>
@@ -330,13 +312,8 @@
     <string name="speak_selection_label">Falar com HayaiTTS</string>
     <string name="nav_library">Biblioteca</string>
     <string name="nav_browse">Explorar</string>
-    <string name="nav_studio">Estúdio</string>
-    <string name="nav_activity">Atividade</string>
     <string name="nav_settings">Configurações</string>
-    <string name="studio_title">Estúdio</string>
     <string name="studio_subtitle">Ajuste · A/B · Exportar</string>
-    <string name="studio_no_voices">Instale uma voz em Explorar para usar o Estúdio.</string>
-    <string name="studio_swap_voice">Trocar voz</string>
     <string name="activity_title">Atividade</string>
     <string name="activity_subtitle">Downloads · Geração · Cache</string>
     <string name="activity_pane_downloads">Downloads</string>
@@ -401,4 +378,45 @@
     <string name="voice_detail_sample_play">Ouvir amostra</string>
     <string name="voice_detail_sample_loading">Carregando…</string>
     <string name="voice_detail_sample_stop">Parar amostra</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="home_tagline">Transforme suas histórias em momentos de escuta</string>
+    <string name="home_section_featured">Destaques</string>
+    <string name="home_see_all">Ver tudo</string>
+    <string name="home_browse_voices">Explorar vozes</string>
+    <string name="home_upload_title">Envie um arquivo de texto</string>
+    <string name="home_upload_body">Escolha um arquivo .txt para começar a ouvir sua história.</string>
+    <string name="home_choose_file">Escolher arquivo</string>
+    <string name="home_upload_hint">Formato aceito: .txt (máx. 5 MB)</string>
+    <string name="home_section_recent">Arquivos recentes</string>
+    <string name="home_recent_empty">Suas histórias importadas aparecerão aqui.</string>
+    <string name="home_story_rename">Renomear</string>
+    <string name="home_story_delete">Excluir</string>
+    <string name="home_rename_title">Renomear história</string>
+    <string name="home_action_save">Salvar</string>
+    <string name="home_import_failed_too_large">Esse arquivo tem mais de 5 MB.</string>
+    <string name="home_import_failed_type">Escolha um arquivo .txt.</string>
+    <string name="home_import_failed_empty">Esse arquivo está vazio.</string>
+    <string name="home_import_failed_storage">Não foi possível ler esse arquivo.</string>
+    <string name="narrator_step_upload">Enviar</string>
+    <string name="narrator_step_voice">Escolher voz</string>
+    <string name="narrator_step_listen">Ouvir</string>
+    <string name="narrator_title">Escolha um narrador</string>
+    <string name="narrator_subtitle">Escolha uma voz para dar vida à sua história.</string>
+    <string name="narrator_filter_all">Todas</string>
+    <string name="narrator_filter_female">Feminina</string>
+    <string name="narrator_filter_male">Masculina</string>
+    <string name="narrator_filter_neutral">Neutra</string>
+    <string name="narrator_start">Começar a ouvir</string>
+    <string name="narrator_empty">Nenhuma voz instalada corresponde a este filtro. Explore para adicionar uma.</string>
+    <string name="player_chapters">Capítulos</string>
+    <string name="player_sleep_timer">Timer de sono</string>
+    <string name="player_sleep_off">Desligado</string>
+    <string name="player_sleep_minutes">%1$d min</string>
+    <string name="player_chapter_of">Capítulo %1$d de %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">Não foi possível narrar essa história.</string>
+    <string name="player_action_previous">Capítulo anterior</string>
+    <string name="player_action_next">Próximo capítulo</string>
+    <string name="player_action_pause">Pausar</string>
 </resources>

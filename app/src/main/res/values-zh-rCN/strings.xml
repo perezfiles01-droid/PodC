@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">尚未安装任何语音</string>
     <string name="library_empty_subtitle">浏览目录下载离线神经语音</string>
@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">安装语音</string>
     <string name="voice_detail_cancel_primary">取消下载</string>
     <string name="voice_detail_uninstall_action">卸载</string>
-    <string name="voice_detail_open_playground">在 Playground 中打开</string>
     <string name="voice_detail_coming_soon_hint">当前 sherpa-onnx 构建尚不支持该模型系列。未来的更新将启用它。</string>
 
     <string name="uninstall_confirm_title">卸载语音？</string>
@@ -230,23 +229,6 @@
     <string name="update_download_failed">下载失败：%1$s</string>
     <string name="update_no_changelog">没有提供发布说明。</string>
 
-    <string name="onboarding_skip">跳过</string>
-    <string name="onboarding_next">下一步</string>
-    <string name="onboarding_welcome_title">欢迎使用 HayaiTTS</string>
-    <string name="onboarding_welcome_body">Android 上的离线神经文本转语音。所有语音都在你的设备上运行——无云端、无遥测、无配额。</string>
-    <string name="onboarding_engine_title">将 HayaiTTS 设为你的引擎</string>
-    <string name="onboarding_engine_body">打开「设置 → 系统 → 语言和输入 → 文字转语音引擎」，将 HayaiTTS 设为首选引擎。需要朗读文本的应用会自动通过 HayaiTTS。</string>
-    <string name="onboarding_engine_action">打开系统 TTS 设置</string>
-    <string name="onboarding_tier_title">为你的设备挑选语音</string>
-    <string name="onboarding_tier_recommendation_low">为你的设备推荐：低。低质量模型在入门级硬件上也能运行。</string>
-    <string name="onboarding_tier_recommendation_mid">为你的设备推荐：中。中质量模型在大多数手机上兼顾速度和质量。</string>
-    <string name="onboarding_tier_recommendation_high">为你的设备推荐：高。你的硬件可以轻松运行我们最大的模型。</string>
-    <string name="onboarding_tier_low">低 — 最快最小，在任何手机上都能运行</string>
-    <string name="onboarding_tier_mid">中 — 速度与质量的平衡（推荐）</string>
-    <string name="onboarding_tier_high">高 — 最佳质量，至少需要 4 GB 内存</string>
-    <string name="onboarding_ready_title">准备好开始浏览</string>
-    <string name="onboarding_ready_body">浏览 8 个模型系列、188+ 个语音。也可以在「库」标签页导入自己的语音包。</string>
-    <string name="onboarding_ready_action">开始</string>
 
     <string name="help_title">帮助和常见问题</string>
     <string name="help_subtitle">入门、语音、排错</string>
@@ -330,13 +312,8 @@
     <string name="speak_selection_label">用 HayaiTTS 朗读</string>
     <string name="nav_library">库</string>
     <string name="nav_browse">浏览</string>
-    <string name="nav_studio">工作室</string>
-    <string name="nav_activity">活动</string>
     <string name="nav_settings">设置</string>
-    <string name="studio_title">工作室</string>
     <string name="studio_subtitle">调整 · A/B · 导出</string>
-    <string name="studio_no_voices">在「浏览」中安装一个音色，开始使用工作室。</string>
-    <string name="studio_swap_voice">切换语音</string>
     <string name="activity_title">活动</string>
     <string name="activity_subtitle">下载 · 生成 · 缓存</string>
     <string name="activity_pane_downloads">下载</string>
@@ -401,4 +378,45 @@
     <string name="voice_detail_sample_play">试听样本</string>
     <string name="voice_detail_sample_loading">加载中…</string>
     <string name="voice_detail_sample_stop">停止试听</string>
+    <string name="nav_home">首页</string>
+    <string name="nav_profile">我的</string>
+    <string name="home_tagline">把你的故事变成聆听时光</string>
+    <string name="home_section_featured">精选</string>
+    <string name="home_see_all">查看全部</string>
+    <string name="home_browse_voices">浏览语音</string>
+    <string name="home_upload_title">上传文本文件</string>
+    <string name="home_upload_body">选择一个 .txt 文件，开始聆听你的故事。</string>
+    <string name="home_choose_file">选择文件</string>
+    <string name="home_upload_hint">支持格式：.txt（最大 5 MB）</string>
+    <string name="home_section_recent">最近文件</string>
+    <string name="home_recent_empty">导入的故事会显示在这里。</string>
+    <string name="home_story_rename">重命名</string>
+    <string name="home_story_delete">删除</string>
+    <string name="home_rename_title">重命名故事</string>
+    <string name="home_action_save">保存</string>
+    <string name="home_import_failed_too_large">该文件超过 5 MB。</string>
+    <string name="home_import_failed_type">请选择 .txt 文件。</string>
+    <string name="home_import_failed_empty">该文件为空。</string>
+    <string name="home_import_failed_storage">无法读取该文件。</string>
+    <string name="narrator_step_upload">上传</string>
+    <string name="narrator_step_voice">选择语音</string>
+    <string name="narrator_step_listen">聆听</string>
+    <string name="narrator_title">选择旁白</string>
+    <string name="narrator_subtitle">选择一个声音，让故事鲜活起来。</string>
+    <string name="narrator_filter_all">全部</string>
+    <string name="narrator_filter_female">女声</string>
+    <string name="narrator_filter_male">男声</string>
+    <string name="narrator_filter_neutral">中性</string>
+    <string name="narrator_start">开始聆听</string>
+    <string name="narrator_empty">没有符合该筛选条件的已安装语音，请前往浏览添加。</string>
+    <string name="player_chapters">章节</string>
+    <string name="player_sleep_timer">睡眠定时</string>
+    <string name="player_sleep_off">关闭</string>
+    <string name="player_sleep_minutes">%1$d 分钟</string>
+    <string name="player_chapter_of">第 %1$d 章，共 %2$d 章</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">无法朗读该故事。</string>
+    <string name="player_action_previous">上一章</string>
+    <string name="player_action_next">下一章</string>
+    <string name="player_action_pause">暂停</string>
 </resources>

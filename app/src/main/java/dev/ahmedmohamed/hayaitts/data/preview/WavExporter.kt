@@ -9,7 +9,7 @@ import kotlin.math.min
 /**
  * Writes 16-bit signed PCM WAV files (RIFF/WAVE, format code 1).
  *
- * The Studio "Export to WAV" action synthesizes a FloatArray via the gateway,
+ * An "Export to WAV" action synthesizes a FloatArray via the gateway,
  * then hands it here with the voice's sample rate. The output goes through
  * an [OutputStream] supplied by the caller (typically a SAF
  * `contentResolver.openOutputStream(uri)`).

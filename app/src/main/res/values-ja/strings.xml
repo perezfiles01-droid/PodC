@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">音声がまだインストールされていません</string>
     <string name="library_empty_subtitle">カタログを開いてオフラインのニューラル音声をダウンロードしましょう</string>
@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">音声をインストール</string>
     <string name="voice_detail_cancel_primary">ダウンロードをキャンセル</string>
     <string name="voice_detail_uninstall_action">アンインストール</string>
-    <string name="voice_detail_open_playground">Playground で開く</string>
     <string name="voice_detail_coming_soon_hint">このモデルファミリーは現在の sherpa-onnx ビルドではサポートされていません。今後のアップデートで対応予定です。</string>
 
     <string name="uninstall_confirm_title">音声をアンインストールしますか？</string>
@@ -230,23 +229,6 @@
     <string name="update_download_failed">ダウンロード失敗: %1$s</string>
     <string name="update_no_changelog">リリースノートはありません。</string>
 
-    <string name="onboarding_skip">スキップ</string>
-    <string name="onboarding_next">次へ</string>
-    <string name="onboarding_welcome_title">HayaiTTS へようこそ</string>
-    <string name="onboarding_welcome_body">Android 向けのオフライン・ニューラル音声合成。すべての音声はオンデバイスで動作 — クラウドなし、テレメトリなし、利用制限なし。</string>
-    <string name="onboarding_engine_title">HayaiTTS をエンジンに設定</string>
-    <string name="onboarding_engine_body">設定 → システム → 言語と入力 → 音声合成エンジンを開き、HayaiTTS を優先エンジンに設定してください。読み上げを行うアプリは自動的に HayaiTTS を経由します。</string>
-    <string name="onboarding_engine_action">システムの TTS 設定を開く</string>
-    <string name="onboarding_tier_title">あなたの端末に合う音声を選ぶ</string>
-    <string name="onboarding_tier_recommendation_low">このデバイスへの推奨: 低。低品質モデルはエントリーモデルでも動作します。</string>
-    <string name="onboarding_tier_recommendation_mid">このデバイスへの推奨: 中。中品質モデルは多くの端末で速度と品質を両立します。</string>
-    <string name="onboarding_tier_recommendation_high">このデバイスへの推奨: 高。最大規模のモデルも快適に動作します。</string>
-    <string name="onboarding_tier_low">低 — 最も高速で軽量、どの端末でも動作</string>
-    <string name="onboarding_tier_mid">中 — 速度と品質のバランス（推奨）</string>
-    <string name="onboarding_tier_high">高 — 最高品質、RAM 4 GB 以上が必要</string>
-    <string name="onboarding_ready_title">準備完了</string>
-    <string name="onboarding_ready_body">8 ファミリー 188+ の音声をどうぞ。ライブラリタブから独自パッケージのインポートも可能。</string>
-    <string name="onboarding_ready_action">はじめる</string>
 
     <string name="help_title">ヘルプと FAQ</string>
     <string name="help_subtitle">はじめかた・音声・トラブルシューティング</string>
@@ -330,13 +312,8 @@
     <string name="speak_selection_label">HayaiTTS で読み上げ</string>
     <string name="nav_library">ライブラリ</string>
     <string name="nav_browse">探す</string>
-    <string name="nav_studio">スタジオ</string>
-    <string name="nav_activity">アクティビティ</string>
     <string name="nav_settings">設定</string>
-    <string name="studio_title">スタジオ</string>
     <string name="studio_subtitle">調整 · A/B · 書き出し</string>
-    <string name="studio_no_voices">「探す」から音声をインストールしてください。</string>
-    <string name="studio_swap_voice">音声を切り替え</string>
     <string name="activity_title">アクティビティ</string>
     <string name="activity_subtitle">ダウンロード · 生成 · キャッシュ</string>
     <string name="activity_pane_downloads">ダウンロード</string>
@@ -401,4 +378,45 @@
     <string name="voice_detail_sample_play">サンプルを再生</string>
     <string name="voice_detail_sample_loading">読み込み中…</string>
     <string name="voice_detail_sample_stop">サンプルを停止</string>
+    <string name="nav_home">ホーム</string>
+    <string name="nav_profile">プロフィール</string>
+    <string name="home_tagline">あなたの物語を聴く時間に</string>
+    <string name="home_section_featured">おすすめ</string>
+    <string name="home_see_all">すべて表示</string>
+    <string name="home_browse_voices">音声を探す</string>
+    <string name="home_upload_title">テキストファイルを追加</string>
+    <string name="home_upload_body">.txt ファイルを選ぶと物語の再生を始められます。</string>
+    <string name="home_choose_file">ファイルを選択</string>
+    <string name="home_upload_hint">対応形式: .txt（最大 5 MB）</string>
+    <string name="home_section_recent">最近のファイル</string>
+    <string name="home_recent_empty">取り込んだ物語がここに表示されます。</string>
+    <string name="home_story_rename">名前を変更</string>
+    <string name="home_story_delete">削除</string>
+    <string name="home_rename_title">物語の名前を変更</string>
+    <string name="home_action_save">保存</string>
+    <string name="home_import_failed_too_large">このファイルは 5 MB を超えています。</string>
+    <string name="home_import_failed_type">.txt ファイルを選んでください。</string>
+    <string name="home_import_failed_empty">このファイルは空です。</string>
+    <string name="home_import_failed_storage">このファイルを読み取れませんでした。</string>
+    <string name="narrator_step_upload">追加</string>
+    <string name="narrator_step_voice">音声を選択</string>
+    <string name="narrator_step_listen">再生</string>
+    <string name="narrator_title">ナレーターを選ぶ</string>
+    <string name="narrator_subtitle">物語に命を吹き込む音声を選びましょう。</string>
+    <string name="narrator_filter_all">すべて</string>
+    <string name="narrator_filter_female">女性</string>
+    <string name="narrator_filter_male">男性</string>
+    <string name="narrator_filter_neutral">ニュートラル</string>
+    <string name="narrator_start">再生を始める</string>
+    <string name="narrator_empty">この条件に合う音声がありません。探すから追加してください。</string>
+    <string name="player_chapters">チャプター</string>
+    <string name="player_sleep_timer">スリープタイマー</string>
+    <string name="player_sleep_off">オフ</string>
+    <string name="player_sleep_minutes">%1$d 分</string>
+    <string name="player_chapter_of">チャプター %1$d / %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">この物語を読み上げられませんでした。</string>
+    <string name="player_action_previous">前のチャプター</string>
+    <string name="player_action_next">次のチャプター</string>
+    <string name="player_action_pause">一時停止</string>
 </resources>

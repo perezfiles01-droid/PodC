@@ -5,15 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
-import dev.ahmedmohamed.hayaitts.data.onboarding.OnboardingPreferences
 import dev.ahmedmohamed.hayaitts.data.update.UpdateStatus
 import dev.ahmedmohamed.hayaitts.ui.nav.HayaiTtsNavHost
 import dev.ahmedmohamed.hayaitts.ui.nav.Routes
@@ -21,8 +18,6 @@ import dev.ahmedmohamed.hayaitts.ui.quickswitch.VoiceQuickSwitcher
 import dev.ahmedmohamed.hayaitts.ui.theme.HayaiTtsTheme
 import dev.ahmedmohamed.hayaitts.ui.update.UpdateDialog
 import dev.ahmedmohamed.hayaitts.ui.update.UpdateViewModel
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
 
 /**
@@ -31,13 +26,11 @@ import org.koin.androidx.compose.koinViewModel
  * top app bar — see [HayaiTtsNavHost] which forwards an `onOpenQuickSwitch`
  * callback to each leaf screen.
  *
- * On first launch the activity routes to the onboarding flow instead of
- * Library; subsequent launches land directly on Library. The flag is owned
- * by [OnboardingPreferences].
+ * Every launch lands on Home. PodC has no first-run flow: the onboarding
+ * pages were removed along with the DataStore flag that gated them, so
+ * there is no longer a first frame that waits on a preference read.
  */
 class MainActivity : ComponentActivity() {
-
-    private val onboardingPrefs: OnboardingPreferences by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,28 +40,9 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     var quickSwitchOpen by remember { mutableStateOf(false) }
 
-                    // Snapshot the flag synchronously the first time the
-                    // composition runs so the NavHost picks a deterministic
-                    // start destination — we cannot wait on a Flow to emit
-                    // before composing the graph or `rememberSaveable` state
-                    // would reset on every cold start.
-                    val onboardingComplete by onboardingPrefs.isComplete
-                        .collectAsState(initial = null)
-
-                    // Until we know, render nothing under the Surface. The
-                    // first DataStore read is sub-frame on real devices so
-                    // this never produces a visible flash.
-                    val resolved = onboardingComplete ?: return@Surface
-
-                    val startDestination = if (resolved) Routes.LIBRARY else Routes.ONBOARDING
-
                     HayaiTtsNavHost(
                         navController = navController,
                         onOpenQuickSwitch = { quickSwitchOpen = true },
-                        startDestination = startDestination,
-                        onCompleteOnboarding = {
-                            lifecycleScope.launch { onboardingPrefs.setComplete(true) }
-                        },
                     )
 
                     VoiceQuickSwitcher(

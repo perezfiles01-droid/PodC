@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">Голоса ещё не установлены</string>
     <string name="library_empty_subtitle">Откройте каталог, чтобы скачать офлайн-голоса нейросети</string>
@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">Установить голос</string>
     <string name="voice_detail_cancel_primary">Отменить загрузку</string>
     <string name="voice_detail_uninstall_action">Удалить</string>
-    <string name="voice_detail_open_playground">Открыть в Playground</string>
     <string name="voice_detail_coming_soon_hint">Это семейство моделей пока не поддерживается текущей сборкой sherpa-onnx. Будущее обновление включит его.</string>
 
     <string name="uninstall_confirm_title">Удалить голос?</string>
@@ -230,23 +229,6 @@
     <string name="update_download_failed">Ошибка загрузки: %1$s</string>
     <string name="update_no_changelog">Заметки к выпуску отсутствуют.</string>
 
-    <string name="onboarding_skip">Пропустить</string>
-    <string name="onboarding_next">Далее</string>
-    <string name="onboarding_welcome_title">Добро пожаловать в HayaiTTS</string>
-    <string name="onboarding_welcome_body">Офлайн нейросетевой синтез речи для Android. Каждый голос работает на вашем устройстве — без облака, без телеметрии, без квот.</string>
-    <string name="onboarding_engine_title">Сделать HayaiTTS вашим движком</string>
-    <string name="onboarding_engine_body">Откройте Настройки → Система → Языки и ввод → Синтез речи и выберите HayaiTTS как предпочитаемый движок. Приложения, читающие текст вслух, будут использовать HayaiTTS.</string>
-    <string name="onboarding_engine_action">Открыть системные настройки TTS</string>
-    <string name="onboarding_tier_title">Выберите голоса для своего устройства</string>
-    <string name="onboarding_tier_recommendation_low">Рекомендовано для вашего устройства: Низкий. Модели уровня «низкий» работают даже на начальном железе.</string>
-    <string name="onboarding_tier_recommendation_mid">Рекомендовано для вашего устройства: Средний. «Средние» модели сочетают скорость и качество на большинстве телефонов.</string>
-    <string name="onboarding_tier_recommendation_high">Рекомендовано для вашего устройства: Высокий. Ваше железо без проблем запустит самые большие модели.</string>
-    <string name="onboarding_tier_low">Низкий — самые быстрые и лёгкие, работают на любом телефоне</string>
-    <string name="onboarding_tier_mid">Средний — баланс скорости и качества (рекомендуется)</string>
-    <string name="onboarding_tier_high">Высокий — лучшее качество, нужно минимум 4 ГБ ОЗУ</string>
-    <string name="onboarding_ready_title">Готово к просмотру</string>
-    <string name="onboarding_ready_body">Просмотрите 188+ голосов в 8 семействах моделей. Или импортируйте свой пакет на вкладке «Библиотека».</string>
-    <string name="onboarding_ready_action">Начать</string>
 
     <string name="help_title">Помощь и FAQ</string>
     <string name="help_subtitle">Первые шаги, голоса, диагностика</string>
@@ -330,13 +312,8 @@
     <string name="speak_selection_label">Прочитать через HayaiTTS</string>
     <string name="nav_library">Библиотека</string>
     <string name="nav_browse">Обзор</string>
-    <string name="nav_studio">Студия</string>
-    <string name="nav_activity">Активность</string>
     <string name="nav_settings">Настройки</string>
-    <string name="studio_title">Студия</string>
     <string name="studio_subtitle">Настройка · A/B · Экспорт</string>
-    <string name="studio_no_voices">Установите голос в «Обзоре», чтобы использовать Студию.</string>
-    <string name="studio_swap_voice">Сменить голос</string>
     <string name="activity_title">Активность</string>
     <string name="activity_subtitle">Загрузки · Генерации · Кэш</string>
     <string name="activity_pane_downloads">Загрузки</string>
@@ -401,4 +378,45 @@
     <string name="voice_detail_sample_play">Прослушать образец</string>
     <string name="voice_detail_sample_loading">Загрузка…</string>
     <string name="voice_detail_sample_stop">Остановить образец</string>
+    <string name="nav_home">Главная</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="home_tagline">Превратите свои истории в моменты прослушивания</string>
+    <string name="home_section_featured">Избранное</string>
+    <string name="home_see_all">Показать все</string>
+    <string name="home_browse_voices">Обзор голосов</string>
+    <string name="home_upload_title">Загрузите текстовый файл</string>
+    <string name="home_upload_body">Выберите файл .txt, чтобы начать слушать свою историю.</string>
+    <string name="home_choose_file">Выбрать файл</string>
+    <string name="home_upload_hint">Поддерживаемый формат: .txt (до 5 МБ)</string>
+    <string name="home_section_recent">Недавние файлы</string>
+    <string name="home_recent_empty">Импортированные истории появятся здесь.</string>
+    <string name="home_story_rename">Переименовать</string>
+    <string name="home_story_delete">Удалить</string>
+    <string name="home_rename_title">Переименовать историю</string>
+    <string name="home_action_save">Сохранить</string>
+    <string name="home_import_failed_too_large">Этот файл больше 5 МБ.</string>
+    <string name="home_import_failed_type">Выберите файл .txt.</string>
+    <string name="home_import_failed_empty">Этот файл пуст.</string>
+    <string name="home_import_failed_storage">Не удалось прочитать файл.</string>
+    <string name="narrator_step_upload">Загрузка</string>
+    <string name="narrator_step_voice">Выбор голоса</string>
+    <string name="narrator_step_listen">Прослушивание</string>
+    <string name="narrator_title">Выберите рассказчика</string>
+    <string name="narrator_subtitle">Выберите голос, который оживит вашу историю.</string>
+    <string name="narrator_filter_all">Все</string>
+    <string name="narrator_filter_female">Женские</string>
+    <string name="narrator_filter_male">Мужские</string>
+    <string name="narrator_filter_neutral">Нейтральные</string>
+    <string name="narrator_start">Начать прослушивание</string>
+    <string name="narrator_empty">Нет установленных голосов по этому фильтру. Добавьте через обзор.</string>
+    <string name="player_chapters">Главы</string>
+    <string name="player_sleep_timer">Таймер сна</string>
+    <string name="player_sleep_off">Выкл.</string>
+    <string name="player_sleep_minutes">%1$d мин</string>
+    <string name="player_chapter_of">Глава %1$d из %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">Не удалось озвучить эту историю.</string>
+    <string name="player_action_previous">Предыдущая глава</string>
+    <string name="player_action_next">Следующая глава</string>
+    <string name="player_action_pause">Пауза</string>
 </resources>

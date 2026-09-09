@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Bolt
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Tune
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -34,30 +32,29 @@ import dev.ahmedmohamed.hayaitts.ui.activity.ActivityScreen
 import dev.ahmedmohamed.hayaitts.ui.browse.BrowseScreen
 import dev.ahmedmohamed.hayaitts.ui.custom.CustomImportScreen
 import dev.ahmedmohamed.hayaitts.ui.detail.VoiceDetailScreen
+import dev.ahmedmohamed.hayaitts.ui.home.HomeScreen
+import dev.ahmedmohamed.hayaitts.ui.narrator.NarratorScreen
+import dev.ahmedmohamed.hayaitts.ui.player.PlayerScreen
 import dev.ahmedmohamed.hayaitts.ui.library.LibraryScreen
-import dev.ahmedmohamed.hayaitts.ui.onboarding.OnboardingScreen
 import dev.ahmedmohamed.hayaitts.ui.settings.SettingsScreen
-import dev.ahmedmohamed.hayaitts.ui.studio.StudioScreen
 import java.net.URLEncoder
 
 /**
  * Top-level navigation: a [NavigationBar] hosts five top-level destinations
- * (Library / Browse / Studio / Activity / Settings). Each tab pushes detail
+ * (Home / Library / Profile). Browse and the download/activity screens are
+ * pushed from those tabs rather than owning a tab of their own. Each tab
+ * pushes detail
  * routes (voice detail, custom import) on top of itself without disturbing
  * the bottom bar.
  *
- * The Onboarding route is special — it renders without the bottom bar so
- * the first-launch flow is uncluttered. The graph picks it as the start
- * destination on the very first launch only; subsequent launches start on
- * Library.
+ * PodC has no first-launch flow, so every launch starts on Home.
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun HayaiTtsNavHost(
     navController: NavHostController,
     onOpenQuickSwitch: () -> Unit,
-    startDestination: String = Routes.LIBRARY,
-    onCompleteOnboarding: () -> Unit = {},
+    startDestination: String = Routes.HOME,
 ) {
     val currentEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentEntry?.destination?.route
@@ -102,15 +99,40 @@ fun HayaiTtsNavHost(
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            composable(Routes.ONBOARDING) {
-                OnboardingScreen(
-                    onComplete = {
-                        onCompleteOnboarding()
-                        navController.navigate(Routes.LIBRARY) {
-                            popUpTo(Routes.ONBOARDING) { inclusive = true }
-                            launchSingleTop = true
-                        }
+            composable(Routes.HOME) {
+                HomeScreen(
+                    onVoiceClick = { id -> navController.navigate(Routes.voiceDetail(id)) },
+                    onBrowse = { navController.navigate(Routes.BROWSE) },
+                    onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                    onStoryClick = { storyId -> navController.navigate(Routes.narrator(storyId)) },
+                )
+            }
+            composable(
+                route = Routes.NARRATOR,
+                arguments = listOf(navArgument(Routes.ARG_STORY_ID) { type = NavType.LongType }),
+            ) { entry ->
+                val storyId = entry.arguments?.getLong(Routes.ARG_STORY_ID) ?: 0L
+                NarratorScreen(
+                    storyId = storyId,
+                    onBack = { navController.popBackStack() },
+                    onStartListening = { voiceId, sid ->
+                        navController.navigate(Routes.player(storyId, voiceId, sid))
                     },
+                )
+            }
+            composable(
+                route = Routes.PLAYER,
+                arguments = listOf(
+                    navArgument(Routes.ARG_STORY_ID) { type = NavType.LongType },
+                    navArgument(Routes.ARG_VOICE_ID) { type = NavType.StringType },
+                    navArgument(Routes.ARG_SID) { type = NavType.IntType },
+                ),
+            ) { entry ->
+                PlayerScreen(
+                    storyId = entry.arguments?.getLong(Routes.ARG_STORY_ID) ?: 0L,
+                    voiceId = entry.arguments?.getString(Routes.ARG_VOICE_ID).orEmpty(),
+                    sid = entry.arguments?.getInt(Routes.ARG_SID) ?: 0,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.LIBRARY) {
@@ -129,12 +151,6 @@ fun HayaiTtsNavHost(
                     onOpenQuickSwitch = onOpenQuickSwitch,
                 )
             }
-            composable(Routes.STUDIO) {
-                StudioScreen(
-                    onBack = { navController.popBackStack() },
-                    onOpenQuickSwitch = onOpenQuickSwitch,
-                )
-            }
             composable(
                 route = Routes.ACTIVITY,
                 deepLinks = listOf(navDeepLink { uriPattern = "hayaitts://downloads" }),
@@ -142,7 +158,16 @@ fun HayaiTtsNavHost(
                 ActivityScreen(onBack = { navController.popBackStack() })
             }
             composable(Routes.SETTINGS) {
-                SettingsScreen(onBack = { navController.popBackStack() })
+                SettingsScreen(
+                    onBack = { navController.popBackStack() },
+                    // Activity left the bottom bar in the PodC fork, but the
+                    // download/extraction progress it shows is the only
+                    // feedback during a multi-hundred-MB voice install, so
+                    // Settings keeps an entry point to it. The route itself
+                    // is unchanged, which is what keeps the
+                    // `hayaitts://downloads` notification deep link resolving.
+                    onOpenDownloads = { navController.navigate(Routes.ACTIVITY) },
+                )
             }
             composable(
                 route = Routes.VOICE_DETAIL,
@@ -153,7 +178,6 @@ fun HayaiTtsNavHost(
                     voiceId = id,
                     onBack = { navController.popBackStack() },
                     onOpenQuickSwitch = onOpenQuickSwitch,
-                    onOpenPlayground = { navController.navigate(Routes.STUDIO) },
                     onOpenCloning = { navController.navigate(Routes.voiceCloning(id)) },
                 )
             }
@@ -188,30 +212,37 @@ private data class Tab(
 )
 
 private val Tabs = listOf(
+    Tab(Routes.HOME, Icons.Outlined.Home, R.string.nav_home),
     Tab(Routes.LIBRARY, Icons.Outlined.LibraryMusic, R.string.nav_library),
-    Tab(Routes.BROWSE, Icons.Outlined.Search, R.string.nav_browse),
-    Tab(Routes.STUDIO, Icons.Outlined.Tune, R.string.nav_studio),
-    Tab(Routes.ACTIVITY, Icons.Outlined.Bolt, R.string.nav_activity),
-    Tab(Routes.SETTINGS, Icons.Outlined.Settings, R.string.nav_settings),
+    // Settings is the Profile tab in PodC: same screen, same route, and it
+    // carries the Downloads entry that replaced the Activity tab.
+    Tab(Routes.SETTINGS, Icons.Outlined.Person, R.string.nav_profile),
 )
 
 private val BOTTOM_BAR_ROUTES = Tabs.map { it.route }.toSet()
 
 object Routes {
-    const val ONBOARDING = "onboarding"
+    const val HOME = "home"
     const val LIBRARY = "library"
     const val BROWSE = "browse"
-    const val STUDIO = "studio"
     const val ACTIVITY = "activity"
     const val SETTINGS = "settings"
     const val ARG_VOICE_ID = "voiceId"
     const val VOICE_DETAIL = "voiceDetail/{$ARG_VOICE_ID}"
     const val VOICE_CLONING = "voiceCloning/{$ARG_VOICE_ID}"
 
+    const val ARG_STORY_ID = "storyId"
+    const val NARRATOR = "narrator/{$ARG_STORY_ID}"
+    const val ARG_SID = "sid"
+    const val PLAYER = "player/{$ARG_STORY_ID}/{$ARG_VOICE_ID}/{$ARG_SID}"
+
     const val ARG_ENCODED_URI = "encodedUri"
     const val CUSTOM_IMPORT = "customImport/{$ARG_ENCODED_URI}"
 
     fun voiceDetail(voiceId: String): String = "voiceDetail/$voiceId"
+    fun narrator(storyId: Long): String = "narrator/$storyId"
+    fun player(storyId: Long, voiceId: String, sid: Int): String =
+        "player/$storyId/$voiceId/$sid"
     fun voiceCloning(voiceId: String): String = "voiceCloning/$voiceId"
 
     /**

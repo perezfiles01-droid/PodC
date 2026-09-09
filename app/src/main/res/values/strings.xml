@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="PluralsCandidate">
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
     <string name="library_empty_title">No voices installed yet</string>
     <string name="library_empty_subtitle">Browse the catalog to download offline neural voices</string>
     <string name="library_browse_action">Browse models</string>
@@ -228,24 +228,6 @@
     <string name="update_download_failed">Download failed: %1$s</string>
     <string name="update_no_changelog">No release notes provided.</string>
 
-    <!-- P4: First-launch onboarding flow (onboarding_*) -->
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
-    <string name="onboarding_welcome_title">Welcome to HayaiTTS</string>
-    <string name="onboarding_welcome_body">Offline neural text-to-speech for Android. Every voice runs on your device — no cloud, no telemetry, no quota.</string>
-    <string name="onboarding_engine_title">Set HayaiTTS as your engine</string>
-    <string name="onboarding_engine_body">Open Settings → System → Languages &amp; input → Text-to-speech engines and pick HayaiTTS as your preferred engine. Apps that read text aloud will route through HayaiTTS automatically.</string>
-    <string name="onboarding_engine_action">Open system TTS settings</string>
-    <string name="onboarding_tier_title">Pick voices for your device</string>
-    <string name="onboarding_tier_recommendation_low">Recommended for your device: Low. Low models work even on entry-level hardware.</string>
-    <string name="onboarding_tier_recommendation_mid">Recommended for your device: Mid. Mid models balance speed and quality on most phones.</string>
-    <string name="onboarding_tier_recommendation_high">Recommended for your device: High. Your hardware can run our largest models comfortably.</string>
-    <string name="onboarding_tier_low">Low — fastest, smallest, runs on any phone</string>
-    <string name="onboarding_tier_mid">Mid — balanced speed and quality (recommended)</string>
-    <string name="onboarding_tier_high">High — best quality, needs at least 4 GB RAM</string>
-    <string name="onboarding_ready_title">Ready to browse</string>
-    <string name="onboarding_ready_body">Browse 188+ voices across 8 model families. Or import your own bundle from the Library tab.</string>
-    <string name="onboarding_ready_action">Get started</string>
 
     <!-- P4: Help / FAQ screen (help_*) -->
     <string name="help_title">Help &amp; FAQ</string>
@@ -283,7 +265,6 @@
 
     <!-- P5: Model Playground + per-voice tuning -->
     <string name="playground_title">Playground</string>
-    <string name="voice_detail_open_playground">Open in Playground</string>
     <string name="playground_text_header">Text</string>
     <string name="playground_text_placeholder">Type something to synthesize…</string>
     <string name="playground_tuning_header">Tuning</string>
@@ -357,15 +338,10 @@
     <!-- v2 NavigationBar tabs. -->
     <string name="nav_library">Library</string>
     <string name="nav_browse">Browse</string>
-    <string name="nav_studio">Studio</string>
-    <string name="nav_activity">Activity</string>
     <string name="nav_settings">Settings</string>
 
     <!-- v2 Studio. -->
-    <string name="studio_title">Studio</string>
     <string name="studio_subtitle">Tune, A/B, export</string>
-    <string name="studio_no_voices">Install a voice from Browse to use Studio.</string>
-    <string name="studio_swap_voice">Switch voice</string>
 
     <!-- v2 Activity tab. -->
     <string name="activity_title">Activity</string>
@@ -439,4 +415,45 @@
     <string name="voice_detail_base_model">Fine-tuned from %1$s</string>
     <string name="voice_detail_source_link">View source</string>
     <string name="voice_detail_use_cases">Best for</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="home_tagline">Turn your stories into listening moments</string>
+    <string name="home_section_featured">Featured</string>
+    <string name="home_see_all">See All</string>
+    <string name="home_browse_voices">Browse voices</string>
+    <string name="home_upload_title">Upload a Text File</string>
+    <string name="home_upload_body">Choose a .txt file to start listening to your story.</string>
+    <string name="home_choose_file">Choose File</string>
+    <string name="home_upload_hint">Supported format: .txt (Max 5 MB)</string>
+    <string name="home_section_recent">Recent Files</string>
+    <string name="home_recent_empty">Your imported stories will appear here.</string>
+    <string name="home_story_rename">Rename</string>
+    <string name="home_story_delete">Delete</string>
+    <string name="home_rename_title">Rename story</string>
+    <string name="home_action_save">Save</string>
+    <string name="home_import_failed_too_large">That file is larger than 5 MB.</string>
+    <string name="home_import_failed_type">Choose a .txt file.</string>
+    <string name="home_import_failed_empty">That file is empty.</string>
+    <string name="home_import_failed_storage">Could not read that file.</string>
+    <string name="narrator_step_upload">Upload</string>
+    <string name="narrator_step_voice">Choose Voice</string>
+    <string name="narrator_step_listen">Listen</string>
+    <string name="narrator_title">Choose a Narrator</string>
+    <string name="narrator_subtitle">Select a voice to bring your story to life.</string>
+    <string name="narrator_filter_all">All</string>
+    <string name="narrator_filter_female">Female</string>
+    <string name="narrator_filter_male">Male</string>
+    <string name="narrator_filter_neutral">Neutral</string>
+    <string name="narrator_start">Start Listening</string>
+    <string name="narrator_empty">No installed voices match this filter. Browse to add one.</string>
+    <string name="player_chapters">Chapters</string>
+    <string name="player_sleep_timer">Sleep Timer</string>
+    <string name="player_sleep_off">Off</string>
+    <string name="player_sleep_minutes">%1$d min</string>
+    <string name="player_chapter_of">Chapter %1$d of %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">That story could not be narrated.</string>
+    <string name="player_action_previous">Previous chapter</string>
+    <string name="player_action_next">Next chapter</string>
+    <string name="player_action_pause">Pause</string>
 </resources>

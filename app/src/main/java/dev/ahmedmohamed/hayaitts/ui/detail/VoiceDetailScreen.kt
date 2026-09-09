@@ -46,7 +46,6 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.material.icons.outlined.RecordVoiceOver
 import androidx.compose.material.icons.outlined.Stop
-import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
@@ -100,7 +99,7 @@ import org.koin.core.parameter.parametersOf
  *
  * Layout (top-down):
  *   1. [LargeFlexibleTopAppBar] — back + title + subtitle. Actions slot holds
- *      Quick-Switch + a 3-dot overflow with Playground / Uninstall.
+ *      Quick-Switch + a 3-dot overflow with Cloning / Uninstall.
  *   2. Hero block — family glyph, title, chip strip, license caption.
  *   3. Speakers row.
  *   4. Preview block — waveform + text + play/stop.
@@ -110,7 +109,7 @@ import org.koin.core.parameter.parametersOf
  *      between Install / Cancel-download / Set-default / Coming-soon based
  *      on state.
  *
- * Every secondary affordance (Playground, Uninstall, Quick Switch) is in the
+ * Every secondary affordance (Cloning, Uninstall, Quick Switch) is in the
  * top-bar's actions slot so the body has one and only one primary CTA.
  */
 @Composable
@@ -118,7 +117,6 @@ fun VoiceDetailScreen(
     voiceId: String,
     onBack: () -> Unit,
     onOpenQuickSwitch: () -> Unit,
-    onOpenPlayground: () -> Unit = {},
     onOpenCloning: () -> Unit = {},
 ) {
     val viewModel: VoiceDetailViewModel = koinViewModel { parametersOf(voiceId) }
@@ -173,17 +171,6 @@ fun VoiceDetailScreen(
                     expanded = overflowOpen,
                     onDismissRequest = { overflowOpen = false },
                 ) {
-                    DropdownMenuItem(
-                        text = { Text(stringResource(R.string.voice_detail_open_playground)) },
-                        leadingIcon = {
-                            Icon(Icons.Outlined.Tune, contentDescription = null)
-                        },
-                        enabled = state.isInstalled,
-                        onClick = {
-                            overflowOpen = false
-                            onOpenPlayground()
-                        },
-                    )
                     // Cloning entry — only visible for voices whose family
                     // supports reference-audio cloning AND that are already
                     // installed (the screen needs the JNI engine loaded).
@@ -547,7 +534,7 @@ private fun PreviewSection(
             ) {
                 // Three labels in priority order: Generating… (synth in
                 // flight), Stop (playback in flight), Play (idle). Same
-                // affordance the Studio playground uses.
+                // affordance the preview player uses.
                 val labelRes = when {
                     generating -> R.string.voice_detail_preview_generating
                     playing -> R.string.action_stop
@@ -699,7 +686,7 @@ private fun PrimaryAction(
             state.isInstalled -> {
                 // Primary action is consumed by the per-locale chips above;
                 // installed voices have no body-level CTA. The toolbar
-                // overflow handles Uninstall and Playground.
+                // overflow handles Uninstall and Cloning.
             }
             state.card != null && state.card.available -> {
                 Button(

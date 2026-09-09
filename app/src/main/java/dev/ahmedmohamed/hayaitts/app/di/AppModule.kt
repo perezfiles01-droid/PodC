@@ -6,9 +6,16 @@ import dev.ahmedmohamed.hayaitts.data.catalog.CatalogRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleAnalyzer
 import dev.ahmedmohamed.hayaitts.data.custom.CustomBundleInstaller
 import dev.ahmedmohamed.hayaitts.data.db.HayaiTtsDatabase
+import dev.ahmedmohamed.hayaitts.data.narration.AudioSink
+import dev.ahmedmohamed.hayaitts.data.narration.AudioTrackSink
+import dev.ahmedmohamed.hayaitts.data.narration.SherpaNarrationEngine
+import dev.ahmedmohamed.hayaitts.data.narration.StreamingNarrator
+import dev.ahmedmohamed.hayaitts.data.stories.StoryRepositoryImpl
+import dev.ahmedmohamed.hayaitts.domain.repo.NarrationEngine
+import dev.ahmedmohamed.hayaitts.domain.repo.Narrator
+import dev.ahmedmohamed.hayaitts.domain.repo.StoryRepository
 import dev.ahmedmohamed.hayaitts.data.defaults.DefaultsRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.download.DownloadRepositoryImpl
-import dev.ahmedmohamed.hayaitts.data.onboarding.OnboardingPreferences
 import dev.ahmedmohamed.hayaitts.data.playground.SampleHistoryRepository
 import dev.ahmedmohamed.hayaitts.data.playground.VoiceTuningRepository
 import dev.ahmedmohamed.hayaitts.data.preview.VoicePreviewPlayer
@@ -20,13 +27,15 @@ import dev.ahmedmohamed.hayaitts.data.voices.VoiceRepositoryImpl
 import dev.ahmedmohamed.hayaitts.data.telemetry.SynthesisTelemetryRepository
 import dev.ahmedmohamed.hayaitts.data.tts.SherpaSynthesisGateway
 import dev.ahmedmohamed.hayaitts.ui.activity.ActivityViewModel
+import dev.ahmedmohamed.hayaitts.ui.home.HomeViewModel
+import dev.ahmedmohamed.hayaitts.ui.narrator.NarratorViewModel
+import dev.ahmedmohamed.hayaitts.ui.player.PlayerViewModel
 import dev.ahmedmohamed.hayaitts.domain.repo.CatalogRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DefaultsRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.DownloadRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.SettingsRepository
 import dev.ahmedmohamed.hayaitts.domain.repo.VoiceRepository
 import dev.ahmedmohamed.hayaitts.domain.usecase.InstallVoiceUseCase
-import dev.ahmedmohamed.hayaitts.domain.usecase.RecommendTierUseCase
 import dev.ahmedmohamed.hayaitts.domain.usecase.RefreshCatalogUseCase
 import dev.ahmedmohamed.hayaitts.domain.usecase.SynthesisGateway
 import dev.ahmedmohamed.hayaitts.domain.usecase.SynthesizeUseCase
@@ -88,6 +97,7 @@ val appModule = module {
     single { get<HayaiTtsDatabase>().voiceProfileDao() }
     single { get<HayaiTtsDatabase>().pronunciationDao() }
     single { get<HayaiTtsDatabase>().appRouteDao() }
+    single { get<HayaiTtsDatabase>().storyDao() }
 
     // Phase 7c: SSML preprocessor singleton — purely functional, no Android deps.
     single { dev.ahmedmohamed.hayaitts.data.ssml.SsmlPreprocessor() }
@@ -115,6 +125,11 @@ val appModule = module {
         )
     }
     single<DefaultsRepository> { DefaultsRepositoryImpl(get()) }
+    single<StoryRepository> { StoryRepositoryImpl(androidContext(), get(), get()) }
+    single<NarrationEngine> { SherpaNarrationEngine(androidContext(), get()) }
+    single<AudioSink> { AudioTrackSink() }
+    // One narrator for the app: two would fight over the audio track.
+    single<Narrator> { StreamingNarrator(engine = get(), sink = get(), dispatchers = get()) }
 
     // Phase 4b: short-lived AudioTrack helper for Voice Detail previews.
     single { VoicePreviewPlayer(androidContext(), get()) }
@@ -151,9 +166,6 @@ val appModule = module {
     // P2: DataStore-backed completion history for the Downloads Manager.
     single { DownloadsHistory(androidContext()) }
 
-    // First-launch onboarding flag, separate DataStore so a future "reset
-    // onboarding" action can wipe it without touching engine settings.
-    single { OnboardingPreferences(androidContext()) }
 
     // Auto-updater. Uses the shared OkHttp + SettingsRepository so the channel
     // preference + 6h cooldown live in the existing hayai_settings DataStore.
@@ -167,10 +179,22 @@ val appModule = module {
     single<SynthesisGateway> { SherpaSynthesisGateway(androidContext(), get()) }
     factory { InstallVoiceUseCase(catalog = get(), downloads = get()) }
     factory { RefreshCatalogUseCase(catalog = get()) }
-    factory { RecommendTierUseCase() }
     factory { SynthesizeUseCase(gateway = get()) }
 
     viewModel { LibraryViewModel(get(), get(), get(), get(), get()) }
+    viewModel { HomeViewModel(stories = get()) }
+    viewModel { (storyId: Long) ->
+        NarratorViewModel(storyId = storyId, voices = get(), stories = get())
+    }
+    viewModel { (storyId: Long, voiceId: String, sid: Int) ->
+        PlayerViewModel(
+            storyId = storyId,
+            voiceId = voiceId,
+            sid = sid,
+            stories = get(),
+            narrator = get(),
+        )
+    }
     viewModel { BrowseViewModel(androidContext(), get(), get(), get(), get()) }
     viewModel { (voiceId: String) ->
         VoiceDetailViewModel(

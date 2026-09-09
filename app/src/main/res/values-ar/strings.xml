@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HayaiTTS</string>
+    <string name="app_name">PodC</string>
 
     <string name="library_empty_title">لم يتم تثبيت أي صوت بعد</string>
     <string name="library_empty_subtitle">تصفّح الفهرس لتنزيل أصوات عصبية تعمل دون اتصال</string>
@@ -102,7 +102,6 @@
     <string name="voice_detail_install_primary">تثبيت الصوت</string>
     <string name="voice_detail_cancel_primary">إلغاء التنزيل</string>
     <string name="voice_detail_uninstall_action">إلغاء التثبيت</string>
-    <string name="voice_detail_open_playground">فتح في Playground</string>
     <string name="voice_detail_coming_soon_hint">لا تدعم نسخة sherpa-onnx الحالية عائلة النماذج هذه. سيتم تفعيلها في تحديث لاحق.</string>
 
     <string name="uninstall_confirm_title">إلغاء تثبيت الصوت؟</string>
@@ -230,23 +229,6 @@
     <string name="update_download_failed">فشل التنزيل: %1$s</string>
     <string name="update_no_changelog">لا توجد ملاحظات إصدار.</string>
 
-    <string name="onboarding_skip">تخطّي</string>
-    <string name="onboarding_next">التالي</string>
-    <string name="onboarding_welcome_title">مرحبًا بك في HayaiTTS</string>
-    <string name="onboarding_welcome_body">تحويل النصّ إلى كلام بشبكات عصبية يعمل دون اتصال على Android. كل الأصوات تعمل على جهازك — بدون سحابة أو قياسات أو حصص.</string>
-    <string name="onboarding_engine_title">اجعل HayaiTTS محرّكك</string>
-    <string name="onboarding_engine_body">افتح الإعدادات → النظام → اللغات والإدخال → محرّكات النصّ إلى كلام واختر HayaiTTS كمحرّك مفضّل. ستمرّ التطبيقات التي تقرأ النصوص تلقائيًا عبر HayaiTTS.</string>
-    <string name="onboarding_engine_action">فتح إعدادات TTS في النظام</string>
-    <string name="onboarding_tier_title">اختر أصواتًا لجهازك</string>
-    <string name="onboarding_tier_recommendation_low">موصى به لجهازك: منخفضة. النماذج المنخفضة تعمل حتى على العتاد البسيط.</string>
-    <string name="onboarding_tier_recommendation_mid">موصى به لجهازك: متوسّطة. النماذج المتوسّطة توازن بين السرعة والجودة على معظم الأجهزة.</string>
-    <string name="onboarding_tier_recommendation_high">موصى به لجهازك: عالية. عتادك قادر على تشغيل أكبر نماذجنا بسلاسة.</string>
-    <string name="onboarding_tier_low">منخفضة — الأسرع والأخف، تعمل على أي هاتف</string>
-    <string name="onboarding_tier_mid">متوسّطة — توازن بين السرعة والجودة (موصى به)</string>
-    <string name="onboarding_tier_high">عالية — أفضل جودة، تحتاج 4 جيجابايت رام على الأقل</string>
-    <string name="onboarding_ready_title">جاهز للاستكشاف</string>
-    <string name="onboarding_ready_body">تصفّح أكثر من 188 صوتًا عبر 8 عائلات نماذج. أو استورد حزمتك الخاصة من تبويب «المكتبة».</string>
-    <string name="onboarding_ready_action">ابدأ</string>
 
     <string name="help_title">المساعدة والأسئلة الشائعة</string>
     <string name="help_subtitle">البدء، الأصوات، استكشاف الأخطاء</string>
@@ -330,13 +312,8 @@
     <string name="speak_selection_label">انطق باستخدام HayaiTTS</string>
     <string name="nav_library">المكتبة</string>
     <string name="nav_browse">استعراض</string>
-    <string name="nav_studio">الاستوديو</string>
-    <string name="nav_activity">النشاط</string>
     <string name="nav_settings">الإعدادات</string>
-    <string name="studio_title">الاستوديو</string>
     <string name="studio_subtitle">ضبط · مقارنة · تصدير</string>
-    <string name="studio_no_voices">ثبّت صوتًا من قسم الاستعراض لاستخدام الاستوديو.</string>
-    <string name="studio_swap_voice">تبديل الصوت</string>
     <string name="activity_title">النشاط</string>
     <string name="activity_subtitle">التنزيلات · التوليد · الذاكرة المؤقتة</string>
     <string name="activity_pane_downloads">التنزيلات</string>
@@ -401,4 +378,45 @@
     <string name="voice_detail_sample_play">استماع إلى العينة</string>
     <string name="voice_detail_sample_loading">جارٍ التحميل…</string>
     <string name="voice_detail_sample_stop">إيقاف العينة</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_profile">الملف الشخصي</string>
+    <string name="home_tagline">حوّل قصصك إلى لحظات استماع</string>
+    <string name="home_section_featured">مميزة</string>
+    <string name="home_see_all">عرض الكل</string>
+    <string name="home_browse_voices">تصفح الأصوات</string>
+    <string name="home_upload_title">ارفع ملفاً نصياً</string>
+    <string name="home_upload_body">اختر ملف ‎.txt‎ لتبدأ الاستماع إلى قصتك.</string>
+    <string name="home_choose_file">اختر ملفاً</string>
+    <string name="home_upload_hint">الصيغة المدعومة: ‎.txt‎ (بحد أقصى 5 ميغابايت)</string>
+    <string name="home_section_recent">الملفات الأخيرة</string>
+    <string name="home_recent_empty">ستظهر قصصك المستوردة هنا.</string>
+    <string name="home_story_rename">إعادة تسمية</string>
+    <string name="home_story_delete">حذف</string>
+    <string name="home_rename_title">إعادة تسمية القصة</string>
+    <string name="home_action_save">حفظ</string>
+    <string name="home_import_failed_too_large">هذا الملف أكبر من 5 ميغابايت.</string>
+    <string name="home_import_failed_type">اختر ملف ‎.txt‎.</string>
+    <string name="home_import_failed_empty">هذا الملف فارغ.</string>
+    <string name="home_import_failed_storage">تعذّرت قراءة هذا الملف.</string>
+    <string name="narrator_step_upload">الرفع</string>
+    <string name="narrator_step_voice">اختيار الصوت</string>
+    <string name="narrator_step_listen">الاستماع</string>
+    <string name="narrator_title">اختر راوياً</string>
+    <string name="narrator_subtitle">اختر صوتاً يمنح قصتك الحياة.</string>
+    <string name="narrator_filter_all">الكل</string>
+    <string name="narrator_filter_female">أنثى</string>
+    <string name="narrator_filter_male">ذكر</string>
+    <string name="narrator_filter_neutral">محايد</string>
+    <string name="narrator_start">ابدأ الاستماع</string>
+    <string name="narrator_empty">لا توجد أصوات مثبّتة تطابق هذا المرشّح. تصفّح لإضافة صوت.</string>
+    <string name="player_chapters">الفصول</string>
+    <string name="player_sleep_timer">مؤقت النوم</string>
+    <string name="player_sleep_off">إيقاف</string>
+    <string name="player_sleep_minutes">%1$d دقيقة</string>
+    <string name="player_chapter_of">الفصل %1$d من %2$d</string>
+    <string name="player_speed">%1$s×</string>
+    <string name="player_failed">تعذّر سرد هذه القصة.</string>
+    <string name="player_action_previous">الفصل السابق</string>
+    <string name="player_action_next">الفصل التالي</string>
+    <string name="player_action_pause">إيقاف مؤقت</string>
 </resources>

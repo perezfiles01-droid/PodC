@@ -12,7 +12,7 @@ import dev.ahmedmohamed.hayaitts.domain.repo.DownloadRepository
  * Resolves a [voiceId] in the catalog and enqueues the download.
  *
  * Surfaces a typed [Outcome] so the caller (Voice Detail VM, Browse VM,
- * Studio VM) can render an inline error without re-implementing string
+ * any caller VM) can render an inline error without re-implementing string
  * mapping per call site.
  */
 class InstallVoiceUseCase(
