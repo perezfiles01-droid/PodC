@@ -329,7 +329,6 @@
     <string name="speak_selection_label">HayaiTTS로 읽기</string>
     <string name="nav_library">라이브러리</string>
     <string name="nav_browse">탐색</string>
-    <string name="nav_activity">활동</string>
     <string name="nav_settings">설정</string>
     <string name="studio_subtitle">조정 · A/B · 내보내기</string>
     <string name="activity_title">활동</string>

@@ -356,7 +356,6 @@
     <!-- v2 NavigationBar tabs. -->
     <string name="nav_library">Library</string>
     <string name="nav_browse">Browse</string>
-    <string name="nav_activity">Activity</string>
     <string name="nav_settings">Settings</string>
 
     <!-- v2 Studio. -->

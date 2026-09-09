@@ -346,7 +346,6 @@
     <string name="speak_selection_label">Mit HayaiTTS vorlesen</string>
     <string name="nav_library">Bibliothek</string>
     <string name="nav_browse">Stöbern</string>
-    <string name="nav_activity">Aktivität</string>
     <string name="nav_settings">Einstellungen</string>
     <string name="studio_subtitle">Feinjustieren · A/B · Export</string>
     <string name="activity_title">Aktivität</string>

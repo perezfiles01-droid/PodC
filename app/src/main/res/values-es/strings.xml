@@ -346,7 +346,6 @@
     <string name="speak_selection_label">Leer con HayaiTTS</string>
     <string name="nav_library">Biblioteca</string>
     <string name="nav_browse">Explorar</string>
-    <string name="nav_activity">Actividad</string>
     <string name="nav_settings">Ajustes</string>
     <string name="studio_subtitle">Ajustes · A/B · Exportar</string>
     <string name="activity_title">Actividad</string>

@@ -329,7 +329,6 @@
     <string name="speak_selection_label">HayaiTTS で読み上げ</string>
     <string name="nav_library">ライブラリ</string>
     <string name="nav_browse">探す</string>
-    <string name="nav_activity">アクティビティ</string>
     <string name="nav_settings">設定</string>
     <string name="studio_subtitle">調整 · A/B · 書き出し</string>
     <string name="activity_title">アクティビティ</string>

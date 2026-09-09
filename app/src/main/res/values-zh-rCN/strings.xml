@@ -329,7 +329,6 @@
     <string name="speak_selection_label">用 HayaiTTS 朗读</string>
     <string name="nav_library">库</string>
     <string name="nav_browse">浏览</string>
-    <string name="nav_activity">活动</string>
     <string name="nav_settings">设置</string>
     <string name="studio_subtitle">调整 · A/B · 导出</string>
     <string name="activity_title">活动</string>

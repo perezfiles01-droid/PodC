@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Bolt
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
@@ -40,7 +39,7 @@ import java.net.URLEncoder
 
 /**
  * Top-level navigation: a [NavigationBar] hosts five top-level destinations
- * (Library / Browse / Activity / Settings). Each tab pushes detail
+ * (Library / Browse / Settings). Each tab pushes detail
  * routes (voice detail, custom import) on top of itself without disturbing
  * the bottom bar.
  *
@@ -134,7 +133,16 @@ fun HayaiTtsNavHost(
                 ActivityScreen(onBack = { navController.popBackStack() })
             }
             composable(Routes.SETTINGS) {
-                SettingsScreen(onBack = { navController.popBackStack() })
+                SettingsScreen(
+                    onBack = { navController.popBackStack() },
+                    // Activity left the bottom bar in the PodC fork, but the
+                    // download/extraction progress it shows is the only
+                    // feedback during a multi-hundred-MB voice install, so
+                    // Settings keeps an entry point to it. The route itself
+                    // is unchanged, which is what keeps the
+                    // `hayaitts://downloads` notification deep link resolving.
+                    onOpenDownloads = { navController.navigate(Routes.ACTIVITY) },
+                )
             }
             composable(
                 route = Routes.VOICE_DETAIL,
@@ -181,7 +189,6 @@ private data class Tab(
 private val Tabs = listOf(
     Tab(Routes.LIBRARY, Icons.Outlined.LibraryMusic, R.string.nav_library),
     Tab(Routes.BROWSE, Icons.Outlined.Search, R.string.nav_browse),
-    Tab(Routes.ACTIVITY, Icons.Outlined.Bolt, R.string.nav_activity),
     Tab(Routes.SETTINGS, Icons.Outlined.Settings, R.string.nav_settings),
 )
 

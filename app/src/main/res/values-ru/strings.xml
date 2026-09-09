@@ -329,7 +329,6 @@
     <string name="speak_selection_label">Прочитать через HayaiTTS</string>
     <string name="nav_library">Библиотека</string>
     <string name="nav_browse">Обзор</string>
-    <string name="nav_activity">Активность</string>
     <string name="nav_settings">Настройки</string>
     <string name="studio_subtitle">Настройка · A/B · Экспорт</string>
     <string name="activity_title">Активность</string>

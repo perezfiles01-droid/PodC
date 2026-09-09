@@ -330,7 +330,6 @@
     <string name="speak_selection_label">Leggi con HayaiTTS</string>
     <string name="nav_library">Libreria</string>
     <string name="nav_browse">Esplora</string>
-    <string name="nav_activity">Attività</string>
     <string name="nav_settings">Impostazioni</string>
     <string name="studio_subtitle">Regola · A/B · Esporta</string>
     <string name="activity_title">Attività</string>
