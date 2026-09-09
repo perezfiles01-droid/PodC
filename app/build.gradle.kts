@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 // Pin Kotlin + Java toolchain to JDK 21 so the build is reproducible regardless
@@ -21,6 +22,19 @@ kotlin {
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
         )
     }
+}
+
+// Room schema export. Declared through the Room Gradle plugin rather than a
+// raw `room.schemaLocation` KSP argument: with the KSP argument every variant
+// writes the same directory, so `:app:test` - which builds the debug and
+// release unit-test variants together - had kspDebugKotlin and
+// kspReleaseKotlin writing one file concurrently. That produced a truncated
+// schema JSON, which Gradle then cached and replayed as
+// "Expected colon ':', but had 'EOF'". The plugin gives each variant its own
+// task output and copies into this directory, so the write cannot tear.
+// Schemas stay tracked in git so migrations remain reviewable.
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 android {
@@ -43,13 +57,6 @@ android {
             ?.takeIf { it.isNotEmpty() }
             ?.removePrefix("v")
             ?: "2.5.1"
-
-        // Room schema export. KSP picks this up via the `room` argument and
-        // writes JSON snapshots of each entity into app/schemas/. Schemas are
-        // tracked in git so migrations stay reviewable.
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
 
         // Only ship native ABIs we actually care about. arm64-v8a covers every
         // modern phone, armeabi-v7a covers the long tail of 32-bit ARM devices,
