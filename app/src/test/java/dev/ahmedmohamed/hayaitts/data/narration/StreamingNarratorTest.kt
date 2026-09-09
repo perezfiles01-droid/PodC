@@ -144,6 +144,38 @@ class StreamingNarratorTest {
         )
     }
 
+    @Test(timeout = 20_000)
+    fun `stop returns promptly when the queue is full`() {
+        // The hang this guards against: with the queue full and the consumer
+        // parked in a write, a blocking put leaves the engine's callback
+        // thread stuck forever, so cancelAndJoin never returns and pause
+        // hangs. It cost a 40-minute CI run before it was found.
+        //
+        // The sink models AudioTrack: write blocks until stop() is called.
+        val released = CountDownLatch(1)
+        val blockingSink = object : AudioSink {
+            override fun start(sampleRate: Int) = Unit
+            override fun write(samples: FloatArray) {
+                released.await(10, TimeUnit.SECONDS)
+            }
+            override fun stop() {
+                released.countDown()
+            }
+        }
+        val narrator = StreamingNarrator(FakeEngine(chunksPerUnit = 8), blockingSink, TestDispatchers)
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+        narrator.start(
+            scope, voiceId = "v", sid = 0, text = story, speed = 1f,
+            startUnit = 0, listener = object : Narrator.Listener {},
+        )
+        Thread.sleep(500) // let the queue fill and the consumer block
+
+        val startedAt = System.currentTimeMillis()
+        runBlocking { narrator.stop() }
+        val elapsed = System.currentTimeMillis() - startedAt
+        assertTrue("stop() took ${elapsed}ms; it must not block on a full queue", elapsed < 5_000)
+    }
+
     @Test
     fun `an empty story finishes without opening the sink`() {
         val sink = RecordingSink()

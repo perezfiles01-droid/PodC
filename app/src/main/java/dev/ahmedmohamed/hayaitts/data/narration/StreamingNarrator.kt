@@ -15,6 +15,7 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * Turns a long text into continuous audio without ever rendering it whole.
@@ -118,15 +119,19 @@ class StreamingNarrator(
                         text = units[index],
                         speed = speed,
                     ) { samples ->
-                        if (cancelled.get()) {
-                            false
-                        } else {
-                            // Blocks the engine's callback thread when the
-                            // consumer is behind. This is the back-pressure,
-                            // and it is the whole memory bound.
-                            queue.put(samples)
-                            true
+                        // Offer with a timeout rather than put: a blocking put
+                        // parks the engine's callback thread until the
+                        // consumer drains, and on pause the consumer stops
+                        // draining - so put would never return, the coroutine
+                        // could never be joined, and stop() would hang for
+                        // good. Re-checking the flag each round is what makes
+                        // the producer answerable to cancellation.
+                        var offered = false
+                        while (!cancelled.get() && !offered) {
+                            offered = queue.offer(samples, POLL_MILLIS, TimeUnit.MILLISECONDS)
                         }
+                        // Returning false asks sherpa-onnx to stop generating.
+                        offered && !cancelled.get()
                     }
                 }
                 done.set(true)
@@ -150,18 +155,26 @@ class StreamingNarrator(
      */
     override fun cancel() {
         cancelled.set(true)
+        // Stop the sink *before* cancelling: a consumer parked inside a
+        // blocking write is not interruptible by coroutine cancellation, and
+        // stopping the track is what releases it.
+        sink.stop()
         job?.cancel()
         job = null
-        sink.stop()
     }
 
     override suspend fun stop() {
         val running = job ?: return
         job = null
         cancelled.set(true)
+        // Same ordering as cancel(), and for the same reason: release the
+        // consumer from its blocking write first, or the join below waits on
+        // a coroutine that cannot notice it has been cancelled.
+        sink.stop()
         withContext(dispatchers.default) {
-            runCatching { running.cancelAndJoin() }
-            sink.stop()
+            runCatching {
+                withTimeoutOrNull(STOP_TIMEOUT_MILLIS) { running.cancelAndJoin() }
+            }
         }
     }
 
@@ -173,5 +186,12 @@ class StreamingNarrator(
          */
         const val QUEUE_CAPACITY = 4
         const val POLL_MILLIS = 50L
+
+        /**
+         * Upper bound on how long stop() waits for the pipeline to
+         * unwind. Pausing must never be able to hang the caller,
+         * whatever state the engine's callback thread is in.
+         */
+        const val STOP_TIMEOUT_MILLIS = 2_000L
     }
 }
