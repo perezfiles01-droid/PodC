@@ -1,10 +1,10 @@
 # Voice catalog
 
-*Auto-generated from `catalog/v1/models.json` on 2026-09-21 by `tools/catalog/build_model_list.py` (run from the weekly [catalog-refresh](../.github/workflows/catalog-refresh.yml) workflow). Do not edit by hand — the next refresh will overwrite your changes.*
+*Auto-generated from `catalog/v1/models.json` on 2026-09-28 by `tools/catalog/build_model_list.py` (run from the weekly [catalog-refresh](../.github/workflows/catalog-refresh.yml) workflow). Do not edit by hand — the next refresh will overwrite your changes.*
 
 ## Summary
 
-- **170 voices** across **8 model families**
+- **169 voices** across **8 model families**
 - **38 languages** covered
 - Bundle size: 21–635 MB (median 43 MB)
 - **6 voices** support reference-audio cloning
@@ -16,7 +16,7 @@
 | **piper** | 133 | Compact VITS-based voices from the rhasspy/piper project. 10–60 MB per voice, sub-second on a 2020+ phone, ~70 languages covered. |
 | **kokoro** | 6 | Higher-quality multilingual VITS variant (Kokoro-82M). 80–360 MB per voice; English bundles ship 1–50 speakers in a single model. |
 | **kitten** | 7 | Tiny English-only VITS distillations tuned for low-end phones. <60 MB, fastest synthesis on the catalog. |
-| **matcha** | 4 | Diffusion-based Matcha-TTS voices. Ships a vocoder side-asset alongside the main weights — Browse handles the dual download. |
+| **matcha** | 3 | Diffusion-based Matcha-TTS voices. Ships a vocoder side-asset alongside the main weights — Browse handles the dual download. |
 | **supertonic** | 2 | Newest (2026) multilingual model from Supertone. Single 100–200 MB bundle covering ~30 languages × 10 speakers. |
 | **zipvoice** | 4 | Flow-matching voice-cloning model. Accepts a reference clip + transcript and synthesises the target text in the cloned voice. |
 | **pocket** | 2 | Compact voice-cloning model. Same reference-audio API as ZipVoice but with a smaller voice-embedding cache and lighter weights. |
@@ -189,14 +189,13 @@ Tiny English-only VITS distillations tuned for low-end phones. <60 MB, fastest s
 | Kitten (8 speakers) | en-US | 8 | 64 MB | low | — | — | Apache-2.0 |
 | Kitten (8 speakers) | en-US | 8 | 31 MB | low | — | — | Apache-2.0 |
 
-## matcha (4)
+## matcha (3)
 
 Diffusion-based Matcha-TTS voices. Ships a vocoder side-asset alongside the main weights — Browse handles the dual download.
 
 | Title | Languages | Speakers | Size | Tier | Quality | RTF | License |
 |---|---|---:|---:|---|---|---:|---|
 | En | zh-CN, en-US | 1 | 79 MB | high | — | — | MIT |
-| Ljspeech | en-US | 1 | 77 MB | high | — | — | MIT |
 | Speaker_0 | fa, en | 1 | 77 MB | high | — | — | MIT |
 | Speaker_0 | fa, en | 1 | 77 MB | high | — | — | MIT |
 
