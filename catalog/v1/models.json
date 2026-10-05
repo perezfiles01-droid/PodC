@@ -3647,6 +3647,48 @@
       "title": "Kokoro (103 speakers)"
     },
     {
+      "approxSizeMb": 77,
+      "author": "Shivam Mehta et al.",
+      "available": true,
+      "baseModel": "Matcha-TTS",
+      "bundleUrl": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/matcha-icefall-en_US-ljspeech.tar.bz2",
+      "dataset": "LJSpeech",
+      "demoUrl": "https://huggingface.co/spaces/shivammehta25/Matcha-TTS",
+      "description": "Matcha-TTS trained on LJSpeech (US English). A flow-matching acoustic model paired with a HiFi-GAN vocoder, giving high-quality single-speaker output at a modest model size.\n",
+      "family": "matcha",
+      "id": "matcha-icefall-en_US-ljspeech",
+      "languages": [
+        "en-US"
+      ],
+      "license": "MIT",
+      "recommendedUseCases": [
+        "audiobook",
+        "narration"
+      ],
+      "sampleRateHz": 22050,
+      "sha256": "ea75702da7456a8b1874728278a835220dc8a26f4e8bd93c83bf53dc27679845",
+      "sourceUrl": "https://github.com/shivammehta25/Matcha-TTS",
+      "speakers": [
+        {
+          "gender": "F",
+          "genderConfidence": "heuristic",
+          "id": 0,
+          "name": "ljspeech"
+        }
+      ],
+      "tags": [
+        "english",
+        "female",
+        "single-speaker",
+        "vocoder"
+      ],
+      "tier": "high",
+      "title": "Ljspeech",
+      "vocoderFileName": "vocos-22khz-univ.onnx",
+      "vocoderSha256": "0574a135aa1db2de6e181050db2ec528496cacd4a4701fc5d7faf9f9804c0081",
+      "vocoderUrl": "https://github.com/k2-fsa/sherpa-onnx/releases/download/vocoder-models/vocos-22khz-univ.onnx"
+    },
+    {
       "approxSizeMb": 79,
       "author": "Shivam Mehta et al.",
       "available": true,
@@ -3828,13 +3870,13 @@
         "ar",
         "bg",
         "hr",
-        "da",
         "cs",
+        "da",
         "nl",
         "en-US",
+        "fr-FR",
         "fi",
         "et",
-        "fr-FR",
         "de-DE",
         "el",
         "hi",
@@ -3845,15 +3887,15 @@
         "ko-KR",
         "lt",
         "lv",
-        "pt",
         "pl",
+        "pt",
         "ro",
         "ru",
         "sk",
         "sl",
-        "es-ES",
         "sv",
         "tr",
+        "es-ES",
         "uk",
         "vi"
       ],
