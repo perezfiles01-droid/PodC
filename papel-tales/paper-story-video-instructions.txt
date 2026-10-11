@@ -1,0 +1,564 @@
+PAPER-CUT ANIMATED STORY VIDEO: REUSABLE INSTRUCTIONS
+=====================================================
+Made from the "Once Again" reincarnation video (4 min 37 s, 1280x720 MP4).
+Paste PART 1 into a new chat and fill in the brackets. PART 2 is the technical
+recipe Claude should follow. PART 3 has the working scripts so nothing needs
+to be rediscovered.
+
+
+PART 1. THE PROMPT TO PASTE
+---------------------------
+Create a narrated paper-cut style animated story video as an MP4 I can upload.
+
+Topic: [YOUR TOPIC, e.g. "how the myth of Atlantis started and what it is based on"]
+Length: about [4-5] minutes, [8-10] scenes.
+Format: [16:9 landscape 1280x720 for YouTube] or [9:16 vertical 720x1280 for TikTok/Reels/Shorts]
+Narrator voice: [warm British female (bf_emma)] / [American female (af_heart)] / [American male (am_michael)] / [British male (bm_george)]
+Characters: [two original animal characters, e.g. a wise old tortoise telling the story to a curious young fox, or describe your own]
+Style reference: [attach an image, or say "flat layered paper cutouts with soft drop shadows, paper grain texture, swaying trees"]
+
+Requirements:
+- Research the topic properly. Use real, nameable sources (texts, dates, people) and
+  list them in the chat. Separate documented history from rumour and say what science
+  or evidence currently says. No invented facts.
+- Structure: a prologue where one character asks the question, a chronological
+  history in the middle, a "why people still believe it / what it really means" scene,
+  and an epilogue that returns to the opening scene.
+- Paper-cut look: flat shapes, soft drop shadows, paper grain overlay, slight vignette,
+  scenes slide in like a sheet of paper. Every scene has its own background and its own
+  animation (flickering fire, turning wheel, flowing river, flying newspapers, etc.).
+- Recorded voice-over for every line, burned-in subtitles, a chapter label per scene,
+  and quiet background music that fades in and out under the voice.
+- Follow the recipe in PART 2 and the scripts in PART 3 of my instructions file.
+- Check still frames from the finished MP4 to confirm the picture matches the
+  narration before sending, then send me the MP4 file. Do not commit it to any repo.
+
+
+PART 2. THE TECHNICAL RECIPE (for Claude)
+-----------------------------------------
+1. Animation page: write one self-contained HTML file with a 1280x720 <canvas>.
+   - Helper functions: fill(color, pathFn, shadowDepth) draws a shape with a drop
+     shadow; sky, hills, ground, water, pine, round tree, fire, stars, moon helpers;
+     character functions (e.g. tortoise, fox, person, ghost) with mouth animation when
+     talking.
+   - Paper grain: a 160x160 random-noise canvas (alpha ~14) used as a repeating pattern
+     over every frame, plus a radial vignette.
+   - Scenes live in an array S = [{chap, lines:[...], draw(t, lineIndex)}].
+     draw() must be deterministic from t (no Math.random in draw) so video frames
+     can be rendered one by one.
+   - Declare variables before use (avoid const/let temporal dead zone errors).
+   - Optionally publish this page too, as an interactive version.
+
+2. Narration (offline neural TTS, because online TTS services are blocked):
+   - pip install kokoro-onnx soundfile
+   - Download the model from GITHUB (huggingface.co is blocked by the proxy):
+     https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+     https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+   - edge-tts does NOT work here (proxy blocks speech.platform.bing.com).
+   - Pull the lines out of the page with Playwright (lines.js), make one WAV per
+     line (tts.py), record each duration.
+
+3. Timeline and audio (audio.py): start at 0.8 s, 0.7 s gap after each line, extra
+   0.9 s before each new scene for the slide transition. Synthesise music in numpy
+   (pentatonic music-box plucks + soft chords + quiet fire crackle), mix at ~0.11
+   under the voice, fade in/out, normalise to -1 dB peak. Write timeline.json and mix.wav.
+
+4. Video (render.js): open the page in Playwright with requestAnimationFrame
+   disabled, define R(time) that picks the current scene and line from the timeline,
+   draws the scene (with slide-in transition), grain, vignette, chapter label and
+   word-wrapped subtitle box, and returns canvas.toDataURL('image/jpeg', .9).
+   Pipe frames at 24 fps into ffmpeg with mix.wav:
+   libx264, crf 20, yuv420p, aac 160k, -movflags +faststart.
+   ~4.5 minutes renders in about 5 minutes.
+
+5. Verify: ffprobe duration; ffmpeg volumedetect (expect mean ~ -21 dB, max ~ -1 dB);
+   grab 2-3 still frames mid-scene and check the picture matches the subtitle.
+   Known bug to avoid: when picking the current line, only update the line index when
+   time >= that line's start, or visuals lag one line behind the caption
+   (fixed version is in render.js below).
+
+6. Send the MP4 with SendUserFile from the scratchpad. Do not leave it in the repo.
+
+For vertical 9:16: set canvas to 720x1280, W/H accordingly, move characters to the
+lower half, enlarge subtitles (~34px, max width ~620px).
+
+
+PART 3. WORKING SCRIPTS (run from the scratchpad folder, page = once-again.html)
+------------------------------------------------------------------------------
+Run order:
+  NODE_PATH=$(npm root -g) node lines.js $(pwd)/once-again.html
+  python3 tts.py
+  python3 audio.py
+  NODE_PATH=$(npm root -g) node render.js $(pwd)/once-again.html
+
+In tts.py change voice='bf_emma' and lang='en-gb' for another voice
+(American voices: lang='en-us').
+
+
+===== lines.js =====
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+process.argv[2]);
+const L=await p.evaluate(()=>S.map(s=>({chap:s.chap,lines:s.lines})));require('fs').writeFileSync('lines.json',JSON.stringify(L,null,1));await b.close()})();
+
+===== tts.py =====
+import json,soundfile as sf
+from kokoro_onnx import Kokoro
+k=Kokoro('voice/kokoro-v1.0.onnx','voice/voices-v1.0.bin')
+L=json.load(open('lines.json'));out=[]
+for si,s in enumerate(L):
+  for li,t in enumerate(s['lines']):
+    a,sr=k.create(t.replace('"','').replace('“','').replace('”',''),voice='bf_emma',speed=0.95,lang='en-gb')
+    f=f'n_{si}_{li}.wav';sf.write(f,a,sr);out.append([si,li,len(a)/sr]);print(f,len(a)/sr,flush=True)
+json.dump(out,open('durs.json','w'))
+
+===== audio.py =====
+import json,numpy as np,soundfile as sf
+D=json.load(open('durs.json'));SR=24000;tl=[];t=0.8;prev=-1
+for si,li,d in D:
+  if si!=prev and prev!=-1: t+=0.9
+  tl.append([si,li,t,t+d]);t+=d+0.7;prev=si
+T=t+2.5;json.dump({'tl':tl,'T':T},open('timeline.json','w'))
+n=np.zeros(int(T*SR))
+for si,li,a,b in tl:
+  x,_=sf.read(f'n_{si}_{li}.wav');i=int(a*SR);n[i:i+len(x)]+=x
+m=np.zeros_like(n);rng=np.random.default_rng(1)
+def pl(f,t0,v,dur):
+  i=int(t0*SR);k=np.arange(int(dur*SR));
+  if i>=len(m):return
+  env=np.exp(-k/SR*3.2/dur*1.5)*np.minimum(1,k/(0.01*SR));w=(2/np.pi)*np.arcsin(np.sin(2*np.pi*f*k/SR))
+  e=min(len(m),i+len(k));m[i:e]+=(v*env*w)[:e-i]
+notes=[0,2,4,7,9,12,14,16];chords=[[0,4,7],[9,12,16],[5,9,12],[7,11,14]];b=220;step=0;t0=0
+while t0<T:
+  for i in range(8):
+    w=t0+i*.35;nn=notes[(step*3+i*5+i%3)%8]
+    if i%2==0 or rng.random()<.4: pl(b*2*2**(nn/12),w,.3,1.6)
+    if i==0:
+      for c in chords[step%4]: pl(b/2*2**(c/12),w,.16,2.6)
+  step+=1;t0+=2.8
+cr=rng.standard_normal(len(m))*0.004;pops=rng.random(len(m))<0.0006;cr[pops]+=rng.standard_normal(pops.sum())*0.25
+m=m*0.11+cr*0.5
+fade=np.minimum(1,np.minimum(np.arange(len(m))/SR/2,(len(m)-np.arange(len(m)))/SR/2.5));m*=fade
+out=n*0.95+m;out/=max(1,np.abs(out).max()/0.95)
+sf.write('mix.wav',out,SR);print(T)
+
+===== render.js =====
+const {chromium}=require('playwright');const {spawn}=require('child_process');const fs=require('fs');
+(async()=>{const {tl,T}=JSON.parse(fs.readFileSync('timeline.json'));const FPS=24,N=Math.ceil(T*FPS);
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1300,height:800}});
+await p.addInitScript(()=>{window.requestAnimationFrame=()=>0});
+await p.goto('file://'+process.argv[2]);await p.waitForTimeout(1500);
+await p.evaluate(tl=>{window.TL=tl;const starts={};tl.forEach(([s,l,a])=>{if(starts[s]===undefined)starts[s]=a-0.9});starts[0]=0;window.ST=starts;
+ function wrap(text,maxW){const w=text.split(' ');const out=[];let cur='';for(const x of w){const t=cur?cur+' '+x:x;if(c.measureText(t).width>maxW&&cur){out.push(cur);cur=x}else cur=t}out.push(cur);return out}
+ window.R=(gt)=>{let cs=0,cl=0,cap='';for(const [s,l,a,e] of TL){if(gt>=ST[s]){if(s!==cs){cs=s;cl=0}if(gt>=a)cl=l}if(gt>=a&&gt<=e+0.6)cap=S[s].lines[l]}
+  const lt=gt-ST[cs]+4,tr=Math.min(1,(gt-ST[cs])/0.9);c.save();
+  if(cs>0&&tr<1){S[cs-1].draw(gt-ST[cs-1]+4,S[cs-1].lines.length-1);const e=1-Math.pow(1-tr,3);c.save();c.translate(W*(1-e),0);c.rotate((1-e)*.06);sh(true,14);c.fillStyle='#000';c.fillRect(0,0,W,H);sh(false);c.beginPath();c.rect(0,0,W,H);c.clip();S[cs].draw(lt,cl);c.restore()}
+  else S[cs].draw(lt,cl);
+  if(!grainPat)grainPat=c.createPattern(grain,'repeat');c.fillStyle=grainPat;c.fillRect(0,0,W,H);
+  const v=c.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.28)');c.fillStyle=v;c.fillRect(0,0,W,H);
+  c.save();c.font='700 24px Fredoka,sans-serif';const cw=c.measureText(S[cs].chap).width+36;c.translate(40,34);c.rotate(-.03);sh(true,3);c.fillStyle='#e8743b';c.fillRect(0,0,cw,42);sh(false);c.fillStyle='#fff';c.fillText(S[cs].chap,18,30);c.restore();
+  if(cap){c.font='700 28px Nunito,sans-serif';const ls=wrap(cap,1000);const h=ls.length*38+24,y=H-30-h;sh(true,4);c.fillStyle='rgba(243,236,214,.95)';c.fillRect(W/2-540,y,1080,h);sh(false);c.fillStyle='#2a241c';c.textAlign='center';ls.forEach((l,i)=>c.fillText(l,W/2,y+42+i*38));c.textAlign='left'}
+  c.restore();return cv.toDataURL('image/jpeg',.9)}},tl);
+const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',''+FPS,'-i','-','-i','mix.wav','-c:v','libx264','-preset','medium','-crf','20','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart','once-again.mp4'],{stdio:['pipe','inherit','inherit']});
+for(let i=0;i<N;i++){const d=await p.evaluate(t=>R(t),i/FPS);const buf=Buffer.from(d.split(',')[1],'base64');if(!ff.stdin.write(buf))await new Promise(r=>ff.stdin.once('drain',r));if(i%1000===0)console.log(i,'/',N)}
+ff.stdin.end();await new Promise(r=>ff.on('close',r));await b.close();console.log('done')})();
+
+
+UPDATE (v2): SMOOTH, CONTINUOUS MOTION. USE render2.js INSTEAD OF render.js
+----------------------------------------------------------------------------
+- No paper flip. Scenes crossfade over 1.6 s with smootherstep easing while both
+  keep animating, so motion never stops.
+- Continuous camera: a slow push-in across each scene (zoom 1.05 to 1.12) plus
+  gentle handheld drift and tilt driven by simplex noise.
+- Ambient layers: paper clouds and flapping birds in daytime scenes, glowing
+  fireflies at night, dust motes by day.
+- Chapter label glides in, captions fade and rise, 30 fps, crf 19.
+- Needs simplex-noise (MIT, github.com/jwagner/simplex-noise.js):
+    mkdir lib && cd lib && npm init -y && npm i simplex-noise@4.0.3
+- Preview single frames first:  node render2.js $(pwd)/page.html 103.1,85
+- Full render:                   node render2.js $(pwd)/page.html
+
+===== render2.js =====
+const {chromium}=require('playwright');const {spawn}=require('child_process');const fs=require('fs');
+(async()=>{const {tl,T}=JSON.parse(fs.readFileSync('timeline.json'));const FPS=30,N=Math.ceil(T*FPS);
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1300,height:800}});
+await p.addInitScript(()=>{window.requestAnimationFrame=()=>0});
+await p.goto('file://'+process.argv[2]);await p.waitForTimeout(1500);
+// simplex-noise (MIT, github.com/jwagner/simplex-noise.js) for organic camera drift, wind and particles
+const sn=fs.readFileSync('lib/node_modules/simplex-noise/dist/cjs/simplex-noise.js','utf8');
+await p.evaluate(src=>{const module={exports:{}};const exports=module.exports;new Function('module','exports',src)(module,exports);window.SN=module.exports},sn);
+await p.evaluate(tl=>{window.TL=tl;const starts={};tl.forEach(([s,l,a])=>{if(starts[s]===undefined)starts[s]=a-0.9});starts[0]=0;window.ST=starts;
+ let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+ const n2=SN.createNoise2D(rnd),n3=SN.createNoise3D(rnd);
+ const XF=1.6; // crossfade seconds
+ const ss=x=>x<=0?0:x>=1?1:x*x*x*(x*(x*6-15)+10); // smootherstep
+ const off=document.createElement('canvas');off.width=W;off.height=H;const oc=off.getContext('2d');
+ const DAY=new Set([1,3,5,8]),NIGHT=new Set([0,2,4,9]);
+ const motes=[...Array(40)].map((_,i)=>({x:rnd()*W,y:rnd()*H,r:1.5+rnd()*2.5,k:i}));
+ function cam(s,lt,dur){ // continuous Ken Burns push-in + handheld drift
+  const p=Math.min(1,lt/dur),z=1.05+0.07*ss(p)+0.012*n2(s*9,lt*.15);
+  const dx=n2(s*3+1,lt*.12)*14+(s%2?-1:1)*30*(p-.5),dy=n2(s*3+2,lt*.12)*8,rot=n2(s*3+3,lt*.08)*.006;
+  c.translate(W/2+dx,H/2+dy);c.rotate(rot);c.scale(z,z);c.translate(-W/2,-H/2)}
+ function sceneDur(s){const ls=TL.filter(r=>r[0]===s);return ls[ls.length-1][3]-ST[s]+1.5}
+ function drawScene(s,l,gt){const lt=gt-ST[s];c.save();cam(s,lt,sceneDur(s));S[s].draw(lt+4,l);ambient(s,lt);c.restore()}
+ function ambient(s,t){
+  if(DAY.has(s)){ // drifting paper clouds and flapping paper birds
+   if(s!==5&&s!==8)for(let i=0;i<3;i++){const x=((i*480+t*(14+i*6))%(W+400))-200,y=90+i*55+n2(i,t*.1)*8;fill('rgba(255,255,255,.92)',()=>{ell(x,y,70,26);ell(x+45,y-14,44,26);ell(x-40,y-8,38,20)},4)}
+   for(let i=0;i<4;i++){const ph=(t*.07+i*.27)%1,x=-80+ph*(W+160),y=150+i*28+Math.sin(ph*9+i)*20,f=Math.sin(t*10+i*2)*14;
+    c.save();c.strokeStyle='#3a3226';c.lineWidth=3;c.lineCap='round';c.beginPath();c.moveTo(x-16,y-f);c.quadraticCurveTo(x-6,y-8,x,y);c.quadraticCurveTo(x+6,y-8,x+16,y-f);c.stroke();c.restore()}}
+  // floating motes (fireflies at night, dust by day)
+  c.save();c.globalCompositeOperation=NIGHT.has(s)?'lighter':'source-over';
+  motes.forEach(m=>{const x=(m.x+n3(m.k,0,t*.08)*160+t*8)%W,y=(m.y+n3(m.k,9,t*.08)*90-t*6+H)%H,a=NIGHT.has(s)?.35+.35*Math.sin(t*2+m.k):.25;
+   c.fillStyle=NIGHT.has(s)?`rgba(255,220,120,${a})`:`rgba(255,250,235,${a})`;c.beginPath();c.arc(x,y,m.r*(NIGHT.has(s)?1.4:1),0,7);c.fill()});c.restore()}
+ function wrap(text,maxW){const w=text.split(' ');const out=[];let cur='';for(const x of w){const t=cur?cur+' '+x:x;if(c.measureText(t).width>maxW&&cur){out.push(cur);cur=x}else cur=t}out.push(cur);return out}
+ window.R=(gt)=>{let cs=0,cl=0;for(const [s,l,a] of TL){if(gt>=ST[s]){if(s!==cs){cs=s;cl=0}if(gt>=a)cl=l}}
+  c.setTransform(1,0,0,1,0,0);const tr=(gt-ST[cs])/XF;
+  if(cs>0&&tr<1){drawScene(cs-1,S[cs-1].lines.length-1,gt);oc.clearRect(0,0,W,H);oc.drawImage(cv,0,0);
+   drawScene(cs,cl,gt);c.save();c.globalAlpha=1-ss(tr);c.drawImage(off,0,0);c.restore()}
+  else drawScene(cs,cl,gt);
+  if(!grainPat)grainPat=c.createPattern(grain,'repeat');c.fillStyle=grainPat;c.fillRect(0,0,W,H);
+  const v=c.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.28)');c.fillStyle=v;c.fillRect(0,0,W,H);
+  // chapter label glides in
+  const ci=ss(Math.min(1,(gt-ST[cs]-.4)/.8));c.save();c.globalAlpha=ci;c.font='700 24px Fredoka,sans-serif';const cw=c.measureText(S[cs].chap).width+36;
+  c.translate(W-40-cw+(1-ci)*60,34);c.rotate(.03);sh(true,3);c.fillStyle='#e8743b';c.fillRect(0,0,cw,42);sh(false);c.fillStyle='#fff';c.fillText(S[cs].chap,18,30);c.restore();
+  // captions fade and rise
+  for(const [s,l,a,e] of TL){const k=Math.min(ss((gt-a+.25)/.35),ss((e+.6-gt)/.35));if(k<=0)continue;
+   c.save();c.globalAlpha=k;c.font='700 28px Nunito,sans-serif';const ls=wrap(S[s].lines[l],1000);const h=ls.length*38+24,y=H-30-h+(1-k)*14;
+   sh(true,4);c.fillStyle='rgba(243,236,214,.95)';c.fillRect(W/2-540,y,1080,h);sh(false);c.fillStyle='#2a241c';c.textAlign='center';ls.forEach((ln,i)=>c.fillText(ln,W/2,y+42+i*38));c.restore()}
+  return cv.toDataURL('image/jpeg',.9)}},tl);
+const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',''+FPS,'-i','-','-i','mix.wav','-c:v','libx264','-preset','medium','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart','once-again-v2.mp4'],{stdio:['pipe','inherit','inherit']});
+const one=process.argv[3];if(one){for(const t of one.split(',')){const d=await p.evaluate(t=>R(t),+t);fs.writeFileSync('p'+t+'.jpg',Buffer.from(d.split(',')[1],'base64'))}ff.kill();await b.close();return}
+for(let i=0;i<N;i++){const d=await p.evaluate(t=>R(t),i/FPS);const buf=Buffer.from(d.split(',')[1],'base64');if(!ff.stdin.write(buf))await new Promise(r=>ff.stdin.once('drain',r));if(i%2000===0)console.log(i,'/',N)}
+ff.stdin.end();await new Promise(r=>ff.on('close',r));await b.close();console.log('done')})();
+
+
+UPDATE (v3): SUBTITLES NO LONGER COVER THE PICTURE
+---------------------------------------------------
+The scene is drawn into a framed stage (1056x594) and the subtitles get their own
+strip underneath, so nothing in the animation is hidden. Use this render2.js.
+For music that suits a celebration, use a faster tempo (0.25 s steps), a major scale and an oom-pah bass.
+
+===== render2.js (v3, framed subtitles) =====
+const {chromium}=require('playwright');const {spawn}=require('child_process');const fs=require('fs');
+(async()=>{const {tl,T}=JSON.parse(fs.readFileSync('timeline.json'));const FPS=30,N=Math.ceil(T*FPS);
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1300,height:800}});
+await p.addInitScript(()=>{window.requestAnimationFrame=()=>0});
+await p.goto('file://'+process.argv[2]);await p.waitForTimeout(1500);
+// simplex-noise (MIT, github.com/jwagner/simplex-noise.js) for organic camera drift, wind and particles
+const sn=fs.readFileSync('../lib/node_modules/simplex-noise/dist/cjs/simplex-noise.js','utf8');
+await p.evaluate(src=>{const module={exports:{}};const exports=module.exports;new Function('module','exports',src)(module,exports);window.SN=module.exports},sn);
+await p.evaluate(tl=>{window.TL=tl;const starts={};tl.forEach(([s,l,a])=>{if(starts[s]===undefined)starts[s]=a-0.9});starts[0]=0;window.ST=starts;
+ let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+ const n2=SN.createNoise2D(rnd),n3=SN.createNoise3D(rnd);
+ const XF=1.6; // crossfade seconds
+ const ss=x=>x<=0?0:x>=1?1:x*x*x*(x*(x*6-15)+10); // smootherstep
+ const off=document.createElement('canvas');off.width=W;off.height=H;const oc=off.getContext('2d');
+ const DAY=new Set([1,2,3,4]),NIGHT=new Set([]);
+ const motes=[...Array(40)].map((_,i)=>({x:rnd()*W,y:rnd()*H,r:1.5+rnd()*2.5,k:i}));
+ function cam(s,lt,dur){ // continuous Ken Burns push-in + handheld drift
+  const p=Math.min(1,lt/dur),z=1.05+0.07*ss(p)+0.012*n2(s*9,lt*.15);
+  const dx=n2(s*3+1,lt*.12)*14+(s%2?-1:1)*30*(p-.5),dy=n2(s*3+2,lt*.12)*8,rot=n2(s*3+3,lt*.08)*.006;
+  c.translate(W/2+dx,H/2+dy);c.rotate(rot);c.scale(z,z);c.translate(-W/2,-H/2)}
+ function sceneDur(s){const ls=TL.filter(r=>r[0]===s);return ls[ls.length-1][3]-ST[s]+1.5}
+ function drawScene(s,l,gt){const lt=gt-ST[s];c.save();cam(s,lt,sceneDur(s));S[s].draw(lt+4,l);ambient(s,lt);c.restore()}
+ function ambient(s,t){
+  if(DAY.has(s)){ // drifting paper clouds and flapping paper birds
+   if(s!==2)for(let i=0;i<3;i++){const x=((i*480+t*(14+i*6))%(W+400))-200,y=90+i*55+n2(i,t*.1)*8;fill('rgba(255,255,255,.92)',()=>{ell(x,y,70,26);ell(x+45,y-14,44,26);ell(x-40,y-8,38,20)},4)}
+   for(let i=0;i<4;i++){const ph=(t*.07+i*.27)%1,x=-80+ph*(W+160),y=150+i*28+Math.sin(ph*9+i)*20,f=Math.sin(t*10+i*2)*14;
+    c.save();c.strokeStyle='#3a3226';c.lineWidth=3;c.lineCap='round';c.beginPath();c.moveTo(x-16,y-f);c.quadraticCurveTo(x-6,y-8,x,y);c.quadraticCurveTo(x+6,y-8,x+16,y-f);c.stroke();c.restore()}}
+  // floating motes (fireflies at night, dust by day)
+  c.save();c.globalCompositeOperation=NIGHT.has(s)?'lighter':'source-over';
+  motes.forEach(m=>{const x=(m.x+n3(m.k,0,t*.08)*160+t*8)%W,y=(m.y+n3(m.k,9,t*.08)*90-t*6+H)%H,a=NIGHT.has(s)?.35+.35*Math.sin(t*2+m.k):.25;
+   c.fillStyle=NIGHT.has(s)?`rgba(255,220,120,${a})`:`rgba(255,250,235,${a})`;c.beginPath();c.arc(x,y,m.r*(NIGHT.has(s)?1.4:1),0,7);c.fill()});c.restore()}
+ function wrap(text,maxW){const w=text.split(' ');const out=[];let cur='';for(const x of w){const t=cur?cur+' '+x:x;if(c.measureText(t).width>maxW&&cur){out.push(cur);cur=x}else cur=t}out.push(cur);return out}
+ window.R=(gt)=>{let cs=0,cl=0;for(const [s,l,a] of TL){if(gt>=ST[s]){if(s!==cs){cs=s;cl=0}if(gt>=a)cl=l}}
+  c.setTransform(1,0,0,1,0,0);const tr=(gt-ST[cs])/XF;
+  if(cs>0&&tr<1){drawScene(cs-1,S[cs-1].lines.length-1,gt);oc.clearRect(0,0,W,H);oc.drawImage(cv,0,0);
+   drawScene(cs,cl,gt);c.save();c.globalAlpha=1-ss(tr);c.drawImage(off,0,0);c.restore()}
+  else drawScene(cs,cl,gt);
+  if(!grainPat)grainPat=c.createPattern(grain,'repeat');c.fillStyle=grainPat;c.fillRect(0,0,W,H);
+  const v=c.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.28)');c.fillStyle=v;c.fillRect(0,0,W,H);
+  // framed stage: shrink the scene so subtitles get their own strip below it
+  const SX=112,SY=14,SW=1056,SHh=594;oc.clearRect(0,0,W,H);oc.drawImage(cv,0,0);
+  c.setTransform(1,0,0,1,0,0);c.fillStyle='#24302a';c.fillRect(0,0,W,H);c.fillStyle=grainPat;c.fillRect(0,0,W,H);
+  c.save();sh(true,8);c.fillStyle='#000';c.fillRect(SX,SY,SW,SHh);sh(false);c.drawImage(off,SX,SY,SW,SHh);c.restore();
+  // chapter label glides in (top-right corner of the stage)
+  const ci=ss(Math.min(1,(gt-ST[cs]-.4)/.8));c.save();c.globalAlpha=ci;c.font='700 20px Fredoka,sans-serif';const cw=c.measureText(S[cs].chap).width+30;
+  c.translate(SX+SW-cw-18+(1-ci)*40,SY+16);c.rotate(.03);sh(true,3);c.fillStyle='#e8743b';c.fillRect(0,0,cw,34);sh(false);c.fillStyle='#fff';c.fillText(S[cs].chap,15,24);c.restore();
+  // subtitles on their own strip, fading in and out
+  for(const [s,l,a,e] of TL){const k=Math.min(ss((gt-a+.25)/.35),ss((e+.6-gt)/.35));if(k<=0)continue;
+   c.save();c.globalAlpha=k;c.font='700 25px Nunito,sans-serif';const ls=wrap(S[s].lines[l],1150);const top=SY+SHh,lh=31,y0=top+(H-top-ls.length*lh)/2+23+(1-k)*6;
+   c.fillStyle='#f3ecd6';c.textAlign='center';ls.forEach((ln,i)=>c.fillText(ln,W/2,y0+i*lh));c.restore()}
+  return cv.toDataURL('image/jpeg',.9)}},tl);
+const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',''+FPS,'-i','-','-i','mix.wav','-c:v','libx264','-preset','medium','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart','fiesta.mp4'],{stdio:['pipe','inherit','inherit']});
+const one=process.argv[3];if(one){for(const t of one.split(',')){const d=await p.evaluate(t=>R(t),+t);fs.writeFileSync('p'+t+'.jpg',Buffer.from(d.split(',')[1],'base64'))}ff.kill();await b.close();return}
+for(let i=0;i<N;i++){const d=await p.evaluate(t=>R(t),i/FPS);const buf=Buffer.from(d.split(',')[1],'base64');if(!ff.stdin.write(buf))await new Promise(r=>ff.stdin.once('drain',r));if(i%2000===0)console.log(i,'/',N)}
+ff.stdin.end();await new Promise(r=>ff.on('close',r));await b.close();console.log('done')})();
+
+
+UPDATE (v4): CLEAR PRONUNCIATION OF NON-ENGLISH WORDS
+------------------------------------------------------
+Kokoro can be given exact sounds (IPA phonemes) instead of guessing:
+- Keep a word list fil.json mapping each word to IPA. Use pure vowels
+  (a=ɑ "ah", i=i "ee", o=o "oh", u=u "oo") and put the stress mark ˈ before the
+  stressed syllable. Example: "Ati-Atihan": "ɑtiɑtihˈɑn", "Mabuhay": "mɑbuːhˈaɪ".
+- tts3.py swaps each listed word for a placeholder word, phonemizes the WHOLE
+  sentence (keeps natural rhythm), then puts the IPA in place of the placeholder,
+  and calls K.create(phonemes, is_phonemes=True). Speed 0.92 for clarity.
+- Years are rewritten for speech only: 1521 -> "fifteen twenty-one", 1980 -> "nineteen eighty".
+  Commas between place names are removed for speech only ("Kalibo Aklan") so there is no pause.
+- Subtitles keep the normal spelling and one uniform colour (no highlighting).
+- If the voice still pauses mid-sentence after a name, find the gap with
+  ffmpeg silencedetect (-40dB, 0.18s) and trim it to ~0.06 s, then update durs.json.
+- Ask the user for a respelling for any word that sounds off, convert it to IPA, re-run.
+
+===== fil.json =====
+{
+"Ati-Atihan": "ɑtiɑtihˈɑn",
+"Lola Bining": "lˈolɑ bˈiːniŋ",
+"Bining": "bˈiːniŋ",
+"Tikoy": "tˈiːkoj",
+"anak": "ɑnˈɑk",
+"barrio": "bˈɑɾjo",
+"fiesta": "pjˈɛstɑ",
+"babaylan": "bɑbˈaɪlɑn",
+"anito": "ɑnˈiːtuː",
+"diwata": "diwˈɑtɑ",
+"Cebuanos": "sɛbwˈɑnos",
+"Cebu": "sˈiːbuː",
+"Rajah Humabon": "ɾˈɑhɑ humˈɑbon",
+"Santo Niño": "sˈɑnto nˈinjo",
+"Mactan": "mɑktˈɑn",
+"Lapulapu": "lˈɑpolˈɑpo",
+"Miguel López de Legazpi": "miːɡˈɛl lˈopɛs dɛ lɛɡˈɑspi",
+"Sinulog": "siːnˈuloɡ",
+"Kalibo": "kɑlˈiːbo",
+"Aklan": "ˈɑklɑn",
+"Ati": "ˈɑti",
+"Lucban": "lukbˈɑn",
+"Quezon": "kˈɛzon",
+"kiping": "kˈiːpiŋ",
+"Pahiyas": "pɑhˈiːjɑs",
+"San Isidro": "sɑn isˈidɾo",
+"Bacolod": "bɑkˈolod",
+"MassKara": "mɑskˈɑɾɑ",
+"Lechon": "lɛtʃˈon",
+"pancit": "pɑnsˈit",
+"kare-kare": "kˈɑɾɛ kˈɑɾɛ",
+"leche flan": "lˈɛtʃɛ flˈɑn",
+"bayanihan": "bɑjɑnˈihɑn",
+"barangay": "bɑɾɑŋɡˈaɪ",
+"Mabuhay": "mɑbuːhˈaɪ",
+"ang": "ɑŋ",
+"Manila": "mɑnˈilɑ",
+"carabao": "kɑɾɑbˈaʊ",
+"fiestas": "pjˈɛstɑs",
+"novena": "novˈɛnɑ",
+"vegetables": "vˈɛdʒtəbəlz",
+"Dubai": "duːbˈaɪ"
+}
+
+===== tts3.py =====
+import json,re,soundfile as sf
+from kokoro_onnx import Kokoro
+K=Kokoro('../voice/kokoro-v1.0.onnx','../voice/voices-v1.0.bin')
+F=json.load(open('fil.json'));FL={k.lower():v for k,v in F.items()}
+rx=re.compile(r'\b('+'|'.join(map(re.escape,sorted(F,key=len,reverse=True)))+r')\b(’s)?',re.I)
+YEARS={'1521':'fifteen twenty-one','1565':'fifteen sixty-five','1980':'nineteen eighty'}
+PH=['apple','zebra','violin','marble','tulip','walrus','pepper','candle','rocket']
+def spoken(t):
+  t=t.replace('"','').replace('“','').replace('”','')
+  for y,w in YEARS.items(): t=re.sub(r'\b'+y+r's?\b',w,t)
+  t=t.replace('Kalibo, Aklan','Kalibo Aklan').replace('Lucban, Quezon','Lucban Quezon')
+  return t
+def ph(t):
+  t=spoken(t);subs=[]
+  def rep(m):
+    i=len(subs);subs.append(FL[m.group(1).lower()]+('z' if m.group(2) else ''));return PH[i]
+  t2=rx.sub(rep,t);whole=K.tokenizer.phonemize(t2,'en-us')
+  for i,ipa in enumerate(subs):
+    w=K.tokenizer.phonemize(PH[i],'en-us').strip(' .')
+    if w not in whole: raise SystemExit(f'placeholder {PH[i]} ({w}) not found in: {whole}')
+    whole=whole.replace(w,ipa,1)
+  return whole
+L=json.load(open('lines.json'));res=[];dump=[]
+for si,s in enumerate(L):
+  for li,t in enumerate(s['lines']):
+    p=ph(t);dump.append(f'{si}.{li}: {p}');a,sr=K.create(p,voice='af_heart',speed=0.92,is_phonemes=True)
+    sf.write(f'n_{si}_{li}.wav',a,sr);res.append([si,li,len(a)/sr])
+json.dump(res,open('durs.json','w'));open('phonemes.txt','w').write('\n'.join(dump))
+
+
+UPDATE (v5): YOUTUBE UPLOADS. STANDING RULES FROM THE USER
+-----------------------------------------------------------
+Channel: Papel Tales (@papeltales), channel ID UCDiyA1pjIBmJHpatJ9OJg5Q, connected via Composio (YouTube toolkit).
+- When the user asks to upload a video to YouTube: upload it as PUBLIC directly.
+- Upload the 1440p version (render at 2560x1440, two-pass compress to ~95 MB so it stays under GitHub's 100 MB limit; check SSIM >= 0.99).
+- Show the title, description (with chapters and sources) and tags first unless the user says to skip that.
+- Category 27 (Education), not made for kids, add the custom thumbnail (1280x720 JPG) right after upload.
+- Upload path: GitHub raw link -> Composio workbench upload_local_file -> YOUTUBE_MULTIPART_UPLOAD_VIDEO -> YOUTUBE_UPDATE_THUMBNAIL.
+- Composio's shared YouTube upload limit can run out; it resets at 07:00 UTC (3 PM PH time). If it is hit, schedule a retry after 07:00 UTC.
+- Composio "Enhanced Controls" must be OFF or every YouTube call fails.
+
+
+UPDATE (v6): EVERY WORD PRONOUNCED ON PURPOSE. STANDING RULE FROM THE USER (11 Oct 2026)
+---------------------------------------------------------------------------------------
+Never let Kokoro guess. Every word in the narration must get its sound from a known
+source, and the build STOPS if any word is uncertain. Use tts4.py + heteronyms.py
+(in papel-tales/kit-updates/) instead of tts3.py. pip install cmudict first.
+
+Where each word's sound comes from, in this order:
+  1. fil.json         exact IPA for Filipino words, names, places and any English word the
+                      dictionary does not know (e.g. "folklorist"). Pure vowels, stress mark.
+  2. RULES            in heteronyms.py: context rules for words spelled the same but said
+                      differently. Already covered:
+                        lives/live/lived/living  verb = LIV ("an aswang lives in", "the story
+                                                 lives on", "long live"); noun = LAYV ("their
+                                                 lives", "many lives"); adjective = LAYV
+                                                 ("live music")
+                        wind/winds               breeze = WIND; to turn = WAYND ("wind up")
+                        record/records           noun = REK-ord ("written records");
+                                                 verb = ri-KORD ("to record")
+                        read                     present = REED ("children read"); past = RED
+                                                 ("had read", "read it long ago")
+  3. CMU dictionary   (126,000 words) only when it has ONE reading. Accent variants and weak
+                      forms ("thuh/thee") are ignored.
+  4. SAFE list        words checked by ear whose variants are harmless (says, when, us,
+                      fifteen...). Add to it only after listening.
+
+What the script produces, and what to do with it:
+  - pronunciation_issues.txt  If any word is UNKNOWN or AMBIGUOUS the script stops before making
+                              audio. Resolve every line (fil.json, a new RULE, or SAFE), re-run.
+  - pronunciation_audit.txt   Every risky word (live, read, lead, wind, tear, close, wound, bow,
+                              minute, present, record, object, content, desert...) with its line.
+  - pronunciation_sheet.txt   EVERY word in the script and the exact sound used.
+  Show the audit list with the script and pronunciation guide for approval BEFORE rendering.
+  If the user hears a wrong word: add a RULE (or fil.json entry), re-run, never just respell
+  the subtitle. Subtitles always keep normal spelling.
+
+Years are still spoken as words (1582 -> "fifteen eighty-two").
+
+
+UPDATE (v7): OTHER STANDING RULES FROM THE USER (11 Oct 2026)
+-------------------------------------------------------------
+- NEW characters in every story. Already used: Lola Bining (carabao) & Tikoy (tarsier);
+  Grandma Tula (tortoise) & the fox; Lolo Kanor (Philippine eagle) & Pina (pilandok mouse-deer).
+- Mix cut-out styles per scene (cardboard and crumpled paper, crayon on construction paper,
+  watercolour, Reiniger-style silhouettes, geometric wood grain, gritty grey jointed cut-outs).
+  Title card: crumpled "PAPEL TALES" sign on strings over cardboard.
+- Reach the US and other countries, not only the Philippines:
+    * Title for people new to the topic, e.g. "The Aswang: The Philippine Vampire Legend
+      Explained | Papel Tales".
+    * After upload set defaultLanguage and defaultAudioLanguage to en-US (workbench
+      proxy_execute PUT videos?part=snippet; the Composio update tool has no field for it).
+    * Commit an English .srt beside the video; the user uploads it in YouTube Studio
+      (Subtitles > Add language > Upload file). Composio cannot upload captions.
+    * Suggest US-evening scheduling (6-9 PM Eastern = about 6-9 AM Philippine time) and a Short.
+- Next pipeline upgrade: Remotion, rough.js, torn-paper SVG filters, GSAP MorphSVG
+  (see papel-tales/ANIMATION-TOOLKIT.md).
+
+
+UPDATE (v8): MOTION EVERY 1-2 SECONDS, PICTURES THAT FOLLOW EVERY PHRASE (user, 11 Oct 2026)
+-------------------------------------------------------------------------------------------
+The user liked The Aswang's amount of visuals but wants MUCH more: the picture should follow
+the narration in detail, and something new should move or appear every 1-2 seconds.
+
+Rules for every scene:
+  1. Beat map first. Before drawing, split each narration line into beats of 1-2 seconds
+     (about every 3-6 words). Write the beat list into the script file under each line:
+       Line 7. "...In 1582, Miguel de Loarca described a Visayan belief..."
+         beat "1582"     -> year stamp slams onto the parchment
+         beat "Loarca"   -> quill writer slides in, quill starts scratching
+         beat "Visayan"  -> map of the Visayas unrolls behind
+         beat "asuang"   -> the word inks itself onto the scroll in red
+  2. Every noun, number, place and action said aloud gets its own visual, appearing on the
+     exact word (word timing comes from words.json, written by tts4.py; use since()/popIn()/
+     after() from beats.js). No more one static set per line.
+  3. Never a still frame. Three layers move at all times:
+       - camera (push-in plus drift, already in render),
+       - characters (breathing, blinking every 3-5 s, ears, tails, heads turning to the speaker,
+         mouths synced to talking lines, small walks or hops),
+       - environment (wind in plants, water, clouds, particles, flickering light, drifting paper scraps).
+  4. Beat entrances vary: pop, slide, unfold, ink-on, cut-out drop with a bounce, flip like a
+     paper card, rise from below, iris in. Exits fade or slide away before the next beat
+     crowds the frame.
+  5. Aim: at least 6-10 distinct visual events per scene and about 40-60 per video.
+     Count them in the beat map and say the count when showing the script for approval.
+  6. Check: grab a frame every 1.5 s of one scene (ffmpeg -vf fps=2/3) as a contact sheet;
+     consecutive frames must look clearly different and match the subtitle under them.
+
+
+UPDATE (v9): NO NARRATOR CHARACTERS. TRADEMARK INTRO. (user, 11 Oct 2026)
+-------------------------------------------------------------------------
+- Stop using a storyteller pair (grandparent and child animals). Tell the story directly and
+  creatively: open on a striking image or question, end on a scene that brings it home.
+  This replaces the "new characters every story" rule in v7. People and animals can still
+  appear inside the story (kids playing, historical figures, crowds).
+- ALWAYS open with the Papel Tales title card (crumpled white "PAPEL TALES" sign hung on strings
+  over cardboard, cut-out teal and blue letters, scissors, red tab with the episode name). This is
+  the channel's trademark. It holds about 3.5 s, then fades into scene 1. Narration starts at ~4.6 s.
+- If characters ever speak Filipino terms of address, use them correctly: a grandparent (Lolo,
+  Lola) calls a grandchild "apo"; a parent calls a child "anak"; an aunt or uncle (Tita, Tito)
+  calls a niece or nephew "pamangkin" or uses the name; a younger person says "po". The Aswang
+  video wrongly had Lolo Kanor say "anak".
+
+
+UPDATE (v10): PIPELINE NOTES FROM THE BATANG 90s BUILD (11 Oct 2026)
+--------------------------------------------------------------------
+- Reference build: examples/batang90s.html + examples/batang90s-voiceover-script.txt (no narrator
+  characters, word-timed beats, comic-style kids). Reuse its helpers: kid() (comic 90s kid with
+  poses run/hop/leap/throw/kick/wave/cheer), ink() (thick comic outline), stamp() (year stamp),
+  bigPhone(), tvSet(), postCard(), comicStreet(), and B('word') / since('word') / lt() for beats.
+  Set window.KS at the start of each scene's draw() to scale kids for that scene.
+- Story page = head (canvas + paper helpers) + base styles (cardboard, crumple, crayon, wc, sil,
+  wood, grit, titleCard) + scenes. titleCard() reads the episode name from const EP.
+- tts4.py: set YEARS for each story ('1990s':'nineteen nineties' style; plural keys are matched
+  whole). Put speech-only rewrites in spoken() (e.g. 'Batang 90s' -> 'Batang nineties').
+  Resolve every pronunciation_issues.txt line before audio is made.
+- Render with: node render1440-beats.js page.html "" out-raw.mp4  (second arg = preview times).
+  A 4 to 4.5 minute story takes about 25 minutes to render at 1440p.
+- Waiting on a background job: never use `pgrep -f "<text>"` or `pkill -f "<text>"` in a command that
+  itself contains that text; it matches itself and loops forever or kills itself. Wait on the
+  output file instead (e.g. until [ -f out.mp4 ] && ...), or use the PID.
+- Upload in the Composio workbench with run_composio_tool (multipart upload, then thumbnail), then
+  proxy_execute PUT for en-US languages, all in one cell. Download the video to /home/user in the
+  workbench (not /mnt/files: large writes fail there).
+- Right after upload YouTube may show the thumbnail as a still picture with audio until processing
+  finishes; check processingDetails.processingStatus == 'succeeded' before reporting a problem.
+
+
+UPDATE (v11): MAKE IT FUN. HUMOUR FOR KIDS AND ADULTS (user, 11 Oct 2026)
+-------------------------------------------------------------------------
+The user found the earlier videos accurate but boring. From now on every story must be
+funny and engaging for BOTH children and adults, without losing the facts.
+
+Writing rules (script):
+  1. A joke or playful moment at least every 20-30 seconds (about one per scene). Mark each
+     one in the script as  [JOKE]  so it can be checked in the beat map.
+  2. Two layers of humour in every scene:
+       - for kids: slapstick, silly sounds, animals or objects reacting, things going wrong
+         (a paper heart bursts, a remote control hides, a cat judges the viewer);
+       - for adults: relatable "that's so true" observations, gentle self-teasing of Filipino
+         habits, light irony ("just one more episode", said at 3 AM).
+  3. Talk to the viewer. Use "you", playful questions, and short punchlines after long
+     sentences. Mix sentence lengths: long setup, short payoff.
+  4. Funny comparisons and exaggeration that stay true ("enough tissues to wrap a jeepney"
+     is fine as an obvious joke; never invent a statistic to be funny).
+  5. Running gag: one recurring visual joke through the whole video that pays off at the end
+     (e.g. a paper tissue box that keeps emptying, a lola who keeps falling asleep).
+  6. Kind humour only: laugh WITH people and cultures, never at them. No mocking accents,
+     looks, religion or body types. Nothing scary or rude for children.
+  7. Facts stay sourced. Jokes live in the visuals, the framing and the punchlines, never in
+     changed numbers or dates.
+
+Visual rules (animation):
+  - Comic timing: hold a beat (about 0.5 s) of stillness before a punchline visual, then pop it.
+  - Squash and stretch on landings, little "boing" bounces, double-takes, sweat drops, sparkles,
+    speech-bubble reactions (no extra narration needed).
+  - Sound: add light cartoon sound effects on joke beats (pop, boing, slide whistle, record
+    scratch, "ding"). Keep them below the narration and short (under 0.6 s).
+  - Narration delivery: Kokoro speed 0.95-1.0 (a bit livelier than 0.92); short punchlines get
+    their own line so the pause before them lands.
+
+Checks before showing the script:
+  - Count the [JOKE] marks and list the running gag; say both alongside the beat count.
+  - Read the script imagining a 9-year-old and a 40-year-old: each scene needs something
+    for each of them.
