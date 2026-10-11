@@ -624,3 +624,37 @@ USED SETS register (do not repeat):
     jeepney interior, paper islands joined by a bridge, snowy Seoul street with N Seoul Tower,
     fan-meet paper theatre stage, lockdown apartment balconies, paper mountains & border,
     university library, barbershop, rainy street with umbrellas.
+
+
+UPDATE (v13): A VISUAL THEME FROM THE STORY ITSELF, AND NO REPEATED SHOTS (user, 11 Oct 2026)
+-------------------------------------------------------------------------------------------
+The user still found the frames repetitive. Being creative means the LOOK of the video comes
+from its topic, and the camera keeps changing.
+
+1. Theme first. Before the beat map, write a one-paragraph "theme brief": what visual language
+   belongs to this topic, and use it everywhere (transitions, title cards, filters, props, gags).
+   Examples:
+     K-dramas      -> episode title cards ("EP.3"), letterbox + soft bokeh, OST sparkle zooms,
+                      split-screen manhwa panels, classic tropes (wrist grab, back hug, ramyeon,
+                      slow-motion catch), "To be continued..." freeze frame.
+     Aswang/horror -> candle-lit shadow puppets, torn pages, ink blots, lantern iris transitions.
+     90s nostalgia -> VHS tracking lines, cartoon-show bumpers, sticker albums, cassette rewinds.
+     A food story  -> recipe-card chapters, steam, top-down table shots, ingredient pop-ins.
+     History       -> map unrolls, old-print paper, museum labels, sepia photo frames.
+   The chapter cards, transitions and thumbnail must all speak that theme.
+
+2. Shot variety. Plan a SHOT for every line, and never use the same shot type twice in a row:
+     wide establishing / medium / close-up on a face / extreme close-up (eyes, hands, phone) /
+     over-the-shoulder / top-down / split screen or comic panels / silhouette / insert of a prop /
+     dramatic zoom with speed lines / freeze frame.
+   Characters standing in a row facing the camera is allowed at most once per video.
+   Write the shot next to each line in the beat map (e.g. "Line 5 [close-up] ...").
+
+3. Every scene must have one moment only THIS story could have (a trope, a place, a prop, a
+   joke from the topic). If a scene could be pasted into another video, redesign it.
+
+4. Check: contact sheet of one frame per line. Neighbouring frames must differ in shot type AND
+   composition; the whole sheet must read as this topic at a glance.
+
+5. Stopping a background job: kill it by PID (saved when it starts), never with pkill -f, which
+   can kill the shell running the command (see v10).
