@@ -689,3 +689,4 @@ The user found K-Drama Fever v1 hectic: too many zooms, hard cuts, motion racing
   - Shot variety (v13) is done with the layout of each scene, not with camera jumps.
   - Default upload route is back to: two-pass compress to ~95 MB (SSIM >= 0.99), push to the
     working branch, upload from the raw GitHub link (v5). v14 (split parts) only when asked.
+Published v2 (smoother pacing): https://www.youtube.com/watch?v=Qn_pl-mPGzs
