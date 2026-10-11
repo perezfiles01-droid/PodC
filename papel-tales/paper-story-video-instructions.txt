@@ -703,3 +703,4 @@ UPDATE (v16): LESS IS MORE - INTRO, SOUND EFFECTS, ELEMENTS, CROSSFADE BUG (user
   - Crossfade bug: when a scene fades out, draw it on its LAST layout with all props visible
     (lock CL to that scene); never re-run in-scene fades or beat timing for the outgoing scene,
     or the previous layout flashes back for a split second.
+Published v3 (title intro, fewer effects/elements, crossfade fix): https://www.youtube.com/watch?v=VsbCtAQyvAQ
