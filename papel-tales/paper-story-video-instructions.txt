@@ -673,3 +673,19 @@ Standard route, no re-compression:
   3. Delete the temporary branch right after (git push origin --delete papel-tales-upload-tmp).
   YouTube titles must be 100 characters or fewer.
 Published: K-Drama Fever  https://www.youtube.com/watch?v=rSEsqAbmWuE
+
+
+UPDATE (v15): PACING, CAMERA AND TRANSITIONS (user, 11 Oct 2026) - overrides v8 and v13 where they clash
+--------------------------------------------------------------------------------------------------------
+The user found K-Drama Fever v1 hectic: too many zooms, hard cuts, motion racing the narration.
+  - Pacing = Batang 90s: Kokoro speed 0.92, audio.py gaps (0.7 s between lines, 0.9 s between scenes).
+  - NO per-line camera zooms or speed-line snaps. Keep only the renderer's gentle drift/push-in.
+    Use a zoom only if the story truly needs it (at most once or twice per video).
+  - Transitions = Batang 90s: 1.6 s crossfade between scenes. If a line changes layout inside a
+    scene (panels, a new set), crossfade it over 1 s; never hard-cut.
+  - Beats follow PHRASES, not every word: group cues onto ~1.8 s steps, entrances of 0.8 s with
+    no bounce, so every visual has time to be seen with its words. Lots of motion is welcome,
+    but it must be smooth and readable.
+  - Shot variety (v13) is done with the layout of each scene, not with camera jumps.
+  - Default upload route is back to: two-pass compress to ~95 MB (SSIM >= 0.99), push to the
+    working branch, upload from the raw GitHub link (v5). v14 (split parts) only when asked.
