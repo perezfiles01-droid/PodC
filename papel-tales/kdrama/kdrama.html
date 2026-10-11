@@ -708,28 +708,26 @@ const CUSTOM={
     if(d>=0){speedLines(x+w/2,y+h/2,.5,t);stk('#e0a877',()=>{circ(x+60,y+h/2+20,30);circ(x+w-60,y+h/2+20,30)},2.2,5);boom(x+w/2,y+120,52,'NO SPOILERS!',B("don't"),PINK,'#fff');hand('la la la',x+w/2,y+h-60,36,DK)}}])}
 };
 /* ---- shot plan: [type, zoom, cx, cy, word] per line; theme per scene ---- */
-const SHOTS={
- '0.0':['wide'],'0.1':['push',1.3,620,360],'0.2':['pull',1.5,520,360],'0.3':['wide'],
- '1.0':['wide'],'1.1':['push',1.25,640,520],'1.3':['snap',1.35,640,560,'aja'],
- '2.0':['push',1.15,660,430],'2.1':['wide'],'2.2':['push',1.25,560,420],
- '3.0':['wide'],'3.1':['push',1.35,640,320],'3.2':['pull',1.4,640,300],
- '4.0':['push',1.6,640,330],'4.1':['wide'],
- '5.0':['pull',1.5,640,380],'5.1':['push',1.3,640,330],
- '6.0':['snap',1.7,650,500,'hand'],'6.1':['wide'],'6.2':['push',1.25,780,380],'6.3':['wide'],
- '7.0':['push',1.3,640,420],'7.1':['wide'],'7.2':['push',1.45,780,470],
- '8.0':['push',1.4,640,320],'8.1':['wide'],'8.3':['snap',1.6,660,420,'pretends'],
- '9.0':['wide'],'9.1':['snap',1.25,720,480,'family']};
+const SHOTS={};
+const LAYOUT_CHANGE={'6.3':1,'8.3':1};
 S.forEach((sc,si)=>{const base=sc.draw;sc.draw=function(t,li){const key=si+'.'+li,sp=SHOTS[key],L=lt();
   let z=1,cx=W/2,cy=H/2,speed=0;
   if(sp&&sp[0]!=='wide'){cx=sp[2];cy=sp[3];if(sp[0]==='push')z=1+(sp[1]-1)*EASE(L/.9);if(sp[0]==='pull')z=sp[1]-(sp[1]-1)*EASE(L/2.5);if(sp[0]==='snap'){const d=since(sp[4]);if(d>=0){z=1+(sp[1]-1)*EASE(d/.25);speed=clamp01(1-d/1.4)}}}
   c.save();if(z!==1){c.translate(W/2,H/2);c.scale(z,z);c.translate(-cx,-cy)}
-  if(CUSTOM[key])CUSTOM[key](t);else base.call(this,t,li);c.restore();
+  const drawLine=(l)=>{const k2=si+'.'+l;if(CUSTOM[k2])CUSTOM[k2](t);else base.call(this,t,l)};
+  drawLine(li);c.restore();
+  const prevKey=si+'.'+(li-1),chg=li>0&&(CUSTOM[key]||CUSTOM[prevKey]||LAYOUT_CHANGE[key]);
+  if(chg&&L<1.0){const sv=window.CL;window.CL={s:si,l:li-1,lt:99};c.save();c.globalAlpha=1-EASE(L/1.0);drawLine(li-1);c.restore();window.CL=sv}
   if(speed>0)speedLines(W/2,H/2,.55*speed,t);
   // theme layers
   if(si===1&&!CUSTOM[key])vhs(t,'2003');
   if(si===4){bokeh(t);letterbox(1);if(li===0)hand('♪ OST',W-180,H-20,30,'#ffd6e4')}
   if(si===8&&li===3){const d=since('name');toBeContinued(d>=0?clamp01((d-.6)/.5):0,t)}
   if(si>=1&&li===0&&t<7.2)epCard(si,sc.chap,t,clamp01((t-4.3)/.5)*clamp01((7.2-t)/.6))}});
+
+window.since=function(word){const k=window.CL;if(!k)return 99;const Lw=(WORDS[k.s]||{})[k.l]||[];const w=word.toLowerCase();const hit=Lw.find(x=>x[0]===w||x[0].startsWith(w));if(!hit)return -1;
+ const g=Math.floor(hit[1]/1.8)*1.8;const d=k.lt-g;return d>=0?d:-1};
+window.B=function(word,dur=.8){const d=since(word);if(d<0)return 0;const p=Math.min(1,d/Math.max(dur,.8));return p>=1?1:1-Math.pow(1-p,3)};
 
 let reduce=false;
 function frame(now){requestAnimationFrame(frame)}

@@ -40,7 +40,7 @@ for si,s in enumerate(L):
   for li,t in enumerate(s['lines']):
     p=ph(t);dump.append(f'{si}.{li}: {p}')
     for w in heteronyms.audit(t): AUDIT.append(f'{si}.{li}  {w:10s} {t}')
-    a,sr=K.create(p,voice='af_heart',speed=0.97,is_phonemes=True)
+    a,sr=K.create(p,voice='af_heart',speed=0.92,is_phonemes=True)
     sf.write(f'n_{si}_{li}.wav',a,sr);res.append([si,li,len(a)/sr])
     # estimated start time of every word (share of phonemes, pauses weighted at punctuation)
     toks=t.split();wts=[max(1,len(re.sub(r'[^\w]','',ph(w))))+(4 if re.search(r'[,.;:?!]$',w) else 0) for w in toks];tot=sum(wts);acc=0;wt=[]
