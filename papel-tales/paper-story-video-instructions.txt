@@ -658,3 +658,18 @@ from its topic, and the camera keeps changing.
 
 5. Stopping a background job: kill it by PID (saved when it starts), never with pkill -f, which
    can kill the shell running the command (see v10).
+
+
+UPDATE (v14): FULL-QUALITY UPLOAD WITHOUT COMPRESSION (user, 11 Oct 2026)
+------------------------------------------------------------------------
+Google Drive cannot be used from the build session (the connector only takes inline content).
+Standard route, no re-compression:
+  1. split -b 70m the raw 1440p render; push the parts + thumbnail + sha256 to a TEMPORARY orphan
+     branch (papel-tales-upload-tmp) in the repo (user approved this branch name).
+  2. Composio workbench: download the parts from raw.githubusercontent.com, join, check sha256,
+     upload_local_file -> s3key, YOUTUBE_MULTIPART_UPLOAD_VIDEO (public, category 27), then
+     YOUTUBE_UPDATE_THUMBNAIL with the raw thumbnail URL, then proxy_execute PUT '/videos'
+     (not '/youtube/v3/videos') with defaultLanguage/defaultAudioLanguage en-US.
+  3. Delete the temporary branch right after (git push origin --delete papel-tales-upload-tmp).
+  YouTube titles must be 100 characters or fewer.
+Published: K-Drama Fever  https://www.youtube.com/watch?v=rSEsqAbmWuE
