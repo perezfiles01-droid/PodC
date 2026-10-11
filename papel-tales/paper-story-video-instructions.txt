@@ -562,3 +562,65 @@ Checks before showing the script:
   - Count the [JOKE] marks and list the running gag; say both alongside the beat count.
   - Read the script imagining a 9-year-old and a 40-year-old: each scene needs something
     for each of them.
+
+
+UPDATE (v12): NEW SETS, NEW DESIGNS, REAL DEPTH IN EVERY VIDEO (user, 11 Oct 2026)
+---------------------------------------------------------------------------------
+The user says the videos started to look alike. Keep the Papel Tales STYLE (paper cut-outs,
+mixed paper textures, title card trademark, subtitle strip) but every video must have its
+OWN scenes, locations and designs. Reusing a set from an earlier video is a bug.
+
+1. Unique locations every video
+   - Before drawing, list the 8-12 locations for the new story and check them against the
+     USED SETS register below. Nothing on the list may repeat an earlier video's set.
+   - Pick real, specific places tied to the topic (a sari-sari store, a jeepney, a barbershop,
+     a Seoul street in snow, a university library...) instead of generic backdrops.
+   - A video may reuse its OWN set as a bookend (prologue room at night -> same room at dawn).
+   - Add the new locations to the register after the video is published.
+
+2. New designs every video
+   - Draw a new character design for each story (head shape, eyes, hair, clothes, outline
+     style) instead of reusing the last video's kid()/person(). Helper code can be shared;
+     the look cannot.
+   - New props are drawn for the story; shared helpers are only for mechanics (beats, stamp,
+     camera, title card).
+
+3. Depth (reference: layered paper dioramas, Hilda/Paper-craft looks the user sent)
+   Every scene is built as a paper diorama with 4-6 layers:
+     far     faceted paper mountains/skyline, lined-notebook or tissue-paper sky, soft haze
+     mid     the location itself (buildings, rooms, trees) on patterned/collage paper
+     action  the characters and beat props
+     near    dark cut-out foreground (leaves, curtains, theater seats, window frames, cables)
+             that slides faster than the rest (parallax), partly out of focus
+   - Parallax: each layer moves with the camera at a different rate (far 0.2, mid 0.5,
+     action 1, near 1.6).
+   - Light: one light source per scene: sun or lamp rays, glow (bloom), and drop shadows that
+     grow with the layer's distance from the backdrop, like real stacked paper.
+   - Textures: mix newspaper print, patterned scrapbook paper, lined notebook paper, kraft,
+     tissue paper and faceted folded paper in the same frame.
+   - Stage/diorama shots: at least one scene per video framed like a paper theatre or
+     tabletop model (curtains, footlights, visible edges of the set).
+
+4. Expressive cartoon acting (reference: Cartoon Box, Hilda-style stickers)
+   - Big readable faces: large eyes with pupils that look at the action, eyebrows, mouths
+     that change shape (smile, O-scream, wobbly cry, smirk), blush, sweat drops.
+   - White sticker outline around characters and key props so they pop off the background.
+   - Exaggerated reactions on joke beats: jaw drop, eyes popping, tears squirting, hair
+     standing up, squash-and-stretch jump.
+
+5. Check before render
+   - Put one frame of every scene beside one frame from the previous video. If any pair
+     looks like the same place or the same design, redesign that scene.
+
+USED SETS register (do not repeat):
+  Mabuhay ang Fiesta: rice fields, carabao & tarsier, church plaza, banderitas, fireworks.
+  Were You Here Before?: tortoise & fox, wheel of lives, world map, ghosts.
+  The Aswang: night forest, nipa huts, silhouette village, galleon & scroll, Capiz-window
+    panels, amber battlefield, grey riveted wall, eagle & mouse-deer.
+  Batang 90s: cardboard desk with phone feed, crayon red board, comic street with houses,
+    wooden table of toys, amber brownout houses, triangle wood panels with an old TV,
+    grey riveted wall with phones, collage pin board, comic street at sunset.
+  K-Drama Fever: bedroom diorama in a Manila condo (night/dawn), sari-sari store with a TV,
+    jeepney interior, paper islands joined by a bridge, snowy Seoul street with N Seoul Tower,
+    fan-meet paper theatre stage, lockdown apartment balconies, paper mountains & border,
+    university library, barbershop, rainy street with umbrellas.
