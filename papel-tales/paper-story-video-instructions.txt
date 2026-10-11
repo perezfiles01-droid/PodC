@@ -690,3 +690,16 @@ The user found K-Drama Fever v1 hectic: too many zooms, hard cuts, motion racing
   - Default upload route is back to: two-pass compress to ~95 MB (SSIM >= 0.99), push to the
     working branch, upload from the raw GitHub link (v5). v14 (split parts) only when asked.
 Published v2 (smoother pacing): https://www.youtube.com/watch?v=Qn_pl-mPGzs
+
+
+UPDATE (v16): LESS IS MORE - INTRO, SOUND EFFECTS, ELEMENTS, CROSSFADE BUG (user, 11 Oct 2026)
+---------------------------------------------------------------------------------------------
+  - Intro: the title card plays alone; narration starts at 4.6 s (audio.py: t=4.6 for the first
+    line), as v9 says. Never start talking over the title.
+  - Sound effects: little to none. At most 2-3 per video, on the biggest jokes only, at low volume.
+  - Elements: only what the story needs (characters, year stamps, titles, the key prop or joke of
+    the line). No decorative labels, extra starburst words or sparkles after every phrase.
+    About 2-3 visual events per line is plenty (this overrides the higher counts in v8).
+  - Crossfade bug: when a scene fades out, draw it on its LAST layout with all props visible
+    (lock CL to that scene); never re-run in-scene fades or beat timing for the outgoing scene,
+    or the previous layout flashes back for a split second.
