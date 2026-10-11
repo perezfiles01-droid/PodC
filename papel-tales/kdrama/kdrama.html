@@ -653,6 +653,11 @@ const S=[
   PL(t,1.6,()=>{fill('#5a3a5a',()=>{c.moveTo(-160,H+60);c.lineTo(-160,420);c.quadraticCurveTo(40,440,90,H+60)},0);fill('#5a3a5a',()=>rr(1200,380,200,420,20),0)})}}
 ];
 
+/* v16: fewer elements - keep only what the story needs */
+const HIDE_HAND=new Set(['poster','...seriously?','!?','?','bow','mano','share!','streaming','la la la','piggyback!','refill!','ouch!','busted','border','sniff...','not crying!','...','bye!','about 2 months','...still riding','together','friends text...','the biggest reason...','zoom!','sparkle','♪','*wrist grab*','music','plot twist!']);
+const KEEP_BOOM=new Set(['AJA!','KYAAA!','NO SPOILERS!','+350%','TWINS?!','K-DRAMA','SAME!']);
+{const _h=hand;window.hand=function(s,...a){if(HIDE_HAND.has(s))return;return _h(s,...a)};const _b=boom;window.boom=function(x,y,r,txt2,...a){if(!KEEP_BOOM.has(txt2))return;return _b(x,y,r,txt2,...a)};window.sparkle=function(){};}
+
 /* ================= v13: K-DRAMA THEME LAYER + SHOT PLAN ================= */
 const EASE=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
 function speedLines(cx,cy,a=.6,t=0){c.save();c.globalAlpha=a;c.strokeStyle='#fffdf4';for(let i=0;i<48;i++){const an=i/48*Math.PI*2+hr(i)*.1,r0=260+hr(i*3+Math.floor(t*12))*120;c.lineWidth=2+hr(i*7)*6;c.beginPath();c.moveTo(cx+Math.cos(an)*r0,cy+Math.sin(an)*r0);c.lineTo(cx+Math.cos(an)*1200,cy+Math.sin(an)*1200);c.stroke()}c.restore()}
@@ -710,20 +715,22 @@ const CUSTOM={
 /* ---- shot plan: [type, zoom, cx, cy, word] per line; theme per scene ---- */
 const SHOTS={};
 const LAYOUT_CHANGE={'6.3':1,'8.3':1};
-S.forEach((sc,si)=>{const base=sc.draw;sc.draw=function(t,li){const key=si+'.'+li,sp=SHOTS[key],L=lt();
+S.forEach((sc,si)=>{const base=sc.draw;sc.draw=function(t,li){const key=si+'.'+li,sp=SHOTS[key];
+  const isCur=window.CL&&window.CL.s===si,savedCL=window.CL;if(window.CL&&!isCur)window.CL={s:si,l:li,lt:99};const L=isCur?lt():99;
   let z=1,cx=W/2,cy=H/2,speed=0;
   if(sp&&sp[0]!=='wide'){cx=sp[2];cy=sp[3];if(sp[0]==='push')z=1+(sp[1]-1)*EASE(L/.9);if(sp[0]==='pull')z=sp[1]-(sp[1]-1)*EASE(L/2.5);if(sp[0]==='snap'){const d=since(sp[4]);if(d>=0){z=1+(sp[1]-1)*EASE(d/.25);speed=clamp01(1-d/1.4)}}}
   c.save();if(z!==1){c.translate(W/2,H/2);c.scale(z,z);c.translate(-cx,-cy)}
   const drawLine=(l)=>{const k2=si+'.'+l;if(CUSTOM[k2])CUSTOM[k2](t);else base.call(this,t,l)};
   drawLine(li);c.restore();
   const prevKey=si+'.'+(li-1),chg=li>0&&(CUSTOM[key]||CUSTOM[prevKey]||LAYOUT_CHANGE[key]);
-  if(chg&&L<1.0){const sv=window.CL;window.CL={s:si,l:li-1,lt:99};c.save();c.globalAlpha=1-EASE(L/1.0);drawLine(li-1);c.restore();window.CL=sv}
+  if(isCur&&chg&&L<1.0){const sv=window.CL;window.CL={s:si,l:li-1,lt:99};c.save();c.globalAlpha=1-EASE(L/1.0);drawLine(li-1);c.restore();window.CL=sv}
   if(speed>0)speedLines(W/2,H/2,.55*speed,t);
   // theme layers
   if(si===1&&!CUSTOM[key])vhs(t,'2003');
   if(si===4){bokeh(t);letterbox(1);if(li===0)hand('♪ OST',W-180,H-20,30,'#ffd6e4')}
   if(si===8&&li===3){const d=since('name');toBeContinued(d>=0?clamp01((d-.6)/.5):0,t)}
-  if(si>=1&&li===0&&t<7.2)epCard(si,sc.chap,t,clamp01((t-4.3)/.5)*clamp01((7.2-t)/.6))}});
+  if(si>=1&&li===0&&t<7.2)epCard(si,sc.chap,t,clamp01((t-4.3)/.5)*clamp01((7.2-t)/.6));
+  window.CL=savedCL}});
 
 window.since=function(word){const k=window.CL;if(!k)return 99;const Lw=(WORDS[k.s]||{})[k.l]||[];const w=word.toLowerCase();const hit=Lw.find(x=>x[0]===w||x[0].startsWith(w));if(!hit)return -1;
  const g=Math.floor(hit[1]/1.8)*1.8;const d=k.lt-g;return d>=0?d:-1};
