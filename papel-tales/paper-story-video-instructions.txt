@@ -704,3 +704,29 @@ UPDATE (v16): LESS IS MORE - INTRO, SOUND EFFECTS, ELEMENTS, CROSSFADE BUG (user
     (lock CL to that scene); never re-run in-scene fades or beat timing for the outgoing scene,
     or the previous layout flashes back for a split second.
 Published v3 (title intro, fewer effects/elements, crossfade fix): https://www.youtube.com/watch?v=VsbCtAQyvAQ
+
+
+UPDATE (v17): ELEMENTS ARRIVE EARLY AND STAY; HIGHLIGHT INSTEAD OF POP-IN; 1-2 ZOOMS (user, 11 Oct 2026)
+-------------------------------------------------------------------------------------------------------
+The user saw elements pop in near the END of a line and vanish a split second later when the
+next line started. That is not allowed.
+
+1. No late arrivals. Never introduce a new element in the last ~1.5 s of a line. If the word it
+   belongs to comes late in the line, place the element on screen from the START of the line
+   (or from the previous phrase) and react to the word instead (see 3).
+2. Elements stay long enough. Every element must be on screen for at least 2.5 s. When a line
+   ends, its elements either carry over into the next line of the same scene (keep drawing them,
+   then fade them out gently over ~0.6 s once the next line no longer needs them) or leave with
+   the scene crossfade. Never let something blink out on the line change.
+   Practical rule in code: draw a line's elements with since(...) >= 0 for the current line AND
+   keep the previous line's elements for the first ~0.6 s of the next line with a fade-out
+   (or simply share elements across the lines of a scene).
+3. Highlight, don't pop. When the narration names something that is already on screen, give it a
+   reaction instead of a new entrance: a little bounce or squash, a wiggle, a glow/outline pulse,
+   a short slide toward the centre, a colour flash, a character pointing or turning to it.
+   Pop-ins are for genuinely new things that arrive EARLY in the line.
+4. Zoom-ins: allowed once or twice in the whole video, only where the story really benefits
+   (the big reveal or the biggest joke). Slow and smooth (about 1-1.5 s ease in, hold, ease out),
+   no speed lines, never on consecutive lines. Everything else uses the gentle renderer drift.
+5. Check: in the contact sheet and by scrubbing each line change, nothing may appear in the last
+   1.5 s of a line or disappear within 1 s of appearing.
