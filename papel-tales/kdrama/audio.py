@@ -3,7 +3,7 @@ D=json.load(open('durs.json'));SR=24000;tl=[];t=4.6;prev=-1
 for si,li,d in D:
   if si!=prev and prev!=-1: t+=0.9
   tl.append([si,li,t,t+d]);t+=d+0.7;prev=si
-T=t+2.5;json.dump({'tl':tl,'T':T},open('timeline.json','w'))
+T=t+4.5;json.dump({'tl':tl,'T':T},open('timeline.json','w'))
 n=np.zeros(int(T*SR))
 for si,li,a,b in tl:
   x,_=sf.read(f'n_{si}_{li}.wav');i=int(a*SR);n[i:i+len(x)]+=x
