@@ -759,3 +759,18 @@ Overrides the "fade the whole line" idea of v17.
 7. Smoothness check: preview the start, middle and end of EVERY line before rendering. Any element
    that appears then disappears within ~1 s, any character that blinks, or any frame that fades
    and returns to the same place is a bug to fix first.
+
+
+UPDATE (v19): FAST SPLIT RENDER IS THE STANDARD (user, 12 Oct 2026)
+-----------------------------------------------------------------
+  - Render with scripts/render-par.sh page.html out.mp4 4 : the frames are split into 4 ranges,
+    rendered at the same time, joined with ffmpeg concat (no re-encode), then the audio is added
+    once (apad + shortest, so no frame is lost). Math.random is seeded in every worker so the
+    film grain is identical across pieces. A 4-minute video renders in ~18 min instead of ~55.
+  - Then two-pass compress to ~95 MB as before.
+  - Kill background jobs by PID, never pkill -f.
+Published: How Japan Became the Anime Capital  https://www.youtube.com/watch?v=iBltyc4eLVU
+USED SETS added: Anime Capital: Brazil kid's notebook + world map, 1917 silent cinema with benshi,
+  Tezuka's night studio + editors' hallway, 1958 cel-painting studio, 1963 tatami room with b/w TV,
+  printing press + newsstand, 80s neon street + video shop + marquee, US school cafeteria 1999,
+  Oscar red carpet + bathhouse, globe of phones, animator's light table.
