@@ -730,3 +730,32 @@ next line started. That is not allowed.
    no speed lines, never on consecutive lines. Everything else uses the gentle renderer drift.
 5. Check: in the contact sheet and by scrubbing each line change, nothing may appear in the last
    1.5 s of a line or disappear within 1 s of appearing.
+
+
+UPDATE (v18): SAME PLACE = SAME FRAME; CHARACTERS ACT, THEY DON'T BLINK; FULL-FRAME END CARD (user, 12 Oct 2026)
+---------------------------------------------------------------------------------------------------------------
+Overrides the "fade the whole line" idea of v17.
+
+1. Same place, no whole-frame fades. If the next line stays in the same location, the frame stays
+   still and continuous. Never fade the whole picture out only to end up in the same picture.
+   Only individual ELEMENTS fade (each one on its own, ~0.7 s) when they are no longer needed.
+   A whole-frame crossfade is allowed only when the location or layout really changes
+   (new scene, comic panels, a new set).
+2. Elements carry across lines. An element introduced in one line stays on screen through the next
+   lines of the same place while it is still relevant, then fades out by itself. In code use
+   vis(li, fromLine, word, untilLine) for every element (see examples/kdrama.html).
+3. Nothing lingers into the next scene. At a scene crossfade, the outgoing scene shows its last state
+   only; no element may pop in, pop out or arrive late during the crossfade.
+4. Characters act, they don't blink. A character on screen never disappears and reappears in a new
+   pose. Go from one action to the next with motion: walk -> jump onto a back for a piggyback ->
+   hop down -> trip -> get caught; walk into place; walk out of frame; step aside to the stage edge.
+   The same cast keeps the same seats/positions through a location (e.g. jeepney passengers stay
+   in their seats; they just change what they are doing).
+5. Nothing covers faces. Labels, strips and props go above heads or in empty space. Check every
+   frame where text or a prop is near a character.
+6. Ending: the video ends on the FULL-FRAME Papel Tales title card, exactly like the intro (not a
+   small card on top of the scene). It fades in over the last line and holds ~3-4 s after the
+   narration ends (audio.py: T = last line end + 4.5 s).
+7. Smoothness check: preview the start, middle and end of EVERY line before rendering. Any element
+   that appears then disappears within ~1 s, any character that blinks, or any frame that fades
+   and returns to the same place is a bug to fix first.
