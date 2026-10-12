@@ -1,0 +1,191 @@
+PAPEL TALES - "THE VOICE: HOW A SPINNING CHAIR CONQUERED THE WORLD"   (draft v1, for approval)
+EP tab: "THE VOICE"   Kokoro af_heart, speed 0.92, narration from 4.6 s.
+32 lines, about 4 min 20 s.  [JOKE] x 9.  Zoom-ins: 2 (L9, L31).  SFX: 2 (L9 chair whoosh, L30 tiny pigeon coo).
+
+=====================================================================
+THEME BRIEF
+=====================================================================
+The story is about a contest where you are judged by SOUND, not looks, so the whole video is built
+as a paper TV studio seen from backstage. The language of the show itself:
+- Chapter cards are cut-out "ON AIR" light boxes with the chapter name in red paper letters;
+  transitions are a red paper studio curtain swishing across (1.6 s crossfade beneath it).
+- The four big red chairs with their backs to us are the recurring shape. "I WANT YOU" buttons,
+  VU meters, cable spaghetti, gaffer-tape marks on the floor, spotlight cones made of tissue paper.
+- Sound is drawn: every singer's voice is a ribbon of paper waveform that curls out of their mouth
+  and floats toward the chairs. When a chair turns, the ribbon "lands".
+- Countries are luggage tags and airport flip-board letters (new: not a world map).
+- Textures: black studio card, red flock paper, silver foil, Dutch blue-and-white tile print for
+  Holland, kraft paper for backstage, glossy magazine print for Hollywood, warm Manila
+  stage lights and a videoke screen at the end.
+New character design (sticker style, white outline): singers are drawn as tall bean shapes with HUGE mouths and tiny eyes that close when
+they sing (eyes closed = "listen, don't look"), coaches are chair-backs with only hair and hands
+visible, real people as simple silhouette-with-colour-pop portraits (no likeness caricature).
+RUNNING GAG: Pip, a paper pigeon who lives in the studio rafters. Every time a chair is about to
+turn, Pip sings along, badly, from the rafters, and no chair ever turns for Pip. He gets a tiny
+paper chair of his own in Hilversum, takes it with him (luggage tag) to the US and Manila, and at
+the very end, in a Filipino family's videoke night, the whole family turns their monobloc chairs
+around for Pip. Kind payoff: everyone gets a chair turn somewhere.
+
+=====================================================================
+SCRIPT + BEAT MAP  (shot type | 2-3 elements per line | gag)
+=====================================================================
+SCENE 1 - Dark studio, Hilversum style, cold open  [new set: empty studio with four red chairs, backs to us]
+L1  [wide establishing] Imagine singing for four strangers... who are not even looking at you.
+    - four red chairs, backs to us, already lit (on screen from frame 1 of the scene)
+    - bean singer walks to the gaffer-tape X, mic in hand
+L2  [over-the-shoulder, from behind a chair] They sit with their backs turned. Your knees are shaking. Your only weapon is your voice.
+    - singer's knees wobble (acting, not pop); paper waveform ribbon starts curling out
+L3  [close-up on the button] Then, BOOM. A big red button. A chair spins around.  [JOKE]
+    - "I WANT YOU" button (already visible on armrest) gets pressed; chair rotates 180 deg (slow, 1 s)
+    - Pip in the rafters (introduced here, small) gasps
+L4  [medium] That simple, slightly terrifying idea is called The Voice. And it was born in a little country famous for bicycles, tulips, and very tall people.  [JOKE]
+    - singer smiles; the chair-coach waves
+    - backdrop crossfade begins next line (no late pops)
+
+SCENE 2 - A Dutch TV office in Hilversum, 2009-2010  [new set: canal-house office, Delft-tile wallpaper, bikes outside window]
+L5  [wide] Our story starts in the Netherlands, home of the TV maker John de Mol.
+    - canal-house office layers: tile wallpaper, window with bikes & canal parallax
+    - John de Mol as silhouette portrait with name tag above head
+L6  [medium two-shot] A Dutch TV boss, Erland Galjaard, gave him a challenge: make a singing show that goes one step further than The X Factor.
+    - Galjaard silhouette enters (walks in from left), holds a paper with "ONE STEP FURTHER"
+    - de Mol scratches head
+L7  [top-down on desk] Most talent shows judged the whole package. The hair, the clothes, the dance moves.
+    - desk with photos: hair, sparkly jacket, dance-step diagram (all placed at line start)
+    - Pip lands on the desk, struts in a tiny jacket  [JOKE]
+L8  [close-up, face] De Mol's idea was beautifully simple: what if the judges could not see the singer at all? Only hear them.
+    - de Mol's eyes; a paper blindfold is offered... he says no: the photos flip face-down one by one (highlight, not pop)
+L9  [ZOOM-IN #1, slow, insert] The blind audition was born.  [JOKE: Pip falls off the desk in surprise, soft whoosh SFX]
+    - title stamp "BLIND AUDITION" (arrived early in line), slow 1.2 s zoom in and out
+
+SCENE 3 - The chair workshop  [new set: carpenter's workshop, sawdust, sketch blueprints on kraft]
+L10 [wide] But blind how? A curtain? A screen? A paper bag over every judge's head?  [JOKE]
+    - three blueprint sketches pinned up from line start: curtain, screen, paper bag on a head
+    - each one gets a red X as it's named (highlight)
+L11 [medium] The answer came from singer and producer Roel van Velzen: chairs that turn around.
+    - van Velzen silhouette walks to the blueprint wall; a red chair on a turntable rotates
+L12 [extreme close-up, hands] Turn your back to the singer, listen, and if you love the voice, hit the button and spin to face them.
+    - hand on button; chair spins slowly; waveform ribbon lands on the chair
+L13 [split screen, 2 panels, 1 s crossfade] Suddenly the judges were not judges anymore. They were coaches, and the coaches had to fight for the singers.
+    - panel A: chair turns; panel B: second chair turns, the two coaches point at each other
+    - Pip tries to sit in the chair, gets spun off  [JOKE]
+
+SCENE 4 - RTL 4 studio, first season  [new set: blue-lit studio stage with audience risers, cables]
+L14 [wide] The Voice of Holland first aired on RTL 4 on September seventeenth, twenty ten.
+    - chapter card "ON AIR" light box: "HOLLAND 2010" (scene start)
+    - audience risers with paper heads, studio lights swing gently
+L15 [medium] The first coaches were singers Jeroen van der Boom, Angela Groothuizen, Roel van Velzen, and the duo Nick and Simon.
+    - the four chairs (same place) each get a name tag ABOVE the chair-back, staggered from line start
+L16 [over-the-shoulder] After the blind auditions came the battles, two singers, one song, one winner. Then the live shows, where the viewers at home voted.
+    - two bean singers face each other in a paper boxing ring of tape; a TV-with-phone vote counter
+L17 [close-up] In January twenty eleven, a young singer named Ben Saunders won the very first season.
+    - spotlight cone on a singer, confetti drifting (slow), trophy mic
+L18 [insert, Pip] And Pip? Pip auditioned too. No chair turned.  [JOKE]
+    - Pip on the X, sings; four chairs stay still; a single paper tumbleweed rolls by
+
+SCENE 5 - Airport departure board  [new set: flip-board hall, luggage carousel]
+L19 [wide] Here's the thing. TV companies all over the world were watching.
+    - flip board with destinations; luggage tags shaped like red chairs
+L20 [insert, board flips] Within months, the format was sold abroad. The red chairs packed their bags.  [JOKE]
+    - a red chair on the luggage carousel wearing a tiny backpack; Pip rides on top with his own little chair
+L21 [top-down] Talpa, the company behind the show, sold it to well over a hundred and fifty countries and regions over the years.
+    - (fact check: Talpa/ITV claim 180+ territories; will say "well over a hundred")
+    - flip board rattles through country names, stays on "LOS ANGELES"
+
+SCENE 6 - NBC stage, Los Angeles 2011  [new set: glossy Hollywood stage, palm cut-outs, neon frame]
+L22 [wide] In April twenty eleven, The Voice arrived in America on NBC, hosted by Carson Daly.
+    - chapter card "USA 2011"; palm trees in near layer; host silhouette with cue cards
+L23 [medium, the four chairs again] The coaches were superstars: Christina Aguilera, Adam Levine, Blake Shelton, and CeeLo Green.
+    - name tags above chairs; Blake's chair has a cowboy hat, CeeLo's a sparkly cape (props on chair, no faces)
+L24 [close-up] The very first American winner was Javier Colón, from Adam Levine's team.
+    - spotlight, waveform ribbon, Adam's chair spins toward him
+L25 [insert, Pip] Pip tried again, in English this time. Nothing. Not even a wobble.  [JOKE]
+
+SCENE 7 - Manila studio 2013  [new set: ABS-CBN-style stage with sampaguita garland frame, rain on the studio roof outside]
+L26 [wide] In twenty thirteen, the chairs landed in the Philippines.
+    - chapter card "PHILIPPINES 2013"; garland frame; Pip arrives with his tiny chair and a balikbayan box  [JOKE]
+L27 [medium] The Voice of the Philippines on A B S C B N had coaches Lea Salonga, Sarah Geronimo, Bamboo, and apl dot de dot ap, with Toni Gonzaga as host.
+    - same four-chair layout, new garland set; name tags above
+L28 [close-up] The first winner was Mitoy Yonting, from Lea Salonga's team, a singer who had worked for years before his big break.
+    - spotlight; the whole audience stands (risers rise together)
+
+SCENE 8 - Boardroom over London  [new set: glass boardroom, Big Ben skyline in far layer]
+L29 [top-down on table] In twenty fifteen, the British broadcaster I T V bought Talpa, for about three hundred and fifty-five million pounds up front.
+    - contract on table; one paper chair on the table like a trophy; coins stack gently
+
+SCENE 9 - Filipino family videoke night  [new set: living room, monobloc chairs, videoke screen with score]
+L30 [wide] And everywhere the show went, people played it at home. Backs turned. Big imaginary buttons.
+    - family of five in monobloc chairs, backs to the TV; Lola, Tito, kids; Pip on the mic stand  [SFX tiny coo]
+L31 [ZOOM-IN #2, slow, on chairs] Even for Pip. Finally, every chair turned.  [JOKE payoff]
+    - Lola presses a pot lid "button", all five monobloc chairs turn, Pip's tiny chair turns too; Pip happy-crying
+    - Lola: "Galing mo, apo!" (speech bubble only, Lola to grandchild-who-holds-Pip; correct "apo")
+L32 [wide] Because the idea was never about chairs. It was about one question: what if we just listened?
+    - full-frame Papel Tales title card fades in over this line, holds 4 s after narration.
+
+Elements count: ~70 beats total, 2-3 per line. Characters keep their spots per location
+(four chairs never move except rotating; family keeps its seats).
+
+=====================================================================
+PRONUNCIATION GUIDE (fil.json / IPA additions)
+=====================================================================
+de Mol            dəmˈɔl            (duh-MOLL)
+John de Mol       dʒˈɑn dəmˈɔl
+Erland Galjaard   ˈɛrlɑnt xˈɑljaːrt  -> anglicised: ˈɛɹlənd ɡˈɑljɑɹd (GAL-yard)
+Roel van Velzen   ɹˈul vɑn vˈɛlzən   (ROOL van VEL-zun)
+Jeroen van der Boom  jəɹˈun vɑn dəɹ bˈoʊm  (yuh-ROON van der BOHM)
+Angela Groothuizen   ˈɑŋɡəlɑ ɡɹˈoʊthaʊzən   (GROHT-how-zun)
+Hilversum         hˈɪlvəɹsəm
+Talpa             tˈɑlpɑ
+RTL 4             ˈɑɹ tˈi ˈɛl fˈɔɹ  (spoken() rewrite: "R T L four")
+Ben Saunders      CMU ok
+Aguilera          ˌæɡwɪlˈɛɹə
+CeeLo             sˈiloʊ
+Levine            ləvˈin
+Javier Colón      hɑvjˈɛɹ koʊlˈoʊn
+Carson Daly       CMU ok (DAY-lee)
+A B S C B N       spoken: "A B S C B N" (letters)
+Lea Salonga       lˈeɪɑ sɑlˈɔŋɡɑ   (LAY-uh sa-LONG-ga)
+Sarah Geronimo    sˈɛɹə dʒəɹˈɑnɪmoʊ  (Filipino: heh-RO-ni-mo -> hɛɾˈonimo)  ** please confirm which you prefer
+Bamboo            CMU ok
+apl dot de dot ap  spoken: "apple dee ap" -> ˈæpəl di ˈæp  ** confirm
+Toni Gonzaga      tˈoni ɡonsˈɑɡɑ
+Mitoy Yonting     mˈitoj jˈontiŋ
+apo               ˈɑpo
+Galing mo         ɡˈɑliŋ mo  (bubble only, not spoken)
+Pip               CMU ok
+videoke           vˈɪdioʊkeɪ
+monobloc          not spoken
+Years: 2010 "twenty ten", 2011 "twenty eleven", 2013 "twenty thirteen", 2015 "twenty fifteen"
+(already written as words in the script).
+
+=====================================================================
+RISKY-WORD LIST (heteronyms / ambiguous)
+=====================================================================
+live (L16 "the live shows")  -> adjective = LAYV (existing rule)
+close                        -> not used
+record / recording           -> not used in narration
+lead                         -> not used
+wound / tear / bow / minute  -> not used
+present                      -> not used
+read                         -> not used
+"wind"                       -> not used
+"BOOM" (L3)                  -> CMU ok
+"pounds"                     -> CMU ok
+"spin/spins"                 -> CMU ok
+"duo"                        -> dˈuoʊ (CMU has two readings; add SAFE)
+"Xfactor": "The X Factor"    -> "X" spoken as "ex" (spoken() rewrite)
+"wobble", "terrifying"       -> CMU ok
+Final word-by-word check runs in tts4.py before audio; build stops on any unknown.
+
+=====================================================================
+SOURCES
+=====================================================================
+- The Voice (franchise), Wikipedia: Galjaard's "further than The X Factor" brief, de Mol's blind
+  audition idea, van Velzen's rotating chairs.  https://en.wikipedia.org/wiki/The_Voice_(franchise)
+- The Voice of Holland / season 1, Wikipedia: RTL 4 premiere 17 Sep 2010, coaches, Ben Saunders.
+  https://en.wikipedia.org/wiki/The_Voice_of_Holland_season_1
+- The Voice (US) season 1, Wikipedia; theGrio / Fox News AP report (Javier Colón wins, 29 Jun 2011).
+  https://thegrio.com/2011/06/30/javier-colon-wins-first-season-the-voice/
+- The Voice of the Philippines season 1, Wikipedia; Inquirer (Mitoy Yonting).
+  https://en.wikipedia.org/wiki/The_Voice_of_the_Philippines_season_1
+- ITV acquires Talpa for £355m initial (The Drum, Advanced Television, Mar 2015).
+  https://www.thedrum.com/news/2015/03/12/itv-acquires-voice-producer-talpa-media-355m
