@@ -3666,7 +3666,7 @@
         "narration"
       ],
       "sampleRateHz": 22050,
-      "sha256": "ea75702da7456a8b1874728278a835220dc8a26f4e8bd93c83bf53dc27679845",
+      "sha256": "727e3474b9999833d12cfc9fc2352731e98a4109b99b9cb751b6a842449c599a",
       "sourceUrl": "https://github.com/shivammehta25/Matcha-TTS",
       "speakers": [
         {
@@ -3874,9 +3874,9 @@
         "da",
         "nl",
         "en-US",
-        "fr-FR",
         "fi",
         "et",
+        "fr-FR",
         "de-DE",
         "el",
         "hi",
@@ -3885,17 +3885,17 @@
         "it-IT",
         "ja-JP",
         "ko-KR",
-        "lt",
         "lv",
+        "lt",
         "pl",
         "pt",
         "ro",
         "ru",
         "sk",
         "sl",
+        "es-ES",
         "sv",
         "tr",
-        "es-ES",
         "uk",
         "vi"
       ],
@@ -5777,7 +5777,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "c5115bc85775ed15bf1121057055ed35d5d17c9b83be7769c23a2402fc2d4c74",
+      "sha256": "8c4d286e0079a125cfaf520e71abadb4306ffeeaeafe7e3a9b2d28a6ca6fa6ce",
       "speakers": [
         {
           "gender": "U",
@@ -5790,7 +5790,7 @@
       "title": "Speaker_0"
     },
     {
-      "approxSizeMb": 74,
+      "approxSizeMb": 73,
       "available": true,
       "bundleUrl": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-icefall-en_US-ljspeech-medium.tar.bz2",
       "demoUrl": "https://huggingface.co/spaces/k2-fsa/text-to-speech",
@@ -5802,7 +5802,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "15a298943f0ac001e046b10d0154c0890a0f3c326a3b5d6e229eb659c8163a5d",
+      "sha256": "d721cc846886f12c348009a9fcac430b65260235c28291735e3742417dcde855",
       "speakers": [
         {
           "gender": "U",
