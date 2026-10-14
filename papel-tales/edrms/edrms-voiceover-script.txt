@@ -1,0 +1,81 @@
+PAPEL TALES - "WHAT IS AN EDRMS? WHERE YOUR FILES GO TO LIVE FOREVER (OR NOT)"   draft v1
+EP tab: "EDRMS"   Narration from 4.6 s.  18 lines, about 2 min 10 s.  Jokes x 6.  1 zoom (L9).
+
+THEME BRIEF
+A paper office that turns into a paper library. Chapter cards are manila folder tabs; transitions are
+a filing-cabinet drawer sliding shut. Every document is a little paper sheet with eyes (new design:
+"Docs"), and the running gag is LOST FILE: one confused document named "final_FINAL_v7.docx" that keeps
+wandering around looking for a home, and finally gets declared, labelled and shelved at the end.
+Sets: a messy desk buried in paper; an email inbox avalanche; a shared drive maze; the EDRMS as a
+bright paper library with labelled shelves; a records clock (retention); a dashboard wall.
+
+SCRIPT + BEAT MAP (shot | 2-3 elements | gag)
+
+SCENE 1  The messy office
+L1  [wide] Every office makes paper. Letters, reports, contracts, and a lot of files called "final".
+    - desk piled with paper sheets; Docs blink awake; final_FINAL_v7 pops out of the pile [JOKE]
+L2  [close-up] Some of those files are just drafts. But some are records: proof of a decision, a deal,
+    or a promise.
+    - two sheets: a doodle draft vs a stamped record with a gold seal
+
+SCENE 2  Where files usually end up
+L3  [split screen] Without a system, records hide everywhere: in email, on laptops, in shared drives.
+    - three panels: inbox, laptop, drive maze; final_FINAL_v7 runs through all three, lost [JOKE]
+L4  [medium] And when someone asks, "Where is the signed version?", everybody suddenly gets very busy.
+    - three office workers pretend to type very fast [JOKE]
+
+SCENE 3  Enter the EDRMS
+L5  [wide] That is where an EDRMS comes in: an Electronic Document and Records Management System.
+    - paper library unfolds; banner "EDRMS" spelled letter by letter with labels underneath
+L6  [medium] Think of it as one well-organized library for an organization's documents.
+    - shelves with labelled sections: Finance, Projects, HR, Legal
+
+SCENE 4  How it works
+L7  [top-down] Step one: you save your work in the right place, a team or project site,
+    instead of your desktop.
+    - a Doc walks from desktop into a "Project site" folder
+L8  [close-up] Step two: when a document becomes official, you declare it as a record.
+    - stamp "DECLARED" lands; the record gets a lock icon
+L9  [ZOOM, insert] Once declared, it is locked. No more sneaky edits after the fact.
+    - a pencil tries to scribble on it and bounces off [JOKE]
+L10 [medium] Step three: the system attaches a label that says what it is, who owns it,
+    and how long to keep it.
+    - luggage-style tag: "Contract | Legal | Keep 10 years"
+
+SCENE 5  The records clock
+L11 [wide] That last part is called retention. Some records are kept for a few years, some forever.
+    - shelf of hourglasses of different sizes; one with an infinity sign
+L12 [medium] When the time is up, the record is reviewed and, if it is no longer needed,
+    disposed of safely, with a note of what was removed.
+    - a record walks to a "Review" desk; a shredder with a receipt that prints "logged"
+
+SCENE 6  Why bother?
+L13 [split] It means you can find things quickly, prove what happened, and follow the rules.
+    - magnifying glass finds a doc in 1 second; a checkmark; a rulebook
+L14 [medium] It also saves space, because the system knows what to keep and what to let go.
+    - storage bar shrinks from red to green
+
+SCENE 7  How do we know it is working?
+L15 [wide] And how do you know people are actually using it? You measure it.
+    - dashboard wall lights up
+L16 [close-up] Dashboards show how many records are declared, which sites are active,
+    how much storage is used, and what is due for review.
+    - four tiles: Declared, Active sites, Storage, Due for review (no real figures shown)
+
+SCENE 8  Home at last
+L17 [medium] So, our lost file? Saved in the right site, declared, labelled, and shelved.
+    - final_FINAL_v7 gets its tag, climbs onto a shelf, sighs with relief [JOKE payoff]
+L18 [wide] An EDRMS is not just storage. It is an organization's memory, kept in order.
+    - library lights warm; full-frame Papel Tales end card
+
+PRONUNCIATION / RISKY WORDS
+EDRMS     spoken as letters: "E D R M S"
+records   noun = REK-ordz (existing heteronym rule); "record" in L8, L12 is a noun
+desktop, retention, disposed, organization: CMU dictionary
+"final_FINAL_v7.docx" appears on screen only, never spoken
+No years or Filipino terms in this script.
+
+NOTES
+- Kept generic on purpose: no ADB names, internal figures, tenant details or dashboard numbers, so the
+  video is safe to publish. If this is for an internal ADB audience instead, I can add the real
+  setup (AvePoint on SharePoint / Microsoft 365, declaration, the Utilization Report dashboards).
