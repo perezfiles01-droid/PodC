@@ -3666,7 +3666,7 @@
         "narration"
       ],
       "sampleRateHz": 22050,
-      "sha256": "727e3474b9999833d12cfc9fc2352731e98a4109b99b9cb751b6a842449c599a",
+      "sha256": "82f599b04e3afb0003df0d493d026d5462e9f25a600d42d329775d18ffbb82df",
       "sourceUrl": "https://github.com/shivammehta25/Matcha-TTS",
       "speakers": [
         {
@@ -3881,8 +3881,8 @@
         "el",
         "hi",
         "hu",
-        "id",
         "it-IT",
+        "id",
         "ja-JP",
         "ko-KR",
         "lv",
@@ -5777,7 +5777,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "8c4d286e0079a125cfaf520e71abadb4306ffeeaeafe7e3a9b2d28a6ca6fa6ce",
+      "sha256": "7daab0967a865d1f5363e45c1cef7a4e0561355c811db3cdd96f45b24a528d94",
       "speakers": [
         {
           "gender": "U",
@@ -5802,7 +5802,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "d721cc846886f12c348009a9fcac430b65260235c28291735e3742417dcde855",
+      "sha256": "5454413a9aa5369aa91cce12d0a80b0331981c9ae9e171d6d2f45c642fc7eb55",
       "speakers": [
         {
           "gender": "U",
