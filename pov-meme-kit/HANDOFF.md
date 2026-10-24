@@ -1,5 +1,63 @@
 # Session Handoff — Cat/Dog POV Meme Videos
 
+> **NEW SESSION — START HERE (do these in order, don't skip):**
+> 1. Get the kit: repo `perezfiles01-droid/PodC`, branch **`ccr-acf60340-s3bcq6`**, folder `pov-meme-kit/`.
+>    If the repo isn't attached, attach it (add_repo), then
+>    `git fetch origin ccr-acf60340-s3bcq6 && git checkout ccr-acf60340-s3bcq6`.
+> 2. `cd pov-meme-kit && bash scripts/setup.sh` (light: numpy, pillow, python-docx; ffmpeg is preinstalled).
+> 3. Prove the pipeline: `python3 scripts/build.py stories/mom-wasnt-hungry.json out` — it must print
+>    the scene table and `DONE 38.0`; the result must match `examples/mom-wasnt-hungry_v13.mp4`
+>    (verified identical from a fresh clone on 2026-10-24).
+> 4. Follow **CURRENT RULES** below. Everything under "History" is background only — where history
+>    and CURRENT RULES disagree, CURRENT RULES win.
+> 5. Read STYLE_GUIDE.md and look at references/ before planning a new story.
+
+## CURRENT RULES (authoritative, as of v13)
+**Look & format**
+- 1080x1920, 30 fps, ~35–45 s, 4–6 scenes, no dead air (lines back-to-back, <=0.3 s gaps, ~3 s each).
+- White rounded POV box at top for the whole video; **no watermark** (`"handle": ""`).
+- Photoreal background per scene (assets/backgrounds/ or new ones via scripts/bg.py).
+- Characters = green-screen clips from the catalog, placed where the plot puts them (floor, table,
+  bed…), **`"actor_scale": 1.3`** (bigger), never overlapping each other or each other's text.
+- Label (white) right above each character's head, its speech (yellow) right above the label; both
+  appear/disappear with that character. Thoughts in *asterisks*.
+- Clip emotion must match the line (sad → sad/crying clip, happy → happy clip). A character may
+  swap clips mid-scene for an emotion change (same x/y, consecutive t0/t1).
+- Ending: dim + white closing lines; song switches to its climax.
+
+**Sound**
+- Each character plays **its own clip's sound** while it talks (the v7 behaviour), song underneath
+  (assets/music/chasing_cars_hale_cover.mp3: bed from 0:00, ending from 2:48, `switch` = ending start).
+- Do NOT use: Kokoro/TTS voices, AI-generated meows, borrowed meows, music-only. (All rejected.)
+- Ask the user before changing anything about the sound.
+
+**Clips**
+- Use catalog ids: actor `"clip": "C7"` (cats C1–C45, dogs D1–D29; mix cats and dogs as fits).
+  build.py picks a safe range (skips the 1 s zoom-in intro, stays inside the clip → no flicker).
+- If a clip looks twitchy/fast, add `"speed": 0.7`.
+- Catalog: CLIP_CATALOG.pdf (pictures) + assets/packs/catalog.json. New upload → copy to
+  assets/packs/, add a PACKS entry in scripts/catalog_segments.py + description in
+  scripts/make_catalog.py, run `python3 scripts/make_catalog.py`, check pictures aren't blank.
+
+**Workflow with the user**
+1. New video request → FIRST reply with the plan: every scene + clip number per character. Wait for OK.
+2. Build → QA: `scripts/avsync.py` (OK), `scripts/cuts.py` (only planned scene cuts),
+   `scripts/jumps.py` (spikes only at fade-in, scene cuts, clip swaps). Look at a few frames.
+3. Send ONLY the with-sound mp4 + the scene table (Scene | Time | Place | Who = clip) + the
+   updated CLIP_CATALOG.pdf + this HANDOFF.md.
+4. Swap requests ("scene 3 C23 → D12"): set `"clip"`, delete that actor's `"ss"`/`"len"`/`"speed"`,
+   keep the rest, then check placement (a new clip may float or overlap), rebuild, QA, send as above.
+5. After every change: update this file (CURRENT RULES if a rule changed + a History line),
+   commit, push to the same branch.
+
+**Files to give the user on request (private repo — sign in as perezfiles01-droid)**
+- Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
+- This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
+- Latest video: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/examples/mom-wasnt-hungry_v13.mp4
+- Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
+
+---
+# History (background — CURRENT RULES above win)
 ## Download links (give these to the user whenever they ask for "the clip list" / "the handoff")
 Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
 - Clip list (PDF, with pictures) — user wants PDF, not Word: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf

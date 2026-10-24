@@ -1,4 +1,6 @@
 #!/bin/bash
-# One-time setup in a fresh cloud session (ffmpeg is already installed there).
-# pytorch.org's download index is blocked in Claude cloud sessions, so torch comes from PyPI.
-pip install -q numpy pillow torch diffusers transformers accelerate soundfile
+# Setup for a fresh cloud session. Building videos only needs ffmpeg (preinstalled) + these:
+pip install -q numpy pillow python-docx
+# OPTIONAL — only to generate NEW backgrounds (scripts/bg.py). Large download (~3 GB):
+#   pip install -q torch diffusers transformers accelerate
+# (pytorch.org's index is blocked in Claude cloud sessions; install torch from PyPI as above.)
