@@ -46,6 +46,10 @@
 - American English and US/Canadian settings and culture: high school, cafeteria, prom, college
   tuition, night shifts, diners, Thanksgiving/Christmas, hockey/football/soccer, snow days, etc.
   Avoid region-specific words (e.g. "Kuya") unless asked.
+- BUT stay **universal**: the emotion (family sacrifice, love, regret, kindness) must land for any
+  viewer anywhere. Use simple English, no slang or US-only references that need explaining,
+  settings everyone recognizes (home, school, hospital, work). US/CA flavor = the setting and
+  wording; the heart of the story = universal.
 - Captions in natural American voice; hashtags that work in NA (#pov #storytime #catsoftiktok-
   style tags, #momlove #dadlove #fyp #reels #emotional, plus 1–2 niche tags).
 - When giving posting tips, use North American times (about 7–10 pm Eastern / 4–7 pm Pacific,
