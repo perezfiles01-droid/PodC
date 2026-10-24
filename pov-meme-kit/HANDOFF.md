@@ -9,7 +9,7 @@ Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
 If the catalog changes (new packs/clips), run `python3 scripts/make_catalog.py`, commit, push — the
 links stay the same.
 
-_Last updated: 2026-10-24. Paste this whole file into a new session to resume._
+_Last updated: 2026-10-24 (v12, catalog C1–C44 + D1–D29). Paste this whole file into a new session to resume._
 
 ## Goal
 Make short vertical (9:16) emotional "POV" meme videos in the style of @Pawspective:
@@ -143,6 +143,10 @@ for spoken lines, sad/heartwarming twist.
 48. v12 (user swaps): scene 2 "Me (peeking)" C13 → C26, scene 3 "Me (10 years later)" C23 → D12.
     Note: after a swap, CHECK placement — C26 inherited the edge-peeker's spot and floated; moved
     to the floor (x 230, y 1720, h 420). Story file now = v12.
+49. New clip C44 = 'yapapa' orange cat singing (cat_yapapa.mp4, 0–8.0 s, sound = the meme song,
+    ~451 Hz). Catalog now C1–C44 cats + D1–D29 dogs (73 clips, 29-page PDF).
+50. RULE: **right after every generated video, also send the user the updated CLIP_CATALOG.pdf and
+    this HANDOFF.md** (after committing + pushing them), together with the scene/time/clip table.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.

@@ -56,6 +56,7 @@ CAT = {  # id: (description, mood / good for)
     41: ("Banana-suit cat with a sweat drop", "nervous, embarrassed, awkward"),
     42: ("Tiny banana-suit cat walking away in the distance", "leaving, alone, walking home"),
     43: ("Banana-suit cat standing sadly", "sad, lonely, waiting"),
+    44: ("'Yapapa' orange cat singing with eyes closed, head bobbing", "singing, vibing, happy, cheeky (audio: the 'yapapa' meme song)"),
 }
 DOG = {
     1: ("Fluffy white chihuahua, eyes closed, standing", "smug, proud, ignoring"),

@@ -386,6 +386,15 @@
   "good_for": "sad, lonely, waiting",
   "sound": "animal sound (~410 Hz)"
  },
+ "C44": {
+  "pack": "cat",
+  "file": "assets/packs/cat_yapapa.mp4",
+  "start": 0.0,
+  "end": 8.0,
+  "description": "'Yapapa' orange cat singing with eyes closed, head bobbing",
+  "good_for": "singing, vibing, happy, cheeky (audio: the 'yapapa' meme song)",
+  "sound": "animal sound (~451 Hz)"
+ },
  "D1": {
   "pack": "dog",
   "file": "assets/packs/dog_pack.mp4",
