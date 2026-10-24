@@ -135,8 +135,11 @@ for si, sc in enumerate(story["scenes"]):
         cur, idx = f"t{k}", idx + 1
     fc.append(f"[{cur}]format=yuv420p,fps={FPS}[vout]")
     ins += ["-f", "lavfi", "-t", str(T), "-i", "anullsrc=r=44100:cl=stereo"]
-    aud.append(f"{idx}:a")
-    fc.append("".join(f"[{x}]" for x in aud) + f"amix=inputs={len(aud)}:normalize=0:duration=longest,atrim=0:{T}[aout]")
+    # silence goes FIRST so the mix starts at t=0; otherwise the audio track starts at the first
+    # cat sound and phone players "fast-forward" the opening video to catch up
+    aud.insert(0, f"{idx}:a")
+    fc.append("".join(f"[{x}]" for x in aud) + f"amix=inputs={len(aud)}:normalize=0:duration=first,"
+              f"atrim=0:{T},asetpts=N/SR/TB[aout]")
     out = f"{OUT}/tmp/scene{si}.mp4"
     run(["ffmpeg", "-v", "error", "-y", *ins, "-filter_complex", ";".join(fc), "-map", "[vout]",
          "-map", "[aout]", "-t", str(T), "-c:v", "libx264", "-crf", "20", "-preset", "medium",
@@ -156,7 +159,7 @@ run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      f"afade=t=out:st={m['switch'] - 1.5}:d=1.5[b];"
      f"[2:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{total - m['switch'] + 1.5},volume={m['vol'] * 1.4},"
      f"afade=t=in:d=1.5,adelay={int((m['switch'] - 1.5) * 1000)}|{int((m['switch'] - 1.5) * 1000)}[e];"
-     f"[0:a][b][e]amix=inputs=3:normalize=0:duration=first,afade=t=out:st={total - 1}:d=1[a];"
+     f"[0:a][b][e]amix=inputs=3:normalize=0:duration=first,asetpts=N/SR/TB,afade=t=out:st={total - 1}:d=1[a];"
      f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v]",
      "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
      "-c:a", "aac", "-b:a", "160k", "-t", str(total), f"{OUT}/{story['name']}_with-sound.mp4"])

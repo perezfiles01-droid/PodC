@@ -66,8 +66,8 @@ for spoken lines, sad/heartwarming twist.
     >=1.0s after its cut, (b) ping-pong loop (forward+reverse) so loops never jump.
     Safe ranges: kitten 30.0+8.0, sad tabby 38.9+4.5, bowl 119.3+4.6, peek 75.2+4.0,
     crying grey 80.0+3.0, crying dark 104.6+5.9, orange talking 137.8+14.5.
-29. QA before sending, every time: `cuts.py out.mp4` (only planned scene cuts) and `jumps.py
-    out.mp4` (spikes only at fade-in + scene cuts). Avoid repeating past problems.
+29. QA before sending, every time: `avsync.py out.mp4` (OK), `cuts.py out.mp4` (only planned
+    scene cuts) and `jumps.py out.mp4` (spikes only at fade-in + scene cuts). Avoid repeating past problems.
 30. v5 sent (55s, with sound only) — passes both checks.
 31. Everything is saved to GitHub (`pov-meme-kit/` on branch ccr-acf60340-s3bcq6) so a new chat
     can continue fully: paste `START_PROMPT.md` and it rebuilds the same way.
@@ -78,6 +78,11 @@ for spoken lines, sad/heartwarming twist.
 33. RULE: **no dead air.** Lines follow each other with <=0.3 s gaps; each line on screen
     ~3 s; scenes only as long as their lines (6–10 s each). v6 = 38 s instead of 55 s.
 34. v6 sent (38 s) — passes cuts.py + jumps.py.
+35. User: first 3–5 s STILL fast-forwarded. REAL ROOT CAUSE: the audio track started at 3.4 s
+    (scene audio mix took its start time from the first cat sound), so phone players raced the
+    video to catch up. FIX in build.py: silence input first in each scene's amix + asetpts.
+    NEW QA: `scripts/avsync.py out.mp4` must print OK (audio+video start at 0, same length).
+36. v7 sent (38 s) — passes avsync + cuts + jumps. QA before EVERY send = all three scripts.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -151,7 +156,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v6.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v7.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).

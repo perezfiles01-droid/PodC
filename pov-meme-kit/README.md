@@ -14,6 +14,7 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 | `scripts/bg.py` | Generates scene backgrounds (SD-Turbo, CPU, ~45 s each). |
 | `scripts/cuts.py` | Lists exact cuts in a clip pack or a finished video (flicker QA). |
 | `scripts/jumps.py` | Lists sudden frame jumps in a finished video (smoothness QA). |
+| `scripts/avsync.py` | Audio and video must both start at 0 (else players fast-forward the start). |
 | `stories/` | Story JSONs. `mom-wasnt-hungry.json` is the approved example. |
 | `assets/packs/` | Green-screen meme packs: `cat_pack.mp4`, `dog_pack.mp4`. |
 | `assets/music/` | Background song(s). |
@@ -27,6 +28,7 @@ cd pov-meme-kit
 bash scripts/setup.sh
 python3 scripts/bg.py assets/backgrounds/hospital "photo of a hospital room with a bed, realistic interior photography, empty, no people, wide angle"
 python3 scripts/build.py stories/<story>.json out
+python3 scripts/avsync.py out/<name>_with-sound.mp4  # must print OK
 python3 scripts/cuts.py out/<name>_with-sound.mp4    # only the planned scene cuts may appear
 python3 scripts/jumps.py out/<name>_with-sound.mp4   # spikes only at fade-in + scene cuts
 ```
