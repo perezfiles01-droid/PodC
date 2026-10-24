@@ -224,6 +224,9 @@ open(lst, "w").write("".join(f"file '{os.path.abspath(p)}'\n" for p in parts))
 run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", f"{OUT}/tmp/joined.mkv"])
 total = sum(s["dur"] for s in story["scenes"])
 m = story["music"]
+# hook_first_frame: no fade-in, so the very first frame (the preview) already shows the scene
+VFADE = (f"[0:v]fade=t=out:st={total - 0.8}:d=0.8[v]" if story.get("hook_first_frame") else
+         f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v]")
 run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      "-ss", str(m.get("bed_ss", 0)), "-i", m["bed"], "-ss", str(m.get("end_ss", 0)), "-i", m["end"], "-filter_complex",
      f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{m['switch']},volume={m['vol']},"
@@ -231,8 +234,7 @@ run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      f"[2:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{total - m['switch'] + 1.5},volume={m['vol'] * 1.4},"
      f"afade=t=in:d=1.5,adelay={int((m['switch'] - 1.5) * 1000)}|{int((m['switch'] - 1.5) * 1000)}[e];"
      f"[0:a][b][e]amix=inputs=3:normalize=0:duration=first,asetpts=N/SR/TB,afade=t=out:st={total - 1}:d=1[a];"
-     (f"[0:v]fade=t=out:st={total - 0.8}:d=0.8[v]," if story.get("hook_first_frame") else
-      f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v],")[:-1],
+     + VFADE,
      "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
      "-c:a", "aac", "-b:a", "160k", "-t", str(total), f"{OUT}/{story['name']}_with-sound.mp4"])
 run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/{story['name']}_with-sound.mp4", "-an", "-c:v", "copy",

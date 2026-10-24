@@ -377,3 +377,5 @@ for spoken lines, sad/heartwarming twist.
 61. User: C30's sound always got cut — now always played in full (see CURRENT RULES). Brother video re-sent (49 s).
 62. User: stories too generic — must give goosebumps with a heart-moving plot twist (rule above).
 63. User: target US & Canada viewers (rules above). Building lunchbox-notes, dad-never-came, grandpa-did-you-eat with 21 new backgrounds (scripts/bg_batch.py).
+64. Sent moms-lunchbox-notes, dad-never-came, grandpa-did-you-eat (48 s each; new backgrounds per scene, hook_first_frame, share CTA). Fixed a build.py syntax slip in the fade code.
+    Lesson: never chain background jobs with `pgrep -f` waits — they matched each other and deadlocked.
