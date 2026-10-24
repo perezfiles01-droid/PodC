@@ -62,7 +62,8 @@
 **Files to give the user on request (private repo — sign in as perezfiles01-droid)**
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
-- Videos: examples/mom-wasnt-hungry_v13.mp4 and examples/mom-missed-my-show_v2.mp4 (same raw/ link pattern)
+- Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
+  old-shelter-dog_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -315,3 +316,8 @@ for spoken lines, sad/heartwarming twist.
     (c) C39's second half was a spinning banana with cuts every 0.5 s. Fixes in CURRENT RULES.
     v13 example re-exported with the frame fix (v13 story pins its clip ranges so it still
     matches). mom-missed-my-show_v2 sent: every scene exact frames, avsync/cuts/jumps clean.
+56. User asked for new ideas mixing CAT AND DOG clips; picked two: "Dad sold his car to pay for my
+    school" (stories/dad-sold-his-car.json, 48 s) and "Nobody wanted the old shelter dog"
+    (stories/old-shelter-dog.json, 46 s). New backgrounds: living_room, night_street, bus_stop,
+    shelter. bg.py now takes an optional seed (3rd arg) — SD-Turbo sometimes makes tiled/top-down
+    rooms; try another seed. Both videos: avsync OK, no in-scene jumps.

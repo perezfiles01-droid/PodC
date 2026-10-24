@@ -1,0 +1,251 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "old-shelter-dog_v1",
+ "title": "Nobody wanted the old\nshelter dog",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "switch": 42,
+  "vol": 0.45
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/shelter.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C45",
+     "name": "Visitor",
+     "x": 300,
+     "y": 1760,
+     "h": 400,
+     "label": "Visitor:",
+     "say": [
+      {
+       "text": "Aww, take\nthe puppy!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D15",
+     "name": "Puppy",
+     "x": 560,
+     "y": 1780,
+     "h": 260,
+     "label": "Puppy:",
+     "say": []
+    },
+    {
+     "clip": "D18",
+     "name": "Old dog",
+     "x": 840,
+     "y": 1770,
+     "h": 400,
+     "label": "Old dog:",
+     "say": [
+      {
+       "text": "*...again.*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/shelter.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D21",
+     "name": "Old dog",
+     "x": 540,
+     "y": 1770,
+     "h": 460,
+     "label": "Old dog:",
+     "say": [
+      {
+       "text": "*Everyone leaves...\nwithout me.*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/shelter.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C6",
+     "name": "Girl",
+     "x": 300,
+     "y": 1760,
+     "h": 360,
+     "label": "Girl:",
+     "say": [
+      {
+       "text": "Mom, can we\ntake HIM?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C7",
+     "name": "Mom",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "He's very old,\nsweetie...",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/shelter.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C30",
+     "name": "Girl",
+     "x": 320,
+     "y": 1760,
+     "h": 320,
+     "label": "Girl:",
+     "say": [
+      {
+       "text": "Old dogs need\nlove the most!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D11",
+     "name": "Old dog (shocked)",
+     "x": 790,
+     "y": 1770,
+     "h": 380,
+     "label": "Old dog:",
+     "say": [
+      {
+       "text": "*Me?!*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/shelter.png",
+   "dur": 5,
+   "actors": [
+    {
+     "clip": "D2",
+     "name": "Old dog (happy)",
+     "x": 540,
+     "y": 1780,
+     "h": 420,
+     "label": "Old dog:",
+     "say": [
+      {
+       "text": "*She chose me!*",
+       "t0": 0.3,
+       "t1": 4.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D5",
+     "name": "Old dog (home)",
+     "x": 330,
+     "y": 1760,
+     "h": 360,
+     "label": "Old dog:",
+     "say": [
+      {
+       "text": "*Home...*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    },
+    {
+     "clip": "C44",
+     "name": "Girl",
+     "x": 780,
+     "y": 1760,
+     "h": 380,
+     "label": "Girl:",
+     "say": [
+      {
+       "text": "♪ You're home now ♪",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "D3",
+     "name": "Old dog (peaceful)",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "Everyone deserves a home...",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "...even at the end.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}
