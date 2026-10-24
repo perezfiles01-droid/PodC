@@ -71,6 +71,13 @@ for spoken lines, sad/heartwarming twist.
 30. v5 sent (55s, with sound only) — passes both checks.
 31. Everything is saved to GitHub (`pov-meme-kit/` on branch ccr-acf60340-s3bcq6) so a new chat
     can continue fully: paste `START_PROMPT.md` and it rebuilds the same way.
+32. User: v5's first seconds still looked fast-forwarded. Verified with burned-in timestamps that
+    playback speed is correct — the big-eyed kitten meme itself is twitchy. FIX: per-actor
+    `"speed"` (0.7 for the kitten) slows video + sound. RULE: slow down any twitchy/fast clip,
+    especially in the opening seconds.
+33. RULE: **no dead air.** Lines follow each other with <=0.3 s gaps; each line on screen
+    ~3 s; scenes only as long as their lines (6–10 s each). v6 = 38 s instead of 55 s.
+34. v6 sent (38 s) — passes cuts.py + jumps.py.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -144,7 +151,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v5.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v6.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).

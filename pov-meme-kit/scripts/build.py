@@ -80,10 +80,11 @@ for si, sc in enumerate(story["scenes"]):
         src = story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
-        n = int(a["len"] * FPS)
+        sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
+        n = int(a["len"] / sp * FPS)
         flip = ",hflip" if a.get("flip") else ""
         # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
-        fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=PTS-STARTPTS,crop={crop},format=yuva420p,{KEY},"
+        fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,{KEY},"
                   f"scale=-2:{a['h']}{flip},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
                   f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
         en = f":enable='between(t,{a.get('t0', 0)},{a.get('t1', T)})'"
@@ -98,14 +99,14 @@ for si, sc in enumerate(story["scenes"]):
             pending.append((lp, a.get("t0", 0), a.get("t1", T)))
         for k, say in enumerate(a.get("say", [])):
             n_lines = say["text"].count("\n") + 1
-            sp = f"{OUT}/tmp/say{si}_{ai}_{k}.png"
-            text_png(sp, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
+            say_png = f"{OUT}/tmp/say{si}_{ai}_{k}.png"
+            text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
                            "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
-            pending.append((sp, say["t0"], say["t1"]))
+            pending.append((say_png, say["t0"], say["t1"]))
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
         for k, (t0, t1) in enumerate(a.get("speak", [])):
             lbl = f"v{ai}_{k}"
-            fc.append(f"[{idx}:a]atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+            fc.append(f"[{idx}:a]atempo={max(sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
                       f"afade=t=in:d=0.1,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
                       f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={a.get('vol', 1.0)}[{lbl}]")
             aud.append(lbl)

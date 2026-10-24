@@ -44,7 +44,7 @@ python3 scripts/jumps.py out/<name>_with-sound.mp4   # spikes only at fade-in + 
     "actors": [{
       "pack": "cat", "ss": 30.0, "len": 8.0,    // clip start/length INSIDE one segment (see HANDOFF)
       "h": 420, "x": 320, "y": 1440,             // height px, center x, bottom y on a 1080x1920 canvas
-      "t0": 0, "t1": 11, "flip": false, "vol": 1.0,
+      "t0": 0, "t1": 11, "flip": false, "vol": 1.0, "speed": 1.0,   // speed<1 calms twitchy clips
       "label": "Me:", "lx": 0,                   // lx shifts label/speech sideways
       "say": [{"text": "Line one\nline two", "t0": 0.6, "t1": 4.6}]   // plays the cat's sound too
     }],
