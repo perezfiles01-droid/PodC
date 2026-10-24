@@ -51,6 +51,17 @@
 - When giving posting tips, use North American times (about 7–10 pm Eastern / 4–7 pm Pacific,
   weekday evenings + weekend mornings).
 
+**Algorithm (FB Reels / IG / TikTok, US-CA)** — new stories set `"hook_first_frame": true`
+- No fade-in: the very first frame already shows the POV title + characters (that frame is the
+  preview and the 1-second hook decides if people keep watching).
+- Strong conflict in the first 3 s (a hurtful line or question), twist in the last third.
+- 35–50 s total, no dead air (completion + rewatches are the top ranking signals).
+- End card adds a yellow share line ("Share this with someone who needs to see it ❤️") — shares
+  and comments push reach more than likes. Captions end with a question or "tag someone".
+- Keep all text out of the bottom ~18% and the right edge (platform buttons cover it).
+- Post as a Reel, 9:16, music added in-app when possible; 1–2 posts/day at 7–10 pm ET; reply to
+  the first comments within an hour.
+
 **Sound**
 - Each character plays **its own clip's sound** while it talks (the v7 behaviour), song underneath
   (assets/music/chasing_cars_hale_cover.mp3: bed from 0:00, ending from 2:48, `switch` = ending start).

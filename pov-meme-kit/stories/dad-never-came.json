@@ -260,8 +260,18 @@
      "t1": 7,
      "color": "white",
      "size": 58
+    },
+    {
+     "text": "Share this with someone\nwho needs to see it ❤️",
+     "x": 540,
+     "y": 1180,
+     "t0": 4.3,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
     }
    ]
   }
- ]
+ ],
+ "hook_first_frame": true
 }

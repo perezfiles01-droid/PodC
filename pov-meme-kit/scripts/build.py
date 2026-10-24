@@ -231,7 +231,8 @@ run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      f"[2:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{total - m['switch'] + 1.5},volume={m['vol'] * 1.4},"
      f"afade=t=in:d=1.5,adelay={int((m['switch'] - 1.5) * 1000)}|{int((m['switch'] - 1.5) * 1000)}[e];"
      f"[0:a][b][e]amix=inputs=3:normalize=0:duration=first,asetpts=N/SR/TB,afade=t=out:st={total - 1}:d=1[a];"
-     f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v]",
+     (f"[0:v]fade=t=out:st={total - 0.8}:d=0.8[v]," if story.get("hook_first_frame") else
+      f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v],")[:-1],
      "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
      "-c:a", "aac", "-b:a", "160k", "-t", str(total), f"{OUT}/{story['name']}_with-sound.mp4"])
 run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/{story['name']}_with-sound.mp4", "-an", "-c:v", "copy",
