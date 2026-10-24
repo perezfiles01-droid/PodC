@@ -379,3 +379,4 @@ for spoken lines, sad/heartwarming twist.
 63. User: target US & Canada viewers (rules above). Building lunchbox-notes, dad-never-came, grandpa-did-you-eat with 21 new backgrounds (scripts/bg_batch.py).
 64. Sent moms-lunchbox-notes, dad-never-came, grandpa-did-you-eat (48 s each; new backgrounds per scene, hook_first_frame, share CTA). Fixed a build.py syntax slip in the fade code.
     Lesson: never chain background jobs with `pgrep -f` waits — they matched each other and deadlocked.
+65. Sent extra-fries_v1 (48 s, diner twist: tip jar 'For the kid's fries').
