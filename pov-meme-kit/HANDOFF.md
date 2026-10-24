@@ -140,6 +140,9 @@ for spoken lines, sad/heartwarming twist.
 47. build.py now: samples each video's own green + frame size (portrait/1080p ok); bright pure-green
     screens use chromakey WITHOUT despill (despill turned the yellow banana suit orange);
     cut-outs keep only the main block of rows/columns so corner watermarks never show.
+48. v12 (user swaps): scene 2 "Me (peeking)" C13 → C26, scene 3 "Me (10 years later)" C23 → D12.
+    Note: after a swap, CHECK placement — C26 inherited the edge-peeker's spot and floated; moved
+    to the floor (x 230, y 1720, h 420). Story file now = v12.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.

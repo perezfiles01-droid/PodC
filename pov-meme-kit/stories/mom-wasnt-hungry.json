@@ -1,5 +1,5 @@
 {
- "name": "mom-wasnt-hungry_v7",
+ "name": "mom-wasnt-hungry_v12",
  "title": "Mom always said she wasn't hungry",
  "handle": "",
  "packs": {
@@ -80,16 +80,14 @@
      "name": "Mom"
     },
     {
-     "ss": 75.2,
-     "len": 4.0,
-     "h": 520,
-     "x": 150,
-     "y": 1380,
+     "h": 420,
+     "x": 230,
+     "y": 1720,
      "flip": true,
      "t0": 3.3,
      "t1": 6.0,
      "label": "Me:",
-     "lx": 60,
+     "lx": 0,
      "say": [
       {
        "text": "*Mom...?*",
@@ -97,7 +95,7 @@
        "t1": 6.0
       }
      ],
-     "clip": "C13",
+     "clip": "C26",
      "name": "Me (peeking)"
     },
     {
@@ -125,8 +123,6 @@
    "dur": 6.5,
    "actors": [
     {
-     "ss": 137.8,
-     "len": 14.5,
      "h": 480,
      "x": 540,
      "y": 1680,
@@ -143,7 +139,7 @@
        "t1": 6.4
       }
      ],
-     "clip": "C23",
+     "clip": "D12",
      "name": "Me (10 years later)"
     }
    ]
