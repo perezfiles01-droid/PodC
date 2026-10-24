@@ -1,0 +1,236 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "class-clown_v1",
+ "title": "The class clown was hiding\nhis pain",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 40
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/classroom.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C32",
+     "name": "Clown",
+     "x": 540,
+     "y": 1760,
+     "h": 620,
+     "label": "Clown:",
+     "say": [
+      {
+       "text": "Watch this!!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C31",
+     "name": "Classmate",
+     "x": 200,
+     "y": 1800,
+     "h": 280,
+     "label": "Classmate:",
+     "say": [
+      {
+       "text": "HAHAHA!",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    },
+    {
+     "clip": "D14",
+     "name": "Classmate",
+     "x": 880,
+     "y": 1800,
+     "h": 320
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/classroom.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D18",
+     "name": "Teacher",
+     "x": 300,
+     "y": 1760,
+     "h": 420,
+     "label": "Teacher:",
+     "say": [
+      {
+       "text": "Sit down!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C44",
+     "name": "Clown",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Clown:",
+     "say": [
+      {
+       "text": "♪ Yapapa ♪",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/school_hall.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "C13",
+     "name": "Best friend",
+     "x": 150,
+     "y": 1500,
+     "h": 520,
+     "label": "Best friend:",
+     "say": [
+      {
+       "text": "*Why does he always go\nquiet after school?*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ],
+     "lx": 200
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/night_street.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C42",
+     "name": "Clown (alone)",
+     "x": 540,
+     "y": 1780,
+     "h": 300,
+     "label": "Clown:",
+     "say": [
+      {
+       "text": "*Nobody's waiting\nat home...*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/bedroom.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C38",
+     "name": "Clown (crying)",
+     "x": 540,
+     "y": 1780,
+     "h": 460,
+     "label": "Clown:",
+     "say": [
+      {
+       "text": "*I make everyone laugh...\nso nobody sees me cry.*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/bus_stop.png",
+   "dur": 8,
+   "actors": [
+    {
+     "clip": "D13",
+     "name": "Best friend",
+     "x": 320,
+     "y": 1780,
+     "h": 360,
+     "label": "Best friend:",
+     "say": [
+      {
+       "text": "Want to come to my\nhouse for dinner?",
+       "t0": 0.3,
+       "t1": 3.8
+      }
+     ]
+    },
+    {
+     "clip": "C26",
+     "name": "Clown (shocked)",
+     "x": 780,
+     "y": 1780,
+     "h": 380,
+     "label": "Clown:",
+     "say": [
+      {
+       "text": "...Really?",
+       "t0": 4.0,
+       "t1": 7.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/bus_stop.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C19",
+     "name": "Clown (happy)",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "The loudest laugh can",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "hide the deepest hurt.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}

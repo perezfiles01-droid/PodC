@@ -63,7 +63,7 @@
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
-  old-shelter-dog_v1.mp4 (same raw/ link pattern)
+  old-shelter-dog_v1.mp4, grandmas-birthday_v1.mp4, class-clown_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -321,3 +321,6 @@ for spoken lines, sad/heartwarming twist.
     (stories/old-shelter-dog.json, 46 s). New backgrounds: living_room, night_street, bus_stop,
     shelter. bg.py now takes an optional seed (3rd arg) — SD-Turbo sometimes makes tiled/top-down
     rooms; try another seed. Both videos: avsync OK, no in-scene jumps.
+57. Two more mixed cat+dog videos: "Grandma's last birthday wish" (stories/grandmas-birthday.json,
+    46 s) and "The class clown was hiding his pain" (stories/class-clown.json, 47 s). New
+    backgrounds: classroom, bedroom. C32 (happy-happy cat) is small inside its frame — use h ~620.

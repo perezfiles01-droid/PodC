@@ -1,0 +1,238 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "grandmas-birthday_v1",
+ "title": "Grandma's last birthday wish",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 42
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D17",
+     "name": "Me (on phone)",
+     "x": 320,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Sorry Grandma, I'm\nbusy this weekend...",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C15",
+     "name": "Grandma",
+     "x": 780,
+     "y": 1760,
+     "h": 340,
+     "label": "Grandma:",
+     "say": [
+      {
+       "text": "*It's okay...*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/kitchen.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "C29",
+     "name": "Grandma",
+     "x": 540,
+     "y": 1440,
+     "h": 440,
+     "label": "Grandma:",
+     "say": [
+      {
+       "text": "*I baked his favorite\ncake anyway.*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C7",
+     "name": "Grandma (sad)",
+     "x": 540,
+     "y": 1760,
+     "h": 440,
+     "label": "Grandma:",
+     "say": [
+      {
+       "text": "*Maybe next year...*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/office.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D6",
+     "name": "Coworker",
+     "x": 320,
+     "y": 1690,
+     "h": 380,
+     "label": "Coworker:",
+     "say": [
+      {
+       "text": "Your grandma\ncalled 5 times!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D28",
+     "name": "Me",
+     "x": 780,
+     "y": 1690,
+     "h": 420,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*...today is her\nbirthday.*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/night_street.png",
+   "dur": 5,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D2",
+     "name": "Me (running)",
+     "x": 540,
+     "y": 1780,
+     "h": 420,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "I'M COMING\nGRANDMA!",
+       "t0": 0.3,
+       "t1": 4.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 8,
+   "actors": [
+    {
+     "clip": "D22",
+     "name": "Me",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Happy birthday,\nGrandma!",
+       "t0": 0.3,
+       "t1": 3.8
+      }
+     ]
+    },
+    {
+     "clip": "C26",
+     "name": "Grandma (shocked)",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Grandma:",
+     "t1": 4.0
+    },
+    {
+     "clip": "C18",
+     "name": "Grandma (happy tears)",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Grandma:",
+     "say": [
+      {
+       "text": "You came...",
+       "t0": 4.1,
+       "t1": 7.8
+      }
+     ],
+     "t0": 4.0
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C17",
+     "name": "Hug",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "Visit them while they can",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "still open the door.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}
