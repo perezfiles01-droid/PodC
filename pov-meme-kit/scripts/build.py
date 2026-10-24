@@ -74,7 +74,10 @@ def bbox(src, ss, dur):
     a = main_blob(a)  # drop corner watermarks / stray specks: keep the biggest block of rows & columns
     ys, xs = np.where(a)
     _, w, h = key_for(src)
-    x0, x1, y0, y1 = max(xs.min() - 4, 0), min(xs.max() + 4, w - 1), max(ys.min() - 4, 0), h - 1
+    # tight_bottom: crop at the character's feet (portrait clips have empty green below the cat,
+    # which made it float); off for older stories so they rebuild identically
+    y1 = min(ys.max() + 2, h - 1) if story.get("tight_bottom") else h - 1
+    x0, x1, y0 = max(xs.min() - 4, 0), min(xs.max() + 4, w - 1), max(ys.min() - 4, 0)
     return f"{(x1 - x0) // 2 * 2}:{(y1 - y0) // 2 * 2}:{x0}:{y0}"
 
 

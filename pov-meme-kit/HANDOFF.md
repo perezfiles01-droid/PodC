@@ -19,6 +19,8 @@
 - Photoreal background per scene (assets/backgrounds/ or new ones via scripts/bg.py).
 - Characters = green-screen clips from the catalog, placed where the plot puts them (floor, table,
   bed…), **`"actor_scale": 1.3`** (bigger), never overlapping each other or each other's text.
+- New stories set **`"tight_bottom": true`** (crops at the character's feet — portrait clips like C30
+  otherwise float). Older stories (mom-wasnt-hungry) leave it off so they rebuild identically.
 - Label (white) right above each character's head, its speech (yellow) right above the label; both
   appear/disappear with that character. Thoughts in *asterisks*.
 - Clip emotion must match the line (sad → sad/crying clip, happy → happy clip). A character may
@@ -53,7 +55,7 @@
 **Files to give the user on request (private repo — sign in as perezfiles01-droid)**
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
-- Latest video: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/examples/mom-wasnt-hungry_v13.mp4
+- Videos: examples/mom-wasnt-hungry_v13.mp4 and examples/mom-missed-my-show_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -294,3 +296,9 @@ for spoken lines, sad/heartwarming twist.
 
 ## Superseded (don't use)
 - v1 Kokoro TTS voices, compose.sh/overlays.py single-scene pipeline, silent exports.
+54. User picked clips C12 C14 C18 C19 C22 C26 C30 C31 C38 C39 C44 D1 and asked for story options;
+    chose **Option B "When Mom couldn't come to my school performance"** → stories/mom-missed-my-show.json,
+    examples/mom-missed-my-show_v1.mp4 (47 s, 7 scenes; table in examples/*_clips.md). New
+    backgrounds: stage.png (auditorium seen from the stage), backstage.png, school_hall.png.
+    Added `tight_bottom` (see CURRENT RULES). Known weak spot: C12 (brother) is a tiny dark cat in
+    its source — offer a swap if the user dislikes it.
