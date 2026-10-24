@@ -67,8 +67,7 @@ for spoken lines, sad/heartwarming twist.
     Safe ranges: kitten 30.0+8.0, sad tabby 38.9+4.5, bowl 119.3+4.6, peek 75.2+4.0,
     crying grey 80.0+3.0, crying dark 104.6+5.9, orange talking 137.8+14.5.
 29. QA before sending, every time: `avsync.py out.mp4` (OK), `cuts.py out.mp4` (only planned
-    scene cuts), `jumps.py out.mp4` (spikes only at fade-in + scene cuts/clip swaps) and
-    `pitch.py` on each scene's lines (all CAT, see #42). Avoid repeating past problems.
+    scene cuts) and `jumps.py out.mp4` (spikes only at fade-in + scene cuts). Avoid repeating past problems.
 30. v5 sent (55s, with sound only) — passes both checks.
 31. Everything is saved to GitHub (`pov-meme-kit/` on branch ccr-acf60340-s3bcq6) so a new chat
     can continue fully: paste `START_PROMPT.md` and it rebuilds the same way.
@@ -84,50 +83,18 @@ for spoken lines, sad/heartwarming twist.
     video to catch up. FIX in build.py: silence input first in each scene's amix + asetpts.
     NEW QA: `scripts/avsync.py out.mp4` must print OK (audio+video start at 0, same length).
 36. v7 sent (38 s) — passes avsync + cuts + jumps. QA before EVERY send = all three scripts.
-37. User: remove the **woman laughing** and make sure it never appears again. (First attempt
-    muted the wrong clip — grey kitten 82–83 is actually a cat.) DONE via the manual
-    `assets/packs/cat_pack.notes.json` — build.py auto-mutes every "mute" stretch in every video.
-    RULE: when the user flags a bad sound, add it to the pack's notes.json "mute" list.
-38. RULE: **check every clip's audio before using it** (spectrogram / whisper). Many clips carry
-    music, human singing or laughs instead of meows (all listed in notes.json). A cat with no
-    usable sound borrows a clean meow via `"sound_ss"` (see notes.json "clean_meows").
-39. User: grey kitten (screaming) and orange cat (eyes half closed, human singing) did NOT match
-    the story. Re-cast: "You lied to me..." = teary-eyed tabby 169.0+6.0 with `keep_top` 0.55
-    (hides the hands holding it); office = excited waving white cat 111.0+7.3; restaurant Me =
-    polite standing cream cat 44.0+9.5. Don't use the orange singing cat for sad/heartfelt lines.
-40. v8 sent (38 s) — passes avsync + cuts + jumps.
-41. User: "the laughing woman is in the white cat clip". ROOT CAUSE: the office white cat borrowed
-    its sound from the big-eyed kitten clip (28.53–38.37), which is ENTIRELY a woman's voice
-    (laugh 28.7–31.9, talking 34.1–37.9, pitch ~245 Hz). Also used under the kitten and cream cat.
-    FIX: whole kitten clip muted in notes.json; "huh" cat (0–6.73, 122 Hz) and bowl cat
-    (119.3–124.1, 315 Hz) muted too. Borrow ONLY from notes.json "clean_meows".
-42. NEW QA tool `scripts/pitch.py <audio> START END ...` — cat >= ~380 Hz, human ~90–330 Hz.
-    RULE: pitch-check every speaking line on the per-scene audio (out/tmp/sceneN.mp4, before the
-    song is mixed in — the song itself has a human singer). All lines must read CAT.
-43. v9 sent (38 s) — avsync OK, cuts OK, every line pitch-checked CAT.
-44. User on v9: "cat voices are the same all throughout... doesn't match the story at all".
-    (User was offered "music only" and chose it, then said that was even worse — they DO want
-    cat sounds, just fitting ones. Don't propose music-only again.)
-    RULES now:
-    - **One consistent voice per character**: little Me = grey-kitten meow (80.0), grown-up Me =
-      adult white-cat meows (20.0 / 24.7), Mom = her own sad-tabby meow (38.9+), Mom crying =
-      her own sobbing clip (104.6+).
-    - **Sound must match the line's emotion** (sad → sad meow, happy → excited meow, crying → sobs).
-    - **Inner thoughts in *asterisks* are SILENT** (`"sound": false`); the song carries them.
-    - A character's 2nd/3rd line continues further into its sound — never the same meow twice
-      (build.py does this automatically now).
-45. v10 sent (38 s) with #44 applied — avsync, cuts, pitch all OK.
-46. User: "generate the cat sounds so they match the background, the story and the cat clips".
-    NEW: `scripts/sfx.py stories/x.json` generates voices with **AudioLDM**
-    (cvssp/audioldm-s-full-v2, free, CPU, ~10 s/take; AudioLDM2 breaks with current
-    transformers). Story fields: top-level "voices" {kid, mom, grown: base prompt}, actor
-    "voice", say "emotion", scene "ambience" (+ optional "ambience_vol"). It makes 4+ takes per
-    line, retries until a take reads CAT with >=15 voiced frames, writes assets/sfx/<story>/ and
-    stores say["sfx"] / scene["ambience_file"]. build.py plays generated voices instead of clip
-    audio and mixes the room ambience quietly. Delete a wav to regenerate just that line; reword
-    the emotion prompt if retries stay weak ("cat meowing happily twice, loud clear meow" works).
-47. v11 sent (38 s): generated voices (kid ~840 Hz, mom ~570–640 Hz, grown ~550–890 Hz) +
-    per-scene ambience; thoughts still silent. avsync/cuts/pitch OK.
+37. **USER CHOSE v7 AS THE APPROVED VERSION ("rollback to v7, that is currently what I want").**
+    The kit was rolled back to the v7 state (commit f958fdd): v7 story, v7 build.py, v7 example.
+    Later experiments v8–v11 were REJECTED by the user and removed from the kit; they're still in
+    git history (commits 1a0fe6e … 366698c) if ever needed:
+    - v8/v9: re-cast clips + auto-muting "bad" clip audio + borrowed meows → "cat voices the same
+      throughout, doesn't match the story".
+    - v10: one voice per character, silent thoughts → still not wanted.
+    - v11: AI-generated cat voices (AudioLDM) + room ambience → user rolled back to v7.
+    RULE: start new videos from the v7 approach (each clip plays its OWN meme sound while the cat
+    speaks, song underneath). Do not re-introduce v8–v11 sound changes unless the user asks.
+    Known v7 caveat the user raised later: some clips' own audio contains a woman laughing /
+    human voices (big-eyed kitten clip 28.53–38.37). Ask the user before changing sound again.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -201,7 +168,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v11.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v7.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).
