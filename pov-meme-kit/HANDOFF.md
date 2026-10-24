@@ -30,6 +30,10 @@
   swap clips mid-scene for an emotion change (same x/y, consecutive t0/t1).
 - Ending: dim + white closing lines; song switches to its climax.
 
+**Stories**
+- EVERY story is a **human POV** (family, school, work, sacrifice…). Cats and dogs are only the
+  ACTORS playing people — never stories about cats/dogs/pets/shelters. (User rule.)
+
 **Sound**
 - Each character plays **its own clip's sound** while it talks (the v7 behaviour), song underneath
   (assets/music/chasing_cars_hale_cover.mp3: bed from 0:00, ending from 2:48, `switch` = ending start).
@@ -66,7 +70,7 @@
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
-  old-shelter-dog_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4 (same raw/ link pattern)
+  old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -330,3 +334,7 @@ for spoken lines, sad/heartwarming twist.
 58. User: backgrounds too overpowering — make them simple/normal but realistic. Added `bg_soft`
     (gblur 6, saturation 0.55, brightness -0.07, contrast 0.88). Grandma + clown re-sent as v2.
     Older videos unchanged (option off by default).
+59. User rule: stories must be human POVs only (see CURRENT RULES › Stories). Built "My big brother
+    skipped college so I could go" + "Bullied for my old shoes" (bg_soft on). Found the v7
+    rollback had removed `keep_top` from build.py (hands showed under C27) — restored; dad-sold-
+    his-car re-exported with it.

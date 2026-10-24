@@ -1,0 +1,245 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "old-shoes_v1",
+ "title": "Bullied for my old shoes",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 40
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/school_hall.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C2",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*...*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    },
+    {
+     "clip": "D6",
+     "name": "Bully",
+     "x": 770,
+     "y": 1760,
+     "h": 380,
+     "label": "Bully:",
+     "say": [
+      {
+       "text": "Ew, look at\nhis shoes!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/school_hall.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "C9",
+     "name": "Bully",
+     "x": 320,
+     "y": 1760,
+     "h": 420,
+     "label": "Bully:",
+     "say": [
+      {
+       "text": "HAHAHA",
+       "t0": 0.3,
+       "t1": 2.9
+      }
+     ]
+    },
+    {
+     "clip": "D16",
+     "name": "Bully",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Bully 2:",
+     "say": [
+      {
+       "text": "Broke kid!",
+       "t0": 3.0,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/bedroom.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C27",
+     "name": "Me (teary)",
+     "x": 540,
+     "y": 1780,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*Dad works so hard...\nI can't ask for new ones.*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ],
+     "keep_top": 0.55
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D17",
+     "name": "Dad (on phone)",
+     "x": 680,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "Can I work an extra\nshift this week?",
+       "t0": 0.3,
+       "t1": 6.8
+      }
+     ]
+    },
+    {
+     "clip": "C13",
+     "name": "Me (peeking)",
+     "x": 150,
+     "y": 1500,
+     "h": 500,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*Dad...*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ],
+     "lx": 180
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D22",
+     "name": "Dad",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "Surprise!\nNew shoes!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C26",
+     "name": "Me (shocked)",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Dad?!",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 5,
+   "actors": [
+    {
+     "clip": "C32",
+     "name": "Me (happy)",
+     "x": 540,
+     "y": 1780,
+     "h": 760,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Best dad ever!!",
+       "t0": 0.3,
+       "t1": 4.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/living_room.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "D3",
+     "name": "Dad",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "He wore his old shoes...",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "...so you could have new ones.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}

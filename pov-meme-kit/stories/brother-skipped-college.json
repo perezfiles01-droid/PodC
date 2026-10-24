@@ -1,0 +1,228 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "brother-skipped-college_v1",
+ "title": "My big brother skipped college\nso I could go",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 40
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/kitchen.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C30",
+     "name": "Me",
+     "x": 320,
+     "y": 1440,
+     "h": 300,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "We can only afford\none of us in college...",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D10",
+     "name": "Big brother",
+     "x": 760,
+     "y": 1440,
+     "h": 360,
+     "label": "Kuya:",
+     "say": [
+      {
+       "text": "*...*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/kitchen.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "D9",
+     "name": "Big brother",
+     "x": 540,
+     "y": 1440,
+     "h": 440,
+     "label": "Kuya:",
+     "say": [
+      {
+       "text": "You go.\nI'll work.",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/night_street.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D25",
+     "name": "Big brother (tired)",
+     "x": 540,
+     "y": 1780,
+     "h": 320,
+     "label": "Kuya:",
+     "say": [
+      {
+       "text": "*Night shift again...*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/classroom.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D13",
+     "name": "Classmate",
+     "x": 320,
+     "y": 1790,
+     "h": 340,
+     "label": "Classmate:",
+     "say": [
+      {
+       "text": "How do you pay\nfor all this?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C3",
+     "name": "Me",
+     "x": 780,
+     "y": 1790,
+     "h": 360,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "My brother...",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/stage.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "C19",
+     "name": "Me (graduating)",
+     "x": 540,
+     "y": 1720,
+     "h": 460,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "This is for you,\nKuya!",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/stage.png",
+   "dur": 8,
+   "actors": [
+    {
+     "clip": "D21",
+     "name": "Big brother (crying)",
+     "x": 320,
+     "y": 1740,
+     "h": 420,
+     "label": "Kuya:",
+     "say": [
+      {
+       "text": "*You made it...*",
+       "t0": 0.3,
+       "t1": 3.8
+      }
+     ]
+    },
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 780,
+     "y": 1720,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "WE made it.",
+       "t0": 4.0,
+       "t1": 7.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/stage.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C17",
+     "name": "Hug",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "Some heroes never wear",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "a cap and gown.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}

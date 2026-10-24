@@ -140,6 +140,9 @@ for si, sc in enumerate(story["scenes"]):
                 a.setdefault("speed", round(max(0.6, a["len"] / 3.0), 2))
         src = CATALOG[a["clip"]]["file"] if a.get("clip") else story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
+        if a.get("keep_top"):  # keep only the top part of the cut-out (e.g. hide hands holding the cat)
+            cw, chh, cx, cy = map(int, crop.split(":"))
+            crop = f"{cw}:{int(chh * a['keep_top']) // 2 * 2}:{cx}:{cy}"
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
         sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
         n = int(a["len"] / sp * FPS)
