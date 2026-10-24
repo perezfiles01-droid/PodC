@@ -37,6 +37,11 @@
 - EVERY story is a **human POV** (family, school, work, sacrifice…). Cats and dogs are only the
   ACTORS playing people — never stories about cats/dogs/pets/shelters. (User rule.)
 
+- Stories must NOT be generic. Each needs: one **specific, concrete detail** planted early (an object,
+  a habit, a phrase) that pays off at the end; a **real plot twist** the viewer doesn't see coming
+  (a hidden sacrifice, secret, misunderstanding reversed); the reveal shown, not explained; a final
+  line that hits hard. Aim for goosebumps. Test: if the ending can be guessed from the title, rewrite.
+
 **Sound**
 - Each character plays **its own clip's sound** while it talks (the v7 behaviour), song underneath
   (assets/music/chasing_cars_hale_cover.mp3: bed from 0:00, ending from 2:48, `switch` = ending start).
@@ -346,3 +351,4 @@ for spoken lines, sad/heartwarming twist.
     his-car re-exported with it.
 60. User rule: no recycled backgrounds — new ones for every video and every scene (see CURRENT RULES).
 61. User: C30's sound always got cut — now always played in full (see CURRENT RULES). Brother video re-sent (49 s).
+62. User: stories too generic — must give goosebumps with a heart-moving plot twist (rule above).
