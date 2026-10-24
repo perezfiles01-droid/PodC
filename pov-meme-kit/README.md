@@ -11,6 +11,7 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 | `STYLE_GUIDE.md` | How the reference videos are built, scene by scene. |
 | `scripts/setup.sh` | One-time pip installs for a fresh session. |
 | `scripts/build.py` | Builds a video from a story JSON → `<name>_with-sound.mp4` (+ a silent copy). |
+| `scripts/sfx.py` | Generates cat voices per character/emotion + scene ambience (AudioLDM). Run before build.py. |
 | `scripts/bg.py` | Generates scene backgrounds (SD-Turbo, CPU, ~45 s each). |
 | `scripts/cuts.py` | Lists exact cuts in a clip pack or a finished video (flicker QA). |
 | `scripts/jumps.py` | Lists sudden frame jumps in a finished video (smoothness QA). |
@@ -28,6 +29,7 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 cd pov-meme-kit
 bash scripts/setup.sh
 python3 scripts/bg.py assets/backgrounds/hospital "photo of a hospital room with a bed, realistic interior photography, empty, no people, wide angle"
+python3 scripts/sfx.py stories/<story>.json      # generated cat voices + room sound
 python3 scripts/build.py stories/<story>.json out
 python3 scripts/avsync.py out/<name>_with-sound.mp4  # must print OK
 python3 scripts/cuts.py out/<name>_with-sound.mp4    # only the planned scene cuts may appear

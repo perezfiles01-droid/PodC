@@ -117,6 +117,17 @@ for spoken lines, sad/heartwarming twist.
     - A character's 2nd/3rd line continues further into its sound — never the same meow twice
       (build.py does this automatically now).
 45. v10 sent (38 s) with #44 applied — avsync, cuts, pitch all OK.
+46. User: "generate the cat sounds so they match the background, the story and the cat clips".
+    NEW: `scripts/sfx.py stories/x.json` generates voices with **AudioLDM**
+    (cvssp/audioldm-s-full-v2, free, CPU, ~10 s/take; AudioLDM2 breaks with current
+    transformers). Story fields: top-level "voices" {kid, mom, grown: base prompt}, actor
+    "voice", say "emotion", scene "ambience" (+ optional "ambience_vol"). It makes 4+ takes per
+    line, retries until a take reads CAT with >=15 voiced frames, writes assets/sfx/<story>/ and
+    stores say["sfx"] / scene["ambience_file"]. build.py plays generated voices instead of clip
+    audio and mixes the room ambience quietly. Delete a wav to regenerate just that line; reword
+    the emotion prompt if retries stay weak ("cat meowing happily twice, loud clear meow" works).
+47. v11 sent (38 s): generated voices (kid ~840 Hz, mom ~570–640 Hz, grown ~550–890 Hz) +
+    per-scene ambience; thoughts still silent. avsync/cuts/pitch OK.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -190,7 +201,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v10.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v11.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).

@@ -1,5 +1,5 @@
 {
- "name": "mom-wasnt-hungry_v10",
+ "name": "mom-wasnt-hungry_v11",
  "title": "Mom always said she wasn't hungry",
  "handle": "",
  "packs": {
@@ -31,9 +31,12 @@
       {
        "text": "I already ate,\nsweetie",
        "t0": 3.4,
-       "t1": 6.9
+       "t1": 6.9,
+       "emotion": "soft tired sad meow, gentle, reassuring",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene0_mom_0.wav"
       }
-     ]
+     ],
+     "voice": "mom"
     },
     {
      "ss": 30.0,
@@ -47,12 +50,16 @@
       {
        "text": "Mom, aren't you\neating?",
        "t0": 0.3,
-       "t1": 3.3
+       "t1": 3.3,
+       "emotion": "curious questioning meow, rising tone, innocent",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene0_kid_0.wav"
       }
      ],
-     "sound_ss": 80.0
+     "voice": "kid"
     }
-   ]
+   ],
+   "ambience": "small home kitchen at dinner time, soft cutlery clinks, quiet",
+   "ambience_file": "assets/sfx/mom-wasnt-hungry/scene0_ambience.wav"
   },
   {
    "bg": "assets/backgrounds/night.png",
@@ -117,7 +124,9 @@
       }
      ]
     }
-   ]
+   ],
+   "ambience": "dark quiet kitchen at midnight, refrigerator hum, clock ticking",
+   "ambience_file": "assets/sfx/mom-wasnt-hungry/scene1_ambience.wav"
   },
   {
    "bg": "assets/backgrounds/office.png",
@@ -134,17 +143,23 @@
       {
        "text": "I got my first\nsalary!",
        "t0": 0.2,
-       "t1": 3.1
+       "t1": 3.1,
+       "emotion": "happy excited proud meows, chirping",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene2_grown_0.wav"
       },
       {
        "text": "Now it's my turn,\nMom",
        "t0": 3.2,
-       "t1": 6.4
+       "t1": 6.4,
+       "emotion": "warm loving determined meow",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene2_grown_1.wav"
       }
      ],
-     "sound_ss": 20.0
+     "voice": "grown"
     }
-   ]
+   ],
+   "ambience": "quiet office, keyboard typing, distant murmur",
+   "ambience_file": "assets/sfx/mom-wasnt-hungry/scene2_ambience.wav"
   },
   {
    "bg": "assets/backgrounds/restaurant.png",
@@ -172,9 +187,12 @@
       {
        "text": "You remembered...",
        "t0": 3.4,
-       "t1": 7.9
+       "t1": 7.9,
+       "emotion": "cat crying, emotional whimpering meow, tears of joy",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene3_mom_0.wav"
       }
-     ]
+     ],
+     "voice": "mom"
     },
     {
      "ss": 44.0,
@@ -187,12 +205,16 @@
       {
        "text": "Order anything\nyou want, Mom",
        "t0": 0.2,
-       "t1": 3.3
+       "t1": 3.3,
+       "emotion": "cat meowing happily twice, loud clear meow, friendly",
+       "sfx": "assets/sfx/mom-wasnt-hungry/scene3_grown_0.wav"
       }
      ],
-     "sound_ss": 24.7
+     "voice": "grown"
     }
-   ]
+   ],
+   "ambience": "cozy restaurant, soft distant chatter, plates and glasses clinking",
+   "ambience_file": "assets/sfx/mom-wasnt-hungry/scene3_ambience.wav"
   },
   {
    "bg": "assets/backgrounds/restaurant.png",
@@ -234,7 +256,15 @@
      "color": "white",
      "size": 58
     }
-   ]
+   ],
+   "ambience": "cozy restaurant, very soft distant chatter",
+   "ambience_vol": 0.2,
+   "ambience_file": "assets/sfx/mom-wasnt-hungry/scene4_ambience.wav"
   }
- ]
+ ],
+ "voices": {
+  "kid": "a tiny young kitten meowing, high pitched small voice",
+  "mom": "a gentle adult female cat meowing softly, warm low voice",
+  "grown": "a young adult cat meowing, clear medium voice"
+ }
 }

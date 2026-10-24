@@ -94,7 +94,7 @@ for si, sc in enumerate(story["scenes"]):
     fc = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,format=rgba[s0]"]
     if sc.get("dark"):
         fc.append(f"[s0]eq=brightness=-0.25:saturation=0.6[s0]")
-    cur, idx, aud, pending = "s0", 1, [], []
+    cur, idx, aud, pending, sfx_lines = "s0", 1, [], [], []
     for ai, a in enumerate(sc["actors"]):
         src = story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
@@ -125,6 +125,9 @@ for si, sc in enumerate(story["scenes"]):
             text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
                            "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
             pending.append((say_png, say["t0"], say["t1"]))
+            if say.get("sfx"):  # generated voice (scripts/sfx.py) instead of the clip's own sound
+                sfx_lines.append((say["sfx"], say["t0"], say["t1"], a.get("vol", 1.0)))
+                continue
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
         first_t0 = min([t0 for t0, _ in a.get("speak", [])] or [0])
         for k, (t0, t1) in enumerate(a.get("speak", [])):
@@ -138,6 +141,19 @@ for si, sc in enumerate(story["scenes"]):
         if a.get("sound_ss") is not None:  # borrow a clean meow from elsewhere in the pack
             ins += ["-ss", str(a["sound_ss"]), "-i", src]
             idx += 1
+        idx += 1
+    for k, (f, t0, t1, vol) in enumerate(sfx_lines):
+        ins += ["-i", f]
+        fc.append(f"[{idx}:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{t1 - t0},"
+                  f"afade=t=in:d=0.05,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
+                  f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={1.6 * vol}[x{k}]")
+        aud.append(f"x{k}")
+        idx += 1
+    if sc.get("ambience_file"):  # quiet room sound so the voices sit in the scene
+        ins += ["-stream_loop", "-1", "-i", sc["ambience_file"]]
+        fc.append(f"[{idx}:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{T},"
+                  f"afade=t=in:d=0.3,afade=t=out:st={T - 0.3}:d=0.3,volume={sc.get('ambience_vol', 0.35)}[amb]")
+        aud.append("amb")
         idx += 1
     if sc.get("dim_at") is not None:
         fc.append(f"[{cur}]split[d1][d2];[d2]drawbox=c=black@0.6:t=fill[d3];"
