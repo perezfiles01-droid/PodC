@@ -38,7 +38,7 @@ python3 scripts/jumps.py out/<name>_with-sound.mp4   # spikes only at fade-in + 
 ## Story JSON
 ```jsonc
 {
-  "name": "file-name", "title": "Title after POV:", "handle": "",
+  "name": "file-name", "title": "Title after POV:", "handle": "", "actor_scale": 1.3,
   "packs": {"cat": "assets/packs/cat_pack.mp4", "dog": "assets/packs/dog_pack.mp4"},
   "music": {"bed": "assets/music/x.mp3", "bed_ss": 0, "end": "assets/music/x.mp3", "end_ss": 168,
             "switch": 46, "vol": 0.45},          // switch = second the ending music takes over

@@ -11,7 +11,7 @@ perezfiles01-droid/PodC, branch ccr-acf60340-s3bcq6, folder pov-meme-kit/.
    pov-meme-kit/README.md, pov-meme-kit/HANDOFF.md, pov-meme-kit/STYLE_GUIDE.md.
    Follow every RULE in HANDOFF.md exactly — they are my standing instructions.
 2. Look at pov-meme-kit/references/ (3 reference videos + 4 screenshots) and
-   pov-meme-kit/examples/mom-wasnt-hungry_v7.mp4 (the approved result) so you know the look.
+   pov-meme-kit/examples/mom-wasnt-hungry_v13.mp4 (the approved result) so you know the look.
 3. Run pov-meme-kit/scripts/setup.sh, then rebuild the example to prove the pipeline works:
    cd pov-meme-kit && python3 scripts/build.py stories/mom-wasnt-hungry.json out
 4. Then make me a NEW video: [WRITE YOUR STORY IDEA HERE, or say "you pick a sad story"].

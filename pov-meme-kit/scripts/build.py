@@ -124,6 +124,7 @@ for si, sc in enumerate(story["scenes"]):
         fc.append(f"[s0]eq=brightness=-0.25:saturation=0.6[s0]")
     cur, idx, aud, pending = "s0", 1, [], []
     for ai, a in enumerate(sc["actors"]):
+        a["h"] = int(a["h"] * story.get("actor_scale", 1.0))  # one knob to make every character bigger
         if a.get("clip"):  # catalog id like "C7" / "D28" (assets/packs/catalog.json, CLIP_CATALOG.docx)
             c = CATALOG[a["clip"]]
             a["pack"] = c["pack"]
