@@ -1,5 +1,5 @@
 {
- "name": "mom-wasnt-hungry_v8",
+ "name": "mom-wasnt-hungry_v9",
  "title": "Mom always said she wasn't hungry",
  "handle": "",
  "packs": {
@@ -49,7 +49,8 @@
        "t0": 0.3,
        "t1": 3.3
       }
-     ]
+     ],
+     "sound_ss": 80.0
     }
    ]
   },
@@ -71,7 +72,8 @@
        "t0": 0.2,
        "t1": 3.4
       }
-     ]
+     ],
+     "sound_ss": 42.3
     },
     {
      "ss": 75.2,
@@ -91,7 +93,7 @@
        "t1": 6.0
       }
      ],
-     "sound_ss": 30.0
+     "sound_ss": 80.0
     },
     {
      "ss": 169.0,
@@ -137,7 +139,7 @@
        "t1": 6.4
       }
      ],
-     "sound_ss": 30.0
+     "sound_ss": 20.0
     }
    ]
   },
@@ -185,7 +187,7 @@
        "t1": 3.3
       }
      ],
-     "sound_ss": 30.0
+     "sound_ss": 24.7
     }
    ]
   },

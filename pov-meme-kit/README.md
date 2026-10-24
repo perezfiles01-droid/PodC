@@ -14,6 +14,7 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 | `scripts/bg.py` | Generates scene backgrounds (SD-Turbo, CPU, ~45 s each). |
 | `scripts/cuts.py` | Lists exact cuts in a clip pack or a finished video (flicker QA). |
 | `scripts/jumps.py` | Lists sudden frame jumps in a finished video (smoothness QA). |
+| `scripts/pitch.py` | Cat or human? Median pitch of a sound stretch (cat >= ~380 Hz). |
 | `scripts/avsync.py` | Audio and video must both start at 0 (else players fast-forward the start). |
 | `stories/` | Story JSONs. `mom-wasnt-hungry.json` is the approved example. |
 | `assets/packs/` | Green-screen meme packs: `cat_pack.mp4`, `dog_pack.mp4`, plus `*.notes.json` = the manual of bad audio stretches (auto-muted) and clean meows to borrow. |
