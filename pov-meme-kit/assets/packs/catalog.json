@@ -1,0 +1,466 @@
+{
+ "C1": {
+  "pack": "cat",
+  "start": 0,
+  "end": 6.73,
+  "description": "White cat with huge round 'huh?' eyes peeking up",
+  "good_for": "shock, confusion, 'huh?'",
+  "sound": "low voice ~124 Hz (human or bark - check)"
+ },
+ "C2": {
+  "pack": "cat",
+  "start": 6.73,
+  "end": 13.93,
+  "description": "Fluffy orange cat sitting, looking up",
+  "good_for": "hoping, waiting, wishing",
+  "sound": "low voice ~88 Hz (human or bark - check)"
+ },
+ "C3": {
+  "pack": "cat",
+  "start": 13.93,
+  "end": 19.83,
+  "description": "Small orange cat sitting and meowing",
+  "good_for": "calling out, asking",
+  "sound": "animal sound (~500 Hz)"
+ },
+ "C4": {
+  "pack": "cat",
+  "start": 19.83,
+  "end": 24.67,
+  "description": "White & brown cat standing, meowing loudly",
+  "good_for": "demanding, complaining, kid asking",
+  "sound": "animal sound (~1067 Hz)"
+ },
+ "C5": {
+  "pack": "cat",
+  "start": 24.67,
+  "end": 28.53,
+  "description": "Same white & brown cat, close, meowing",
+  "good_for": "pleading, arguing",
+  "sound": "animal sound (~1067 Hz)"
+ },
+ "C6": {
+  "pack": "cat",
+  "start": 28.53,
+  "end": 38.37,
+  "description": "Big-eyed orange kitten peeking from the side",
+  "good_for": "innocent child, curious, worried (audio: a woman laughing then talking - user flagged)",
+  "sound": "low voice ~258 Hz (human or bark - check)"
+ },
+ "C7": {
+  "pack": "cat",
+  "start": 38.37,
+  "end": 43.67,
+  "description": "Sad tabby (calico) looking down",
+  "good_for": "sad, tired, guilty, quiet sacrifice",
+  "sound": "animal sound (~421 Hz)"
+ },
+ "C8": {
+  "pack": "cat",
+  "start": 43.67,
+  "end": 53.87,
+  "description": "Cream cat standing on hind legs, paws together",
+  "good_for": "polite, begging, cute request",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C9": {
+  "pack": "cat",
+  "start": 53.87,
+  "end": 58.87,
+  "description": "Angry white cat and tabby hissing/screaming (rapid cuts)",
+  "good_for": "angry, yelling, fighting",
+  "sound": "low voice ~260 Hz (human or bark - check)"
+ },
+ "C10": {
+  "pack": "cat",
+  "start": 58.87,
+  "end": 63.73,
+  "description": "Black & white kitten wrapped in a towel, held",
+  "good_for": "baby, newborn, fragile",
+  "sound": "animal sound (~464 Hz)"
+ },
+ "C11": {
+  "pack": "cat",
+  "start": 63.73,
+  "end": 70.0,
+  "description": "Orange cat turning away, being held",
+  "good_for": "ignoring, upset, walking away",
+  "sound": "low voice ~348 Hz (human or bark - check)"
+ },
+ "C12": {
+  "pack": "cat",
+  "start": 70.0,
+  "end": 74.43,
+  "description": "Small dark cat jumping/climbing far away",
+  "good_for": "tiny in distance, playing",
+  "sound": "animal sound (~405 Hz)"
+ },
+ "C13": {
+  "pack": "cat",
+  "start": 74.43,
+  "end": 79.37,
+  "description": "Cat peeking from the edge with sad big eyes",
+  "good_for": "spying, secretly watching, worried",
+  "sound": "animal sound (~842 Hz)"
+ },
+ "C14": {
+  "pack": "cat",
+  "start": 79.37,
+  "end": 83.17,
+  "description": "Grey striped kitten with paws up, screaming",
+  "good_for": "panicking, tantrum, crying out",
+  "sound": "animal sound (~762 Hz)"
+ },
+ "C15": {
+  "pack": "cat",
+  "start": 83.17,
+  "end": 92.43,
+  "description": "Chubby white cat sitting, small in frame",
+  "good_for": "waiting, lonely, calm",
+  "sound": "low voice ~151 Hz (human or bark - check)"
+ },
+ "C16": {
+  "pack": "cat",
+  "start": 92.43,
+  "end": 95.77,
+  "description": "Dark tabby standing still, staring",
+  "good_for": "serious, stern, shocked silence",
+  "sound": "animal sound (~889 Hz)"
+ },
+ "C17": {
+  "pack": "cat",
+  "start": 95.77,
+  "end": 103.87,
+  "description": "Scottish fold behind a cream cat",
+  "good_for": "comforting, hugging, together",
+  "sound": "silent"
+ },
+ "C18": {
+  "pack": "cat",
+  "start": 103.87,
+  "end": 110.7,
+  "description": "Dark cat crying, tongue out, blurry close-up",
+  "good_for": "crying, heartbroken, tears of joy",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C19": {
+  "pack": "cat",
+  "start": 110.7,
+  "end": 118.53,
+  "description": "White cat standing and waving/dancing",
+  "good_for": "happy, excited, celebrating, greeting",
+  "sound": "silent"
+ },
+ "C20": {
+  "pack": "cat",
+  "start": 118.53,
+  "end": 124.1,
+  "description": "Cat sitting eating from a metal bowl",
+  "good_for": "eating, hungry, leftovers",
+  "sound": "low voice ~356 Hz (human or bark - check)"
+ },
+ "C21": {
+  "pack": "cat",
+  "start": 124.1,
+  "end": 132.1,
+  "description": "White cat driving a car (steering wheel) + pop cat (mixed)",
+  "good_for": "driving, picking someone up",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C22": {
+  "pack": "cat",
+  "start": 132.1,
+  "end": 136.97,
+  "description": "Orange cat close-up, sleepy/annoyed face",
+  "good_for": "tired, unimpressed",
+  "sound": "animal sound (~1000 Hz)"
+ },
+ "C23": {
+  "pack": "cat",
+  "start": 136.97,
+  "end": 152.6,
+  "description": "Orange cat 'singing', eyes half-closed",
+  "good_for": "talking, singing, proud (audio is a human singing)",
+  "sound": "low voice ~286 Hz (human or bark - check)"
+ },
+ "C24": {
+  "pack": "cat",
+  "start": 152.6,
+  "end": 155.6,
+  "description": "Cat in a blue cap standing on hind legs",
+  "good_for": "worker, delivery, playful",
+  "sound": "silent"
+ },
+ "C25": {
+  "pack": "cat",
+  "start": 155.6,
+  "end": 162.03,
+  "description": "Tabby in a costume dancing (pink wings/skirt)",
+  "good_for": "party, celebration, silly",
+  "sound": "silent"
+ },
+ "C26": {
+  "pack": "cat",
+  "start": 162.03,
+  "end": 168.5,
+  "description": "Tabby sitting up with a shocked face",
+  "good_for": "shocked, surprised, frozen",
+  "sound": "low voice ~183 Hz (human or bark - check)"
+ },
+ "C27": {
+  "pack": "cat",
+  "start": 168.5,
+  "end": 175.77,
+  "description": "Teary-eyed tabby held up by hands",
+  "good_for": "heartbroken, sad, about to cry",
+  "sound": "low voice ~117 Hz (human or bark - check)"
+ },
+ "C28": {
+  "pack": "cat",
+  "start": 175.77,
+  "end": 181.2,
+  "description": "Fluffy white cat lying, rolling",
+  "good_for": "relaxed, lazy, comfy",
+  "sound": "animal sound (~485 Hz)"
+ },
+ "C29": {
+  "pack": "cat",
+  "start": 181.2,
+  "end": 194.63,
+  "description": "Brown cat standing on hind legs",
+  "good_for": "waiting, standing guard, determined",
+  "sound": "animal sound (~421 Hz)"
+ },
+ "D1": {
+  "pack": "dog",
+  "start": 0,
+  "end": 6.43,
+  "description": "Fluffy white chihuahua, eyes closed, standing",
+  "good_for": "smug, proud, ignoring",
+  "sound": "low voice ~208 Hz (human or bark - check)"
+ },
+ "D2": {
+  "pack": "dog",
+  "start": 6.43,
+  "end": 14.5,
+  "description": "Jack Russell jumping with tongue out",
+  "good_for": "happy, excited, running to greet",
+  "sound": "animal sound (~615 Hz)"
+ },
+ "D3": {
+  "pack": "dog",
+  "start": 14.5,
+  "end": 21.47,
+  "description": "German shepherd with a butterfly on its nose",
+  "good_for": "calm, gentle, butterfly / spirit",
+  "sound": "low voice ~229 Hz (human or bark - check)"
+ },
+ "D4": {
+  "pack": "dog",
+  "start": 21.47,
+  "end": 32.1,
+  "description": "Husky nose close-up staring into camera",
+  "good_for": "curious, sniffing, shocked zoom",
+  "sound": "animal sound (~727 Hz)"
+ },
+ "D5": {
+  "pack": "dog",
+  "start": 32.1,
+  "end": 38.6,
+  "description": "Small dog wrapped in a blanket",
+  "good_for": "sick, cold, cozy, cared for",
+  "sound": "low voice ~356 Hz (human or bark - check)"
+ },
+ "D6": {
+  "pack": "dog",
+  "start": 38.6,
+  "end": 43.67,
+  "description": "Chihuahua squinting, tongue out",
+  "good_for": "disgusted, sassy, teasing",
+  "sound": "animal sound (~892 Hz)"
+ },
+ "D7": {
+  "pack": "dog",
+  "start": 43.67,
+  "end": 51.43,
+  "description": "Black dog side-eye, close",
+  "good_for": "suspicious, judging",
+  "sound": "silent"
+ },
+ "D8": {
+  "pack": "dog",
+  "start": 51.43,
+  "end": 61.0,
+  "description": "Pug walking",
+  "good_for": "walking away, arriving",
+  "sound": "animal sound (~543 Hz)"
+ },
+ "D9": {
+  "pack": "dog",
+  "start": 61.0,
+  "end": 67.83,
+  "description": "Rottweiler-type dog with a bow tie, sitting",
+  "good_for": "groom, formal, polite gentleman",
+  "sound": "low voice ~126 Hz (human or bark - check)"
+ },
+ "D10": {
+  "pack": "dog",
+  "start": 67.83,
+  "end": 75.57,
+  "description": "Black & white dog sitting, serious",
+  "good_for": "serious, listening",
+  "sound": "low voice ~225 Hz (human or bark - check)"
+ },
+ "D11": {
+  "pack": "dog",
+  "start": 75.57,
+  "end": 83.07,
+  "description": "Bug-eyed chihuahua close-up",
+  "good_for": "shocked, scared, 'what?!'",
+  "sound": "animal sound (~552 Hz)"
+ },
+ "D12": {
+  "pack": "dog",
+  "start": 83.07,
+  "end": 86.57,
+  "description": "Small white dog grinning with teeth",
+  "good_for": "nervous smile, awkward",
+  "sound": "low voice ~189 Hz (human or bark - check)"
+ },
+ "D13": {
+  "pack": "dog",
+  "start": 86.57,
+  "end": 97.33,
+  "description": "Corgi smiling, small in frame",
+  "good_for": "happy, friendly",
+  "sound": "silent"
+ },
+ "D14": {
+  "pack": "dog",
+  "start": 97.33,
+  "end": 104.2,
+  "description": "Chocolate lab with a goofy face",
+  "good_for": "funny, silly, surprised",
+  "sound": "animal sound (~842 Hz)"
+ },
+ "D15": {
+  "pack": "dog",
+  "start": 104.2,
+  "end": 111.0,
+  "description": "Corgi puppy eating watermelon",
+  "good_for": "eating, hungry, happy child",
+  "sound": "silent"
+ },
+ "D16": {
+  "pack": "dog",
+  "start": 111.0,
+  "end": 117.2,
+  "description": "Beagle grimace/smile close-up",
+  "good_for": "awkward, guilty grin",
+  "sound": "low voice ~179 Hz (human or bark - check)"
+ },
+ "D17": {
+  "pack": "dog",
+  "start": 117.2,
+  "end": 123.3,
+  "description": "Dog in a straw hat talking on a phone",
+  "good_for": "phone call, farmer, grandpa",
+  "sound": "animal sound (~390 Hz)"
+ },
+ "D18": {
+  "pack": "dog",
+  "start": 123.3,
+  "end": 129.73,
+  "description": "Tan dog close-up, serious stare",
+  "good_for": "stern, disappointed",
+  "sound": "animal sound (~1143 Hz)"
+ },
+ "D19": {
+  "pack": "dog",
+  "start": 129.73,
+  "end": 136.5,
+  "description": "Pointer standing on long legs",
+  "good_for": "standing, waiting, guard",
+  "sound": "silent"
+ },
+ "D20": {
+  "pack": "dog",
+  "start": 136.5,
+  "end": 139.17,
+  "description": "Same pointer, closer",
+  "good_for": "standing, waiting",
+  "sound": "silent"
+ },
+ "D21": {
+  "pack": "dog",
+  "start": 139.17,
+  "end": 145.63,
+  "description": "Husky howling upward",
+  "good_for": "crying out, singing, missing someone",
+  "sound": "animal sound (~400 Hz)"
+ },
+ "D22": {
+  "pack": "dog",
+  "start": 145.63,
+  "end": 155.43,
+  "description": "Boston terrier sitting with collar",
+  "good_for": "polite, waiting, listening",
+  "sound": "animal sound (~593 Hz)"
+ },
+ "D23": {
+  "pack": "dog",
+  "start": 155.43,
+  "end": 158.73,
+  "description": "Dog standing on hind legs (from behind)",
+  "good_for": "begging, reaching up",
+  "sound": "silent"
+ },
+ "D24": {
+  "pack": "dog",
+  "start": 158.73,
+  "end": 162.0,
+  "description": "Tiny fluffy puppy far away",
+  "good_for": "baby, small, lost",
+  "sound": "noise / effects (no clear voice)"
+ },
+ "D25": {
+  "pack": "dog",
+  "start": 162.0,
+  "end": 167.57,
+  "description": "Small black dog walking",
+  "good_for": "small, lonely, walking",
+  "sound": "silent"
+ },
+ "D26": {
+  "pack": "dog",
+  "start": 167.57,
+  "end": 175.13,
+  "description": "Bull terrier in a green hood",
+  "good_for": "cozy, silly, child",
+  "sound": "animal sound (~1143 Hz)"
+ },
+ "D27": {
+  "pack": "dog",
+  "start": 175.13,
+  "end": 179.13,
+  "description": "Dog sitting like a person, leaning",
+  "good_for": "relaxed, boss, chilling",
+  "sound": "silent"
+ },
+ "D28": {
+  "pack": "dog",
+  "start": 179.13,
+  "end": 185.57,
+  "description": "Golden retriever with headset and tie",
+  "good_for": "office worker, call center, doctor, boss",
+  "sound": "low voice ~130 Hz (human or bark - check)"
+ },
+ "D29": {
+  "pack": "dog",
+  "start": 185.57,
+  "end": 191.37,
+  "description": "White dog sitting and howling",
+  "good_for": "crying, singing, lonely",
+  "sound": "low voice ~195 Hz (human or bark - check)"
+ }
+}

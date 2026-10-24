@@ -67,6 +67,10 @@ def pov_png(path, title):
     im.save(path)
 
 
+try:
+    CATALOG = json.load(open(os.path.join(os.path.dirname(story["packs"]["cat"]), "catalog.json")))
+except FileNotFoundError:
+    CATALOG = {}
 pov_png(f"{OUT}/tmp/pov.png", story["title"])
 parts = []
 for si, sc in enumerate(story["scenes"]):
@@ -77,6 +81,11 @@ for si, sc in enumerate(story["scenes"]):
         fc.append(f"[s0]eq=brightness=-0.25:saturation=0.6[s0]")
     cur, idx, aud, pending = "s0", 1, [], []
     for ai, a in enumerate(sc["actors"]):
+        if a.get("clip"):  # catalog id like "C7" / "D28" (assets/packs/catalog.json, CLIP_CATALOG.docx)
+            c = CATALOG[a["clip"]]
+            a["pack"] = c["pack"]
+            a.setdefault("ss", round(c["start"] + 1.0, 2))  # skip the clip's zoom-in intro
+            a.setdefault("len", round(c["end"] - a["ss"] - 0.2, 2))  # stay inside the clip (no flicker)
         src = story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]

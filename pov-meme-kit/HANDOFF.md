@@ -95,6 +95,17 @@ for spoken lines, sad/heartwarming twist.
     speaks, song underneath). Do not re-introduce v8–v11 sound changes unless the user asks.
     Known v7 caveat the user raised later: some clips' own audio contains a woman laughing /
     human voices (big-eyed kitten clip 28.53–38.37). Ask the user before changing sound again.
+38. RULE (user): **use the voices of the clips themselves** — each cat/dog plays its OWN clip audio
+    while it talks (this is the v7 behaviour; keep it).
+39. **CLIP CATALOG** — `CLIP_CATALOG.docx` (numbered list with a picture of every clip) and
+    `assets/packs/catalog.json`. Ids: C1–C29 = cat pack, D1–D29 = dog pack. Each has time range,
+    description, "good for" mood and its sound type (animal / low voice-check / silent).
+    Regenerate with `python3 scripts/make_catalog.py`.
+    In a story an actor can just say `"clip": "C7"` — build.py picks a safe range (1 s after the
+    clip starts, 0.2 s before it ends) automatically.
+40. RULE (user): **when the user asks for a new video, FIRST reply with the plan listing every clip
+    number you will use per character and scene** (e.g. "Scene 1 kitchen: Me = C6, Mom = C7"),
+    mixing cat AND dog clips as fits the story. Wait for the user's OK, then build.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
