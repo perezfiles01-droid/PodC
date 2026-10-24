@@ -1,0 +1,220 @@
+{
+ "name": "mom-wasnt-hungry_v5",
+ "title": "Mom always said she wasn't hungry",
+ "handle": "",
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "switch": 46,
+  "vol": 0.45
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/kitchen.png",
+   "dur": 11,
+   "actors": [
+    {
+     "ss": 38.9,
+     "len": 4.5,
+     "h": 400,
+     "x": 690,
+     "y": 1430,
+     "label": "Mom:",
+     "vol": 1.3,
+     "say": [
+      {
+       "text": "I already ate,\nsweetie",
+       "t0": 5.0,
+       "t1": 10.5
+      }
+     ]
+    },
+    {
+     "ss": 30.0,
+     "len": 8.0,
+     "h": 420,
+     "x": 320,
+     "y": 1440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Mom, aren't you\neating?",
+       "t0": 0.6,
+       "t1": 4.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/night.png",
+   "dur": 12,
+   "dark": true,
+   "actors": [
+    {
+     "ss": 119.3,
+     "len": 4.6,
+     "h": 380,
+     "x": 620,
+     "y": 1720,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "*Just the leftovers...\nit's enough*",
+       "t0": 0.5,
+       "t1": 5.0
+      }
+     ]
+    },
+    {
+     "ss": 75.2,
+     "len": 4.0,
+     "h": 520,
+     "x": 150,
+     "y": 1380,
+     "flip": true,
+     "t0": 5.2,
+     "t1": 8.4,
+     "label": "Me:",
+     "lx": 60
+    },
+    {
+     "ss": 80.0,
+     "len": 3.0,
+     "h": 420,
+     "x": 230,
+     "y": 1700,
+     "t0": 8.4,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*Mom... you\nlied to me*",
+       "t0": 8.5,
+       "t1": 11.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/office.png",
+   "dur": 10,
+   "actors": [
+    {
+     "ss": 137.8,
+     "len": 14.5,
+     "h": 480,
+     "x": 540,
+     "y": 1680,
+     "label": "Me (10 years later):",
+     "say": [
+      {
+       "text": "I got my first\nsalary!",
+       "t0": 0.5,
+       "t1": 4.8
+      },
+      {
+       "text": "Now it's my turn,\nMom",
+       "t0": 5.2,
+       "t1": 9.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/restaurant.png",
+   "dur": 13,
+   "actors": [
+    {
+     "ss": 38.9,
+     "len": 4.5,
+     "h": 380,
+     "x": 330,
+     "y": 1420,
+     "t1": 5.0,
+     "label": "Mom:"
+    },
+    {
+     "ss": 104.6,
+     "len": 5.9,
+     "h": 380,
+     "x": 330,
+     "y": 1420,
+     "t0": 5.0,
+     "label": "Mom:",
+     "vol": 1.2,
+     "say": [
+      {
+       "text": "You remembered...",
+       "t0": 5.2,
+       "t1": 12.5
+      }
+     ]
+    },
+    {
+     "ss": 137.8,
+     "len": 14.5,
+     "h": 400,
+     "x": 740,
+     "y": 1420,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Order anything\nyou want, Mom",
+       "t0": 0.5,
+       "t1": 4.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/restaurant.png",
+   "dur": 9,
+   "dim_at": 0,
+   "actors": [
+    {
+     "ss": 104.6,
+     "len": 5.9,
+     "h": 380,
+     "x": 330,
+     "y": 1420
+    },
+    {
+     "ss": 80.0,
+     "len": 3.0,
+     "h": 380,
+     "x": 740,
+     "y": 1420
+    }
+   ],
+   "subs": [
+    {
+     "text": "She never said\nshe was hungry.",
+     "x": 540,
+     "y": 700,
+     "t0": 0.5,
+     "t1": 9,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "She just wanted you\nto eat first.",
+     "x": 540,
+     "y": 860,
+     "t0": 3,
+     "t1": 9,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}
