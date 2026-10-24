@@ -113,6 +113,7 @@ def pov_png(path, title):
     im.save(path)
 
 
+FULL_SOUND = {"C30"}  # clips whose meme sound must always play complete (user request)
 try:
     CATALOG = json.load(open(os.path.join(os.path.dirname(story["packs"]["cat"]), "catalog.json")))
 except FileNotFoundError:
@@ -133,6 +134,8 @@ for si, sc in enumerate(story["scenes"]):
         if a.get("clip"):  # catalog id like "C7" / "D28" (assets/packs/catalog.json, CLIP_CATALOG.docx)
             c = CATALOG[a["clip"]]
             a["pack"] = c["pack"]
+            if a["clip"] in FULL_SOUND or a.get("full_sound"):  # play the whole clip, start to end, real speed
+                a.setdefault("ss", c["start"]); a.setdefault("len", round(c["end"] - c["start"], 2)); a["full_sound"] = True
             dur = c["end"] - c["start"]
             a.setdefault("ss", round(c["start"] + min(1.0, 0.15 * dur), 2))  # skip the zoom-in intro (less on short clips)
             a.setdefault("len", round(c["end"] - a["ss"] - 0.15, 2))  # stay inside the clip (no flicker)
@@ -168,6 +171,8 @@ for si, sc in enumerate(story["scenes"]):
                            "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
             pending.append((say_png, say["t0"], say["t1"]))
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
+        if a.get("full_sound"):  # never cut this clip's sound: each line plays the whole clip audio
+            a["speak"] = [[t0, max(t1, t0 + a["len"])] for t0, t1 in a.get("speak", [])]
         for k, (t0, t1) in enumerate(a.get("speak", [])):
             lbl = f"v{ai}_{k}"
             fc.append(f"[{idx}:a]atempo={max(sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"

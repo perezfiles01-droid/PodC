@@ -46,6 +46,9 @@
 **Clips**
 - Use catalog ids: actor `"clip": "C7"` (cats C1–C46, dogs D1–D29; mix cats and dogs as fits).
   build.py picks a safe range (skips the 1 s zoom-in intro, stays inside the clip → no flicker).
+- **C30 (German painter kitten) always plays its COMPLETE sound** (whole 4.9 s clip, real speed) —
+  build.py does it automatically (FULL_SOUND set; or `"full_sound": true` on any actor). Give its
+  line ~5 s and start the next speaker after it.
 - If a clip looks twitchy/fast, add `"speed": 0.7`. Short clips (<3 s usable) are slowed automatically
   (build.py) so their ping-pong loop never looks fast-forwarded; intro skip = min(1 s, 15% of clip).
 - Every scene is rendered to exactly dur×30 frames (no picture/sound drift between scenes).
@@ -342,3 +345,4 @@ for spoken lines, sad/heartwarming twist.
     rollback had removed `keep_top` from build.py (hands showed under C27) — restored; dad-sold-
     his-car re-exported with it.
 60. User rule: no recycled backgrounds — new ones for every video and every scene (see CURRENT RULES).
+61. User: C30's sound always got cut — now always played in full (see CURRENT RULES). Brother video re-sent (49 s).

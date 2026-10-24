@@ -20,7 +20,7 @@
  "scenes": [
   {
    "bg": "assets/backgrounds/kitchen.png",
-   "dur": 7,
+   "dur": 9,
    "actors": [
     {
      "clip": "C30",
@@ -33,7 +33,7 @@
       {
        "text": "We can only afford\none of us in college...",
        "t0": 0.3,
-       "t1": 3.3
+       "t1": 5.3
       }
      ]
     },
@@ -47,8 +47,8 @@
      "say": [
       {
        "text": "*...*",
-       "t0": 3.4,
-       "t1": 6.8
+       "t0": 5.4,
+       "t1": 8.8
       }
      ]
     }
