@@ -29,6 +29,8 @@
   otherwise float). Older stories (mom-wasnt-hungry) leave it off so they rebuild identically.
 - Label (white) right above each character's head, its speech (yellow) right above the label; both
   appear/disappear with that character. Thoughts in *asterisks*.
+- An actor can carry `"t0"`/`"t1"` (scene seconds) to appear only part of a scene — ALWAYS set them
+  on clip swaps, or both clips show the whole scene stacked on each other.
 - Clip emotion must match the line (sad → sad/crying clip, happy → happy clip). A character may
   swap clips mid-scene for an emotion change (same x/y, consecutive t0/t1).
 - Ending: dim + white closing lines; song switches to its climax.
@@ -105,7 +107,8 @@
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
-  old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4 (same raw/ link pattern)
+  old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
+  cafeteria-leftovers_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -380,3 +383,9 @@ for spoken lines, sad/heartwarming twist.
 64. Sent moms-lunchbox-notes, dad-never-came, grandpa-did-you-eat (48 s each; new backgrounds per scene, hook_first_frame, share CTA). Fixed a build.py syntax slip in the fade code.
     Lesson: never chain background jobs with `pgrep -f` waits — they matched each other and deadlocked.
 65. Sent extra-fries_v1 (48 s, diner twist: tip jar 'For the kid's fries').
+66. Sent dad-voicemails_v1 (Dad recorded 365 voicemails before dying; 'Drive safe, kiddo') and
+    cafeteria-leftovers_v1 (the 'weird kid' took leftovers to feed ME). 40.5 s each, 10 new backgrounds.
+    Lessons: SD-Turbo tall rooms often tile — for big halls render 1024x576 and crop the centre;
+    torch/diffusers aren't in setup.sh's light install (pip install torch diffusers transformers accelerate);
+    bg.py arg order = path, prompt, seed. C13 (edge-peeker) must touch the screen edge (x≈105).
+    C31 needs speed 0.7 (short loop).

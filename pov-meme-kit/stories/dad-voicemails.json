@@ -1,0 +1,238 @@
+{
+ "name": "dad-voicemails_v1",
+ "title": "My dad called me every\nsingle day in college",
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "hook_first_frame": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 33.5
+ },
+ "scenes": [
+  {
+   "dur": 9.5,
+   "actors": [
+    {
+     "clip": "C4",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Dad, stop calling me\nevery day!",
+       "t0": 0.3,
+       "t1": 3.2
+      },
+      {
+       "text": "It's embarrassing!",
+       "t0": 3.3,
+       "t1": 5.8
+      }
+     ]
+    },
+    {
+     "clip": "D17",
+     "name": "Dad (on the phone)",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "Okay, okay...\ndrive safe, kiddo.",
+       "t0": 5.9,
+       "t1": 9.3
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/dad-voicemails/scene1.png"
+  },
+  {
+   "dur": 7,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D10",
+     "name": "Dad",
+     "x": 540,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "*Doctor said\n6 months.*",
+       "t0": 0.3,
+       "t1": 3.4
+      }
+     ],
+     "t0": 0,
+     "t1": 3.45
+    },
+    {
+     "clip": "D29",
+     "name": "Dad (sad)",
+     "x": 540,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "*Gotta record\nfaster.*",
+       "t0": 3.5,
+       "t1": 6.8
+      }
+     ],
+     "t0": 3.45,
+     "t1": 7
+    }
+   ],
+   "bg": "assets/backgrounds/dad-voicemails/scene2.png"
+  },
+  {
+   "dur": 6.5,
+   "actors": [
+    {
+     "clip": "C27",
+     "name": "Me",
+     "x": 540,
+     "y": 1760,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "I never even\ncalled him back...",
+       "t0": 0.3,
+       "t1": 3.3
+      },
+      {
+       "text": "*No more\n'drive safe, kiddo.'*",
+       "t0": 3.4,
+       "t1": 6.3
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/dad-voicemails/scene3.png"
+  },
+  {
+   "dur": 10.5,
+   "actors": [
+    {
+     "clip": "C26",
+     "name": "Me (shocked)",
+     "x": 320,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "A voicemail...\nfrom Dad?!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ],
+     "t0": 0,
+     "t1": 7.3
+    },
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 320,
+     "y": 1760,
+     "h": 420,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "He knew...\nthe whole time.",
+       "t0": 7.3,
+       "t1": 10.3
+      }
+     ],
+     "t0": 7.3,
+     "t1": 10.5
+    },
+    {
+     "clip": "D22",
+     "name": "Roommate",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Roommate:",
+     "say": [
+      {
+       "text": "He gave me 365 of them.\nOne for every morning.",
+       "t0": 3.4,
+       "t1": 7.2
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/dad-voicemails/scene4.png"
+  },
+  {
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "D17",
+     "name": "Dad",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "A year later,\nthe last voicemail:",
+     "x": 540,
+     "y": 640,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 52
+    },
+    {
+     "text": "\"That's the last one, kiddo.\nYou don't need me anymore.\"",
+     "x": 540,
+     "y": 880,
+     "t0": 1.5,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 50
+    },
+    {
+     "text": "\"Drive safe.\"",
+     "x": 540,
+     "y": 1060,
+     "t0": 3.8,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 58
+    },
+    {
+     "text": "Share this with someone\nwho needs to see it ❤️",
+     "x": 540,
+     "y": 1180,
+     "t0": 5.0,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
+    }
+   ],
+   "bg": "assets/backgrounds/dad-voicemails/scene5.png"
+  }
+ ]
+}

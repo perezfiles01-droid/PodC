@@ -1,0 +1,222 @@
+{
+ "name": "cafeteria-leftovers_v1",
+ "title": "The weird kid who stole\nthe cafeteria leftovers",
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "hook_first_frame": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 33.5
+ },
+ "scenes": [
+  {
+   "dur": 9.5,
+   "actors": [
+    {
+     "clip": "C31",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Ew, Jake's stuffing pizza\nin his backpack AGAIN!",
+       "t0": 0.3,
+       "t1": 3.6
+      },
+      {
+       "text": "Loser.",
+       "t0": 6.6,
+       "t1": 9.3
+      }
+     ],
+     "speed": 0.7
+    },
+    {
+     "clip": "D15",
+     "name": "Jake",
+     "x": 780,
+     "y": 1760,
+     "h": 380,
+     "label": "Jake:",
+     "say": [
+      {
+       "text": "*Two slices.\nEnough for today.*",
+       "t0": 3.7,
+       "t1": 6.5
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/cafeteria-leftovers/scene1.png"
+  },
+  {
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C32",
+     "name": "Me",
+     "x": 540,
+     "y": 1760,
+     "h": 620,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Food in my locker AGAIN!\n'Eat, don't tell.'",
+       "t0": 0.3,
+       "t1": 3.6
+      },
+      {
+       "text": "I have a secret\nadmirer!",
+       "t0": 3.7,
+       "t1": 6.8
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/cafeteria-leftovers/scene2.png"
+  },
+  {
+   "dur": 7,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C13",
+     "name": "Jake (sneaking)",
+     "x": 105,
+     "y": 1760,
+     "h": 420,
+     "label": "Jake:",
+     "say": [
+      {
+       "text": "*She skips lunch\nevery day.*",
+       "t0": 0.3,
+       "t1": 3.4
+      },
+      {
+       "text": "*She thinks nobody\nnotices.*",
+       "t0": 3.5,
+       "t1": 6.8
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/cafeteria-leftovers/scene3.png"
+  },
+  {
+   "dur": 10,
+   "actors": [
+    {
+     "clip": "C26",
+     "name": "Me (10 years later)",
+     "x": 540,
+     "y": 1760,
+     "h": 420,
+     "label": "Me (10 years later):",
+     "say": [
+      {
+       "text": "A wedding card\nfrom Jake...?",
+       "t0": 0.3,
+       "t1": 3.3
+      },
+      {
+       "text": "'Eat, don't tell'...\nsame handwriting.",
+       "t0": 3.4,
+       "t1": 6.6
+      }
+     ],
+     "t0": 0,
+     "t1": 6.7
+    },
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 540,
+     "y": 1760,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "It was HIM.\nEvery day.",
+       "t0": 6.8,
+       "t1": 9.8
+      }
+     ],
+     "t0": 6.7,
+     "t1": 10
+    }
+   ],
+   "bg": "assets/backgrounds/cafeteria-leftovers/scene4.png"
+  },
+  {
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C18",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 420
+    },
+    {
+     "clip": "D13",
+     "name": "Jake",
+     "x": 780,
+     "y": 1760,
+     "h": 380
+    }
+   ],
+   "subs": [
+    {
+     "text": "I wasn't the girl\nwith an admirer.",
+     "x": 540,
+     "y": 600,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 52
+    },
+    {
+     "text": "I was the girl with\nno lunch money.",
+     "x": 540,
+     "y": 800,
+     "t0": 1.6,
+     "t1": 7,
+     "color": "white",
+     "size": 52
+    },
+    {
+     "text": "Everyone laughed at the kid\nfeeding me. Including me.",
+     "x": 540,
+     "y": 1000,
+     "t0": 3.0,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
+    },
+    {
+     "text": "Share this with someone\nwho needs to see it ❤️",
+     "x": 540,
+     "y": 1180,
+     "t0": 4.8,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
+    }
+   ],
+   "bg": "assets/backgrounds/cafeteria-leftovers/scene5.png"
+  }
+ ]
+}
