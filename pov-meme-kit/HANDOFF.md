@@ -105,6 +105,18 @@ for spoken lines, sad/heartwarming twist.
     RULE: pitch-check every speaking line on the per-scene audio (out/tmp/sceneN.mp4, before the
     song is mixed in — the song itself has a human singer). All lines must read CAT.
 43. v9 sent (38 s) — avsync OK, cuts OK, every line pitch-checked CAT.
+44. User on v9: "cat voices are the same all throughout... doesn't match the story at all".
+    (User was offered "music only" and chose it, then said that was even worse — they DO want
+    cat sounds, just fitting ones. Don't propose music-only again.)
+    RULES now:
+    - **One consistent voice per character**: little Me = grey-kitten meow (80.0), grown-up Me =
+      adult white-cat meows (20.0 / 24.7), Mom = her own sad-tabby meow (38.9+), Mom crying =
+      her own sobbing clip (104.6+).
+    - **Sound must match the line's emotion** (sad → sad meow, happy → excited meow, crying → sobs).
+    - **Inner thoughts in *asterisks* are SILENT** (`"sound": false`); the song carries them.
+    - A character's 2nd/3rd line continues further into its sound — never the same meow twice
+      (build.py does this automatically now).
+45. v10 sent (38 s) with #44 applied — avsync, cuts, pitch all OK.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -178,7 +190,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v9.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v10.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).

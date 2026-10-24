@@ -126,10 +126,12 @@ for si, sc in enumerate(story["scenes"]):
                            "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
             pending.append((say_png, say["t0"], say["t1"]))
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
+        first_t0 = min([t0 for t0, _ in a.get("speak", [])] or [0])
         for k, (t0, t1) in enumerate(a.get("speak", [])):
+            off = t0 - first_t0  # each later line continues further into the sound, never repeats it
             lbl = f"v{ai}_{k}"
             a_in, a_ss, a_sp = (idx + 1, a["sound_ss"], 1.0) if a.get("sound_ss") is not None else (idx, a["ss"], sp)
-            fc.append(f"[{a_in}:a]{mute_filter(src, a_ss, a_sp)}atempo={max(a_sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+            fc.append(f"[{a_in}:a]{mute_filter(src, a_ss, a_sp)}atempo={max(a_sp, 0.5)},atrim={off}:{off + t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
                       f"afade=t=in:d=0.1,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
                       f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={a.get('vol', 1.0)}[{lbl}]")
             aud.append(lbl)

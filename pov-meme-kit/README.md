@@ -50,7 +50,7 @@ python3 scripts/jumps.py out/<name>_with-sound.mp4   # spikes only at fade-in + 
       "t0": 0, "t1": 11, "flip": false, "vol": 1.0, "speed": 1.0,   // speed<1 calms twitchy clips
       "keep_top": 0.55, "sound_ss": 30.0,        // crop away bottom (hands); borrow sound from another time
       "label": "Me:", "lx": 0,                   // lx shifts label/speech sideways
-      "say": [{"text": "Line one\nline two", "t0": 0.6, "t1": 4.6}]   // plays the cat's sound too
+      "say": [{"text": "Line one\nline two", "t0": 0.6, "t1": 4.6, "sound": true}]   // sound:false for *thoughts*
     }],
     "subs": [{"text": "centered text", "x": 540, "y": 700, "t0": 0, "t1": 9, "color": "white", "size": 58}]
   }]

@@ -1,5 +1,5 @@
 {
- "name": "mom-wasnt-hungry_v9",
+ "name": "mom-wasnt-hungry_v10",
  "title": "Mom always said she wasn't hungry",
  "handle": "",
  "packs": {
@@ -70,7 +70,8 @@
       {
        "text": "*Just the leftovers...\nit's enough*",
        "t0": 0.2,
-       "t1": 3.4
+       "t1": 3.4,
+       "sound": false
       }
      ],
      "sound_ss": 42.3
@@ -90,7 +91,8 @@
       {
        "text": "*Mom...?*",
        "t0": 3.5,
-       "t1": 6.0
+       "t1": 6.0,
+       "sound": false
       }
      ],
      "sound_ss": 80.0
@@ -110,7 +112,8 @@
       {
        "text": "*You lied\nto me...*",
        "t0": 6.0,
-       "t1": 9.4
+       "t1": 9.4,
+       "sound": false
       }
      ]
     }
