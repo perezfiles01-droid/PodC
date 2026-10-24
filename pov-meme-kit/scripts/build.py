@@ -174,4 +174,20 @@ run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      "-c:a", "aac", "-b:a", "160k", "-t", str(total), f"{OUT}/{story['name']}_with-sound.mp4"])
 run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/{story['name']}_with-sound.mp4", "-an", "-c:v", "copy",
      f"{OUT}/{story['name']}_silent.mp4"])
+# clip list per scene (catalog ids) — send this to the user with every video
+def clip_id(a):
+    if a.get("clip"):
+        return a["clip"]
+    for cid, c in CATALOG.items():
+        if c["pack"] == a.get("pack", "cat") and c["start"] <= a["ss"] < c["end"]:
+            return cid
+    return "?"
+
+
+lines = []
+for si, sc in enumerate(story["scenes"], 1):
+    who = ", ".join(f"{a.get('name') or a.get('label', '?').rstrip(':')} = {clip_id(a)}" for a in sc["actors"])
+    lines.append(f"Scene {si} ({os.path.splitext(os.path.basename(sc['bg']))[0]}): {who}")
+open(f"{OUT}/{story['name']}_clips.txt", "w").write("\n".join(lines) + "\n")
+print("\n".join(lines))
 print("DONE", total)

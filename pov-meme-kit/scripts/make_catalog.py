@@ -5,6 +5,7 @@ Clip ids: C1..C29 (cat pack), D1..D29 (dog pack). Stories use them as actor "cli
 """
 import json, os, subprocess, sys, tempfile
 import numpy as np
+from PIL import Image, ImageOps
 from docx import Document
 from docx.shared import Inches, Pt
 
@@ -114,10 +115,13 @@ def main():
             d, mood = desc[n]
             snd = sound_type(src, a + 0.5, b - 0.2)
             catalog[cid] = {"pack": name, "start": a, "end": b, "description": d, "good_for": mood, "sound": snd}
-            img = f"{tmp}/{cid}.png"
+            png, img = f"{tmp}/{cid}.png", f"{tmp}/{cid}.jpg"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str((a + b) / 2), "-i", src, "-frames:v", "1",
-                            "-filter_complex", "color=white:s=640x360[w];[0:v]chromakey=0x50BB4A:0.10:0.04,despill=type=green[k];[w][k]overlay=shortest=1",
-                            img])
+                            "-vf", "format=rgba,chromakey=0x50BB4A:0.10:0.04,despill=type=green", png], check=True)
+            cut = Image.open(png).convert("RGBA")
+            flat = Image.new("RGB", cut.size, "white")
+            flat.paste(cut, mask=cut.split()[3])  # cut-out on white, no transparency (shows in every viewer)
+            flat.crop(flat.getbbox() and ImageOps.invert(flat).getbbox() or (0, 0, *flat.size)).save(img, quality=88)
             doc.add_heading(f"{n}. Clip {cid} — {d}", 2)
             doc.add_picture(img, width=Inches(3.2))
             doc.add_paragraph(f"Good for: {mood}\nTime in {name}_pack.mp4: {a:.2f}–{b:.2f} s ({b - a:.1f} s)\nSound: {snd}")

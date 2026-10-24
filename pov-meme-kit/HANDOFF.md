@@ -1,5 +1,13 @@
 # Session Handoff — Cat/Dog POV Meme Videos
 
+## Download links (give these to the user whenever they ask for "the clip list" / "the handoff")
+Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
+- Clip list (Word, with pictures): https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.docx
+- This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
+- Whole kit folder: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
+If the catalog changes (new packs/clips), run `python3 scripts/make_catalog.py`, commit, push — the
+links stay the same.
+
 _Last updated: 2026-10-24. Paste this whole file into a new session to resume._
 
 ## Goal
@@ -106,6 +114,17 @@ for spoken lines, sad/heartwarming twist.
 40. RULE (user): **when the user asks for a new video, FIRST reply with the plan listing every clip
     number you will use per character and scene** (e.g. "Scene 1 kitchen: Me = C6, Mom = C7"),
     mixing cat AND dog clips as fits the story. Wait for the user's OK, then build.
+41. RULE: **with EVERY video sent, also list the clips per scene** (build.py prints it and writes
+    out/<name>_clips.txt), e.g. "Scene 3 (office): Me (10 years later) = C23".
+42. RULE: **swaps by number** — the user will say e.g. "replace scene 3 with C5 instead of C23".
+    Do it by setting that actor's `"clip": "C5"` and DELETING its `"ss"`/`"len"` (so the safe range
+    of the new clip is used), keep everything else (position, size, label, lines), rebuild, run QA,
+    send the video + the updated clip list. Each actor has "clip" + "name" in the story JSON.
+    Current approved v7 clips: Scene 1 kitchen: Mom = C7, Me = C6 | Scene 2 night: Mom = C20,
+    Me (peeking) = C13, Me (crying) = C14 | Scene 3 office: Me (10 years later) = C23 |
+    Scene 4 restaurant: Mom (sad) = C7, Mom (crying) = C18, Me = C23 | Scene 5 ending: C18, C14.
+43. Catalog pictures were blank at first (bad ffmpeg overlay); fixed — make_catalog.py now
+    flattens the cut-out on white with PIL and verifies. Check pictures before sending the doc.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
