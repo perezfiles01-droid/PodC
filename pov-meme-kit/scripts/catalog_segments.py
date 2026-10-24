@@ -23,5 +23,6 @@ PACKS = [
                                                (25.23, 30.43), (30.43, 36.20), (36.20, 46.37), (46.37, 52.43),
                                                (52.43, 56.57), (56.57, 61.77), (61.77, 71.30)]),
     ("C", "assets/packs/cat_yapapa.mp4", [(0.0, 8.0)]),
+    ("C", "assets/packs/cat_ragdoll_chewing.mp4", [(0.0, 5.2)]),  # empty green after 5.2 s
     ("D", "assets/packs/dog_pack.mp4", segments(DOG_CUTS)),
 ]

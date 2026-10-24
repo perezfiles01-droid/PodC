@@ -395,6 +395,15 @@
   "good_for": "singing, vibing, happy, cheeky (audio: the 'yapapa' meme song)",
   "sound": "animal sound (~451 Hz)"
  },
+ "C45": {
+  "pack": "cat",
+  "file": "assets/packs/cat_ragdoll_chewing.mp4",
+  "start": 0.0,
+  "end": 5.2,
+  "description": "Cream ragdoll-type cat standing, chewing/talking, calm stare",
+  "good_for": "calm, unbothered, chatting, judging quietly",
+  "sound": "animal sound (~421 Hz)"
+ },
  "D1": {
   "pack": "dog",
   "file": "assets/packs/dog_pack.mp4",

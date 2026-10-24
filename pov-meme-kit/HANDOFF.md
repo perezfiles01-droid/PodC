@@ -9,7 +9,7 @@ Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
 If the catalog changes (new packs/clips), run `python3 scripts/make_catalog.py`, commit, push — the
 links stay the same.
 
-_Last updated: 2026-10-24 (v13, catalog C1–C44 + D1–D29). Paste this whole file into a new session to resume._
+_Last updated: 2026-10-24 (v13, catalog C1–C45 + D1–D29). Paste this whole file into a new session to resume._
 
 ## Goal
 Make short vertical (9:16) emotional "POV" meme videos in the style of @Pawspective:
@@ -152,6 +152,8 @@ for spoken lines, sad/heartwarming twist.
     up). RULE: use actor_scale 1.3 for all new videos. When characters get bigger, re-check that
     they and their text don't overlap (restaurant cats moved apart to x 270 / 820).
 52. v13 sent = v12 + actor_scale 1.3 + restaurant spacing. avsync/cuts OK.
+53. New clip C45 = cream ragdoll-type cat standing, chewing/talking, calm stare
+    (cat_ragdoll_chewing.mp4, 0–5.2 s; empty after). Catalog now C1–C45 + D1–D29 (74 clips).
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
