@@ -1,0 +1,258 @@
+{
+ "name": "extra-fries_v1",
+ "title": "The waitress who always gave\nme extra fries",
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "hook_first_frame": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 41
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/extra-fries/scene1.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C2",
+     "name": "Me (broke student)",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Just small fries,\nplease...",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C45",
+     "name": "Waitress",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Waitress:",
+     "say": [
+      {
+       "text": "Kitchen made\ntoo many, hon.",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene2.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C3",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 360,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "They made too\nmany AGAIN?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C45",
+     "name": "Waitress",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Waitress:",
+     "say": [
+      {
+       "text": "*smiles*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene3.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D25",
+     "name": "Me",
+     "x": 540,
+     "y": 1780,
+     "h": 320,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*Somebody up there's\nlooking out for me.*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene4.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D28",
+     "name": "Me (10 years later)",
+     "x": 320,
+     "y": 1760,
+     "h": 440,
+     "label": "Me (10 years later):",
+     "say": [
+      {
+       "text": "I'm looking for the\nwaitress who worked here.",
+       "t0": 0.3,
+       "t1": 3.6
+      }
+     ]
+    },
+    {
+     "clip": "D14",
+     "name": "Cook",
+     "x": 790,
+     "y": 1760,
+     "h": 400,
+     "label": "Cook:",
+     "say": [
+      {
+       "text": "She passed away\nlast spring...",
+       "t0": 3.7,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene5.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D14",
+     "name": "Cook",
+     "x": 540,
+     "y": 1760,
+     "h": 420,
+     "label": "Cook:",
+     "say": [
+      {
+       "text": "She left this\nfor you.",
+       "t0": 0.3,
+       "t1": 3.0
+      }
+     ]
+    }
+   ],
+   "subs": [
+    {
+     "text": "Her tip jar. The label said:",
+     "x": 540,
+     "y": 680,
+     "t0": 3.1,
+     "t1": 7,
+     "color": "white",
+     "size": 50
+    },
+    {
+     "text": "\"For the kid's fries.\"",
+     "x": 540,
+     "y": 800,
+     "t0": 3.6,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 60
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene6.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 540,
+     "y": 1760,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*It was never\nthe kitchen...*",
+       "t0": 0.3,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/extra-fries/scene7.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C45",
+     "name": "Waitress",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "She paid for every plate",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "with her own tips.",
+     "x": 540,
+     "y": 860,
+     "t0": 1.8,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "Share this with someone\nwho needs to see it ❤️",
+     "x": 540,
+     "y": 1180,
+     "t0": 4.3,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
+    }
+   ]
+  }
+ ]
+}
