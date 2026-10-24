@@ -34,9 +34,12 @@
 - Ask the user before changing anything about the sound.
 
 **Clips**
-- Use catalog ids: actor `"clip": "C7"` (cats C1–C45, dogs D1–D29; mix cats and dogs as fits).
+- Use catalog ids: actor `"clip": "C7"` (cats C1–C46, dogs D1–D29; mix cats and dogs as fits).
   build.py picks a safe range (skips the 1 s zoom-in intro, stays inside the clip → no flicker).
-- If a clip looks twitchy/fast, add `"speed": 0.7`.
+- If a clip looks twitchy/fast, add `"speed": 0.7`. Short clips (<3 s usable) are slowed automatically
+  (build.py) so their ping-pong loop never looks fast-forwarded; intro skip = min(1 s, 15% of clip).
+- Every scene is rendered to exactly dur×30 frames (no picture/sound drift between scenes).
+- C39 = banana cat crying with hands up (36.2–40.9); the spinning banana is C46 (41.0–46.37).
 - Catalog: CLIP_CATALOG.pdf (pictures) + assets/packs/catalog.json. New upload → copy to
   assets/packs/, add a PACKS entry in scripts/catalog_segments.py + description in
   scripts/make_catalog.py, run `python3 scripts/make_catalog.py`, check pictures aren't blank.
@@ -55,7 +58,7 @@
 **Files to give the user on request (private repo — sign in as perezfiles01-droid)**
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
-- Videos: examples/mom-wasnt-hungry_v13.mp4 and examples/mom-missed-my-show_v1.mp4 (same raw/ link pattern)
+- Videos: examples/mom-wasnt-hungry_v13.mp4 and examples/mom-missed-my-show_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -302,3 +305,9 @@ for spoken lines, sad/heartwarming twist.
     backgrounds: stage.png (auditorium seen from the stage), backstage.png, school_hall.png.
     Added `tight_bottom` (see CURRENT RULES). Known weak spot: C12 (brother) is a tiny dark cat in
     its source — offer a swap if the user dislikes it.
+55. User: "parts are fast-forwarded and not properly started" (mom-missed-my-show v1). Causes found:
+    (a) short clips (C31 1.7 s, C14 2.6 s usable) ping-ponged 2–4× per scene; (b) scenes were 1
+    frame short (209 frames vs 7.00 s audio) → picture drifted ahead of sound scene after scene;
+    (c) C39's second half was a spinning banana with cuts every 0.5 s. Fixes in CURRENT RULES.
+    v13 example re-exported with the frame fix (v13 story pins its clip ranges so it still
+    matches). mom-missed-my-show_v2 sent: every scene exact frames, avsync/cuts/jumps clean.

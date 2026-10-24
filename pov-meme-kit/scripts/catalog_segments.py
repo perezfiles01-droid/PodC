@@ -20,9 +20,10 @@ PACKS = [
     ("C", "assets/packs/cat_happy_happy.mp4", [(0.0, 7.1)]),
     # banana-suit cat pack: 0-2.07 skipped (big Chinese title over the picture); 36.2-46.4 = rapid spins
     ("C", "assets/packs/cat_banana_pack.mp4", [(2.07, 5.10), (5.10, 10.30), (10.30, 20.07), (20.07, 25.23),
-                                               (25.23, 30.43), (30.43, 36.20), (36.20, 46.37), (46.37, 52.43),
+                                               (25.23, 30.43), (30.43, 36.20), (36.20, 40.90), (46.37, 52.43),
                                                (52.43, 56.57), (56.57, 61.77), (61.77, 71.30)]),
     ("C", "assets/packs/cat_yapapa.mp4", [(0.0, 8.0)]),
     ("C", "assets/packs/cat_ragdoll_chewing.mp4", [(0.0, 5.2)]),  # empty green after 5.2 s
+    ("C", "assets/packs/cat_banana_pack.mp4", [(41.0, 46.37)]),  # banana spinning (split out of C39)
     ("D", "assets/packs/dog_pack.mp4", segments(DOG_CUTS)),
 ]

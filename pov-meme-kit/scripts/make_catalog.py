@@ -51,12 +51,13 @@ CAT = {  # id: (description, mood / good for)
     36: ("Banana-suit cat with pale screaming face", "screaming, shocked, terrified"),
     37: ("Banana-suit cat screaming, closer", "horrified, panicking"),
     38: ("Banana-suit cat crying with tear streams", "crying hard, heartbroken"),
-    39: ("Banana-suit cat crying with hands up + spinning (rapid cuts)", "dramatic crying, breakdown"),
+    39: ("Banana-suit cat crying with hands up, tears streaming", "dramatic crying, breakdown"),
     40: ("Banana-suit cat collapsed lying sideways", "exhausted, fainted, giving up"),
     41: ("Banana-suit cat with a sweat drop", "nervous, embarrassed, awkward"),
     42: ("Tiny banana-suit cat walking away in the distance", "leaving, alone, walking home"),
     43: ("Banana-suit cat standing sadly", "sad, lonely, waiting"),
     45: ("Cream ragdoll-type cat standing, chewing/talking, calm stare", "calm, unbothered, chatting, judging quietly"),
+    46: ("Banana-suit cat spinning/rolling around", "dizzy, chaos, rolling on the floor"),
     44: ("'Yapapa' orange cat singing with eyes closed, head bobbing", "singing, vibing, happy, cheeky (audio: the 'yapapa' meme song)"),
 }
 DOG = {

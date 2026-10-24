@@ -345,10 +345,10 @@
   "pack": "cat",
   "file": "assets/packs/cat_banana_pack.mp4",
   "start": 36.2,
-  "end": 46.37,
-  "description": "Banana-suit cat crying with hands up + spinning (rapid cuts)",
+  "end": 40.9,
+  "description": "Banana-suit cat crying with hands up, tears streaming",
   "good_for": "dramatic crying, breakdown",
-  "sound": "animal sound (~667 Hz)"
+  "sound": "animal sound (~640 Hz)"
  },
  "C40": {
   "pack": "cat",
@@ -403,6 +403,15 @@
   "description": "Cream ragdoll-type cat standing, chewing/talking, calm stare",
   "good_for": "calm, unbothered, chatting, judging quietly",
   "sound": "animal sound (~421 Hz)"
+ },
+ "C46": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 41.0,
+  "end": 46.37,
+  "description": "Banana-suit cat spinning/rolling around",
+  "good_for": "dizzy, chaos, rolling on the floor",
+  "sound": "animal sound (~696 Hz)"
  },
  "D1": {
   "pack": "dog",

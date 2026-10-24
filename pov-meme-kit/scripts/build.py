@@ -131,8 +131,11 @@ for si, sc in enumerate(story["scenes"]):
         if a.get("clip"):  # catalog id like "C7" / "D28" (assets/packs/catalog.json, CLIP_CATALOG.docx)
             c = CATALOG[a["clip"]]
             a["pack"] = c["pack"]
-            a.setdefault("ss", round(c["start"] + 1.0, 2))  # skip the clip's zoom-in intro
-            a.setdefault("len", round(c["end"] - a["ss"] - 0.2, 2))  # stay inside the clip (no flicker)
+            dur = c["end"] - c["start"]
+            a.setdefault("ss", round(c["start"] + min(1.0, 0.15 * dur), 2))  # skip the zoom-in intro (less on short clips)
+            a.setdefault("len", round(c["end"] - a["ss"] - 0.15, 2))  # stay inside the clip (no flicker)
+            if a["len"] < 3.0:  # a short clip ping-ponging in a long scene looks fast-forwarded: slow it down
+                a.setdefault("speed", round(max(0.6, a["len"] / 3.0), 2))
         src = CATALOG[a["clip"]]["file"] if a.get("clip") else story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
@@ -189,7 +192,9 @@ for si, sc in enumerate(story["scenes"]):
         ins += ["-i", p]
         fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{s['t0']},{s['t1']})'[t{k}]")
         cur, idx = f"t{k}", idx + 1
-    fc.append(f"[{cur}]format=yuv420p,fps={FPS}[vout]")
+    # exactly T*FPS frames, so picture and sound stay locked scene after scene (no drift)
+    fc.append(f"[{cur}]format=yuv420p,fps={FPS},tpad=stop_mode=clone:stop_duration=1,"
+              f"trim=end_frame={int(round(T * FPS))}[vout]")
     ins += ["-f", "lavfi", "-t", str(T), "-i", "anullsrc=r=44100:cl=stereo"]
     # silence goes FIRST so the mix starts at t=0; otherwise the audio track starts at the first
     # cat sound and phone players "fast-forward" the opening video to catch up

@@ -96,7 +96,9 @@
       }
      ],
      "clip": "C26",
-     "name": "Me (peeking)"
+     "name": "Me (peeking)",
+     "ss": 163.03,
+     "len": 5.27
     },
     {
      "ss": 80.0,
@@ -140,7 +142,9 @@
       }
      ],
      "clip": "D12",
-     "name": "Me (10 years later)"
+     "name": "Me (10 years later)",
+     "ss": 84.07,
+     "len": 2.3
     }
    ]
   },
