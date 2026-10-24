@@ -42,6 +42,15 @@
   (a hidden sacrifice, secret, misunderstanding reversed); the reveal shown, not explained; a final
   line that hits hard. Aim for goosebumps. Test: if the ending can be guessed from the title, rewrite.
 
+**Audience: US & Canada** (user's niche target)
+- American English and US/Canadian settings and culture: high school, cafeteria, prom, college
+  tuition, night shifts, diners, Thanksgiving/Christmas, hockey/football/soccer, snow days, etc.
+  Avoid region-specific words (e.g. "Kuya") unless asked.
+- Captions in natural American voice; hashtags that work in NA (#pov #storytime #catsoftiktok-
+  style tags, #momlove #dadlove #fyp #reels #emotional, plus 1–2 niche tags).
+- When giving posting tips, use North American times (about 7–10 pm Eastern / 4–7 pm Pacific,
+  weekday evenings + weekend mornings).
+
 **Sound**
 - Each character plays **its own clip's sound** while it talks (the v7 behaviour), song underneath
   (assets/music/chasing_cars_hale_cover.mp3: bed from 0:00, ending from 2:48, `switch` = ending start).
@@ -352,3 +361,4 @@ for spoken lines, sad/heartwarming twist.
 60. User rule: no recycled backgrounds — new ones for every video and every scene (see CURRENT RULES).
 61. User: C30's sound always got cut — now always played in full (see CURRENT RULES). Brother video re-sent (49 s).
 62. User: stories too generic — must give goosebumps with a heart-moving plot twist (rule above).
+63. User: target US & Canada viewers (rules above). Building lunchbox-notes, dad-never-came, grandpa-did-you-eat with 21 new backgrounds (scripts/bg_batch.py).

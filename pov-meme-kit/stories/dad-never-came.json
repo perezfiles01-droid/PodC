@@ -1,0 +1,267 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "dad-never-came_v1",
+ "title": "My dad never came to\na single one of my games",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 43
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/dads-games/scene1.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D2",
+     "name": "Teammate",
+     "x": 320,
+     "y": 1780,
+     "h": 380,
+     "label": "Teammate:",
+     "say": [
+      {
+       "text": "Your dad never\nshows up, huh?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C4",
+     "name": "Me",
+     "x": 780,
+     "y": 1780,
+     "h": 420,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "He doesn't care.",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    },
+    {
+     "clip": "D19",
+     "name": "Security guard",
+     "x": 1000,
+     "y": 1300,
+     "h": 170
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene2.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C9",
+     "name": "Me (angry)",
+     "x": 320,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "You missed\nANOTHER game!",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D9",
+     "name": "Dad",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "*...I'm sorry.*",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene3.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C19",
+     "name": "Me",
+     "x": 420,
+     "y": 1780,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "GOAL!!",
+       "t0": 0.3,
+       "t1": 3.0
+      }
+     ]
+    },
+    {
+     "clip": "D19",
+     "name": "Security guard",
+     "x": 950,
+     "y": 1320,
+     "h": 170
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene4.png",
+   "dur": 6,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C26",
+     "name": "Me",
+     "x": 320,
+     "y": 1780,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*That guard is at\nEVERY game...*",
+       "t0": 0.3,
+       "t1": 5.8
+      }
+     ]
+    },
+    {
+     "clip": "D19",
+     "name": "Security guard",
+     "x": 820,
+     "y": 1700,
+     "h": 360,
+     "label": "Guard:"
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene5.png",
+   "dur": 8,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "D9",
+     "name": "Guard = Dad",
+     "x": 700,
+     "y": 1760,
+     "h": 440,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "I couldn't afford\na ticket...",
+       "t0": 0.3,
+       "t1": 3.8
+      },
+      {
+       "text": "so I took the night\nguard job here.",
+       "t0": 3.9,
+       "t1": 7.8
+      }
+     ]
+    },
+    {
+     "clip": "C27",
+     "name": "Me",
+     "x": 280,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "keep_top": 0.55
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene6.png",
+   "dur": 7,
+   "dark": true,
+   "actors": [
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 320,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Dad...",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "D22",
+     "name": "Dad",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "I never missed\none, son.",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/dads-games/scene7.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "D3",
+     "name": "Dad",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "He was always there...",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "just too far for you to see.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}

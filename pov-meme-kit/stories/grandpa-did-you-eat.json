@@ -1,0 +1,243 @@
+{
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "name": "grandpa-did-you-eat_v1",
+ "title": "Grandpa kept asking me\nthe same question",
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 42
+ },
+ "scenes": [
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene1.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C15",
+     "name": "Grandpa",
+     "x": 320,
+     "y": 1760,
+     "h": 360,
+     "label": "Grandpa:",
+     "say": [
+      {
+       "text": "Did you eat?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C11",
+     "name": "Me",
+     "x": 780,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "YES Grandpa, you\nasked 5 times!",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene2.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C29",
+     "name": "Grandpa",
+     "x": 320,
+     "y": 1760,
+     "h": 460,
+     "label": "Grandpa:",
+     "say": [
+      {
+       "text": "Did you eat?",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C9",
+     "name": "Me",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "STOP ASKING!",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene3.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "D28",
+     "name": "Doctor",
+     "x": 320,
+     "y": 1760,
+     "h": 440,
+     "label": "Doctor:",
+     "say": [
+      {
+       "text": "He's forgotten almost\neverything now.",
+       "t0": 0.3,
+       "t1": 3.8
+      }
+     ]
+    },
+    {
+     "clip": "C27",
+     "name": "Me",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*...everything?*",
+       "t0": 3.9,
+       "t1": 6.8
+      }
+     ],
+     "keep_top": 0.55
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene4.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C26",
+     "name": "Me",
+     "x": 320,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Grandpa,\nit's me...",
+       "t0": 0.3,
+       "t1": 3.3
+      }
+     ]
+    },
+    {
+     "clip": "C7",
+     "name": "Grandpa",
+     "x": 780,
+     "y": 1760,
+     "h": 420,
+     "label": "Grandpa:",
+     "say": [
+      {
+       "text": "...who are you?",
+       "t0": 3.4,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene5.png",
+   "dur": 6,
+   "actors": [
+    {
+     "clip": "C16",
+     "name": "Grandpa",
+     "x": 540,
+     "y": 1760,
+     "h": 460,
+     "label": "Grandpa:",
+     "say": [
+      {
+       "text": "...did you eat?",
+       "t0": 1.5,
+       "t1": 5.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene6.png",
+   "dur": 7,
+   "actors": [
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 540,
+     "y": 1760,
+     "h": 460,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Yes, Grandpa...\nI ate.",
+       "t0": 0.3,
+       "t1": 6.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "assets/backgrounds/grandpa-did-you-eat/scene7.png",
+   "dur": 7,
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C17",
+     "name": "Hug",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "He forgot everything...",
+     "x": 540,
+     "y": 700,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "except loving you.",
+     "x": 540,
+     "y": 880,
+     "t0": 2.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    }
+   ]
+  }
+ ]
+}
