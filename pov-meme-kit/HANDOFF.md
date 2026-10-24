@@ -17,6 +17,9 @@
 - 1080x1920, 30 fps, ~35–45 s, 4–6 scenes, no dead air (lines back-to-back, <=0.3 s gaps, ~3 s each).
 - White rounded POV box at top for the whole video; **no watermark** (`"handle": ""`).
 - Photoreal background per scene (assets/backgrounds/ or new ones via scripts/bg.py).
+- **Always generate NEW backgrounds for every video — never reuse an existing one, and every scene
+  gets its own freshly generated background even when two scenes are in the same place** (user
+  rule). Save them as assets/backgrounds/<story>/sceneN.png (scripts/bg.py with a new seed each).
 - Backgrounds must stay calm so they never overpower the characters: new stories set
   **`"bg_soft": true`** (light blur, less color, slightly dimmer) and bg.py prompts should be
   simple/plain ("simple plain …, minimal decor, soft natural light, eye-level").
@@ -338,3 +341,4 @@ for spoken lines, sad/heartwarming twist.
     skipped college so I could go" + "Bullied for my old shoes" (bg_soft on). Found the v7
     rollback had removed `keep_top` from build.py (hands showed under C27) — restored; dad-sold-
     his-car re-exported with it.
+60. User rule: no recycled backgrounds — new ones for every video and every scene (see CURRENT RULES).
