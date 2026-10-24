@@ -123,11 +123,16 @@ def main():
             flat.paste(cut, mask=cut.split()[3])  # cut-out on white, no transparency (shows in every viewer)
             flat.crop(flat.getbbox() and ImageOps.invert(flat).getbbox() or (0, 0, *flat.size)).save(img, quality=88)
             doc.add_heading(f"{n}. Clip {cid} — {d}", 2)
-            doc.add_picture(img, width=Inches(3.2))
+            w, h = Image.open(img).size  # fit inside 2.6 x 2.0 in so several clips fit per page
+            sc = min(2.6 / w, 2.0 / h)
+            doc.add_picture(img, width=Inches(w * sc), height=Inches(h * sc))
             doc.add_paragraph(f"Good for: {mood}\nTime in {name}_pack.mp4: {a:.2f}–{b:.2f} s ({b - a:.1f} s)\nSound: {snd}")
             print(cid, snd, flush=True)
     json.dump(catalog, open("assets/packs/catalog.json", "w"), indent=1)
     doc.save("CLIP_CATALOG.docx")
+    # PDF version (what the user downloads)
+    subprocess.run(["soffice", "--headless", "--convert-to", "pdf", "CLIP_CATALOG.docx", "--outdir", "."],
+                   check=True, capture_output=True)
 
 
 main()

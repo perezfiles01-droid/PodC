@@ -16,7 +16,7 @@ perezfiles01-droid/PodC, branch ccr-acf60340-s3bcq6, folder pov-meme-kit/.
    cd pov-meme-kit && python3 scripts/build.py stories/mom-wasnt-hungry.json out
 4. Then make me a NEW video: [WRITE YOUR STORY IDEA HERE, or say "you pick a sad story"].
    First show me the plan: every scene and the clip numbers you'll use for each character
-   (C# = cat, D# = dog, from pov-meme-kit/CLIP_CATALOG.docx). After I say OK, build it, run the QA checks
+   (C# = cat, D# = dog, from pov-meme-kit/CLIP_CATALOG.pdf). After I say OK, build it, run the QA checks
    (scripts/avsync.py, scripts/cuts.py and scripts/jumps.py), and send me ONLY the version with sound.
 5. Keep HANDOFF.md updated with anything new I ask for, and commit + push the kit changes
    (new stories, backgrounds, rules) to the same branch so the next chat can continue.

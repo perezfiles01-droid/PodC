@@ -7,12 +7,12 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 
 | Path | What it is |
 |---|---|
-| `CLIP_CATALOG.docx` | Numbered list of every clip with a picture: C1–C29 cats, D1–D29 dogs. Use these numbers when planning. |
+| `CLIP_CATALOG.pdf` | Numbered list of every clip with a picture: C1–C29 cats, D1–D29 dogs. Use these numbers when planning. |
 | `HANDOFF.md` | Every request and standing rule from the user, clip catalogue, decisions. Read first. |
 | `STYLE_GUIDE.md` | How the reference videos are built, scene by scene. |
 | `scripts/setup.sh` | One-time pip installs for a fresh session. |
 | `scripts/build.py` | Builds a video from a story JSON → `<name>_with-sound.mp4` (+ a silent copy). |
-| `scripts/make_catalog.py` | Rebuilds CLIP_CATALOG.docx + assets/packs/catalog.json. |
+| `scripts/make_catalog.py` | Rebuilds CLIP_CATALOG.pdf/.docx + assets/packs/catalog.json. |
 | `scripts/bg.py` | Generates scene backgrounds (SD-Turbo, CPU, ~45 s each). |
 | `scripts/cuts.py` | Lists exact cuts in a clip pack or a finished video (flicker QA). |
 | `scripts/jumps.py` | Lists sudden frame jumps in a finished video (smoothness QA). |

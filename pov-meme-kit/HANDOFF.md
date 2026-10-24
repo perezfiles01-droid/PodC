@@ -2,7 +2,8 @@
 
 ## Download links (give these to the user whenever they ask for "the clip list" / "the handoff")
 Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
-- Clip list (Word, with pictures): https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.docx
+- Clip list (PDF, with pictures) — user wants PDF, not Word: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
+  (Word source kept as CLIP_CATALOG.docx; make_catalog.py writes both)
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Whole kit folder: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 If the catalog changes (new packs/clips), run `python3 scripts/make_catalog.py`, commit, push — the
@@ -125,6 +126,7 @@ for spoken lines, sad/heartwarming twist.
     Scene 4 restaurant: Mom (sad) = C7, Mom (crying) = C18, Me = C23 | Scene 5 ending: C18, C14.
 43. Catalog pictures were blank at first (bad ffmpeg overlay); fixed — make_catalog.py now
     flattens the cut-out on white with PIL and verifies. Check pictures before sending the doc.
+44. RULE: send the clip list as **PDF** (CLIP_CATALOG.pdf), not Word.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
