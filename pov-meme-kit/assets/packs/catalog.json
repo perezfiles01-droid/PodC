@@ -1,6 +1,7 @@
 {
  "C1": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 0,
   "end": 6.73,
   "description": "White cat with huge round 'huh?' eyes peeking up",
@@ -9,6 +10,7 @@
  },
  "C2": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 6.73,
   "end": 13.93,
   "description": "Fluffy orange cat sitting, looking up",
@@ -17,6 +19,7 @@
  },
  "C3": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 13.93,
   "end": 19.83,
   "description": "Small orange cat sitting and meowing",
@@ -25,6 +28,7 @@
  },
  "C4": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 19.83,
   "end": 24.67,
   "description": "White & brown cat standing, meowing loudly",
@@ -33,6 +37,7 @@
  },
  "C5": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 24.67,
   "end": 28.53,
   "description": "Same white & brown cat, close, meowing",
@@ -41,6 +46,7 @@
  },
  "C6": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 28.53,
   "end": 38.37,
   "description": "Big-eyed orange kitten peeking from the side",
@@ -49,6 +55,7 @@
  },
  "C7": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 38.37,
   "end": 43.67,
   "description": "Sad tabby (calico) looking down",
@@ -57,6 +64,7 @@
  },
  "C8": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 43.67,
   "end": 53.87,
   "description": "Cream cat standing on hind legs, paws together",
@@ -65,6 +73,7 @@
  },
  "C9": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 53.87,
   "end": 58.87,
   "description": "Angry white cat and tabby hissing/screaming (rapid cuts)",
@@ -73,6 +82,7 @@
  },
  "C10": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 58.87,
   "end": 63.73,
   "description": "Black & white kitten wrapped in a towel, held",
@@ -81,6 +91,7 @@
  },
  "C11": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 63.73,
   "end": 70.0,
   "description": "Orange cat turning away, being held",
@@ -89,6 +100,7 @@
  },
  "C12": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 70.0,
   "end": 74.43,
   "description": "Small dark cat jumping/climbing far away",
@@ -97,6 +109,7 @@
  },
  "C13": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 74.43,
   "end": 79.37,
   "description": "Cat peeking from the edge with sad big eyes",
@@ -105,6 +118,7 @@
  },
  "C14": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 79.37,
   "end": 83.17,
   "description": "Grey striped kitten with paws up, screaming",
@@ -113,6 +127,7 @@
  },
  "C15": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 83.17,
   "end": 92.43,
   "description": "Chubby white cat sitting, small in frame",
@@ -121,6 +136,7 @@
  },
  "C16": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 92.43,
   "end": 95.77,
   "description": "Dark tabby standing still, staring",
@@ -129,6 +145,7 @@
  },
  "C17": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 95.77,
   "end": 103.87,
   "description": "Scottish fold behind a cream cat",
@@ -137,6 +154,7 @@
  },
  "C18": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 103.87,
   "end": 110.7,
   "description": "Dark cat crying, tongue out, blurry close-up",
@@ -145,6 +163,7 @@
  },
  "C19": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 110.7,
   "end": 118.53,
   "description": "White cat standing and waving/dancing",
@@ -153,6 +172,7 @@
  },
  "C20": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 118.53,
   "end": 124.1,
   "description": "Cat sitting eating from a metal bowl",
@@ -161,6 +181,7 @@
  },
  "C21": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 124.1,
   "end": 132.1,
   "description": "White cat driving a car (steering wheel) + pop cat (mixed)",
@@ -169,6 +190,7 @@
  },
  "C22": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 132.1,
   "end": 136.97,
   "description": "Orange cat close-up, sleepy/annoyed face",
@@ -177,6 +199,7 @@
  },
  "C23": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 136.97,
   "end": 152.6,
   "description": "Orange cat 'singing', eyes half-closed",
@@ -185,6 +208,7 @@
  },
  "C24": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 152.6,
   "end": 155.6,
   "description": "Cat in a blue cap standing on hind legs",
@@ -193,6 +217,7 @@
  },
  "C25": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 155.6,
   "end": 162.03,
   "description": "Tabby in a costume dancing (pink wings/skirt)",
@@ -201,6 +226,7 @@
  },
  "C26": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 162.03,
   "end": 168.5,
   "description": "Tabby sitting up with a shocked face",
@@ -209,6 +235,7 @@
  },
  "C27": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 168.5,
   "end": 175.77,
   "description": "Teary-eyed tabby held up by hands",
@@ -217,6 +244,7 @@
  },
  "C28": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 175.77,
   "end": 181.2,
   "description": "Fluffy white cat lying, rolling",
@@ -225,14 +253,142 @@
  },
  "C29": {
   "pack": "cat",
+  "file": "assets/packs/cat_pack.mp4",
   "start": 181.2,
   "end": 194.63,
   "description": "Brown cat standing on hind legs",
   "good_for": "waiting, standing guard, determined",
   "sound": "animal sound (~421 Hz)"
  },
+ "C30": {
+  "pack": "cat",
+  "file": "assets/packs/cat_german_painter.mp4",
+  "start": 0.0,
+  "end": 4.9,
+  "description": "Small calico kitten sitting, talking ('German painter' meme)",
+  "good_for": "explaining, chatting, small child talking (audio: the meme's voice-over, not a meow)",
+  "sound": "low voice ~372 Hz (human or bark - check)"
+ },
+ "C31": {
+  "pack": "cat",
+  "file": "assets/packs/cat_screaming_orange.mp4",
+  "start": 0.6,
+  "end": 3.5,
+  "description": "Orange cat screaming/laughing, mouth wide open, close-up",
+  "good_for": "laughing hard, screaming, shocked outburst",
+  "sound": "animal sound (~552 Hz)"
+ },
+ "C32": {
+  "pack": "cat",
+  "file": "assets/packs/cat_happy_happy.mp4",
+  "start": 0.0,
+  "end": 7.1,
+  "description": "'Happy happy happy' cat dancing on hind legs",
+  "good_for": "very happy, celebrating, dancing (audio: the 'happy happy happy' meme song)",
+  "sound": "low voice ~296 Hz (human or bark - check)"
+ },
+ "C33": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 2.07,
+  "end": 5.1,
+  "description": "Banana-suit cat laughing/singing",
+  "good_for": "happy, laughing, cheerful",
+  "sound": "low voice ~212 Hz (human or bark - check)"
+ },
+ "C34": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 5.1,
+  "end": 10.3,
+  "description": "Banana-suit cat (dark face) looking away",
+  "good_for": "sulking, ignoring, sad",
+  "sound": "low voice ~188 Hz (human or bark - check)"
+ },
+ "C35": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 10.3,
+  "end": 20.07,
+  "description": "Banana-suit cat looking around, curious",
+  "good_for": "curious, confused, listening",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C36": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 20.07,
+  "end": 25.23,
+  "description": "Banana-suit cat with pale screaming face",
+  "good_for": "screaming, shocked, terrified",
+  "sound": "animal sound (~1000 Hz)"
+ },
+ "C37": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 25.23,
+  "end": 30.43,
+  "description": "Banana-suit cat screaming, closer",
+  "good_for": "horrified, panicking",
+  "sound": "animal sound (~889 Hz)"
+ },
+ "C38": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 30.43,
+  "end": 36.2,
+  "description": "Banana-suit cat crying with tear streams",
+  "good_for": "crying hard, heartbroken",
+  "sound": "low voice ~372 Hz (human or bark - check)"
+ },
+ "C39": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 36.2,
+  "end": 46.37,
+  "description": "Banana-suit cat crying with hands up + spinning (rapid cuts)",
+  "good_for": "dramatic crying, breakdown",
+  "sound": "animal sound (~667 Hz)"
+ },
+ "C40": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 46.37,
+  "end": 52.43,
+  "description": "Banana-suit cat collapsed lying sideways",
+  "good_for": "exhausted, fainted, giving up",
+  "sound": "animal sound (~640 Hz)"
+ },
+ "C41": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 52.43,
+  "end": 56.57,
+  "description": "Banana-suit cat with a sweat drop",
+  "good_for": "nervous, embarrassed, awkward",
+  "sound": "noise / effects (no clear voice)"
+ },
+ "C42": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 56.57,
+  "end": 61.77,
+  "description": "Tiny banana-suit cat walking away in the distance",
+  "good_for": "leaving, alone, walking home",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C43": {
+  "pack": "cat",
+  "file": "assets/packs/cat_banana_pack.mp4",
+  "start": 61.77,
+  "end": 71.3,
+  "description": "Banana-suit cat standing sadly",
+  "good_for": "sad, lonely, waiting",
+  "sound": "animal sound (~410 Hz)"
+ },
  "D1": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 0,
   "end": 6.43,
   "description": "Fluffy white chihuahua, eyes closed, standing",
@@ -241,6 +397,7 @@
  },
  "D2": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 6.43,
   "end": 14.5,
   "description": "Jack Russell jumping with tongue out",
@@ -249,6 +406,7 @@
  },
  "D3": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 14.5,
   "end": 21.47,
   "description": "German shepherd with a butterfly on its nose",
@@ -257,6 +415,7 @@
  },
  "D4": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 21.47,
   "end": 32.1,
   "description": "Husky nose close-up staring into camera",
@@ -265,6 +424,7 @@
  },
  "D5": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 32.1,
   "end": 38.6,
   "description": "Small dog wrapped in a blanket",
@@ -273,6 +433,7 @@
  },
  "D6": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 38.6,
   "end": 43.67,
   "description": "Chihuahua squinting, tongue out",
@@ -281,6 +442,7 @@
  },
  "D7": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 43.67,
   "end": 51.43,
   "description": "Black dog side-eye, close",
@@ -289,6 +451,7 @@
  },
  "D8": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 51.43,
   "end": 61.0,
   "description": "Pug walking",
@@ -297,6 +460,7 @@
  },
  "D9": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 61.0,
   "end": 67.83,
   "description": "Rottweiler-type dog with a bow tie, sitting",
@@ -305,6 +469,7 @@
  },
  "D10": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 67.83,
   "end": 75.57,
   "description": "Black & white dog sitting, serious",
@@ -313,6 +478,7 @@
  },
  "D11": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 75.57,
   "end": 83.07,
   "description": "Bug-eyed chihuahua close-up",
@@ -321,6 +487,7 @@
  },
  "D12": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 83.07,
   "end": 86.57,
   "description": "Small white dog grinning with teeth",
@@ -329,6 +496,7 @@
  },
  "D13": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 86.57,
   "end": 97.33,
   "description": "Corgi smiling, small in frame",
@@ -337,6 +505,7 @@
  },
  "D14": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 97.33,
   "end": 104.2,
   "description": "Chocolate lab with a goofy face",
@@ -345,6 +514,7 @@
  },
  "D15": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 104.2,
   "end": 111.0,
   "description": "Corgi puppy eating watermelon",
@@ -353,6 +523,7 @@
  },
  "D16": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 111.0,
   "end": 117.2,
   "description": "Beagle grimace/smile close-up",
@@ -361,6 +532,7 @@
  },
  "D17": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 117.2,
   "end": 123.3,
   "description": "Dog in a straw hat talking on a phone",
@@ -369,6 +541,7 @@
  },
  "D18": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 123.3,
   "end": 129.73,
   "description": "Tan dog close-up, serious stare",
@@ -377,6 +550,7 @@
  },
  "D19": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 129.73,
   "end": 136.5,
   "description": "Pointer standing on long legs",
@@ -385,6 +559,7 @@
  },
  "D20": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 136.5,
   "end": 139.17,
   "description": "Same pointer, closer",
@@ -393,6 +568,7 @@
  },
  "D21": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 139.17,
   "end": 145.63,
   "description": "Husky howling upward",
@@ -401,6 +577,7 @@
  },
  "D22": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 145.63,
   "end": 155.43,
   "description": "Boston terrier sitting with collar",
@@ -409,6 +586,7 @@
  },
  "D23": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 155.43,
   "end": 158.73,
   "description": "Dog standing on hind legs (from behind)",
@@ -417,6 +595,7 @@
  },
  "D24": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 158.73,
   "end": 162.0,
   "description": "Tiny fluffy puppy far away",
@@ -425,6 +604,7 @@
  },
  "D25": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 162.0,
   "end": 167.57,
   "description": "Small black dog walking",
@@ -433,6 +613,7 @@
  },
  "D26": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 167.57,
   "end": 175.13,
   "description": "Bull terrier in a green hood",
@@ -441,6 +622,7 @@
  },
  "D27": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 175.13,
   "end": 179.13,
   "description": "Dog sitting like a person, leaning",
@@ -449,6 +631,7 @@
  },
  "D28": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 179.13,
   "end": 185.57,
   "description": "Golden retriever with headset and tie",
@@ -457,6 +640,7 @@
  },
  "D29": {
   "pack": "dog",
+  "file": "assets/packs/dog_pack.mp4",
   "start": 185.57,
   "end": 191.37,
   "description": "White dog sitting and howling",

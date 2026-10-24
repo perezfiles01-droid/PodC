@@ -10,7 +10,7 @@ from docx import Document
 from docx.shared import Inches, Pt
 
 sys.path.insert(0, os.path.dirname(__file__))
-from catalog_segments import CAT_CUTS, DOG_CUTS, segments
+from catalog_segments import PACKS
 
 CAT = {  # id: (description, mood / good for)
     1: ("White cat with huge round 'huh?' eyes peeking up", "shock, confusion, 'huh?'"),
@@ -42,6 +42,20 @@ CAT = {  # id: (description, mood / good for)
     27: ("Teary-eyed tabby held up by hands", "heartbroken, sad, about to cry"),
     28: ("Fluffy white cat lying, rolling", "relaxed, lazy, comfy"),
     29: ("Brown cat standing on hind legs", "waiting, standing guard, determined"),
+    30: ("Small calico kitten sitting, talking ('German painter' meme)", "explaining, chatting, small child talking (audio: the meme's voice-over, not a meow)"),
+    31: ("Orange cat screaming/laughing, mouth wide open, close-up", "laughing hard, screaming, shocked outburst"),
+    32: ("'Happy happy happy' cat dancing on hind legs", "very happy, celebrating, dancing (audio: the 'happy happy happy' meme song)"),
+    33: ("Banana-suit cat laughing/singing", "happy, laughing, cheerful"),
+    34: ("Banana-suit cat (dark face) looking away", "sulking, ignoring, sad"),
+    35: ("Banana-suit cat looking around, curious", "curious, confused, listening"),
+    36: ("Banana-suit cat with pale screaming face", "screaming, shocked, terrified"),
+    37: ("Banana-suit cat screaming, closer", "horrified, panicking"),
+    38: ("Banana-suit cat crying with tear streams", "crying hard, heartbroken"),
+    39: ("Banana-suit cat crying with hands up + spinning (rapid cuts)", "dramatic crying, breakdown"),
+    40: ("Banana-suit cat collapsed lying sideways", "exhausted, fainted, giving up"),
+    41: ("Banana-suit cat with a sweat drop", "nervous, embarrassed, awkward"),
+    42: ("Tiny banana-suit cat walking away in the distance", "leaving, alone, walking home"),
+    43: ("Banana-suit cat standing sadly", "sad, lonely, waiting"),
 }
 DOG = {
     1: ("Fluffy white chihuahua, eyes closed, standing", "smug, proud, ignoring"),
@@ -98,8 +112,30 @@ def sound_type(src, a, b):
     return f"animal sound (~{m:.0f} Hz)" if m >= 380 else f"low voice ~{m:.0f} Hz (human or bark - check)"
 
 
+def _run(m):
+    best, cur, st, bs = 0, 0, 0, 0
+    for i, v in enumerate(m):
+        if v:
+            st = i if cur == 0 else st
+            cur += 1
+            if cur > best:
+                best, bs = cur, st
+        else:
+            cur = 0
+    return bs, bs + best
+
+
+def key_of(src):
+    """chromakey filter using the video's own green (sampled from a corner pixel)."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", "0.5", "-i", src, "-frames:v", "1", "-vf", "crop=4:4:0:0",
+                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+    r, g, b = raw[0], raw[1], raw[2]
+    if g >= 230:  # pure-green screen: no despill (it turns yellow orange)
+        return f"chromakey=0x{r:02X}{g:02X}{b:02X}:0.18:0.06"
+    return "chromakey=0x50BB4A:0.10:0.04,despill=type=green"
+
+
 def main():
-    packs = {"C": ("cat", "assets/packs/cat_pack.mp4", CAT_CUTS, CAT), "D": ("dog", "assets/packs/dog_pack.mp4", DOG_CUTS, DOG)}
     tmp = tempfile.mkdtemp()
     catalog, doc = {}, Document()
     doc.styles["Normal"].font.size = Pt(10)
@@ -108,25 +144,35 @@ def main():
                       "numbers it will use (e.g. 'Mom = C7, Me = C6, Doctor = D28'). Pictures are the middle "
                       "frame of each clip. 'Sound' is what the clip's own audio is — the video plays it while "
                       "that character talks.")
-    for pre, (name, src, cuts, desc) in packs.items():
-        doc.add_heading(f"{name.capitalize()} clips", 1)
-        for n, (a, b) in enumerate(segments(cuts), 1):
+    count = {"C": 0, "D": 0}
+    for pre, src, segs in PACKS:
+        name = {"C": "cat", "D": "dog"}[pre]
+        desc = CAT if pre == "C" else DOG
+        if count[pre] == 0:
+            doc.add_heading(f"{name.capitalize()} clips", 1)
+        for a, b in segs:
+            count[pre] += 1
+            n = count[pre]
             cid = f"{pre}{n}"
             d, mood = desc[n]
-            snd = sound_type(src, a + 0.5, b - 0.2)
-            catalog[cid] = {"pack": name, "start": a, "end": b, "description": d, "good_for": mood, "sound": snd}
+            snd = sound_type(src, a + 0.5 if b - a > 2 else a, b - 0.2)
+            catalog[cid] = {"pack": name, "file": src, "start": a, "end": b, "description": d, "good_for": mood, "sound": snd}
             png, img = f"{tmp}/{cid}.png", f"{tmp}/{cid}.jpg"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str((a + b) / 2), "-i", src, "-frames:v", "1",
-                            "-vf", "format=rgba,chromakey=0x50BB4A:0.10:0.04,despill=type=green", png], check=True)
+                            "-vf", f"format=rgba,{key_of(src)}", png], check=True)
             cut = Image.open(png).convert("RGBA")
+            al = np.array(cut.split()[3]) > 128
+            r0, r1 = _run(al.sum(1) > 2); al2 = np.zeros_like(al); al2[r0:r1] = al[r0:r1]
+            c0, c1 = _run(al2.sum(0) > 2)
+            cut = cut.crop((c0, r0, c1, r1))  # only the character (drops corner watermarks)
             flat = Image.new("RGB", cut.size, "white")
             flat.paste(cut, mask=cut.split()[3])  # cut-out on white, no transparency (shows in every viewer)
-            flat.crop(flat.getbbox() and ImageOps.invert(flat).getbbox() or (0, 0, *flat.size)).save(img, quality=88)
+            flat.save(img, quality=88)
             doc.add_heading(f"{n}. Clip {cid} — {d}", 2)
             w, h = Image.open(img).size  # fit inside 2.6 x 2.0 in so several clips fit per page
             sc = min(2.6 / w, 2.0 / h)
             doc.add_picture(img, width=Inches(w * sc), height=Inches(h * sc))
-            doc.add_paragraph(f"Good for: {mood}\nTime in {name}_pack.mp4: {a:.2f}–{b:.2f} s ({b - a:.1f} s)\nSound: {snd}")
+            doc.add_paragraph(f"Good for: {mood}\nFile: {os.path.basename(src)}, {a:.2f}–{b:.2f} s ({b - a:.1f} s)\nSound: {snd}")
             print(cid, snd, flush=True)
     json.dump(catalog, open("assets/packs/catalog.json", "w"), indent=1)
     doc.save("CLIP_CATALOG.docx")

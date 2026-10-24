@@ -127,6 +127,19 @@ for spoken lines, sad/heartwarming twist.
 43. Catalog pictures were blank at first (bad ffmpeg overlay); fixed — make_catalog.py now
     flattens the cut-out on white with PIL and verifies. Check pictures before sending the doc.
 44. RULE: send the clip list as **PDF** (CLIP_CATALOG.pdf), not Word.
+45. RULE: **with every final video, send a TABLE**: Scene | Time in video | Place | Who = clip
+    (with each character's on-screen time). build.py prints it and writes out/<name>_clips.md.
+    The user watches, then says what to change by scene/time/clip number.
+46. New clips added (all cats, numbering continues): C30 German painter kitten
+    (cat_german_painter.mp4), C31 orange cat screaming/laughing (cat_screaming_orange.mp4,
+    0.6–3.5 s), C32 'happy happy happy' dancing cat (cat_happy_happy.mp4), C33–C43 banana-suit
+    cat pack (cat_banana_pack.mp4; 0–2.07 s skipped because of a big Chinese title; small corner
+    watermark is auto-ignored). Packs list lives in scripts/catalog_segments.py (PACKS);
+    descriptions in scripts/make_catalog.py. Adding a new upload = copy to assets/packs/, add a
+    PACKS entry + descriptions, run make_catalog.py, check pictures, commit, push.
+47. build.py now: samples each video's own green + frame size (portrait/1080p ok); bright pure-green
+    screens use chromakey WITHOUT despill (despill turned the yellow banana suit orange);
+    cut-outs keep only the main block of rows/columns so corner watermarks never show.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.

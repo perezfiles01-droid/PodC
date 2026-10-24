@@ -11,7 +11,23 @@ from PIL import Image, ImageDraw, ImageFont
 
 W, H, FPS = 1080, 1920, 30
 REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-KEY = "chromakey=0x50BB4A:0.10:0.04,despill=type=green"
+KEY = "chromakey=0x50BB4A:0.10:0.04,despill=type=green"  # default (cat/dog packs)
+_KEYS = {}
+
+
+def key_for(src):
+    """Chroma key matched to each video's own green (sampled from a corner), plus its frame size."""
+    if src not in _KEYS:
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", "0.5", "-i", src, "-frames:v", "1", "-f", "rawvideo",
+                              "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+        wh = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height",
+                             "-of", "csv=p=0", src], capture_output=True, text=True).stdout.strip().split(",")
+        w, h = int(wh[0]), int(wh[1])
+        r, g, b = np.frombuffer(raw, np.uint8).reshape(h, w, 3)[3, 3]
+        # pure-green screens: no despill (it turns yellow orange) — chromakey alone is clean there
+        key = KEY if g < 230 else f"chromakey=0x{r:02X}{g:02X}{b:02X}:0.18:0.06"
+        _KEYS[src] = (key, w, h)
+    return _KEYS[src]
 story = json.load(open(sys.argv[1]))
 OUT = sys.argv[2]
 os.makedirs(f"{OUT}/tmp", exist_ok=True)
@@ -21,6 +37,31 @@ def run(cmd):
     subprocess.run(cmd, check=True)
 
 
+def _longest_run(mask1d):
+    best, cur, start, bs = 0, 0, 0, 0
+    for i, v in enumerate(mask1d):
+        if v:
+            if cur == 0:
+                start = i
+            cur += 1
+            if cur > best:
+                best, bs = cur, start
+        else:
+            cur = 0
+    return bs, bs + best
+
+
+def main_blob(a):
+    """Keep only the longest contiguous band of rows (then columns) — the character, not a watermark."""
+    r0, r1 = _longest_run(a.sum(1) > 2)
+    b = np.zeros_like(a)
+    b[r0:r1] = a[r0:r1]
+    c0, c1 = _longest_run(b.sum(0) > 2)
+    out = np.zeros_like(a)
+    out[r0:r1, c0:c1] = a[r0:r1, c0:c1]
+    return out
+
+
 def bbox(src, ss, dur):
     """Union bounding box of the keyed subject over the clip."""
     d = f"{OUT}/tmp/bb"
@@ -28,10 +69,12 @@ def bbox(src, ss, dur):
     for f in os.listdir(d):
         os.remove(f"{d}/{f}")
     run(["ffmpeg", "-v", "error", "-ss", str(ss), "-t", str(dur), "-i", src, "-vf",
-         f"fps=3,format=yuva420p,{KEY},alphaextract", f"{d}/%03d.png"])
+         f"fps=3,format=yuva420p,{key_for(src)[0]},alphaextract", f"{d}/%03d.png"])
     a = np.max([np.array(Image.open(f"{d}/{f}")) for f in os.listdir(d)], axis=0) > 128
+    a = main_blob(a)  # drop corner watermarks / stray specks: keep the biggest block of rows & columns
     ys, xs = np.where(a)
-    x0, x1, y0, y1 = max(xs.min() - 4, 0), min(xs.max() + 4, 639), max(ys.min() - 4, 0), 359
+    _, w, h = key_for(src)
+    x0, x1, y0, y1 = max(xs.min() - 4, 0), min(xs.max() + 4, w - 1), max(ys.min() - 4, 0), h - 1
     return f"{(x1 - x0) // 2 * 2}:{(y1 - y0) // 2 * 2}:{x0}:{y0}"
 
 
@@ -86,14 +129,14 @@ for si, sc in enumerate(story["scenes"]):
             a["pack"] = c["pack"]
             a.setdefault("ss", round(c["start"] + 1.0, 2))  # skip the clip's zoom-in intro
             a.setdefault("len", round(c["end"] - a["ss"] - 0.2, 2))  # stay inside the clip (no flicker)
-        src = story["packs"][a.get("pack", "cat")]
+        src = CATALOG[a["clip"]]["file"] if a.get("clip") else story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
         sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
         n = int(a["len"] / sp * FPS)
         flip = ",hflip" if a.get("flip") else ""
         # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
-        fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,{KEY},"
+        fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,{key_for(src)[0]},"
                   f"scale=-2:{a['h']}{flip},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
                   f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
         en = f":enable='between(t,{a.get('t0', 0)},{a.get('t1', T)})'"
@@ -184,10 +227,19 @@ def clip_id(a):
     return "?"
 
 
-lines = []
+def mmss(t):
+    return f"{int(t // 60)}:{t % 60:04.1f}"
+
+
+lines = ["| Scene | Time in video | Place | Who = clip (on screen) |", "|---|---|---|---|"]
+t_scene = 0.0
 for si, sc in enumerate(story["scenes"], 1):
-    who = ", ".join(f"{a.get('name') or a.get('label', '?').rstrip(':')} = {clip_id(a)}" for a in sc["actors"])
-    lines.append(f"Scene {si} ({os.path.splitext(os.path.basename(sc['bg']))[0]}): {who}")
-open(f"{OUT}/{story['name']}_clips.txt", "w").write("\n".join(lines) + "\n")
+    who = "<br>".join(
+        f"{a.get('name') or a.get('label', '?').rstrip(':')} = **{clip_id(a)}** "
+        f"({mmss(t_scene + a.get('t0', 0))}–{mmss(t_scene + a.get('t1', sc['dur']))})" for a in sc["actors"])
+    place = os.path.splitext(os.path.basename(sc["bg"]))[0]
+    lines.append(f"| {si} | {mmss(t_scene)}–{mmss(t_scene + sc['dur'])} | {place} | {who} |")
+    t_scene += sc["dur"]
+open(f"{OUT}/{story['name']}_clips.md", "w").write("\n".join(lines) + "\n")
 print("\n".join(lines))
 print("DONE", total)
