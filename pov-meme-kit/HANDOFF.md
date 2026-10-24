@@ -17,6 +17,9 @@
 - 1080x1920, 30 fps, ~35–45 s, 4–6 scenes, no dead air (lines back-to-back, <=0.3 s gaps, ~3 s each).
 - White rounded POV box at top for the whole video; **no watermark** (`"handle": ""`).
 - Photoreal background per scene (assets/backgrounds/ or new ones via scripts/bg.py).
+- Backgrounds must stay calm so they never overpower the characters: new stories set
+  **`"bg_soft": true`** (light blur, less color, slightly dimmer) and bg.py prompts should be
+  simple/plain ("simple plain …, minimal decor, soft natural light, eye-level").
 - Characters = green-screen clips from the catalog, placed where the plot puts them (floor, table,
   bed…), **`"actor_scale": 1.3`** (bigger), never overlapping each other or each other's text.
 - New stories set **`"tight_bottom": true`** (crops at the character's feet — portrait clips like C30
@@ -63,7 +66,7 @@
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
-  old-shelter-dog_v1.mp4, grandmas-birthday_v1.mp4, class-clown_v1.mp4 (same raw/ link pattern)
+  old-shelter-dog_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -324,3 +327,6 @@ for spoken lines, sad/heartwarming twist.
 57. Two more mixed cat+dog videos: "Grandma's last birthday wish" (stories/grandmas-birthday.json,
     46 s) and "The class clown was hiding his pain" (stories/class-clown.json, 47 s). New
     backgrounds: classroom, bedroom. C32 (happy-happy cat) is small inside its frame — use h ~620.
+58. User: backgrounds too overpowering — make them simple/normal but realistic. Added `bg_soft`
+    (gblur 6, saturation 0.55, brightness -0.07, contrast 0.88). Grandma + clown re-sent as v2.
+    Older videos unchanged (option off by default).

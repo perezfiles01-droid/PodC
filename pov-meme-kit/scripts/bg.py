@@ -2,6 +2,7 @@
 
 usage: python3 scripts/bg.py assets/backgrounds/<name> "photo of ... , realistic interior photography, empty, no people, wide angle" [seed]
 Writes <name>_0.png and <name>_1.png; pick the better one and rename it to <name>.png.
+Keep prompts SIMPLE and plain: "simple plain ..., minimal decor, soft natural light, eye-level".
 Reject top-down food shots or images with people/animals and regenerate with another seed.
 """
 import sys, torch

@@ -6,7 +6,7 @@
   "cat": "assets/packs/cat_pack.mp4",
   "dog": "assets/packs/dog_pack.mp4"
  },
- "name": "grandmas-birthday_v1",
+ "name": "grandmas-birthday_v2",
  "title": "Grandma's last birthday wish",
  "music": {
   "bed": "assets/music/chasing_cars_hale_cover.mp3",
@@ -234,5 +234,6 @@
     }
    ]
   }
- ]
+ ],
+ "bg_soft": true
 }

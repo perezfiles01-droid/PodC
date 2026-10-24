@@ -6,7 +6,7 @@
   "cat": "assets/packs/cat_pack.mp4",
   "dog": "assets/packs/dog_pack.mp4"
  },
- "name": "class-clown_v1",
+ "name": "class-clown_v2",
  "title": "The class clown was hiding\nhis pain",
  "music": {
   "bed": "assets/music/chasing_cars_hale_cover.mp3",
@@ -232,5 +232,6 @@
     }
    ]
   }
- ]
+ ],
+ "bg_soft": true
 }

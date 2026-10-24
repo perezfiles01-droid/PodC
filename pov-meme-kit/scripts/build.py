@@ -123,6 +123,8 @@ for si, sc in enumerate(story["scenes"]):
     T = sc["dur"]
     ins = ["-loop", "1", "-t", str(T), "-i", sc["bg"]]
     fc = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,format=rgba[s0]"]
+    if story.get("bg_soft"):  # calm the background so the characters stand out (still realistic)
+        fc.append(f"[s0]gblur=sigma=6,eq=saturation=0.55:brightness=-0.07:contrast=0.88[s0]")
     if sc.get("dark"):
         fc.append(f"[s0]eq=brightness=-0.25:saturation=0.6[s0]")
     cur, idx, aud, pending = "s0", 1, [], []
