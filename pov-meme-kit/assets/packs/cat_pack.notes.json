@@ -1,0 +1,17 @@
+{
+  "_about": "Read automatically by scripts/build.py. 'mute' = stretches of the pack's AUDIO that must never be heard (times in seconds of cat_pack.mp4). Add to this list whenever the user flags a bad sound.",
+  "mute": [
+    [82.0, 83.2, "woman laughing at the end of the grey kitten clip (user flagged)"],
+    [136.97, 152.6, "orange 'singing' cat: a human singing lyrics, not a meow"],
+    [74.43, 79.37, "peeking cat: music-like vibrato, not a meow"],
+    [168.5, 175.77, "teary tabby held by hands: background music"],
+    [43.67, 53.87, "standing cream cat: background music"]
+  ],
+  "clean_meows": {
+    "kitten_meows": [30.0, 31.4],
+    "sad_tabby_meow_1": [40.0, 40.8],
+    "sad_tabby_meow_2": [42.3, 43.3],
+    "crying_sobs": [104.6, 110.5],
+    "eating_sounds": [119.3, 124.0]
+  }
+}

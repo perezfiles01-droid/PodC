@@ -83,6 +83,18 @@ for spoken lines, sad/heartwarming twist.
     video to catch up. FIX in build.py: silence input first in each scene's amix + asetpts.
     NEW QA: `scripts/avsync.py out.mp4` must print OK (audio+video start at 0, same length).
 36. v7 sent (38 s) — passes avsync + cuts + jumps. QA before EVERY send = all three scripts.
+37. User: remove the **woman laughing** at the end of the grey kitten clip (79.37–83.17; laugh
+    82.0–83.2) and make sure it never appears again. DONE via the manual
+    `assets/packs/cat_pack.notes.json` — build.py auto-mutes every "mute" stretch in every video.
+    RULE: when the user flags a bad sound, add it to the pack's notes.json "mute" list.
+38. RULE: **check every clip's audio before using it** (spectrogram / whisper). Many clips carry
+    music, human singing or laughs instead of meows (all listed in notes.json). A cat with no
+    usable sound borrows a clean meow via `"sound_ss"` (see notes.json "clean_meows").
+39. User: grey kitten (screaming) and orange cat (eyes half closed, human singing) did NOT match
+    the story. Re-cast: "You lied to me..." = teary-eyed tabby 169.0+6.0 with `keep_top` 0.55
+    (hides the hands holding it); office = excited waving white cat 111.0+7.3; restaurant Me =
+    polite standing cream cat 44.0+9.5. Don't use the orange singing cat for sad/heartfelt lines.
+40. v8 sent (38 s) — passes avsync + cuts + jumps.
 
 ## Decisions / facts so far
 - Figma: user only has View seats (one plan is their AvePoint work org) — don't use.
@@ -156,7 +168,7 @@ for spoken lines, sad/heartwarming twist.
   Chromakey 0x50BB4A:0.10:0.04 + despill, auto-crop per clip, ping-pong loops, labels/speech
   attached to each cat, cat sound while it speaks, song bed → climax at `switch`, fades.
 - `scripts/bg.py` — SD-Turbo backgrounds; `scripts/cuts.py` / `scripts/jumps.py` — QA.
-- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v7.mp4`.
+- Approved example: `stories/mom-wasnt-hungry.json` → `examples/mom-wasnt-hungry_v8.mp4`.
 - Positions on the 1080x1920 canvas for the existing backgrounds: kitchen table top y≈1430
   (x 240–800); night kitchen floor y≈1720; office floor y≈1680; restaurant front table y≈1420
   (x 120–900).

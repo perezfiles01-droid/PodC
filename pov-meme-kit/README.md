@@ -16,7 +16,7 @@ Everything needed to make Pawspective-style emotional "POV" cat/dog meme videos 
 | `scripts/jumps.py` | Lists sudden frame jumps in a finished video (smoothness QA). |
 | `scripts/avsync.py` | Audio and video must both start at 0 (else players fast-forward the start). |
 | `stories/` | Story JSONs. `mom-wasnt-hungry.json` is the approved example. |
-| `assets/packs/` | Green-screen meme packs: `cat_pack.mp4`, `dog_pack.mp4`. |
+| `assets/packs/` | Green-screen meme packs: `cat_pack.mp4`, `dog_pack.mp4`, plus `*.notes.json` = the manual of bad audio stretches (auto-muted) and clean meows to borrow. |
 | `assets/music/` | Background song(s). |
 | `assets/backgrounds/` | Generated scene backgrounds. |
 | `references/` | The 3 target reference videos + 4 screenshots from the user. |
@@ -47,6 +47,7 @@ python3 scripts/jumps.py out/<name>_with-sound.mp4   # spikes only at fade-in + 
       "pack": "cat", "ss": 30.0, "len": 8.0,    // clip start/length INSIDE one segment (see HANDOFF)
       "h": 420, "x": 320, "y": 1440,             // height px, center x, bottom y on a 1080x1920 canvas
       "t0": 0, "t1": 11, "flip": false, "vol": 1.0, "speed": 1.0,   // speed<1 calms twitchy clips
+      "keep_top": 0.55, "sound_ss": 30.0,        // crop away bottom (hands); borrow sound from another time
       "label": "Me:", "lx": 0,                   // lx shifts label/speech sideways
       "say": [{"text": "Line one\nline two", "t0": 0.6, "t1": 4.6}]   // plays the cat's sound too
     }],

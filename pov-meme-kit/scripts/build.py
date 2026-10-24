@@ -67,6 +67,25 @@ def pov_png(path, title):
     im.save(path)
 
 
+# per-pack notes (assets/packs/<pack>.notes.json): audio stretches that must always be muted
+NOTES = {}
+for k, src in story["packs"].items():
+    try:
+        NOTES[src] = json.load(open(os.path.splitext(src)[0] + ".notes.json"))
+    except FileNotFoundError:
+        NOTES[src] = {}
+
+
+def mute_filter(src, ss, sp):
+    """volume=0 for every flagged stretch, in the clip's local (speed-adjusted) time."""
+    out = ""
+    for m0, m1, *_ in NOTES.get(src, {}).get("mute", []):
+        a, b = (m0 - ss) / sp, (m1 - ss) / sp
+        if b > 0:
+            out += f"volume=0:enable='between(t,{max(a, 0):.2f},{b:.2f})',"
+    return out
+
+
 pov_png(f"{OUT}/tmp/pov.png", story["title"])
 parts = []
 for si, sc in enumerate(story["scenes"]):
@@ -79,6 +98,9 @@ for si, sc in enumerate(story["scenes"]):
     for ai, a in enumerate(sc["actors"]):
         src = story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
+        if a.get("keep_top"):  # keep only the top part of the cut-out (e.g. hide hands holding the cat)
+            cw, chh, cx, cy = map(int, crop.split(":"))
+            crop = f"{cw}:{int(chh * a['keep_top']) // 2 * 2}:{cx}:{cy}"
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
         sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
         n = int(a["len"] / sp * FPS)
@@ -106,10 +128,14 @@ for si, sc in enumerate(story["scenes"]):
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
         for k, (t0, t1) in enumerate(a.get("speak", [])):
             lbl = f"v{ai}_{k}"
-            fc.append(f"[{idx}:a]atempo={max(sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+            a_in, a_ss, a_sp = (idx + 1, a["sound_ss"], 1.0) if a.get("sound_ss") is not None else (idx, a["ss"], sp)
+            fc.append(f"[{a_in}:a]{mute_filter(src, a_ss, a_sp)}atempo={max(a_sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
                       f"afade=t=in:d=0.1,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
                       f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={a.get('vol', 1.0)}[{lbl}]")
             aud.append(lbl)
+        if a.get("sound_ss") is not None:  # borrow a clean meow from elsewhere in the pack
+            ins += ["-ss", str(a["sound_ss"]), "-i", src]
+            idx += 1
         idx += 1
     if sc.get("dim_at") is not None:
         fc.append(f"[{cur}]split[d1][d2];[d2]drawbox=c=black@0.6:t=fill[d3];"
