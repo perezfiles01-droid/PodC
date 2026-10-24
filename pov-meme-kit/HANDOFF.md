@@ -50,7 +50,8 @@
    `scripts/jumps.py` (spikes only at fade-in, scene cuts, clip swaps). Look at a few frames.
 3. Send ONLY the with-sound mp4 + the scene table (Scene | Time | Place | Who = clip) + the
    updated CLIP_CATALOG.pdf + this HANDOFF.md.
-   ALSO always include a ready-to-copy **Facebook caption + hashtags** in a code block (2 caption
+   ALSO always include ready-to-copy **Facebook captions and hashtags in SEPARATE code blocks**
+   (one block per caption, one block for hashtags — user asked to keep them apart) (2 caption
    options, 5–8 hashtags, e.g. `#catpov #catmemes #momlove #emotional #storytime #fbreels #pov`,
    adapted to the story). Caption = emotional hook + a question or "tag someone" to drive comments.
 4. Swap requests ("scene 3 C23 → D12"): set `"clip"`, delete that actor's `"ss"`/`"len"`/`"speed"`,
