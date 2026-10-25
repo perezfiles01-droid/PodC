@@ -122,12 +122,23 @@ pov_png(f"{OUT}/tmp/pov.png", story["title"])
 parts = []
 for si, sc in enumerate(story["scenes"]):
     T = sc["dur"]
-    ins = ["-loop", "1", "-t", str(T), "-i", sc["bg"]]
+    MOTION = story.get("motion")  # camera moves, entrances, text pops, props (off = old behaviour)
+    ins = ["-loop", "1", "-framerate", str(FPS), "-t", str(T), "-i", sc["bg"]]
     fc = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,format=rgba[s0]"]
+    if MOTION:  # slow zoom / pan so no scene is a still picture
+        cam, Z = sc.get("cam", "in"), 0.10
+        if cam in ("in", "out"):
+            z = f"(1+{Z}*t/{T})" if cam == "in" else f"(1+{Z}-{Z}*t/{T})"
+            fc.append(f"[s0]scale=w='{W}*{z}':h='{H}*{z}':eval=frame,crop={W}:{H}:(iw-{W})/2:(ih-{H})/2[s0]")
+        else:  # pan left / right across a slightly enlarged background
+            px = f"(iw-{W})*t/{T}" if cam == "right" else f"(iw-{W})*(1-t/{T})"
+            fc.append(f"[s0]scale={int(W * 1.15)}:-2,crop={W}:{H}:'{px}':(ih-{H})/2[s0]")
     if story.get("bg_soft"):  # calm the background so the characters stand out (still realistic)
         fc.append(f"[s0]gblur=sigma=6,eq=saturation=0.55:brightness=-0.07:contrast=0.88[s0]")
     if sc.get("dark"):
         fc.append(f"[s0]eq=brightness=-0.25:saturation=0.6[s0]")
+    if sc.get("grey"):
+        fc.append("[s0]hue=s=0[s0]")
     cur, idx, aud, pending = "s0", 1, [], []
     for ai, a in enumerate(sc["actors"]):
         a["h"] = int(a["h"] * story.get("actor_scale", 1.0))  # one knob to make every character bigger
@@ -154,8 +165,17 @@ for si, sc in enumerate(story["scenes"]):
         fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,{key_for(src)[0]},"
                   f"scale=-2:{a['h']}{flip},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
                   f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
-        en = f":enable='between(t,{a.get('t0', 0)},{a.get('t1', T)})'"
-        fc.append(f"[{cur}][a{ai}]overlay=x={a['x']}-overlay_w/2:y={a['y']}-overlay_h{en}[c{ai}]")
+        t0a = a.get("t0", 0)
+        en = f":enable='between(t,{t0a},{a.get('t1', T)})'"
+        ox, oy = f"{a['x']}-overlay_w/2", f"{a['y']}-overlay_h"
+        ent = a.get("enter", "up" if MOTION and not (si == 0 and t0a == 0 and story.get("hook_first_frame")) else None)
+        if ent and not a.get("swap"):  # slide in over 0.4 s (eased); a mid-scene emotion swap stays put
+            k = f"pow(max(0,1-(t-{t0a})/0.4),2)"
+            if ent == "up":
+                oy += f"+260*{k}"
+            else:
+                ox += f"{'-' if ent == 'left' else '+'}600*{k}"
+        fc.append(f"[{cur}][a{ai}]overlay=x='{ox}':y='{oy}'{en}[c{ai}]")
         cur = f"c{ai}"
         # label + speech follow the actor: same x, stacked just above its head, only while visible
         top = max(a["y"] - a["h"], 470)
@@ -163,13 +183,13 @@ for si, sc in enumerate(story["scenes"]):
         if a.get("label"):
             lp = f"{OUT}/tmp/lab{si}_{ai}.png"
             text_png(lp, [{"text": a["label"], "x": a["x"] + a.get("lx", 0), "y": lab_y}])
-            pending.append((lp, a.get("t0", 0), a.get("t1", T)))
+            pending.append((lp, a.get("t0", 0), a.get("t1", T), "pop"))
         for k, say in enumerate(a.get("say", [])):
             n_lines = say["text"].count("\n") + 1
             say_png = f"{OUT}/tmp/say{si}_{ai}_{k}.png"
             text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
                            "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
-            pending.append((say_png, say["t0"], say["t1"]))
+            pending.append((say_png, say["t0"], say["t1"], "shake" if say.get("shake") else "pop"))
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
         if a.get("full_sound"):  # never cut this clip's sound: each line plays the whole clip audio
             a["speak"] = [[t0, max(t1, t0 + a["len"])] for t0, t1 in a.get("speak", [])]
@@ -192,16 +212,35 @@ for si, sc in enumerate(story["scenes"]):
     ins += ["-i", f"{OUT}/tmp/pov.png"]
     fc.append(f"[{cur}][{idx}:v]overlay[p]")
     cur, idx = "p", idx + 1
-    for k, (pth, t0, t1) in enumerate(pending):
+    def move(t0, style):  # overlay x/y for a full-canvas text/prop layer
+        if not MOTION or not style or (si == 0 and t0 == 0 and story.get("hook_first_frame")):
+            return ""
+        x = f"if(lt(t-{t0},0.5),14*sin(70*t),0)" if style == "shake" else "0"
+        return f":x='{x}':y='30*pow(max(0,1-(t-{t0})/0.25),2)'"
+    for pr in sc.get("props", []):  # story objects (cut-out PNGs) that pop in on cue
+        pi = Image.open(pr["img"]).convert("RGBA")
+        pi = pi.resize((int(pi.width * pr["h"] / pi.height), pr["h"]))
+        cv = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        cv.paste(pi, (pr["x"] - pi.width // 2, pr["y"] - pi.height), pi)
+        pp = f"{OUT}/tmp/prop{si}_{len(pending)}.png"
+        cv.save(pp)
+        pending.insert(0, (pp, pr.get("t0", 0), pr.get("t1", T), "pop"))
+    for k, (pth, t0, t1, style) in enumerate(pending):
         ins += ["-i", pth]
-        fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{t0},{t1})'[q{k}]")
+        fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{t0},{t1})'{move(t0, style)}[q{k}]")
         cur, idx = f"q{k}", idx + 1
     for k, s in enumerate(sc.get("subs", [])):
         p = f"{OUT}/tmp/sub{si}_{k}.png"
         text_png(p, [dict(s, color=s.get("color", (255, 230, 0)))])
         ins += ["-i", p]
-        fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{s['t0']},{s['t1']})'[t{k}]")
+        fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{s['t0']},{s['t1']})'{move(s['t0'], 'pop')}[t{k}]")
         cur, idx = f"t{k}", idx + 1
+    if MOTION and si > 0:
+        fc.append(f"[{cur}]fade=t=in:d=0.3[fi]")
+        cur = "fi"
+    if sc.get("flash_at") is not None:
+        fc.append(f"[{cur}]eq=brightness='0.9*max(0,1-abs(t-{sc['flash_at']})/0.18)':eval=frame[fl]")
+        cur = "fl"
     # exactly T*FPS frames, so picture and sound stay locked scene after scene (no drift)
     fc.append(f"[{cur}]format=yuv420p,fps={FPS},tpad=stop_mode=clone:stop_duration=1,"
               f"trim=end_frame={int(round(T * FPS))}[vout]")
