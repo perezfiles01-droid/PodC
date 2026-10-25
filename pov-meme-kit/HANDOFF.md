@@ -33,6 +33,12 @@
   on clip swaps, or both clips show the whole scene stacked on each other.
 - Clip emotion must match the line (sad → sad/crying clip, happy → happy clip). A character may
   swap clips mid-scene for an emotion change (same x/y, consecutive t0/t1).
+- **Motion (new stories set `"motion": true`, user asked for 'presenting a story' feel):** slow
+  zoom/pan on every background (scene `"cam": "in"|"out"|"left"|"right"`), characters slide up in
+  (`"enter"`, `"swap": true` on a mid-scene emotion swap so it doesn't slide), speech pops in
+  (`"shake": true` on angry lines), story props pop in (scene `"props"`: cut-out PNGs in
+  assets/props/<story>/), 0.3 s fade into each scene, soft white flash on the twist (`"flash_at"`),
+  `"grey": true` for funeral/memory scenes. Hook scene's first frame stays static + fully visible.
 - Ending: dim + white closing lines; song switches to its climax.
 
 **Stories**
@@ -108,7 +114,7 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -389,3 +395,7 @@ for spoken lines, sad/heartwarming twist.
     torch/diffusers aren't in setup.sh's light install (pip install torch diffusers transformers accelerate);
     bg.py arg order = path, prompt, seed. C13 (edge-peeker) must touch the screen edge (x≈105).
     C31 needs speed 0.7 (short loop).
+67. stepdad-row-12_v1 (45.5 s): first video with motion (see CURRENT RULES). Props: ROW 12 sign drawn in
+    PIL, coffee cup drawn in PIL (SD cup didn't cut out cleanly), framed photo = SD on white + flood-fill
+    cut-out. Session note: when the shell's Auto-mode safety check is down, ask the user to switch the
+    mode dropdown to "Accept edits"; GitHub connector (push_files) can still save text files.

@@ -239,7 +239,11 @@ for si, sc in enumerate(story["scenes"]):
         fc.append(f"[{cur}]fade=t=in:d=0.3[fi]")
         cur = "fi"
     if sc.get("flash_at") is not None:
+<<<<<<< Updated upstream
         fc.append(f"[{cur}]eq=brightness='0.9*max(0,1-abs(t-{sc['flash_at']})/0.18)':eval=frame[fl]")
+=======
+        fc.append(f"[{cur}]eq=brightness='0.45*max(0,1-abs(t-{sc['flash_at']})/0.12)':eval=frame[fl]")
+>>>>>>> Stashed changes
         cur = "fl"
     # exactly T*FPS frames, so picture and sound stay locked scene after scene (no drift)
     fc.append(f"[{cur}]format=yuv420p,fps={FPS},tpad=stop_mode=clone:stop_duration=1,"

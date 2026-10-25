@@ -1,0 +1,370 @@
+{
+ "name": "stepdad-row-12_v1",
+ "title": "My stepdad never missed\na single hockey game",
+ "handle": "",
+ "actor_scale": 1.3,
+ "tight_bottom": true,
+ "bg_soft": true,
+ "hook_first_frame": true,
+ "motion": true,
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 38.5
+ },
+ "scenes": [
+  {
+   "dur": 8,
+   "cam": "in",
+   "actors": [
+    {
+     "clip": "C4",
+     "name": "Me (teen)",
+     "x": 300,
+     "y": 1760,
+     "h": 380,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "You're NOT my real dad.",
+       "t0": 0,
+       "t1": 2.6,
+       "shake": true
+      },
+      {
+       "text": "Stop coming to\nmy games!",
+       "t0": 2.7,
+       "t1": 5.0,
+       "shake": true
+      }
+     ]
+    },
+    {
+     "clip": "D10",
+     "name": "Stepdad",
+     "x": 760,
+     "y": 1760,
+     "h": 400,
+     "label": "Stepdad:",
+     "say": [
+      {
+       "text": "...See you\nSaturday, kid.",
+       "t0": 5.1,
+       "t1": 7.8
+      }
+     ]
+    }
+   ],
+   "props": [
+    {
+     "img": "assets/props/stepdad-row-12/row12.png",
+     "x": 760,
+     "y": 1050,
+     "h": 110,
+     "t0": 0,
+     "t1": 8
+    },
+    {
+     "img": "assets/props/stepdad-row-12/cup.png",
+     "x": 960,
+     "y": 1770,
+     "h": 170,
+     "t0": 0.6,
+     "t1": 8
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene1.png"
+  },
+  {
+   "dur": 7,
+   "cam": "right",
+   "actors": [
+    {
+     "clip": "D3",
+     "name": "Stepdad (alone)",
+     "x": 540,
+     "y": 1760,
+     "h": 420
+    }
+   ],
+   "subs": [
+    {
+     "text": "Every game. Same seat.",
+     "x": 540,
+     "y": 600,
+     "t0": 0.2,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "Row 12. A coffee he\nnever drank.",
+     "x": 540,
+     "y": 720,
+     "t0": 1.6,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 54
+    },
+    {
+     "text": "2009",
+     "x": 540,
+     "y": 1000,
+     "t0": 3.0,
+     "t1": 3.8,
+     "color": "white",
+     "size": 90
+    },
+    {
+     "text": "2012",
+     "x": 540,
+     "y": 1000,
+     "t0": 3.8,
+     "t1": 4.6,
+     "color": "white",
+     "size": 90
+    },
+    {
+     "text": "2015",
+     "x": 540,
+     "y": 1000,
+     "t0": 4.6,
+     "t1": 5.4,
+     "color": "white",
+     "size": 90
+    },
+    {
+     "text": "2018",
+     "x": 540,
+     "y": 1000,
+     "t0": 5.4,
+     "t1": 6.2,
+     "color": "white",
+     "size": 90
+    },
+    {
+     "text": "2023",
+     "x": 540,
+     "y": 1000,
+     "t0": 6.2,
+     "t1": 7,
+     "color": "white",
+     "size": 90
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene2.png"
+  },
+  {
+   "dur": 7,
+   "cam": "in",
+   "actors": [
+    {
+     "clip": "C22",
+     "name": "Me",
+     "x": 300,
+     "y": 1760,
+     "h": 360,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "Why does he\neven care?",
+       "t0": 0.2,
+       "t1": 3.4
+      }
+     ]
+    },
+    {
+     "clip": "C7",
+     "name": "Mom",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "*If only you\nknew...*",
+       "t0": 3.5,
+       "t1": 6.8
+      }
+     ]
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene3.png"
+  },
+  {
+   "dur": 7,
+   "cam": "out",
+   "grey": true,
+   "actors": [
+    {
+     "clip": "C27",
+     "name": "Me",
+     "x": 330,
+     "y": 1760,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "He never missed\none game...",
+       "t0": 0.3,
+       "t1": 3.4
+      },
+      {
+       "text": "*And I never said\nthank you.*",
+       "t0": 3.5,
+       "t1": 6.8
+      }
+     ]
+    }
+   ],
+   "props": [
+    {
+     "img": "assets/props/stepdad-row-12/frame.png",
+     "x": 760,
+     "y": 1450,
+     "h": 250,
+     "t0": 0.5,
+     "t1": 7
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene4.png"
+  },
+  {
+   "dur": 9.5,
+   "cam": "in",
+   "flash_at": 3.4,
+   "actors": [
+    {
+     "clip": "C17",
+     "name": "Mom (comforting)",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "That was your\ndad's seat.",
+       "t0": 0.2,
+       "t1": 3.3
+      },
+      {
+       "text": "He asked his best friend\nto keep it warm for you.",
+       "t0": 3.4,
+       "t1": 6.3
+      },
+      {
+       "text": "Your dad's order.",
+       "t0": 7.8,
+       "t1": 9.4
+      }
+     ]
+    },
+    {
+     "clip": "C26",
+     "name": "Me (shocked)",
+     "x": 300,
+     "y": 1760,
+     "h": 400,
+     "t0": 0,
+     "t1": 6.4,
+     "say": []
+    },
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 300,
+     "y": 1760,
+     "h": 420,
+     "t0": 6.4,
+     "t1": 9.5,
+     "swap": true,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "And the\ncoffee...?",
+       "t0": 6.4,
+       "t1": 7.7
+      }
+     ]
+    }
+   ],
+   "props": [
+    {
+     "img": "assets/props/stepdad-row-12/row12.png",
+     "x": 540,
+     "y": 760,
+     "h": 110,
+     "t0": 0.3,
+     "t1": 9.5
+    },
+    {
+     "img": "assets/props/stepdad-row-12/cup.png",
+     "x": 540,
+     "y": 1770,
+     "h": 170,
+     "t0": 6.5,
+     "t1": 9.5
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene5.png"
+  },
+  {
+   "dur": 7,
+   "cam": "out",
+   "dim_at": 0,
+   "actors": [
+    {
+     "clip": "C18",
+     "name": "Me",
+     "x": 300,
+     "y": 1760,
+     "h": 420
+    },
+    {
+     "clip": "D10",
+     "name": "Stepdad",
+     "x": 770,
+     "y": 1760,
+     "h": 400
+    }
+   ],
+   "subs": [
+    {
+     "text": "He wasn't trying to\nreplace my dad.",
+     "x": 540,
+     "y": 620,
+     "t0": 0.3,
+     "t1": 7,
+     "color": "white",
+     "size": 58
+    },
+    {
+     "text": "He was saving his seat.",
+     "x": 540,
+     "y": 860,
+     "t0": 2.0,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 60
+    },
+    {
+     "text": "Share this with someone\nwho needs to see it ❤️",
+     "x": 540,
+     "y": 1180,
+     "t0": 4.5,
+     "t1": 7,
+     "color": "#FFE600",
+     "size": 46
+    }
+   ],
+   "bg": "assets/backgrounds/stepdad-row-12/scene6.png"
+  }
+ ]
+}
