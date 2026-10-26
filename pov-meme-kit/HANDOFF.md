@@ -523,3 +523,4 @@ for spoken lines, sad/heartwarming twist.
 80. first-day-gym_v1 (funny, 55.5 s): banana jogger depth run (C46 path), tremble, zoom-punches, reveal flash, Me lifted (path) then collapse (slide_to).
 81. first-day-gym_v2: cleaned up after 'so messy' — one look per character (banana Me, C29 gym guy = Grandma), fewer gags, clean cut-outs only (rules above).
 82. first-day-gym_v3: 3 s intro, no pointless dog, gym guy = D29 howling (straining lift), Me walks in (path), C37 flipped to face Grandma, real lift into Grandma's arms; build.py: text follows a path actor's end point.
+83. User: first-day-gym_v3 approved ("this one is better") — use it as the reference for funny-video quality (fast hook, purposeful gags, actions shown, characters facing each other).
