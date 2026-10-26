@@ -12,6 +12,14 @@
 >    and CURRENT RULES disagree, CURRENT RULES win.
 > 5. Read STYLE_GUIDE.md and look at references/ before planning a new story.
 
+## TWO STYLES (user, 2026-10-26): every video is SAD or FUNNY
+- **SAD** = everything in CURRENT RULES below (approved, unchanged).
+- **FUNNY** = copy `references/funny_ref1.mp4` exactly; full spec in STYLE_GUIDE.md › FUNNY style
+  (sharp bright backgrounds, comic font, white "quoted" speech, ":Me" labels BELOW characters,
+  per-line POV pills, constant clip swaps, emoji stickers, NO song, only the meme sounds, hard cuts,
+  ends on the punchline). Still human POV, US/CA audience, no watermark, plan-first workflow.
+- When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
+
 ## CURRENT RULES (authoritative, as of v13)
 **Look & format**
 - 1080x1920, 30 fps, ~35–45 s, 4–6 scenes, no dead air (lines back-to-back, <=0.3 s gaps, ~3 s each).
@@ -399,3 +407,4 @@ for spoken lines, sad/heartwarming twist.
     PIL, coffee cup drawn in PIL (SD cup didn't cut out cleanly), framed photo = SD on white + flood-fill
     cut-out. Session note: when the shell's Auto-mode safety check is down, ask the user to switch the
     mode dropdown to "Accept edits"; GitHub connector (push_files) can still save text files.
+68. User sent a FUNNY reference (funny_ref1.mp4) → second style added (see TWO STYLES + STYLE_GUIDE).

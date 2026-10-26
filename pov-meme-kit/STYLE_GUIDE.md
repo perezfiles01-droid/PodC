@@ -1,4 +1,8 @@
-# Style Guide — how the reference videos are built
+# Style Guide — TWO styles: SAD and FUNNY
+
+Every video is one or the other. Story JSON: `"style": "sad"` (default) or `"funny"`.
+
+# SAD style (approved; how the Pawspective references are built)
 
 Reference files: `references/videos/ref1_grandpa_tricycle.mp4`, `ref2_dad_promise_wedding.mp4`,
 `ref3_delivery_rider.mp4` and `references/screenshots/*.png`.
@@ -47,3 +51,57 @@ Reference files: `references/videos/ref1_grandpa_tricycle.mp4`, `ref2_dad_promis
   delay" / "I will only rate you 1 star" / "*Is his leg broken?*" / "I had an accident while
   delivering food" / "Have you eaten yet?" / "I have bread and water" → Customer brings ramen:
   "Sir, this is my way of apologizing for being rude earlier" → "Based on true story:" real clip.
+
+---
+# FUNNY style (reference: `references/funny_ref1.mp4`, "POV: Visiting your sister after she got married")
+
+Studied frame by frame (1 fps contact sheets + close-ups) and sound every 0.5 s. Copy this exactly.
+
+## Format
+- 720x1280 in the ref (we export 1080x1920), 30 fps, **~45 s**, **3 locations**:
+  porch 0–27.9 s → hallway 27.9–31.7 s (the chase) → bedroom 31.7–45.7 s.
+- **Hard cuts** between locations. No fades, no dimming, no end card, no closing white lines.
+  The video just ends on the punchline.
+- **Backgrounds:** bright, sharp, realistic, colorful daylight photos (porch with wooden deck,
+  hallway with runner rug, cozy bedroom). **NOT blurred or desaturated**, the opposite of the
+  sad style's `bg_soft`.
+
+## Text (all text uses a rounded comic-style bold font, like Comic Neue Bold)
+- **POV title:** a separate white rounded "pill" behind EACH line, hugging that line's width
+  (TikTok caption style), black text, stacked: "POV:" / line 1 / line 2. Sits around 22–33 % of
+  the height and stays for the whole video. The ref has a "@CAT.exe" watermark under it, but we
+  **don't copy that** (it's another creator's handle, and our rule is no watermark).
+- **Speech:** WHITE text with a thick black outline, always in **"double quotes"**, 1–2 lines,
+  right above the speaker's head. On screen only while that line is spoken (~2–3 s).
+- **Labels:** go **BELOW** the character (at its feet, slightly to the right) and start with a
+  colon: **":Me"**, **":Sister"**. White, black outline. A character lying in the background gets
+  a normal label above it ("Brother in-law:").
+- Censoring: "k*ll", "tdy" (internet spelling is part of the joke).
+
+## Characters
+- Meme cats and dogs, big, often bigger than the sad style. Rough cut-outs are fine and part of
+  the meme look: some clips keep a square crop edge.
+- **Swap clips constantly:** almost EVERY line gets a new reaction meme for the same character
+  (Me: running dog → screaming hamster-cat → shocked orange cat → stressed kitten → angry
+  "huh" cat → banana cat running → screaming white cat → tabby). The swap IS the joke.
+- **Entrances and movement:** the first character runs in from the side (dog bouncing in from
+  the left, 0–2 s). The sister peeks out from behind the door. In the chase, a character runs
+  down the hallway, getting bigger as it comes toward the camera.
+- **Stickers/props** stuck on characters: an emoji hand ✋ covering the eye, then a purple bruise
+  "black eye" sticker, a fruit-basket gift carried by "Me". The injured husband: a black cat
+  with bandages and blood marks lying on the bed.
+
+## Sound
+- **No background song.** Only the meme clips' own sounds (screams, "huh", meows, dog
+  barks/laughs), loud and back-to-back. Every clip swap = a new sound. There are a few real
+  silences (16.5 s, 31 s) right before a reaction, for comedic timing.
+
+## Story formula (funny)
+1. Cheerful arrival / normal setup (0–5 s): "Sisterrr !!!"
+2. Something odd (hand over eye) → small talk "Long time no see. How are you sis?" / "I'm good..."
+3. Suspicion → reveal of the "injury" → over-the-top rage: "WHO DID THAT?" / "How DARE him hit my
+   sister" / "I'm gonna k*ll him tdy"
+4. Chase scene (short, ~4 s): "No brother, wait....."
+5. **Twist:** the husband is the injured one, so the sister beat HIM up. "Let me explain brother..."
+6. Punchline flip: "Bro!" / "I'm sooo sorry bro" / "Take Care" / "Be carefull from my sister ....."
+- Lines are short, quick, every ~2–3 s, no dead air. Twist at ~70 %, punchline in the last 6 s.
