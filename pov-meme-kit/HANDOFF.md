@@ -11,7 +11,7 @@
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
 >    - FUNNY: `python3 scripts/build.py stories/grandma-tiktok.json out` → `DONE 45`
 >    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `grandma-tiktok_v3.mp4`
->    (`python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
+>    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
 >    where history and the rules disagree, the rules win.
@@ -454,3 +454,4 @@ for spoken lines, sad/heartwarming twist.
     Comic Neue has no ● or ▶ glyphs → use emoji props (🔴 ▶️). C40 (collapsed banana) needs h ~200.
 71. grandma-tiktok_v2: opening was silent 0–2.7 s (C15 silent) → Grandma opens with C3 (meowing), +S38 at 4.7 s, +S42 at the end.
 72. grandma-tiktok_v3: smooth clips (start at own beginning, forward only, no ping-pong) + C48 hidden-cut fix.
+73. Handoff audit: setup installs torch, 3 proof builds (sad/motion/funny) verified SAME from a fresh clone, QA scripts silence.py / jumps_local.py / contact.py / same.py, bg_batch landscape-crop, prop_cutout.py, story templates, Auto-mode outage note.
