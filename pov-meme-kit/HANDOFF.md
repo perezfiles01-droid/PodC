@@ -71,6 +71,14 @@
   when it fits, not in every video) · ☐ SPIN on dizzy/joy · ☐ SQUASH-bounce on landing · ☐ chase (two characters
   running across the screen) · ☐ sticker
   wobble/spin (clock spinning, alarm ringing).
+- **NOT MESSY (user: gym v1 'so messy' = too much at once, rough cut-outs, hard to follow):**
+  · ONE look per character for the whole video (same clip family: e.g. Me = banana-suit cats C33/C43/C37/C39;
+    a reveal = same clip, label changes + zoom-punch), max ~3–4 clips per character, never switch species.
+  · Only the gags that carry the joke: ≤ 1 sticker at a time, ≤ 1 shake per scene, punch only on the big
+    reveal — no decorative emoji spam (💪😎💦…).
+  · CLEAN CUT-OUTS ONLY (checked on magenta): ✓ C33 C37 C39 C42 C43 C46 (banana), C4 C8 C19 C20 C26 C29
+    C30 C32 C52, D2 D22 D29 · ✗ rough/boxy: C44 C14 C23 C5 C11 C48 C51 C53 C54 C27 D5 D3 D17 C12 ·
+    ✗✗ D26 (green hood gets keyed out → purple see-through).
 - **Size gotchas:** C44 (yapapa) is a wide close-up → h ≈ 290; speech must stay below the POV pills
   (character top ≳ 900 px) — lower or shrink a lifted/raised character.
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
@@ -200,7 +208,7 @@
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
   cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4,
-  one-more-episode_v2.mp4, first-day-gym_v1.mp4 (same raw/ link pattern)
+  one-more-episode_v2.mp4, first-day-gym_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -502,3 +510,4 @@ for spoken lines, sad/heartwarming twist.
 78. User: satisfied with one-more-episode_v2 + the emotion-check approach; wants even MORE motion gags in future funny videos (list in rules).
 79. build.py: depth path (move + resize over time), tremble, zoom-punch. User idea: C46 banana running with depth (small far → big near). (A 'Kavumanggi' name in the user's screenshot was their viewer app's overlay — not in our file; C46's own bilibili mark is auto-removed.)
 80. first-day-gym_v1 (funny, 55.5 s): banana jogger depth run (C46 path), tremble, zoom-punches, reveal flash, Me lifted (path) then collapse (slide_to).
+81. first-day-gym_v2: cleaned up after 'so messy' — one look per character (banana Me, C29 gym guy = Grandma), fewer gags, clean cut-outs only (rules above).
