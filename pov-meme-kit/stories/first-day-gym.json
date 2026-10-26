@@ -1,5 +1,5 @@
 {
- "name": "first-day-gym_v4",
+ "name": "first-day-gym_v5",
  "style": "funny",
  "title": "First day\nat the gym",
  "handle": "",
@@ -299,7 +299,7 @@
     {
      "img": "assets/props/dumbbell.png",
      "x": 480,
-     "y": 1000,
+     "y": 1045,
      "h": 55,
      "t0": 13.2,
      "t1": 14,
@@ -312,7 +312,7 @@
     {
      "img": "assets/props/dumbbell.png",
      "x": 480,
-     "y": 1000,
+     "y": 1045,
      "h": 55,
      "t0": 14,
      "t1": 21,
@@ -681,7 +681,7 @@
     {
      "img": "assets/props/dumbbell.png",
      "x": 480,
-     "y": 1000,
+     "y": 1045,
      "h": 55,
      "t0": 0,
      "t1": 6.5,

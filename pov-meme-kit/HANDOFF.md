@@ -9,15 +9,15 @@
 > 3. Prove the pipeline — all three must print `DONE` and avsync `OK`:
 >    - SAD (old): `python3 scripts/build.py stories/mom-wasnt-hungry.json out` → `DONE 38.0`
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
->    - FUNNY: `python3 scripts/build.py stories/one-more-episode.json out` → `DONE 55`
->    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `one-more-episode_v2.mp4`
+>    - FUNNY: `python3 scripts/hf_layer.py stories/first-day-gym.json out` → `HF DONE 43.5`
+>    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `first-day-gym_v5.mp4`
 >    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
 >    where history and the rules disagree, the rules win.
 > 5. Templates — copy the structure of an existing story file, don't invent a new format:
 >    SAD → `stories/stepdad-row-12.json` (motion, props, flash, grey) ·
->    FUNNY → `stories/one-more-episode.json` (style funny, no music key, swaps with t0/t1 + "swap": true,
+>    FUNNY → `stories/first-day-gym.json` (approved quality bar; also one-more-episode.json) (style funny, no music key, swaps with t0/t1 + "swap": true,
 >    emoji props, sfx, slide_from / slide_to, scene "transition": "slide", "shake", "dark").
 >    (grandma-tiktok_v4 / brother-gps_v1 were made before idle bob + swap cross-fades; rebuilding them now
 >    gives the newer look, not SAME.)
@@ -38,6 +38,11 @@
 >    box) to **Accept edits**. Text files can still be saved with the GitHub connector (push_files).
 
 ## TWO STYLES (user, 2026-10-26): every video is SAD or FUNNY
+- **BUILD COMMAND — FUNNY videos ALWAYS:** `python3 scripts/hf_layer.py stories/<story>.json out`
+  (user chose HyperFrames text/stickers over build.py's, 2026-10-26: bounce pop-ins, shake on shouted
+  lines, gliding labels, props pop/spin/rock/tremble). It runs build.py with NO_TEXT=1 for picture +
+  sound, then HyperFrames draws all text/props → out/<name>_with-sound.mp4. Never send a funny video
+  built with plain build.py. SAD videos: `python3 scripts/build.py stories/<story>.json out` (unchanged).
 - **SAD** = everything in CURRENT RULES below (approved, unchanged).
 - **FUNNY** = copy `references/funny_ref1.mp4` exactly; full spec in STYLE_GUIDE.md › FUNNY style
   (sharp bright backgrounds, comic font, white "quoted" speech, ":Me" labels BELOW characters,
@@ -214,7 +219,7 @@
    (SAD: Motion & elements · FUNNY: SFX + Stickers). Wait for the user's OK.
 2. Backgrounds: `scripts/bg_batch.py plan.json` (new image per scene, landscape-crop, look at them; redo
    tiled/top-down ones with another seed). Props: emoji props, `scripts/prop_cutout.py`, or a PIL drawing.
-3. Build → QA, ALL of these, every time:
+3. Build (FUNNY: scripts/hf_layer.py · SAD: scripts/build.py) → QA, ALL of these, every time:
    - `scripts/avsync.py out.mp4` → OK
    - `scripts/cuts.py out.mp4` → only the planned scene cuts (+ a planned flash)
    - `scripts/jumps.py out.mp4` and `scripts/jumps_local.py out.mp4 stories/x.json` → spikes only at
@@ -550,3 +555,4 @@ for spoken lines, sad/heartwarming twist.
 84. first-day-gym_v4 (user notes on v3): faster walk-in, dogs flipped to face Me, dumbbell prop picked up → stuck + trembling, no drum-roll dead air, less shouting (vols), shocked C26 after 'every morning', Grandma walks over + carries Me doing REP 1-2-3, Me walks off crying; build.py: prop tremble, text_at.
 85. Installed Remotion 4.0.538 + HyperFrames 0.8.201 (+ GSAP) in motion/ via setup.sh; both render here (fixes in START HERE 5b). Not wired into build.py yet.
 86. SessionStart hook added; HyperFrames side-by-side of gym scene 2 sent (awaiting user's choice).
+87. User picked HyperFrames → scripts/hf_layer.py is the funny build command; first-day-gym_v5 = first HyperFrames video (dumbbell lowered onto head). Funny proof build switched to it.
