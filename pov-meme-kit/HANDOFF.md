@@ -40,6 +40,15 @@
   rapid montage of cuts — use a calm clip (e.g. C29) and let the car background show the driving.
   Long-running smooth idle clips: C29 (12 s), D22 (8.7 s), C2 (6 s), C47 (5.2 s).
   Known hidden cut: **C48 cuts at 8.4 s** (close face → open mouth) — use `"ss": 8.5` for the scream.
+- **FUNNY length (user, 2026-10-26):** no 40+ s rule — any length up to **60 s max**, as long as there is
+  no dead air and every joke/element is shown clearly (give each line ~3–4 s to read, let visual gags
+  breathe). Priority = making viewers laugh. (SAD keeps its 35–50 s rule.)
+- **FUNNY clips must MOVE (user):** pick only clips that are in motion, smooth (no hidden cuts) and have
+  sound — measured list: C39 C48 C46 C51 C37 C32 C44 D29 D5 D18 C11 C12 (lots of motion); C53 D26 C52
+  C23 D2 C5 C54 C27 C4 D3 C42 C14 C30 C13 C20 C26 D17 (steady motion). Near-static, avoid as main
+  clips: C2 C3 C15 C16 C22 C35 C36 C38 C40 C41 C45 C50 D1 D4 D8 D10 D12 D13 D16 D19 D20 D21 D24 D28.
+- **FUNNY transitions (user wants smooth):** idle bob on every character, 0.2 s cross-fade on clip swaps,
+  fast slide between scenes, run-in / burst-in entrances, shake on screams.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
 - **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
   e.g. S10 Bruh, S12 Sheesh, S15 FBI Open Up, S19 A Few Moments Later, S21 GTA Wasted, S55 Crowd
@@ -459,3 +468,4 @@ for spoken lines, sad/heartwarming twist.
 72. grandma-tiktok_v4: smooth clips (start at own beginning, forward only, no ping-pong) + C48 hidden-cut fix.
 73. Handoff audit: setup installs torch, 3 proof builds (sad/motion/funny) verified SAME from a fresh clone, QA scripts silence.py / jumps_local.py / contact.py / same.py, bg_batch landscape-crop, prop_cutout.py, story templates, Auto-mode outage note.
 74. brother-gps_v1 (funny, 45 s): C21 replaced by C29 (pop-cat flicker / montage), prop `slide_from` (⛽ 🐄 drive past), no auto slow-down in funny mode (stutter) → grandma-tiktok re-exported as v4.
+75. User: funny videos up to 60 s (clarity over length), moving clips only, smooth swaps + scene transitions.
