@@ -10,7 +10,7 @@
 >    - SAD (old): `python3 scripts/build.py stories/mom-wasnt-hungry.json out` → `DONE 38.0`
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
 >    - FUNNY: `python3 scripts/build.py stories/grandma-tiktok.json out` → `DONE 45`
->    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `grandma-tiktok_v3.mp4`
+>    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `grandma-tiktok_v4.mp4`
 >    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
@@ -33,9 +33,12 @@
   catalog `sound` field — 'silent' / 'low voice' clips (C15, C19…) need an SFX or a swap. QA: scan the
   audio for gaps >0.5 s; only keep a deliberate comedic pause (≤1.2 s) before a reaction.
 - **Smooth clips (user: 'cuts of the cat clips not smooth'):** funny stories (or `"smooth_clips": true`)
-  start every clip from its own beginning when it appears, play it forward only (no ping-pong), slow it
-  to ≥0.75× if the line is longer, then hold the last frame; the clip's sound is taken from the same
+  start every clip from its own beginning when it appears, play it forward only (no ping-pong), at REAL
+  speed (slowing = repeated frames = stutter), then hold the last frame; the clip's sound is taken from the same
   point so picture and sound match. QA: per-region jump scan — big spikes allowed only at swaps/cuts.
+  **Avoid C21** in funny videos: its first 3 s are pop-cat (mouth flashing) and the driving part is a
+  rapid montage of cuts — use a calm clip (e.g. C29) and let the car background show the driving.
+  Long-running smooth idle clips: C29 (12 s), D22 (8.7 s), C2 (6 s), C47 (5.2 s).
   Known hidden cut: **C48 cuts at 8.4 s** (close face → open mouth) — use `"ss": 8.5` for the scream.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
 - **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
@@ -160,7 +163,7 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v3.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -453,5 +456,6 @@ for spoken lines, sad/heartwarming twist.
     actor `"slide_from": [x, y]` + `"slide_dur"` (e.g. falling down stairs), no song, hard ending.
     Comic Neue has no ● or ▶ glyphs → use emoji props (🔴 ▶️). C40 (collapsed banana) needs h ~200.
 71. grandma-tiktok_v2: opening was silent 0–2.7 s (C15 silent) → Grandma opens with C3 (meowing), +S38 at 4.7 s, +S42 at the end.
-72. grandma-tiktok_v3: smooth clips (start at own beginning, forward only, no ping-pong) + C48 hidden-cut fix.
+72. grandma-tiktok_v4: smooth clips (start at own beginning, forward only, no ping-pong) + C48 hidden-cut fix.
 73. Handoff audit: setup installs torch, 3 proof builds (sad/motion/funny) verified SAME from a fresh clone, QA scripts silence.py / jumps_local.py / contact.py / same.py, bg_batch landscape-crop, prop_cutout.py, story templates, Auto-mode outage note.
+74. brother-gps_v1 (funny, 45 s): C21 replaced by C29 (pop-cat flicker / montage), prop `slide_from` (⛽ 🐄 drive past), no auto slow-down in funny mode (stutter) → grandma-tiktok re-exported as v4.

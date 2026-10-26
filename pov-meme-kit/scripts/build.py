@@ -177,7 +177,7 @@ for si, sc in enumerate(story["scenes"]):
             dur = c["end"] - c["start"]
             a.setdefault("ss", round(c["start"] + min(1.0, 0.15 * dur), 2))  # skip the zoom-in intro (less on short clips)
             a.setdefault("len", round(c["end"] - a["ss"] - 0.15, 2))  # stay inside the clip (no flicker)
-            if a["len"] < 3.0:  # a short clip ping-ponging in a long scene looks fast-forwarded: slow it down
+            if a["len"] < 3.0 and not FUNNY:  # a short clip ping-ponging in a long scene looks fast-forwarded: slow it down
                 a.setdefault("speed", round(max(0.6, a["len"] / 3.0), 2))
         src = CATALOG[a["clip"]]["file"] if a.get("clip") else story["packs"][a.get("pack", "cat")]
         crop = bbox(src, a["ss"], a["len"])
@@ -190,8 +190,7 @@ for si, sc in enumerate(story["scenes"]):
         # forward (no ping-pong reversing, no starting mid-loop); too short → slowed a little, then holds
         SMOOTH = FUNNY or story.get("smooth_clips")
         D = a.get("t1", T) - t0a
-        if SMOOTH and "speed" not in a and a["len"] < D:
-            a["speed"] = round(max(0.75, a["len"] / D), 2)
+        # (no automatic slow-down in smooth mode: slowing by repeating frames looks like stutter — hold the last frame)
         sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
         n = int(a["len"] / sp * FPS)
         flip = ",hflip" if a.get("flip") else ""
@@ -276,6 +275,10 @@ for si, sc in enumerate(story["scenes"]):
     fc.append(f"[{cur}][{idx}:v]overlay[p]")
     cur, idx = "p", idx + 1
     def move(t0, style):  # overlay x/y for a full-canvas text/prop layer
+        if isinstance(style, tuple):  # ("slide", dx, dy, dur): prop travels from (x+dx, y+dy) to (x, y)
+            _, dx, dy, du = style
+            p = f"min(1,max(0,(t-{t0})/{du}))"
+            return f":x='{dx}*(1-{p})':y='{dy}*(1-{p})'"
         if not MOTION or not style or (si == 0 and t0 == 0 and story.get("hook_first_frame")):
             return ""
         x = f"if(lt(t-{t0},0.5),14*sin(70*t),0)" if style == "shake" else "0"
@@ -290,7 +293,11 @@ for si, sc in enumerate(story["scenes"]):
         cv.paste(pi, (pr["x"] - pi.width // 2, pr["y"] - pi.height), pi)
         pp = f"{OUT}/tmp/prop{si}_{len(pending)}.png"
         cv.save(pp)
-        pending.insert(0, (pp, pr.get("t0", 0), pr.get("t1", T), "pop"))
+        st = "pop"
+        if pr.get("slide_from"):  # e.g. a gas station / cow "driving past" the car window
+            st = ("slide", pr["slide_from"][0] - pr["x"], pr["slide_from"][1] - pr["y"],
+                  pr.get("slide_dur", pr.get("t1", T) - pr.get("t0", 0)))
+        pending.insert(0, (pp, pr.get("t0", 0), pr.get("t1", T), st))
     for k, (pth, t0, t1, style) in enumerate(pending):
         ins += ["-i", pth]
         fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{t0},{t1})'{move(t0, style)}[q{k}]")
