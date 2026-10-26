@@ -113,7 +113,8 @@ for si, sc in enumerate(st["scenes"]):
         if pr.get("slide_from"):
             dx, dy = pr["slide_from"][0] - pr["x"], pr["slide_from"][1] - pr["y"]
             du = pr.get("slide_dur", a1 - a0)
-            js.append(f'tl.from("#{i} .in",{{x:{dx},y:{dy},duration:{du:.3f},ease:"power2.out"}},{a0:.3f});')
+            ease = pr.get("ease", "power2.out")  # "none" = linear, e.g. riding along with a walking actor's path
+            js.append(f'tl.from("#{i} .in",{{x:{dx},y:{dy},duration:{du:.3f},ease:"{ease}"}},{a0:.3f});')
         elif not still(pr.get("t0", 0)):
             js.append(f'tl.from("#{i} .in",{{scale:0,rotation:20,duration:0.4,ease:"back.out(2.5)"}},{a0:.3f});')
         if pr.get("tremble"):

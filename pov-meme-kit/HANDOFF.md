@@ -89,6 +89,9 @@
   running across the screen) · ☐ sticker
   wobble/spin (clock spinning, alarm ringing).
 - **NOT MESSY (user: gym v1 'so messy' = too much at once, rough cut-outs, hard to follow):**
+  · (User override, fake-sick_v2: the USER may ask for a different reaction clip per beat — e.g. Mom = C30
+    → C32 happy → C1 side-eye peek; Me = C8 → C26 shock → C46 spin-in → C32 → D29 'twerking dog' → C47
+    confused → C39 crying exit. When the user names clips, follow them over the one-look rule.)
   · ONE look per character WITHIN a video (same clip family — e.g. in the gym video Me = banana-suit cats
     C33/C43/C37/C39; that's that video's choice, NOT a rule: pick a fresh look for Me in each new story;
     a reveal = same clip, label changes + zoom-punch), max ~3–4 clips per character, never switch species.
@@ -559,3 +562,4 @@ for spoken lines, sad/heartwarming twist.
 87. User picked HyperFrames → scripts/hf_layer.py is the funny build command; first-day-gym_v5 = first HyperFrames video (dumbbell lowered onto head). Funny proof build switched to it.
 88. User: 'who says Me is always the banana cat?' — correct: one look per character is per video only; vary Me's look between videos.
 89. fake-sick_v1 (funny, 45 s, HyperFrames): Me = C8, Mom = C30 (full sound); props blanket.png + fake102.png (PIL), 🌡️ ✅ 🎢 🎒; jump arc via path.
+90. fake-sick_v2 (user notes): tighter, no 'too bad' pause, Mom C32 on NORMAL, Me C26 shock, C46 spin-in → C32 'I'M HEALED', D29 = the 'twerking dog', Mom C1 side-eye enters, C30 'get dressed', Me C47 confused → C39 crying exit with 🎒 (hf_layer prop "ease": "none").
