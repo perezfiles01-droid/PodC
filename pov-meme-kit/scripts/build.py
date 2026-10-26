@@ -136,6 +136,23 @@ def pov_png(path, title):
     im.save(path)
 
 
+def lerp(path, k):
+    """ffmpeg expression: piecewise-linear value k of [[t, x, y, scale], ...] over scene time t."""
+    e = str(path[-1][k])
+    for (ta, *va), (tb, *vb) in reversed(list(zip(path, path[1:]))):
+        a, b = va[k - 1], vb[k - 1]
+        e = f"if(lt(t,{tb}),{a}+({b}-{a})*(t-{ta})/{tb - ta},{e})"
+    return f"if(lt(t,{path[0][0]}),{path[0][k]},{e})"
+
+
+def scale_expr(a):
+    """size multiplier over time: depth path scale x zoom-punches (1.4x pop for 0.4 s, eased)."""
+    e = lerp(a["path"], 3) if a.get("path") else "1"
+    for p in a.get("punch", []):
+        e = f"({e})*(1+0.4*if(between(t,{p},{p + 0.4}),sin(PI*(t-{p})/0.4),0))"
+    return e
+
+
 FULL_SOUND = {"C30"}  # clips whose meme sound must always play complete (user request)
 try:
     CATALOG = json.load(open(os.path.join(os.path.dirname(story["packs"]["cat"]), "catalog.json")))
@@ -205,8 +222,12 @@ for si, sc in enumerate(story["scenes"]):
                     fades += f",fade=t=in:st=0:d={XF}:alpha=1"
                 if a.get("t1", T) < T:
                     fades += f",fade=t=out:st={D}:d={XF}:alpha=1"
+            # depth path / zoom-punch: size changes over time (t = scene time after the shift)
+            sz = ""
+            if a.get("path") or a.get("punch"):
+                sz = f",scale=w='trunc(iw*({scale_expr(a)})/2)*2':h='trunc(ih*({scale_expr(a)})/2)*2':eval=frame"
             fc.append(f"{base},tpad=stop_mode=clone:stop_duration={D + 1},trim=0:{D + XF}{fades},"
-                      f"setpts=N/{FPS}/TB+{t0a}/TB[a{ai}]")
+                      f"setpts=N/{FPS}/TB+{t0a}/TB{sz}[a{ai}]")
         else:  # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
             fc.append(f"{base},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
                       f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
@@ -229,6 +250,11 @@ for si, sc in enumerate(story["scenes"]):
             p = f"pow(min(1,max(0,(t-{a.get('slide_at', t0a)})/{a.get('slide_dur', 0.8)})),2)"
             ox += f"+({tx}-{a['x']})*{p}"
             oy += f"+({ty}-{a['y']})*{p}"
+        if a.get("path"):  # [[t, x, y, scale], ...]: moves AND resizes (far = small, near = big), linear
+            ox, oy = f"({lerp(a['path'], 1)})-overlay_w/2", f"({lerp(a['path'], 2)})-overlay_h"
+        for tr0, tr1 in a.get("tremble", []):  # fast small shaking (fear, anger, lifting too much)
+            ox += f"+if(between(t,{tr0},{tr1}),9*sin(110*t),0)"
+            oy += f"+if(between(t,{tr0},{tr1}),5*cos(90*t),0)"
         if FUNNY and not a.get("no_bob"):  # gentle idle bob so nobody looks frozen
             oy += f"+7*sin(2*PI*0.9*t+{ai})"
         fc.append(f"[{cur}][a{ai}]overlay=x='{ox}':y='{oy}'{en}[c{ai}]")

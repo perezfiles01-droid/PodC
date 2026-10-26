@@ -65,9 +65,11 @@
   them in the plan table's Motion column. Ideas (✓ = already in build.py, ☐ = build when first used):
   ✓ run/burst in (slide_from) · ✓ collapse/exit (slide_to) · ✓ screen shake · ✓ whip-slide scenes ·
   ✓ stickers flying past (prop slide_from) · ☐ character JUMP on joy/shock (quick up-down arc) ·
-  ☐ character SHAKE/tremble on anger or fear · ☐ ZOOM-PUNCH on a reaction (character scales up 1.4×
-  for ~0.4 s, TikTok-style) · ☐ SPIN on dizzy/joy · ☐ SQUASH-bounce on landing · ☐ chase (two characters
-  running across the screen) · ☐ grow toward camera (running down a hallway like the ref) · ☐ sticker
+  ✓ character TREMBLE (actor `"tremble": [[t0, t1]]`) · ✓ ZOOM-PUNCH (actor `"punch": [t, ...]`, 1.4× pop
+  for 0.4 s) · ✓ DEPTH PATH (actor `"path": [[t, x, y, scale], ...]` — moves and resizes: far = small,
+  near = big; user's idea: C46 banana cat running in/out of the scene looks funny this way; use it
+  when it fits, not in every video) · ☐ SPIN on dizzy/joy · ☐ SQUASH-bounce on landing · ☐ chase (two characters
+  running across the screen) · ☐ sticker
   wobble/spin (clock spinning, alarm ringing).
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
   and only until the clip runs out — start a short clip AT its line (put another clip before it), and
@@ -496,3 +498,4 @@ for spoken lines, sad/heartwarming twist.
 76. one-more-episode_v1 (funny, 55 s): first with moving-only clips, idle bob, swap cross-fades, slide transitions, shake, slide_to collapse. Funny proof build switched to it.
 77. one-more-episode_v2: emotion fixes — 7 AM panic C48→C37, angry Mom C51→C4, cliffhanger C11→C26.
 78. User: satisfied with one-more-episode_v2 + the emotion-check approach; wants even MORE motion gags in future funny videos (list in rules).
+79. build.py: depth path (move + resize over time), tremble, zoom-punch. User idea: C46 banana running with depth (small far → big near). (A 'Kavumanggi' name in the user's screenshot was their viewer app's overlay — not in our file; C46's own bilibili mark is auto-removed.)
