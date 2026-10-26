@@ -18,6 +18,9 @@
   (sharp bright backgrounds, comic font, white "quoted" speech, ":Me" labels BELOW characters,
   per-line POV pills, constant clip swaps, emoji stickers, NO song, only the meme sounds, hard cuts,
   ends on the punchline). Still human POV, US/CA audience, no watermark, plan-first workflow.
+- FUNNY: **sound from frame 1, no silent stretches** (user: 'first 2 seconds has no sound'). Check the
+  catalog `sound` field — 'silent' / 'low voice' clips (C15, C19…) need an SFX or a swap. QA: scan the
+  audio for gaps >0.5 s; only keep a deliberate comedic pause (≤1.2 s) before a reaction.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
 - **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
   e.g. S10 Bruh, S12 Sheesh, S15 FBI Open Up, S19 A Few Moments Later, S21 GTA Wasted, S55 Crowd
@@ -127,7 +130,7 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v1.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -419,3 +422,4 @@ for spoken lines, sad/heartwarming twist.
     above head, ":Me" labels below (lx), emoji stickers (props `"emoji": "📱"`, Noto Color Emoji),
     actor `"slide_from": [x, y]` + `"slide_dur"` (e.g. falling down stairs), no song, hard ending.
     Comic Neue has no ● or ▶ glyphs → use emoji props (🔴 ▶️). C40 (collapsed banana) needs h ~200.
+71. grandma-tiktok_v2: opening was silent 0–2.7 s (C15 silent) → Grandma opens with C3 (meowing), +S38 at 4.7 s, +S42 at the end.
