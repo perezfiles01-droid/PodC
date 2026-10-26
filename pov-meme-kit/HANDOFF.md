@@ -90,6 +90,17 @@
   and add `"flip": true` so speakers face who they talk to (C37 faces left → flip when the other is right).
 - **Hook = first 3 s** (user: an 8 s intro "I'd scroll away"): funny opening scene ≤ 3 s, one punchy line,
   the first joke/action by ~4 s.
+- **Show WHAT the gag is about** (user: "stuck with what? there is no element"): a struggle needs its object
+  on screen (e.g. assets/props/dumbbell.png on the floor → lifted above the head → trembling with the
+  character via prop `"tremble": [t0, t1]`).
+- **No 'nothing happening' beats** (user: drum roll with nothing on screen = dead air): every second has
+  a visible action or a line.
+- **Not too much shouting** (user): screaming clips/SFX only on the one big reaction; keep other voices
+  low (`"vol": 0.4–0.7`), prefer whining/crying over screaming for defeat (C39 walking off crying,
+  C43 flailing while carried). Walk speed: cross the screen in ~2–2.5 s, not slower.
+- **Carrying = the carrier does it** (user: "Grandma carrying the child"): the carrier walks over, the
+  carried one goes up onto them and moves WITH them (reps / walking), funny on purpose.
+- Moving actors: text sits at path point `"text_at"` (default end); for exits/carries use subs instead.
 - **Size gotchas:** C44 (yapapa) is a wide close-up → h ≈ 290; speech must stay below the POV pills
   (character top ≳ 900 px) — lower or shrink a lifted/raised character.
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
@@ -219,7 +230,7 @@
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
   cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4,
-  one-more-episode_v2.mp4, first-day-gym_v3.mp4 (same raw/ link pattern)
+  one-more-episode_v2.mp4, first-day-gym_v4.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -524,3 +535,4 @@ for spoken lines, sad/heartwarming twist.
 81. first-day-gym_v2: cleaned up after 'so messy' — one look per character (banana Me, C29 gym guy = Grandma), fewer gags, clean cut-outs only (rules above).
 82. first-day-gym_v3: 3 s intro, no pointless dog, gym guy = D29 howling (straining lift), Me walks in (path), C37 flipped to face Grandma, real lift into Grandma's arms; build.py: text follows a path actor's end point.
 83. User: first-day-gym_v3 approved ("this one is better") — use it as the reference for funny-video quality (fast hook, purposeful gags, actions shown, characters facing each other).
+84. first-day-gym_v4 (user notes on v3): faster walk-in, dogs flipped to face Me, dumbbell prop picked up → stuck + trembling, no drum-roll dead air, less shouting (vols), shocked C26 after 'every morning', Grandma walks over + carries Me doing REP 1-2-3, Me walks off crying; build.py: prop tremble, text_at.

@@ -262,7 +262,8 @@ for si, sc in enumerate(story["scenes"]):
         # label + speech follow the actor: same x, stacked just above its head, only while visible
         # (a moving actor's text sits where its path ends, so it doesn't stay behind on the floor)
         if a.get("path"):
-            a = dict(a, x=a["path"][-1][1], y=a["path"][-1][2], h=int(a["h"] * a["path"][-1][3]))
+            pt = a["path"][a.get("text_at", -1)]  # which path point the text sits at (default: where it ends)
+            a = dict(a, x=pt[1], y=pt[2], h=int(a["h"] * pt[3]))
         top = max(a["y"] - a["h"], 470)
         lab_y = top - 60
         if FUNNY:  # speech sits right above the head; the ":Me" label goes BELOW the character
@@ -320,6 +321,9 @@ for si, sc in enumerate(story["scenes"]):
     fc.append(f"[{cur}][{idx}:v]overlay[p]")
     cur, idx = "p", idx + 1
     def move(t0, style):  # overlay x/y for a full-canvas text/prop layer
+        if isinstance(style, tuple) and style[0] == "tremble":  # prop shakes with the actor holding it
+            _, a0, a1 = style
+            return f":x='if(between(t,{a0},{a1}),9*sin(110*t),0)':y='if(between(t,{a0},{a1}),5*cos(90*t),0)'"
         if isinstance(style, tuple):  # ("slide", dx, dy, dur): prop travels from (x+dx, y+dy) to (x, y)
             _, dx, dy, du = style
             p = f"min(1,max(0,(t-{t0})/{du}))"
@@ -342,6 +346,8 @@ for si, sc in enumerate(story["scenes"]):
         if pr.get("slide_from"):  # e.g. a gas station / cow "driving past" the car window
             st = ("slide", pr["slide_from"][0] - pr["x"], pr["slide_from"][1] - pr["y"],
                   pr.get("slide_dur", pr.get("t1", T) - pr.get("t0", 0)))
+        if pr.get("tremble"):
+            st = ("tremble", pr["tremble"][0], pr["tremble"][1])
         pending.insert(0, (pp, pr.get("t0", 0), pr.get("t1", T), st))
     for k, (pth, t0, t1, style) in enumerate(pending):
         ins += ["-i", pth]
