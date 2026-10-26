@@ -21,6 +21,14 @@
 >    emoji props, sfx, slide_from / slide_to, scene "transition": "slide", "shake", "dark").
 >    (grandma-tiktok_v4 / brother-gps_v1 were made before idle bob + swap cross-fades; rebuilding them now
 >    gives the newer look, not SAME.)
+> 5b. **Remotion + HyperFrames** (animation layer, optional) are installed by setup.sh into `motion/`
+>    (`motion/node_modules/.bin/remotion`, `.../hyperframes`; also adds the hyperframes skills). Two
+>    environment fixes, both verified 2026-10-26:
+>    - Remotion: pass `--browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`
+>      (smoke test: `npx remotion render remotion-test/index.jsx Pop out.mp4 --browser-executable=…` from motion/)
+>    - HyperFrames: its headless Chrome can't load CDN scripts through the proxy → copy
+>      `motion/node_modules/gsap/dist/gsap.min.js` next to index.html and point the `<script src>` at it.
+>    Not used in the main pipeline yet — build.py (Python + ffmpeg) still makes every video.
 > 6. If every shell command fails with "auto mode classifier gave no verdict": that's the session's
 >    Auto-mode safety check being down. Ask the user to switch the mode dropdown (next to the message
 >    box) to **Accept edits**. Text files can still be saved with the GitHub connector (push_files).
@@ -536,3 +544,4 @@ for spoken lines, sad/heartwarming twist.
 82. first-day-gym_v3: 3 s intro, no pointless dog, gym guy = D29 howling (straining lift), Me walks in (path), C37 flipped to face Grandma, real lift into Grandma's arms; build.py: text follows a path actor's end point.
 83. User: first-day-gym_v3 approved ("this one is better") — use it as the reference for funny-video quality (fast hook, purposeful gags, actions shown, characters facing each other).
 84. first-day-gym_v4 (user notes on v3): faster walk-in, dogs flipped to face Me, dumbbell prop picked up → stuck + trembling, no drum-roll dead air, less shouting (vols), shocked C26 after 'every morning', Grandma walks over + carries Me doing REP 1-2-3, Me walks off crying; build.py: prop tremble, text_at.
+85. Installed Remotion 4.0.538 + HyperFrames 0.8.201 (+ GSAP) in motion/ via setup.sh; both render here (fixes in START HERE 5b). Not wired into build.py yet.

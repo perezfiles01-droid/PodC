@@ -5,3 +5,5 @@
 pip install -q numpy pillow python-docx
 pip install -q torch diffusers transformers accelerate
 python3 -c "import torch, diffusers; print('setup OK')"
+# Animation layer (optional): Remotion + HyperFrames + GSAP, pinned in motion/package.json.
+(cd motion && npm install --no-audit --no-fund >/dev/null 2>&1) && echo "motion OK (remotion + hyperframes)"
