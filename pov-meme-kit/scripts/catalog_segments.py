@@ -25,5 +25,8 @@ PACKS = [
     ("C", "assets/packs/cat_yapapa.mp4", [(0.0, 8.0)]),
     ("C", "assets/packs/cat_ragdoll_chewing.mp4", [(0.0, 5.2)]),  # empty green after 5.2 s
     ("C", "assets/packs/cat_banana_pack.mp4", [(41.0, 46.37)]),  # banana spinning (split out of C39)
+    # cat pack 4 (user upload 2026-10-26): end card from 50.7 s skipped
+    ("C", "assets/packs/cat_pack_4.mp4", [(0.0, 6.30), (6.30, 12.30), (12.30, 20.40), (20.40, 30.93),
+                                          (30.93, 38.67), (38.67, 42.73), (42.73, 46.50), (46.50, 50.70)]),
     ("D", "assets/packs/dog_pack.mp4", segments(DOG_CUTS)),
 ]

@@ -413,6 +413,78 @@
   "good_for": "dizzy, chaos, rolling on the floor",
   "sound": "animal sound (~696 Hz)"
  },
+ "C47": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 0.0,
+  "end": 6.3,
+  "description": "Orange & white cat standing, wide-eyed stare",
+  "good_for": "confused, waiting, 'excuse me?'",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C48": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 6.3,
+  "end": 12.3,
+  "description": "Orange cat close-up, then mouth wide open yawning/screaming",
+  "good_for": "shocked, yelling, dramatic reaction",
+  "sound": "animal sound (~411 Hz)"
+ },
+ "C49": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 12.3,
+  "end": 20.4,
+  "description": "Orange tabby sitting, looking up and meowing",
+  "good_for": "asking, begging, calling someone",
+  "sound": "low voice ~320 Hz (human or bark - check)"
+ },
+ "C50": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 20.4,
+  "end": 30.93,
+  "description": "Smug grinning cat close-up, sly smile",
+  "good_for": "smug, sneaky, 'hehe', up to something",
+  "sound": "low voice ~211 Hz (human or bark - check)"
+ },
+ "C51": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 30.93,
+  "end": 38.67,
+  "description": "Calico kitten screaming close-up",
+  "good_for": "angry, yelling, outraged",
+  "sound": "animal sound (~640 Hz)"
+ },
+ "C52": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 38.67,
+  "end": 42.73,
+  "description": "Small kitten standing, paws together",
+  "good_for": "begging, 'please', sorry, praying",
+  "sound": "animal sound (~800 Hz)"
+ },
+ "C53": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 42.73,
+  "end": 46.5,
+  "description": "Orange cat nose close-up, licking / mouth open",
+  "good_for": "silly, chaos, in your face",
+  "sound": "animal sound (~1231 Hz)"
+ },
+ "C54": {
+  "pack": "cat",
+  "file": "assets/packs/cat_pack_4.mp4",
+  "start": 46.5,
+  "end": 50.7,
+  "description": "Orange cat close-up, squinting and meowing at camera",
+  "good_for": "complaining, annoyed, sassy",
+  "sound": "low voice ~340 Hz (human or bark - check)"
+ },
  "D1": {
   "pack": "dog",
   "file": "assets/packs/dog_pack.mp4",

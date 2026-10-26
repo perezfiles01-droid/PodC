@@ -118,6 +118,10 @@ try:
     CATALOG = json.load(open(os.path.join(os.path.dirname(story["packs"]["cat"]), "catalog.json")))
 except FileNotFoundError:
     CATALOG = {}
+try:
+    SFX = json.load(open("assets/sfx/sfx.json"))
+except FileNotFoundError:
+    SFX = {}
 pov_png(f"{OUT}/tmp/pov.png", story["title"])
 parts = []
 for si, sc in enumerate(story["scenes"]):
@@ -199,6 +203,15 @@ for si, sc in enumerate(story["scenes"]):
                       f"afade=t=in:d=0.1,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
                       f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={a.get('vol', 1.0)}[{lbl}]")
             aud.append(lbl)
+        idx += 1
+    for k, fx in enumerate(sc.get("sfx", [])):  # meme sound effects (assets/sfx/sfx.json ids S1..), funny style
+        e = SFX[fx["id"]]
+        ln = min(fx.get("len", e["dur"]), T - fx["t"])
+        ins += ["-i", e["file"]]
+        fc.append(f"[{idx}:a]atrim=0:{ln},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+                  f"afade=t=out:st={max(ln - 0.15, 0)}:d=0.15,adelay={int(fx['t'] * 1000)}|{int(fx['t'] * 1000)},"
+                  f"volume={fx.get('vol', 0.8)}[fx{k}]")
+        aud.append(f"fx{k}")
         idx += 1
     if sc.get("dim_at") is not None:
         fc.append(f"[{cur}]split[d1][d2];[d2]drawbox=c=black@0.6:t=fill[d3];"

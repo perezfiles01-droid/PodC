@@ -58,6 +58,14 @@ CAT = {  # id: (description, mood / good for)
     43: ("Banana-suit cat standing sadly", "sad, lonely, waiting"),
     45: ("Cream ragdoll-type cat standing, chewing/talking, calm stare", "calm, unbothered, chatting, judging quietly"),
     46: ("Banana-suit cat spinning/rolling around", "dizzy, chaos, rolling on the floor"),
+    47: ("Orange & white cat standing, wide-eyed stare", "confused, waiting, 'excuse me?'"),
+    48: ("Orange cat close-up, then mouth wide open yawning/screaming", "shocked, yelling, dramatic reaction"),
+    49: ("Orange tabby sitting, looking up and meowing", "asking, begging, calling someone"),
+    50: ("Smug grinning cat close-up, sly smile", "smug, sneaky, 'hehe', up to something"),
+    51: ("Calico kitten screaming close-up", "angry, yelling, outraged"),
+    52: ("Small kitten standing, paws together", "begging, 'please', sorry, praying"),
+    53: ("Orange cat nose close-up, licking / mouth open", "silly, chaos, in your face"),
+    54: ("Orange cat close-up, squinting and meowing at camera", "complaining, annoyed, sassy"),
     44: ("'Yapapa' orange cat singing with eyes closed, head bobbing", "singing, vibing, happy, cheeky (audio: the 'yapapa' meme song)"),
 }
 DOG = {

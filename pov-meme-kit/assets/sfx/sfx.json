@@ -1,0 +1,357 @@
+{
+ "S1": {
+  "name": "Oof",
+  "file": "assets/sfx/oof.m4a",
+  "dur": 0.3
+ },
+ "S2": {
+  "name": "Windows Error",
+  "file": "assets/sfx/windows_error.m4a",
+  "dur": 0.76
+ },
+ "S3": {
+  "name": "Legitness",
+  "file": "assets/sfx/legitness.m4a",
+  "dur": 2.34
+ },
+ "S4": {
+  "name": "Okay",
+  "file": "assets/sfx/okay.m4a",
+  "dur": 0.4
+ },
+ "S5": {
+  "name": "Microsoft Windows Startup",
+  "file": "assets/sfx/microsoft_windows_startup.m4a",
+  "dur": 3.6
+ },
+ "S6": {
+  "name": "Oh My God",
+  "file": "assets/sfx/oh_my_god.m4a",
+  "dur": 1.5
+ },
+ "S7": {
+  "name": "Yeet",
+  "file": "assets/sfx/yeet.m4a",
+  "dur": 0.98
+ },
+ "S8": {
+  "name": "Goat Scream",
+  "file": "assets/sfx/goat_scream.m4a",
+  "dur": 1.86
+ },
+ "S9": {
+  "name": "Wowwww",
+  "file": "assets/sfx/wowwww.m4a",
+  "dur": 3.3
+ },
+ "S10": {
+  "name": "Bruh",
+  "file": "assets/sfx/bruh.m4a",
+  "dur": 0.43
+ },
+ "S11": {
+  "name": "Who Are You?",
+  "file": "assets/sfx/who_are_you.m4a",
+  "dur": 4.1
+ },
+ "S12": {
+  "name": "Sheesh",
+  "file": "assets/sfx/sheesh.m4a",
+  "dur": 8.0
+ },
+ "S13": {
+  "name": "Got Em",
+  "file": "assets/sfx/got_em.m4a",
+  "dur": 6.1
+ },
+ "S14": {
+  "name": "Mario Jump",
+  "file": "assets/sfx/mario_jump.m4a",
+  "dur": 0.59
+ },
+ "S15": {
+  "name": "Fbi Open Up",
+  "file": "assets/sfx/fbi_open_up.m4a",
+  "dur": 1.84
+ },
+ "S16": {
+  "name": "Dramatic Fart",
+  "file": "assets/sfx/dramatic_fart.m4a",
+  "dur": 14.7
+ },
+ "S17": {
+  "name": "Taco Bell",
+  "file": "assets/sfx/taco_bell.m4a",
+  "dur": 1.66
+ },
+ "S18": {
+  "name": "Dinosaur Man Scream",
+  "file": "assets/sfx/dinosaur_man_scream.m4a",
+  "dur": 4.9
+ },
+ "S19": {
+  "name": "A Few Moments Later",
+  "file": "assets/sfx/a_few_moments_later.m4a",
+  "dur": 1.71
+ },
+ "S20": {
+  "name": "Dial Up Internet",
+  "file": "assets/sfx/dial_up_internet.m4a",
+  "dur": 1.68
+ },
+ "S21": {
+  "name": "Gta 5 Wasted",
+  "file": "assets/sfx/gta_5_wasted.m4a",
+  "dur": 7.0
+ },
+ "S22": {
+  "name": "Distorted Windows Startup",
+  "file": "assets/sfx/distorted_windows_startup.m4a",
+  "dur": 4.2
+ },
+ "S23": {
+  "name": "No No No No",
+  "file": "assets/sfx/no_no_no_no.m4a",
+  "dur": 15.4
+ },
+ "S24": {
+  "name": "We'Ll Be Right Back",
+  "file": "assets/sfx/we_ll_be_right_back.m4a",
+  "dur": 2.42
+ },
+ "S25": {
+  "name": "Famous Movie Scream",
+  "file": "assets/sfx/famous_movie_scream.m4a",
+  "dur": 1.08
+ },
+ "S26": {
+  "name": "No God Please No",
+  "file": "assets/sfx/no_god_please_no.m4a",
+  "dur": 6.3
+ },
+ "S27": {
+  "name": "Oh My God - Ninja",
+  "file": "assets/sfx/oh_my_god_ninja.m4a",
+  "dur": 4.8
+ },
+ "S28": {
+  "name": "Heavenly Music",
+  "file": "assets/sfx/heavenly_music.m4a",
+  "dur": 17.4
+ },
+ "S29": {
+  "name": "Ohhhhh",
+  "file": "assets/sfx/ohhhhh.m4a",
+  "dur": 5.9
+ },
+ "S30": {
+  "name": "Dramatic Sound",
+  "file": "assets/sfx/dramatic_sound.m4a",
+  "dur": 2.94
+ },
+ "S31": {
+  "name": "Just Do It",
+  "file": "assets/sfx/just_do_it.m4a",
+  "dur": 3.5
+ },
+ "S32": {
+  "name": "Hello There",
+  "file": "assets/sfx/hello_there.m4a",
+  "dur": 0.61
+ },
+ "S33": {
+  "name": "Hey, That'S Pretty Good",
+  "file": "assets/sfx/hey_that_s_pretty_good.m4a",
+  "dur": 2.94
+ },
+ "S34": {
+  "name": "Alert",
+  "file": "assets/sfx/alert.m4a",
+  "dur": 1.1
+ },
+ "S35": {
+  "name": "2 Hours Later",
+  "file": "assets/sfx/2_hours_later.m4a",
+  "dur": 1.85
+ },
+ "S36": {
+  "name": "His Name Is Jeff",
+  "file": "assets/sfx/his_name_is_jeff.m4a",
+  "dur": 1.55
+ },
+ "S37": {
+  "name": "Weeee",
+  "file": "assets/sfx/weeee.m4a",
+  "dur": 6.3
+ },
+ "S38": {
+  "name": "Lol",
+  "file": "assets/sfx/lol.m4a",
+  "dur": 0.53
+ },
+ "S39": {
+  "name": "Wet",
+  "file": "assets/sfx/wet.m4a",
+  "dur": 1.14
+ },
+ "S40": {
+  "name": "Noice",
+  "file": "assets/sfx/noice.m4a",
+  "dur": 1.93
+ },
+ "S41": {
+  "name": "Skibidi Bop Mm Dada",
+  "file": "assets/sfx/skibidi_bop_mm_dada.m4a",
+  "dur": 1.77
+ },
+ "S42": {
+  "name": "Hehe Boi",
+  "file": "assets/sfx/hehe_boi.m4a",
+  "dur": 1.28
+ },
+ "S43": {
+  "name": "Dolphins",
+  "file": "assets/sfx/dolphins.m4a",
+  "dur": 1.83
+ },
+ "S44": {
+  "name": "Why Are You Running?",
+  "file": "assets/sfx/why_are_you_running.m4a",
+  "dur": 2.71
+ },
+ "S45": {
+  "name": "Drum Roll",
+  "file": "assets/sfx/drum_roll.m4a",
+  "dur": 4.5
+ },
+ "S46": {
+  "name": "Mario Kart Start",
+  "file": "assets/sfx/mario_kart_start.m4a",
+  "dur": 4.0
+ },
+ "S47": {
+  "name": "Burp",
+  "file": "assets/sfx/burp.m4a",
+  "dur": 1.07
+ },
+ "S48": {
+  "name": "Easy",
+  "file": "assets/sfx/easy.m4a",
+  "dur": 0.75
+ },
+ "S49": {
+  "name": "Are You Serious?",
+  "file": "assets/sfx/are_you_serious.m4a",
+  "dur": 8.5
+ },
+ "S50": {
+  "name": "Ta Daaa",
+  "file": "assets/sfx/ta_daaa.m4a",
+  "dur": 1.51
+ },
+ "S51": {
+  "name": "Explosion",
+  "file": "assets/sfx/explosion.m4a",
+  "dur": 2.1
+ },
+ "S52": {
+  "name": "Mission Failed",
+  "file": "assets/sfx/mission_failed.m4a",
+  "dur": 2.88
+ },
+ "S53": {
+  "name": "Hey, What Happened?",
+  "file": "assets/sfx/hey_what_happened.m4a",
+  "dur": 1.41
+ },
+ "S54": {
+  "name": "Fatality",
+  "file": "assets/sfx/fatality.m4a",
+  "dur": 1.31
+ },
+ "S55": {
+  "name": "Crowd Laughing",
+  "file": "assets/sfx/crowd_laughing.m4a",
+  "dur": 8.8
+ },
+ "S56": {
+  "name": "Inception Horns",
+  "file": "assets/sfx/inception_horns.m4a",
+  "dur": 5.6
+ },
+ "S57": {
+  "name": "Rubber Duck",
+  "file": "assets/sfx/rubber_duck.m4a",
+  "dur": 0.97
+ },
+ "S58": {
+  "name": "Record Scratch 1",
+  "file": "assets/sfx/record_scratch_1.m4a",
+  "dur": 2.74
+ },
+ "S59": {
+  "name": "Splat",
+  "file": "assets/sfx/splat.m4a",
+  "dur": 0.4
+ },
+ "S60": {
+  "name": "Say Whatttt?",
+  "file": "assets/sfx/say_whatttt.m4a",
+  "dur": 1.63
+ },
+ "S61": {
+  "name": "Toasty",
+  "file": "assets/sfx/toasty.m4a",
+  "dur": 0.59
+ },
+ "S62": {
+  "name": "Cartoon Running",
+  "file": "assets/sfx/cartoon_running.m4a",
+  "dur": 3.3
+ },
+ "S63": {
+  "name": "Falcon Punch",
+  "file": "assets/sfx/falcon_punch.m4a",
+  "dur": 2.05
+ },
+ "S64": {
+  "name": "Sniper",
+  "file": "assets/sfx/sniper.m4a",
+  "dur": 0.86
+ },
+ "S65": {
+  "name": "Crickets",
+  "file": "assets/sfx/crickets.m4a",
+  "dur": 9.3
+ },
+ "S66": {
+  "name": "Ba Dun Dun",
+  "file": "assets/sfx/ba_dun_dun.m4a",
+  "dur": 0.83
+ },
+ "S67": {
+  "name": "Ba Dun Tsss",
+  "file": "assets/sfx/ba_dun_tsss.m4a",
+  "dur": 1.84
+ },
+ "S68": {
+  "name": "Distortion",
+  "file": "assets/sfx/distortion.m4a",
+  "dur": 3.8
+ },
+ "S69": {
+  "name": "Sorry Bro",
+  "file": "assets/sfx/sorry_bro.m4a",
+  "dur": 0.91
+ },
+ "S70": {
+  "name": "Shots Fired",
+  "file": "assets/sfx/shots_fired.m4a",
+  "dur": 2.25
+ },
+ "S71": {
+  "name": "Smirk Cat (drawn) laugh",
+  "file": "assets/sfx/smirk_cat_drawn.m4a",
+  "dur": 10.9
+ }
+}

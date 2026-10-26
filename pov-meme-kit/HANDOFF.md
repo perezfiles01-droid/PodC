@@ -19,6 +19,11 @@
   per-line POV pills, constant clip swaps, emoji stickers, NO song, only the meme sounds, hard cuts,
   ends on the punchline). Still human POV, US/CA audience, no watermark, plan-first workflow.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
+- **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
+  e.g. S10 Bruh, S12 Sheesh, S15 FBI Open Up, S19 A Few Moments Later, S21 GTA Wasted, S55 Crowd
+  Laughing, S58 Record Scratch, S65 Crickets, S67 Ba Dun Tsss, S69 Sorry Bro, S71 smirk-cat laugh).
+  Use in a scene: `"sfx": [{"id": "S10", "t": 2.0}]` (optional len, vol). Funny videos = meme clip
+  sounds + SFX on the jokes; SAD videos never use SFX.
 
 ## CURRENT RULES (authoritative, as of v13)
 **Look & format**
@@ -136,7 +141,7 @@ Repo is private: the user must be signed in to GitHub as perezfiles01-droid.
 If the catalog changes (new packs/clips), run `python3 scripts/make_catalog.py`, commit, push — the
 links stay the same.
 
-_Last updated: 2026-10-24 (v13, catalog C1–C45 + D1–D29). Paste this whole file into a new session to resume._
+_Last updated: 2026-10-24 (v13, catalog C1–C54 + D1–D29). Paste this whole file into a new session to resume._
 
 ## Goal
 Make short vertical (9:16) emotional "POV" meme videos in the style of @Pawspective:
@@ -408,3 +413,4 @@ for spoken lines, sad/heartwarming twist.
     cut-out. Session note: when the shell's Auto-mode safety check is down, ask the user to switch the
     mode dropdown to "Accept edits"; GitHub connector (push_files) can still save text files.
 68. User sent a FUNNY reference (funny_ref1.mp4) → second style added (see TWO STYLES + STYLE_GUIDE).
+69. Added 71 meme sound effects (assets/sfx, build.py `sfx`) for FUNNY videos, and cat_pack_4.mp4 → C47–C54 (catalog now C1–C54 + D1–D29).
