@@ -11,7 +11,7 @@
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
 >    - FUNNY: `python3 scripts/hf_layer.py stories/first-day-gym.json out` → `HF DONE 43.5`
 >    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `first-day-gym_v5.mp4`
->    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
+>    (verified SAME from a fresh clone on 2026-10-26 incl. HyperFrames funny build; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
 >    where history and the rules disagree, the rules win.
