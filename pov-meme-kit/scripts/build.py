@@ -185,14 +185,23 @@ for si, sc in enumerate(story["scenes"]):
             cw, chh, cx, cy = map(int, crop.split(":"))
             crop = f"{cw}:{int(chh * a['keep_top']) // 2 * 2}:{cx}:{cy}"
         ins += ["-stream_loop", "-1", "-ss", str(a["ss"]), "-t", str(a["len"]), "-i", src]
+        t0a = a.get("t0", 0)
+        # smooth clips (funny style): each clip starts from ITS OWN beginning when it appears and only plays
+        # forward (no ping-pong reversing, no starting mid-loop); too short → slowed a little, then holds
+        SMOOTH = FUNNY or story.get("smooth_clips")
+        D = a.get("t1", T) - t0a
+        if SMOOTH and "speed" not in a and a["len"] < D:
+            a["speed"] = round(max(0.75, a["len"] / D), 2)
         sp = a.get("speed", 1.0)  # <1 slows a twitchy meme clip down so it doesn't look fast-forwarded
         n = int(a["len"] / sp * FPS)
         flip = ",hflip" if a.get("flip") else ""
-        # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
-        fc.append(f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,{key_for(src)[0]},"
-                  f"scale=-2:{a['h']}{flip},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
-                  f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
-        t0a = a.get("t0", 0)
+        base = (f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,"
+                f"{key_for(src)[0]},scale=-2:{a['h']}{flip}")
+        if SMOOTH:
+            fc.append(f"{base},tpad=stop_mode=clone:stop_duration={D},trim=0:{D},setpts=N/{FPS}/TB+{t0a}/TB[a{ai}]")
+        else:  # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
+            fc.append(f"{base},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
+                      f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
         en = f":enable='between(t,{t0a},{a.get('t1', T)})'"
         ox, oy = f"{a['x']}-overlay_w/2", f"{a['y']}-overlay_h"
         ent = a.get("enter", "up" if MOTION and not (si == 0 and t0a == 0 and story.get("hook_first_frame")) else None)
@@ -236,7 +245,11 @@ for si, sc in enumerate(story["scenes"]):
             a["speak"] = [[t0, max(t1, t0 + a["len"])] for t0, t1 in a.get("speak", [])]
         for k, (t0, t1) in enumerate(a.get("speak", [])):
             lbl = f"v{ai}_{k}"
-            fc.append(f"[{idx}:a]atempo={max(sp, 0.5)},atrim=0:{t1 - t0},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+            o = max(0.0, t0 - t0a) if SMOOTH else 0.0  # smooth: sound matches the picture (clip started at t0a)
+            e = min(o + t1 - t0, a["len"] / sp) if SMOOTH else t1 - t0
+            if e - o < 0.2:
+                continue
+            fc.append(f"[{idx}:a]atempo={max(sp, 0.5)},atrim={o}:{e},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
                       f"afade=t=in:d=0.1,afade=t=out:st={max(t1 - t0 - 0.3, 0)}:d=0.3,"
                       f"adelay={int(t0 * 1000)}|{int(t0 * 1000)},volume={a.get('vol', 1.0)}[{lbl}]")
             aud.append(lbl)

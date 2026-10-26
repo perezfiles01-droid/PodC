@@ -21,6 +21,11 @@
 - FUNNY: **sound from frame 1, no silent stretches** (user: 'first 2 seconds has no sound'). Check the
   catalog `sound` field — 'silent' / 'low voice' clips (C15, C19…) need an SFX or a swap. QA: scan the
   audio for gaps >0.5 s; only keep a deliberate comedic pause (≤1.2 s) before a reaction.
+- **Smooth clips (user: 'cuts of the cat clips not smooth'):** funny stories (or `"smooth_clips": true`)
+  start every clip from its own beginning when it appears, play it forward only (no ping-pong), slow it
+  to ≥0.75× if the line is longer, then hold the last frame; the clip's sound is taken from the same
+  point so picture and sound match. QA: per-region jump scan — big spikes allowed only at swaps/cuts.
+  Known hidden cut: **C48 cuts at 8.4 s** (close face → open mouth) — use `"ss": 8.5` for the scream.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
 - **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
   e.g. S10 Bruh, S12 Sheesh, S15 FBI Open Up, S19 A Few Moments Later, S21 GTA Wasted, S55 Crowd
@@ -130,7 +135,7 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v2.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v3.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -423,3 +428,4 @@ for spoken lines, sad/heartwarming twist.
     actor `"slide_from": [x, y]` + `"slide_dur"` (e.g. falling down stairs), no song, hard ending.
     Comic Neue has no ● or ▶ glyphs → use emoji props (🔴 ▶️). C40 (collapsed banana) needs h ~200.
 71. grandma-tiktok_v2: opening was silent 0–2.7 s (C15 silent) → Grandma opens with C3 (meowing), +S38 at 4.7 s, +S42 at the end.
+72. grandma-tiktok_v3: smooth clips (start at own beginning, forward only, no ping-pong) + C48 hidden-cut fix.
