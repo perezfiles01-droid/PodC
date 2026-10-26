@@ -4,13 +4,24 @@
 > 1. Get the kit: repo `perezfiles01-droid/PodC`, branch **`ccr-acf60340-s3bcq6`**, folder `pov-meme-kit/`.
 >    If the repo isn't attached, attach it (add_repo), then
 >    `git fetch origin ccr-acf60340-s3bcq6 && git checkout ccr-acf60340-s3bcq6`.
-> 2. `cd pov-meme-kit && bash scripts/setup.sh` (light: numpy, pillow, python-docx; ffmpeg is preinstalled).
-> 3. Prove the pipeline: `python3 scripts/build.py stories/mom-wasnt-hungry.json out` — it must print
->    the scene table and `DONE 38.0`; the result must match `examples/mom-wasnt-hungry_v13.mp4`
->    (verified identical from a fresh clone on 2026-10-24).
-> 4. Follow **CURRENT RULES** below. Everything under "History" is background only — where history
->    and CURRENT RULES disagree, CURRENT RULES win.
-> 5. Read STYLE_GUIDE.md and look at references/ before planning a new story.
+> 2. `cd pov-meme-kit && bash scripts/setup.sh` — installs numpy/pillow AND torch+diffusers (needed: every
+>    video gets new backgrounds). Takes a few minutes; it must end with `setup OK`.
+> 3. Prove the pipeline — all three must print `DONE` and avsync `OK`:
+>    - SAD (old): `python3 scripts/build.py stories/mom-wasnt-hungry.json out` → `DONE 38.0`
+>    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
+>    - FUNNY: `python3 scripts/build.py stories/grandma-tiktok.json out` → `DONE 45`
+>    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `grandma-tiktok_v3.mp4`
+>    (`python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
+> 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
+>    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
+>    where history and the rules disagree, the rules win.
+> 5. Templates — copy the structure of an existing story file, don't invent a new format:
+>    SAD → `stories/stepdad-row-12.json` (motion, props, flash, grey) ·
+>    FUNNY → `stories/grandma-tiktok.json` (style funny, no music key, swaps with t0/t1 + "swap": true,
+>    emoji props, sfx, slide_from).
+> 6. If every shell command fails with "auto mode classifier gave no verdict": that's the session's
+>    Auto-mode safety check being down. Ask the user to switch the mode dropdown (next to the message
+>    box) to **Accept edits**. Text files can still be saved with the GitHub connector (push_files).
 
 ## TWO STYLES (user, 2026-10-26): every video is SAD or FUNNY
 - **SAD** = everything in CURRENT RULES below (approved, unchanged).
@@ -116,19 +127,33 @@
   scripts/make_catalog.py, run `python3 scripts/make_catalog.py`, check pictures aren't blank.
 
 **Workflow with the user**
-1. New video request → FIRST reply with the plan: every scene + clip number per character. Wait for OK.
-2. Build → QA: `scripts/avsync.py` (OK), `scripts/cuts.py` (only planned scene cuts),
-   `scripts/jumps.py` (spikes only at fade-in, scene cuts, clip swaps). Look at a few frames.
-3. Send ONLY the with-sound mp4 + the scene table (Scene | Time | Place | Who = clip) + the
-   updated CLIP_CATALOG.pdf + this HANDOFF.md.
+1. New video request → decide **SAD or FUNNY** (ask if unclear). Story ideas: SAD = 4 options with hook /
+   planted detail / twist / last line; FUNNY = 4 options with setup / odd / overreaction / twist /
+   punchline. Then FIRST reply with the full plan as a table: Scene | Time | Place | Who = clip | Lines |
+   (SAD: Motion & elements · FUNNY: SFX + Stickers). Wait for the user's OK.
+2. Backgrounds: `scripts/bg_batch.py plan.json` (new image per scene, landscape-crop, look at them; redo
+   tiled/top-down ones with another seed). Props: emoji props, `scripts/prop_cutout.py`, or a PIL drawing.
+3. Build → QA, ALL of these, every time:
+   - `scripts/avsync.py out.mp4` → OK
+   - `scripts/cuts.py out.mp4` → only the planned scene cuts (+ a planned flash)
+   - `scripts/jumps.py out.mp4` and `scripts/jumps_local.py out.mp4 stories/x.json` → spikes only at
+     planned moments; an isolated spike inside a clip = hidden cut → move that actor's "ss" past it
+   - FUNNY also: `scripts/silence.py out.mp4` → OK (sound from frame 1; check the catalog "sound"
+     field — silent / low-voice clips need an SFX or a swap)
+   - `scripts/contact.py out.mp4 sheet.png <times>` and LOOK: text overlaps, clipped/floating cats,
+     missing glyphs (Comic Neue has no ● ▶ → emoji props), oversized clips (C40 h≈200).
+4. Copy to `examples/<name>_vN.mp4` (+ `_clips.md`), drop the previous version of that video.
+   Send ONLY the with-sound mp4 + the scene table (Scene | Time | Place | Who = clip, plus SFX for funny)
+   + the updated CLIP_CATALOG.pdf + this HANDOFF.md.
    ALSO always include ready-to-copy **Facebook captions and hashtags in SEPARATE code blocks**
-   (one block per caption, one block for hashtags — user asked to keep them apart) (2 caption
-   options, 5–8 hashtags, e.g. `#catpov #catmemes #momlove #emotional #storytime #fbreels #pov`,
-   adapted to the story). Caption = emotional hook + a question or "tag someone" to drive comments.
-4. Swap requests ("scene 3 C23 → D12"): set `"clip"`, delete that actor's `"ss"`/`"len"`/`"speed"`,
-   keep the rest, then check placement (a new clip may float or overlap), rebuild, QA, send as above.
-5. After every change: update this file (CURRENT RULES if a rule changed + a History line),
-   commit, push to the same branch.
+   (one block per caption, one block for hashtags — user asked to keep them apart) (2 caption options,
+   5–8 hashtags adapted to the story; SAD e.g. `#pov #storytime #momlove #emotional #catsoftiktok
+   #fbreels`, FUNNY e.g. `#pov #funny #catmemes #relatable #catsoftiktok #fbreels #fyp`). Caption = hook
+   + a question or "tag someone". Posting tip: 7–10 pm Eastern (4–7 pm Pacific); funny also 12–1 pm ET.
+5. Swap requests ("scene 3 C23 → D12" / "S54 → S21"): set `"clip"` (or sfx `"id"`), delete that actor's
+   `"ss"`/`"len"`/`"speed"`, keep the rest, check placement, rebuild, QA, send as above.
+6. After every change: update this file (rules if a rule changed + a History line), commit, push to the
+   same branch. Never leave work uncommitted at the end of a turn (a stop hook checks).
 
 **Files to give the user on request (private repo — sign in as perezfiles01-droid)**
 - Clip list PDF: https://github.com/perezfiles01-droid/PodC/raw/ccr-acf60340-s3bcq6/pov-meme-kit/CLIP_CATALOG.pdf
