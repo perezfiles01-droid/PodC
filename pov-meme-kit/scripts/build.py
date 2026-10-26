@@ -260,6 +260,9 @@ for si, sc in enumerate(story["scenes"]):
         fc.append(f"[{cur}][a{ai}]overlay=x='{ox}':y='{oy}'{en}[c{ai}]")
         cur = f"c{ai}"
         # label + speech follow the actor: same x, stacked just above its head, only while visible
+        # (a moving actor's text sits where its path ends, so it doesn't stay behind on the floor)
+        if a.get("path"):
+            a = dict(a, x=a["path"][-1][1], y=a["path"][-1][2], h=int(a["h"] * a["path"][-1][3]))
         top = max(a["y"] - a["h"], 470)
         lab_y = top - 60
         if FUNNY:  # speech sits right above the head; the ":Me" label goes BELOW the character
