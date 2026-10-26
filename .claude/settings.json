@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/pov-meme-kit/scripts/session_start.sh\"" }
+        ]
+      }
+    ]
+  }
+}

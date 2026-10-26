@@ -317,9 +317,11 @@ for si, sc in enumerate(story["scenes"]):
     ins += ["-i", labels]
     fc.append(f"[{cur}][{idx}:v]overlay[l]")
     cur, idx = "l", idx + 1
-    ins += ["-i", f"{OUT}/tmp/pov.png"]
-    fc.append(f"[{cur}][{idx}:v]overlay[p]")
-    cur, idx = "p", idx + 1
+    NO_TEXT = os.environ.get("NO_TEXT")  # picture + sound only (text/stickers drawn by another layer, e.g. HyperFrames)
+    if not NO_TEXT:
+        ins += ["-i", f"{OUT}/tmp/pov.png"]
+        fc.append(f"[{cur}][{idx}:v]overlay[p]")
+        cur, idx = "p", idx + 1
     def move(t0, style):  # overlay x/y for a full-canvas text/prop layer
         if isinstance(style, tuple) and style[0] == "tremble":  # prop shakes with the actor holding it
             _, a0, a1 = style
@@ -349,11 +351,13 @@ for si, sc in enumerate(story["scenes"]):
         if pr.get("tremble"):
             st = ("tremble", pr["tremble"][0], pr["tremble"][1])
         pending.insert(0, (pp, pr.get("t0", 0), pr.get("t1", T), st))
+    if NO_TEXT:
+        pending = []
     for k, (pth, t0, t1, style) in enumerate(pending):
         ins += ["-i", pth]
         fc.append(f"[{cur}][{idx}:v]overlay=enable='between(t,{t0},{t1})'{move(t0, style)}[q{k}]")
         cur, idx = f"q{k}", idx + 1
-    for k, s in enumerate(sc.get("subs", [])):
+    for k, s in enumerate([] if NO_TEXT else sc.get("subs", [])):
         p = f"{OUT}/tmp/sub{si}_{k}.png"
         text_png(p, [dict(s, color=s.get("color", (255, 230, 0)))])
         ins += ["-i", p]

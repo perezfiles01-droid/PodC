@@ -29,6 +29,10 @@
 >    - HyperFrames: its headless Chrome can't load CDN scripts through the proxy → copy
 >      `motion/node_modules/gsap/dist/gsap.min.js` next to index.html and point the `<script src>` at it.
 >    Not used in the main pipeline yet — build.py (Python + ffmpeg) still makes every video.
+> 5c. A SessionStart hook (`.claude/settings.json` → `scripts/session_start.sh`) runs setup.sh in the
+>    background in every new session (log: /tmp/pov-setup.log). `NO_TEXT=1 python3 scripts/build.py …`
+>    renders picture + sound only, for a HyperFrames text/sticker layer on top (example composition:
+>    examples/compare/gym-scene2_hyperframes_index.html; side-by-side: examples/compare/*.mp4).
 > 6. If every shell command fails with "auto mode classifier gave no verdict": that's the session's
 >    Auto-mode safety check being down. Ask the user to switch the mode dropdown (next to the message
 >    box) to **Accept edits**. Text files can still be saved with the GitHub connector (push_files).
@@ -545,3 +549,4 @@ for spoken lines, sad/heartwarming twist.
 83. User: first-day-gym_v3 approved ("this one is better") — use it as the reference for funny-video quality (fast hook, purposeful gags, actions shown, characters facing each other).
 84. first-day-gym_v4 (user notes on v3): faster walk-in, dogs flipped to face Me, dumbbell prop picked up → stuck + trembling, no drum-roll dead air, less shouting (vols), shocked C26 after 'every morning', Grandma walks over + carries Me doing REP 1-2-3, Me walks off crying; build.py: prop tremble, text_at.
 85. Installed Remotion 4.0.538 + HyperFrames 0.8.201 (+ GSAP) in motion/ via setup.sh; both render here (fixes in START HERE 5b). Not wired into build.py yet.
+86. SessionStart hook added; HyperFrames side-by-side of gym scene 2 sent (awaiting user's choice).
