@@ -196,12 +196,21 @@ for si, sc in enumerate(story["scenes"]):
         flip = ",hflip" if a.get("flip") else ""
         base = (f"[{idx}:v]trim=0:{a['len']},setpts=(PTS-STARTPTS)/{sp},fps={FPS},crop={crop},format=yuva420p,"
                 f"{key_for(src)[0]},scale=-2:{a['h']}{flip}")
+        # funny swaps cross-fade (0.2 s): the new clip fades in, the old one fades out over the same moment
+        XF = 0.2 if FUNNY and a.get("swap") else 0.0
         if SMOOTH:
-            fc.append(f"{base},tpad=stop_mode=clone:stop_duration={D},trim=0:{D},setpts=N/{FPS}/TB+{t0a}/TB[a{ai}]")
+            fades = ""
+            if XF:
+                if t0a > 0:
+                    fades += f",fade=t=in:st=0:d={XF}:alpha=1"
+                if a.get("t1", T) < T:
+                    fades += f",fade=t=out:st={D}:d={XF}:alpha=1"
+            fc.append(f"{base},tpad=stop_mode=clone:stop_duration={D + 1},trim=0:{D + XF}{fades},"
+                      f"setpts=N/{FPS}/TB+{t0a}/TB[a{ai}]")
         else:  # ping-pong loop (forward then backward) so a looping clip never jumps back to its start
             fc.append(f"{base},split[f{ai}][r{ai}];[r{ai}]reverse[rv{ai}];"
                       f"[f{ai}][rv{ai}]concat=n=2:v=1:a=0,loop=-1:size={2 * n},trim=0:{T},setpts=N/{FPS}/TB[a{ai}]")
-        en = f":enable='between(t,{t0a},{a.get('t1', T)})'"
+        en = f":enable='between(t,{t0a},{a.get('t1', T) + (0.2 if FUNNY and a.get('swap') and a.get('t1', T) < T else 0)})'"
         ox, oy = f"{a['x']}-overlay_w/2", f"{a['y']}-overlay_h"
         ent = a.get("enter", "up" if MOTION and not (si == 0 and t0a == 0 and story.get("hook_first_frame")) else None)
         if ent and not a.get("swap"):  # slide in over 0.4 s (eased); a mid-scene emotion swap stays put
@@ -215,6 +224,13 @@ for si, sc in enumerate(story["scenes"]):
             p = f"min(1,max(0,(t-{t0a})/{a.get('slide_dur', 1.0)}))"
             ox += f"+({sx0}-{a['x']})*(1-{p})"
             oy += f"+({sy0}-{a['y']})*(1-{p})"
+        if a.get("slide_to"):  # leaves: moves from x/y to slide_to, starting at slide_at (default t0)
+            tx, ty = a["slide_to"]
+            p = f"pow(min(1,max(0,(t-{a.get('slide_at', t0a)})/{a.get('slide_dur', 0.8)})),2)"
+            ox += f"+({tx}-{a['x']})*{p}"
+            oy += f"+({ty}-{a['y']})*{p}"
+        if FUNNY and not a.get("no_bob"):  # gentle idle bob so nobody looks frozen
+            oy += f"+7*sin(2*PI*0.9*t+{ai})"
         fc.append(f"[{cur}][a{ai}]overlay=x='{ox}':y='{oy}'{en}[c{ai}]")
         cur = f"c{ai}"
         # label + speech follow the actor: same x, stacked just above its head, only while visible
@@ -311,6 +327,17 @@ for si, sc in enumerate(story["scenes"]):
     if MOTION and si > 0:
         fc.append(f"[{cur}]fade=t=in:d=0.3[fi]")
         cur = "fi"
+    for k, (a0, a1) in enumerate(sc.get("shake", [])):  # screen shake on a scream (zoom 4 % so no edges show)
+        fc.append(f"[{cur}]scale={int(W * 1.04)}:{int(H * 1.04)},crop={W}:{H}:"
+                  f"x='{int(W * 0.02)}+if(between(t,{a0},{a1}),18*sin(95*t),0)':"
+                  f"y='{int(H * 0.02)}+if(between(t,{a0},{a1}),12*cos(80*t),0)'[sk{k}]")
+        cur = f"sk{k}"
+    if sc.get("transition") == "slide" and parts:  # whip-slide in over the previous scene's last frame
+        last = f"{OUT}/tmp/last{si}.png"
+        run(["ffmpeg", "-v", "error", "-y", "-sseof", "-0.1", "-i", parts[-1], "-frames:v", "1", last])
+        ins += ["-loop", "1", "-framerate", str(FPS), "-t", str(T), "-i", last]
+        fc.append(f"[{idx}:v]format=rgba,setsar=1[prev];[prev][{cur}]overlay=x='{W}*pow(max(0,1-t/0.35),2)':y=0[tr]")
+        cur, idx = "tr", idx + 1
     if sc.get("flash_at") is not None:
         fc.append(f"[{cur}]eq=brightness='0.45*max(0,1-abs(t-{sc['flash_at']})/0.12)':eval=frame[fl]")
         cur = "fl"

@@ -9,16 +9,18 @@
 > 3. Prove the pipeline — all three must print `DONE` and avsync `OK`:
 >    - SAD (old): `python3 scripts/build.py stories/mom-wasnt-hungry.json out` → `DONE 38.0`
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
->    - FUNNY: `python3 scripts/build.py stories/grandma-tiktok.json out` → `DONE 45`
->    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `grandma-tiktok_v4.mp4`
+>    - FUNNY: `python3 scripts/build.py stories/one-more-episode.json out` → `DONE 55`
+>    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `one-more-episode_v1.mp4`
 >    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
 >    where history and the rules disagree, the rules win.
 > 5. Templates — copy the structure of an existing story file, don't invent a new format:
 >    SAD → `stories/stepdad-row-12.json` (motion, props, flash, grey) ·
->    FUNNY → `stories/grandma-tiktok.json` (style funny, no music key, swaps with t0/t1 + "swap": true,
->    emoji props, sfx, slide_from).
+>    FUNNY → `stories/one-more-episode.json` (style funny, no music key, swaps with t0/t1 + "swap": true,
+>    emoji props, sfx, slide_from / slide_to, scene "transition": "slide", "shake", "dark").
+>    (grandma-tiktok_v4 / brother-gps_v1 were made before idle bob + swap cross-fades; rebuilding them now
+>    gives the newer look, not SAME.)
 > 6. If every shell command fails with "auto mode classifier gave no verdict": that's the session's
 >    Auto-mode safety check being down. Ask the user to switch the mode dropdown (next to the message
 >    box) to **Accept edits**. Text files can still be saved with the GitHub connector (push_files).
@@ -47,8 +49,14 @@
   sound — measured list: C39 C48 C46 C51 C37 C32 C44 D29 D5 D18 C11 C12 (lots of motion); C53 D26 C52
   C23 D2 C5 C54 C27 C4 D3 C42 C14 C30 C13 C20 C26 D17 (steady motion). Near-static, avoid as main
   clips: C2 C3 C15 C16 C22 C35 C36 C38 C40 C41 C45 C50 D1 D4 D8 D10 D12 D13 D16 D19 D20 D21 D24 D28.
-- **FUNNY transitions (user wants smooth):** idle bob on every character, 0.2 s cross-fade on clip swaps,
-  fast slide between scenes, run-in / burst-in entrances, shake on screams.
+- **FUNNY transitions (user wants smooth) — built into build.py:** idle bob on every funny character
+  (automatic; `"no_bob": true` to stop), 0.2 s cross-fade on every `"swap": true` clip change (automatic),
+  scene `"transition": "slide"` (whip-slide over the previous scene's last frame), scene `"shake": [[t0, t1]]`
+  (screen shake on a scream), actor `"slide_from"` (run/burst in) and `"slide_to"` + `"slide_at"` (exit /
+  collapse out of frame).
+- **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
+  and only until the clip runs out — start a short clip AT its line (put another clip before it), and
+  give a silent continuation clip an explicit `"speak"`. silence.py catches it.
 - When the user asks for a video, ask (or infer from the request) which style; put it in the plan.
 - **FUNNY sound effects (user request):** 71 meme SFX in assets/sfx/ (list: SFX_LIST.md, ids S1–S71,
   e.g. S10 Bruh, S12 Sheesh, S15 FBI Open Up, S19 A Few Moments Later, S21 GTA Wasted, S55 Crowd
@@ -172,7 +180,8 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4,
+  one-more-episode_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -469,3 +478,4 @@ for spoken lines, sad/heartwarming twist.
 73. Handoff audit: setup installs torch, 3 proof builds (sad/motion/funny) verified SAME from a fresh clone, QA scripts silence.py / jumps_local.py / contact.py / same.py, bg_batch landscape-crop, prop_cutout.py, story templates, Auto-mode outage note.
 74. brother-gps_v1 (funny, 45 s): C21 replaced by C29 (pop-cat flicker / montage), prop `slide_from` (⛽ 🐄 drive past), no auto slow-down in funny mode (stutter) → grandma-tiktok re-exported as v4.
 75. User: funny videos up to 60 s (clarity over length), moving clips only, smooth swaps + scene transitions.
+76. one-more-episode_v1 (funny, 55 s): first with moving-only clips, idle bob, swap cross-fades, slide transitions, shake, slide_to collapse. Funny proof build switched to it.
