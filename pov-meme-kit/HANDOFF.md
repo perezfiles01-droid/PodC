@@ -119,7 +119,7 @@
 - **Carrying = the carrier does it** (user: "Grandma carrying the child"): the carrier walks over, the
   carried one goes up onto them and moves WITH them (reps / walking), funny on purpose.
 - Moving actors: text sits at path point `"text_at"` (default end); for exits/carries use subs instead.
-- **Size gotchas:** C44 (yapapa) is a wide close-up → h ≈ 290; speech must stay below the POV pills
+- **Size gotchas:** C30 (talking calico) is a wide close-up → h ≈ 250; C44 (yapapa) is a wide close-up → h ≈ 290; speech must stay below the POV pills
   (character top ≳ 900 px) — lower or shrink a lifted/raised character.
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
   and only until the clip runs out — start a short clip AT its line (put another clip before it), and
@@ -558,3 +558,4 @@ for spoken lines, sad/heartwarming twist.
 86. SessionStart hook added; HyperFrames side-by-side of gym scene 2 sent (awaiting user's choice).
 87. User picked HyperFrames → scripts/hf_layer.py is the funny build command; first-day-gym_v5 = first HyperFrames video (dumbbell lowered onto head). Funny proof build switched to it.
 88. User: 'who says Me is always the banana cat?' — correct: one look per character is per video only; vary Me's look between videos.
+89. fake-sick_v1 (funny, 45 s, HyperFrames): Me = C8, Mom = C30 (full sound); props blanket.png + fake102.png (PIL), 🌡️ ✅ 🎢 🎒; jump arc via path.
