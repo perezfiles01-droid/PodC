@@ -89,7 +89,8 @@
   running across the screen) · ☐ sticker
   wobble/spin (clock spinning, alarm ringing).
 - **NOT MESSY (user: gym v1 'so messy' = too much at once, rough cut-outs, hard to follow):**
-  · ONE look per character for the whole video (same clip family: e.g. Me = banana-suit cats C33/C43/C37/C39;
+  · ONE look per character WITHIN a video (same clip family — e.g. in the gym video Me = banana-suit cats
+    C33/C43/C37/C39; that's that video's choice, NOT a rule: pick a fresh look for Me in each new story;
     a reveal = same clip, label changes + zoom-punch), max ~3–4 clips per character, never switch species.
   · Only the gags that carry the joke: ≤ 1 sticker at a time, ≤ 1 shake per scene, punch only on the big
     reveal — no decorative emoji spam (💪😎💦…).
@@ -556,3 +557,4 @@ for spoken lines, sad/heartwarming twist.
 85. Installed Remotion 4.0.538 + HyperFrames 0.8.201 (+ GSAP) in motion/ via setup.sh; both render here (fixes in START HERE 5b). Not wired into build.py yet.
 86. SessionStart hook added; HyperFrames side-by-side of gym scene 2 sent (awaiting user's choice).
 87. User picked HyperFrames → scripts/hf_layer.py is the funny build command; first-day-gym_v5 = first HyperFrames video (dumbbell lowered onto head). Funny proof build switched to it.
+88. User: 'who says Me is always the banana cat?' — correct: one look per character is per video only; vary Me's look between videos.
