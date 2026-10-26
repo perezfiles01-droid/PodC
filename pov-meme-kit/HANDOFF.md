@@ -10,7 +10,7 @@
 >    - SAD (old): `python3 scripts/build.py stories/mom-wasnt-hungry.json out` → `DONE 38.0`
 >    - SAD + motion: `python3 scripts/build.py stories/stepdad-row-12.json out` → `DONE 45.5`
 >    - FUNNY: `python3 scripts/build.py stories/one-more-episode.json out` → `DONE 55`
->    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `one-more-episode_v1.mp4`
+>    Compare with `examples/mom-wasnt-hungry_v13.mp4`, `stepdad-row-12_v1.mp4`, `one-more-episode_v2.mp4`
 >    (verified SAME from a fresh clone on 2026-10-26; `python3 scripts/same.py out/<name>_with-sound.mp4 examples/<file>.mp4` must print SAME).
 > 4. Read **TWO STYLES** and **CURRENT RULES** below, STYLE_GUIDE.md (both styles), SFX_LIST.md, and
 >    look at references/ (sad refs + `funny_ref1.mp4`). Everything under "History" is background only —
@@ -54,6 +54,12 @@
   scene `"transition": "slide"` (whip-slide over the previous scene's last frame), scene `"shake": [[t0, t1]]`
   (screen shake on a scream), actor `"slide_from"` (run/burst in) and `"slide_to"` + `"slide_at"` (exit /
   collapse out of frame).
+- **EMOTION CHECK on every line (user caught a 'laughing' cat at a panic line, and a cute kitten as an
+  angry Mom):** after building, run contact.py at the middle of EVERY line and ask "does this face read as
+  the line's emotion to a stranger?". Gotchas: C48's open-mouth part reads as yawning/laughing (not panic —
+  use C37 or C14); C51 reads cute/laughing (not angry — angry parent = C4/C5 or D18); C11 is just a cat
+  turning away. Panic = C37 C14 · angry/yelling = C4 C5 D18 · crying = C39 C27 · happy = C46 C32 C44 ·
+  shocked = C26 · begging = C52.
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
   and only until the clip runs out — start a short clip AT its line (put another clip before it), and
   give a silent continuation clip an explicit `"speak"`. silence.py catches it.
@@ -181,7 +187,7 @@
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
   cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v4.mp4, brother-gps_v1.mp4,
-  one-more-episode_v1.mp4 (same raw/ link pattern)
+  one-more-episode_v2.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -479,3 +485,4 @@ for spoken lines, sad/heartwarming twist.
 74. brother-gps_v1 (funny, 45 s): C21 replaced by C29 (pop-cat flicker / montage), prop `slide_from` (⛽ 🐄 drive past), no auto slow-down in funny mode (stutter) → grandma-tiktok re-exported as v4.
 75. User: funny videos up to 60 s (clarity over length), moving clips only, smooth swaps + scene transitions.
 76. one-more-episode_v1 (funny, 55 s): first with moving-only clips, idle bob, swap cross-fades, slide transitions, shake, slide_to collapse. Funny proof build switched to it.
+77. one-more-episode_v2: emotion fixes — 7 AM panic C48→C37, angry Mom C51→C4, cliffhanger C11→C26.

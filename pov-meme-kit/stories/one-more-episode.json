@@ -1,5 +1,5 @@
 {
- "name": "one-more-episode_v1",
+ "name": "one-more-episode_v2",
  "style": "funny",
  "title": "You said \"one more\nepisode\" at 10 PM",
  "handle": "",
@@ -40,7 +40,7 @@
      ]
     },
     {
-     "clip": "C11",
+     "clip": "C26",
      "name": "Me",
      "x": 540,
      "y": 1500,
@@ -212,7 +212,7 @@
    ],
    "actors": [
     {
-     "clip": "C48",
+     "clip": "C37",
      "name": "Me",
      "x": 540,
      "y": 1500,
@@ -393,7 +393,7 @@
    "transition": "slide",
    "actors": [
     {
-     "clip": "C51",
+     "clip": "C4",
      "name": "Mom",
      "x": 770,
      "y": 1500,
@@ -436,7 +436,7 @@
      ]
     },
     {
-     "clip": "C51",
+     "clip": "C4",
      "name": "Mom",
      "x": 770,
      "y": 1500,
