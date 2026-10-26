@@ -60,6 +60,15 @@
   use C37 or C14); C51 reads cute/laughing (not angry — angry parent = C4/C5 or D18); C11 is just a cat
   turning away. Panic = C37 C14 · angry/yelling = C4 C5 D18 · crying = C39 C27 · happy = C46 C32 C44 ·
   shocked = C26 · begging = C52.
+- **MORE MOTION GAGS (user, after one-more-episode_v2: "I still want more motions to add funny sides even
+  more"):** every funny video should push motion further than the last. Plan at least 4–6 per video, put
+  them in the plan table's Motion column. Ideas (✓ = already in build.py, ☐ = build when first used):
+  ✓ run/burst in (slide_from) · ✓ collapse/exit (slide_to) · ✓ screen shake · ✓ whip-slide scenes ·
+  ✓ stickers flying past (prop slide_from) · ☐ character JUMP on joy/shock (quick up-down arc) ·
+  ☐ character SHAKE/tremble on anger or fear · ☐ ZOOM-PUNCH on a reaction (character scales up 1.4×
+  for ~0.4 s, TikTok-style) · ☐ SPIN on dizzy/joy · ☐ SQUASH-bounce on landing · ☐ chase (two characters
+  running across the screen) · ☐ grow toward camera (running down a hallway like the ref) · ☐ sticker
+  wobble/spin (clock spinning, alarm ringing).
 - **Sound gotcha (smooth mode):** a clip's sound only plays while it has a line (or `"speak": [[t0, t1]]`),
   and only until the clip runs out — start a short clip AT its line (put another clip before it), and
   give a silent continuation clip an explicit `"speak"`. silence.py catches it.
@@ -486,3 +495,4 @@ for spoken lines, sad/heartwarming twist.
 75. User: funny videos up to 60 s (clarity over length), moving clips only, smooth swaps + scene transitions.
 76. one-more-episode_v1 (funny, 55 s): first with moving-only clips, idle bob, swap cross-fades, slide transitions, shake, slide_to collapse. Funny proof build switched to it.
 77. one-more-episode_v2: emotion fixes — 7 AM panic C48→C37, angry Mom C51→C4, cliffhanger C11→C26.
+78. User: satisfied with one-more-episode_v2 + the emotion-check approach; wants even MORE motion gags in future funny videos (list in rules).
