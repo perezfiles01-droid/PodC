@@ -30,6 +30,19 @@ def key_for(src):
     return _KEYS[src]
 story = json.load(open(sys.argv[1]))
 OUT = sys.argv[2]
+FUNNY = story.get("style") == "funny"  # funny style: comic font, POV pills, white "quoted" speech, labels below, no song
+if FUNNY:
+    REG = "assets/fonts/ComicNeue-Bold.ttf"
+EMOJI = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+
+
+def emoji_png(ch, h):
+    """Colour emoji sticker (Noto renders at 109 px; scaled to h)."""
+    f = ImageFont.truetype(EMOJI, 109)
+    im = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((80, 80), ch, font=f, embedded_color=True, anchor="mm")
+    im = im.crop(im.getbbox())
+    return im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
 os.makedirs(f"{OUT}/tmp", exist_ok=True)
 
 
@@ -99,6 +112,16 @@ def text_png(path, items):
 def pov_png(path, title):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
+    if FUNNY:  # one white rounded pill per line, hugging the text (ref: funny_ref1.mp4)
+        f = ImageFont.truetype(REG, 56)
+        y = 430
+        for line in ["POV:"] + title.split("\n"):
+            w = d.textlength(line, font=f)
+            d.rounded_rectangle(((W - w) / 2 - 22, y - 8, (W + w) / 2 + 22, y + 66), radius=18, fill="white")
+            d.text(((W - w) / 2, y), line, font=f, fill="black")
+            y += 74
+        im.save(path)
+        return
     f = ImageFont.truetype(REG, 40)
     lines = ["POV:"] + title.split("\n")
     d.rounded_rectangle((50, 190, W - 50, 190 + 40 + len(lines) * 50), radius=40, fill="white")
@@ -179,20 +202,34 @@ for si, sc in enumerate(story["scenes"]):
                 oy += f"+260*{k}"
             else:
                 ox += f"{'-' if ent == 'left' else '+'}600*{k}"
+        if a.get("slide_from"):  # e.g. falling down the stairs / running in
+            sx0, sy0 = a["slide_from"]
+            p = f"min(1,max(0,(t-{t0a})/{a.get('slide_dur', 1.0)}))"
+            ox += f"+({sx0}-{a['x']})*(1-{p})"
+            oy += f"+({sy0}-{a['y']})*(1-{p})"
         fc.append(f"[{cur}][a{ai}]overlay=x='{ox}':y='{oy}'{en}[c{ai}]")
         cur = f"c{ai}"
         # label + speech follow the actor: same x, stacked just above its head, only while visible
         top = max(a["y"] - a["h"], 470)
         lab_y = top - 60
+        if FUNNY:  # speech sits right above the head; the ":Me" label goes BELOW the character
+            lab_y = top + 6
         if a.get("label"):
             lp = f"{OUT}/tmp/lab{si}_{ai}.png"
-            text_png(lp, [{"text": a["label"], "x": a["x"] + a.get("lx", 0), "y": lab_y}])
+            if FUNNY:
+                text_png(lp, [{"text": a["label"], "x": a["x"] + a.get("lx", 90), "y": a["y"] + 4, "size": 52, "stroke": 4}])
+            else:
+                text_png(lp, [{"text": a["label"], "x": a["x"] + a.get("lx", 0), "y": lab_y}])
             pending.append((lp, a.get("t0", 0), a.get("t1", T), "pop"))
         for k, say in enumerate(a.get("say", [])):
             n_lines = say["text"].count("\n") + 1
             say_png = f"{OUT}/tmp/say{si}_{ai}_{k}.png"
-            text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
-                           "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
+            if FUNNY:
+                text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("sx", 0), "y": lab_y - n_lines * 62 - 10,
+                                    "color": say.get("color", "white"), "size": 52, "stroke": 4}])
+            else:
+                text_png(say_png, [{"text": say["text"], "x": a["x"] + a.get("lx", 0),
+                               "y": lab_y - n_lines * 58 - 4, "color": say.get("color", (255, 230, 0))}])
             pending.append((say_png, say["t0"], say["t1"], "shake" if say.get("shake") else "pop"))
             a.setdefault("speak", []).append([say["t0"], say["t1"]]) if say.get("sound", True) else None
         if a.get("full_sound"):  # never cut this clip's sound: each line plays the whole clip audio
@@ -231,8 +268,11 @@ for si, sc in enumerate(story["scenes"]):
         x = f"if(lt(t-{t0},0.5),14*sin(70*t),0)" if style == "shake" else "0"
         return f":x='{x}':y='30*pow(max(0,1-(t-{t0})/0.25),2)'"
     for pr in sc.get("props", []):  # story objects (cut-out PNGs) that pop in on cue
-        pi = Image.open(pr["img"]).convert("RGBA")
-        pi = pi.resize((int(pi.width * pr["h"] / pi.height), pr["h"]))
+        if pr.get("emoji"):
+            pi = emoji_png(pr["emoji"], pr["h"])
+        else:
+            pi = Image.open(pr["img"]).convert("RGBA")
+            pi = pi.resize((int(pi.width * pr["h"] / pi.height), pr["h"]))
         cv = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         cv.paste(pi, (pr["x"] - pi.width // 2, pr["y"] - pi.height), pi)
         pp = f"{OUT}/tmp/prop{si}_{len(pending)}.png"
@@ -275,11 +315,15 @@ lst = f"{OUT}/tmp/list.txt"
 open(lst, "w").write("".join(f"file '{os.path.abspath(p)}'\n" for p in parts))
 run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", f"{OUT}/tmp/joined.mkv"])
 total = sum(s["dur"] for s in story["scenes"])
-m = story["music"]
+m = story.get("music")
 # hook_first_frame: no fade-in, so the very first frame (the preview) already shows the scene
 VFADE = (f"[0:v]fade=t=out:st={total - 0.8}:d=0.8[v]" if story.get("hook_first_frame") else
          f"[0:v]fade=t=in:d=0.4,fade=t=out:st={total - 0.8}:d=0.8[v]")
-run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
+if not m:  # funny style: only the clips' own sounds + meme sound effects, hard ending
+    run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
+         "-af", "alimiter=limit=0.95", "-c:a", "aac", "-b:a", "160k", "-t", str(total), f"{OUT}/{story['name']}_with-sound.mp4"])
+else:
+  run(["ffmpeg", "-v", "error", "-y", "-i", f"{OUT}/tmp/joined.mkv",
      "-ss", str(m.get("bed_ss", 0)), "-i", m["bed"], "-ss", str(m.get("end_ss", 0)), "-i", m["end"], "-filter_complex",
      f"[1:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{m['switch']},volume={m['vol']},"
      f"afade=t=out:st={m['switch'] - 1.5}:d=1.5[b];"

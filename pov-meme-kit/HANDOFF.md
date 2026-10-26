@@ -127,7 +127,7 @@
 - This handoff: https://github.com/perezfiles01-droid/PodC/blob/ccr-acf60340-s3bcq6/pov-meme-kit/HANDOFF.md
 - Videos: examples/mom-wasnt-hungry_v13.mp4, mom-missed-my-show_v2.mp4, dad-sold-his-car_v1.mp4,
   old-shelter-dog_v1.mp4, brother-skipped-college_v1.mp4, old-shoes_v1.mp4, grandmas-birthday_v2.mp4, class-clown_v2.mp4, dad-voicemails_v1.mp4,
-  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4 (same raw/ link pattern)
+  cafeteria-leftovers_v1.mp4, stepdad-row-12_v1.mp4, grandma-tiktok_v1.mp4 (same raw/ link pattern)
 - Whole kit: https://github.com/perezfiles01-droid/PodC/tree/ccr-acf60340-s3bcq6/pov-meme-kit
 
 ---
@@ -414,3 +414,8 @@ for spoken lines, sad/heartwarming twist.
     mode dropdown to "Accept edits"; GitHub connector (push_files) can still save text files.
 68. User sent a FUNNY reference (funny_ref1.mp4) → second style added (see TWO STYLES + STYLE_GUIDE).
 69. Added 71 meme sound effects (assets/sfx, build.py `sfx`) for FUNNY videos, and cat_pack_4.mp4 → C47–C54 (catalog now C1–C54 + D1–D29).
+70. First FUNNY video: grandma-tiktok_v1 (45 s, 3 locations, 11 SFX). build.py funny switch = story
+    `"style": "funny"` + NO "music" key: Comic Neue Bold (assets/fonts), POV pills, white quoted speech
+    above head, ":Me" labels below (lx), emoji stickers (props `"emoji": "📱"`, Noto Color Emoji),
+    actor `"slide_from": [x, y]` + `"slide_dur"` (e.g. falling down stairs), no song, hard ending.
+    Comic Neue has no ● or ▶ glyphs → use emoji props (🔴 ▶️). C40 (collapsed banana) needs h ~200.
