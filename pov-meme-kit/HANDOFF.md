@@ -563,3 +563,8 @@ for spoken lines, sad/heartwarming twist.
 88. User: 'who says Me is always the banana cat?' — correct: one look per character is per video only; vary Me's look between videos.
 89. fake-sick_v1 (funny, 45 s, HyperFrames): Me = C8, Mom = C30 (full sound); props blanket.png + fake102.png (PIL), 🌡️ ✅ 🎢 🎒; jump arc via path.
 90. fake-sick_v2 (user notes): tighter, no 'too bad' pause, Mom C32 on NORMAL, Me C26 shock, C46 spin-in → C32 'I'M HEALED', D29 = the 'twerking dog', Mom C1 side-eye enters, C30 'get dressed', Me C47 confused → C39 crying exit with 🎒 (hf_layer prop "ease": "none").
+91. moms-voice-monkey_v1 (SAD, 82 s): 41 s cat story (hospital → Mom asks Dad a favour → she dies → Christmas, Dad
+    gives the monkey with her voice) + the user's REAL video (assets/real/upload1.mp4, 12–53 s) cut in after it.
+    Real clip: cropped to the footage band (720x738 at y 271: removes the top caption + ALPHA MOTIVATION logo),
+    scaled to 1080 wide over a blurred copy of itself, its own sound; song fades out over the last 1.2 s of the
+    cat part, then plain concat. User swapped scene 4 Dad C30 → D10 (sad, not crying).
