@@ -569,3 +569,8 @@ for spoken lines, sad/heartwarming twist.
     scaled to 1080 wide over a blurred copy of itself, its own sound; song fades out over the last 1.2 s of the
     cat part, then plain concat. User swapped scene 4 Dad C30 → D10 (sad, not crying).
 92. moms-voice-monkey_v2: Mom C7 flipped to face Dad (user rule: every clip faces who it talks to — check all, always); Mom placed ON the hospital bed (scene 1 x210 y1360, scene 2 x330 y1420); last line → '*She will always love you, son.*'
+93. moms-voice-monkey_v3 (user: 'not cinematic / heart-touching enough'): emotional scenes +1.5 s (room to breathe),
+    NEW scripts/cinematic.py = story + real clip in one go: warm grade + vignette, 0.6 s dissolves instead of hard
+    cuts, dip to black into the real clip, the song's climax keeps playing quietly under the real footage, ending
+    freezes on the hug, dims, "Some voices never leave us." + share line. Use it for every story+real-clip video:
+    python3 scripts/cinematic.py stories/x.json out/x_with-sound.mp4 real.mp4 out.mp4 [ss to]
