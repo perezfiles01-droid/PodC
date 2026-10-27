@@ -568,3 +568,4 @@ for spoken lines, sad/heartwarming twist.
     Real clip: cropped to the footage band (720x738 at y 271: removes the top caption + ALPHA MOTIVATION logo),
     scaled to 1080 wide over a blurred copy of itself, its own sound; song fades out over the last 1.2 s of the
     cat part, then plain concat. User swapped scene 4 Dad C30 → D10 (sad, not crying).
+92. moms-voice-monkey_v2: Mom placed ON the hospital bed (scene 1 x210 y1360, scene 2 x330 y1420); last line → '*She will always love you, son.*'

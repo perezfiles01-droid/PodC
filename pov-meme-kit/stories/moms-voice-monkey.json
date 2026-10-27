@@ -1,5 +1,5 @@
 {
- "name": "moms-voice-monkey_v1",
+ "name": "moms-voice-monkey_v2",
  "title": "Mom knew she wouldn't\nmake it to Christmas",
  "handle": "",
  "actor_scale": 1.3,
@@ -7,49 +7,299 @@
  "bg_soft": true,
  "hook_first_frame": true,
  "motion": true,
- "packs": {"cat": "assets/packs/cat_pack.mp4", "dog": "assets/packs/dog_pack.mp4"},
- "music": {"bed": "assets/music/chasing_cars_hale_cover.mp3", "bed_ss": 0,
-           "end": "assets/music/chasing_cars_hale_cover.mp3", "end_ss": 168, "vol": 0.45, "switch": 27.4},
+ "packs": {
+  "cat": "assets/packs/cat_pack.mp4",
+  "dog": "assets/packs/dog_pack.mp4"
+ },
+ "music": {
+  "bed": "assets/music/chasing_cars_hale_cover.mp3",
+  "bed_ss": 0,
+  "end": "assets/music/chasing_cars_hale_cover.mp3",
+  "end_ss": 168,
+  "vol": 0.45,
+  "switch": 27.4
+ },
  "scenes": [
-  {"dur": 8, "cam": "in", "bg": "assets/backgrounds/moms-voice-monkey/scene1.png",
+  {
+   "dur": 8,
+   "cam": "in",
+   "bg": "assets/backgrounds/moms-voice-monkey/scene1.png",
    "actors": [
-    {"clip": "C7", "name": "Mom (sick)", "x": 300, "y": 1760, "h": 380, "label": "Mom:",
-     "say": [{"text": "I don't think I'll be\nhere for Christmas...", "t0": 0, "t1": 4.4}]},
-    {"clip": "D10", "name": "Dad", "x": 770, "y": 1760, "h": 400, "label": "Dad:",
-     "say": [{"text": "Don't say that.", "t0": 4.5, "t1": 7.8}]}]},
-  {"dur": 6, "cam": "in", "bg": "assets/backgrounds/moms-voice-monkey/scene2.png",
+    {
+     "clip": "C7",
+     "name": "Mom (sick)",
+     "x": 210,
+     "y": 1360,
+     "h": 340,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "I don't think I'll be\nhere for Christmas...",
+       "t0": 0,
+       "t1": 4.4
+      }
+     ]
+    },
+    {
+     "clip": "D10",
+     "name": "Dad",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "Don't say that.",
+       "t0": 4.5,
+       "t1": 7.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 6,
+   "cam": "in",
+   "bg": "assets/backgrounds/moms-voice-monkey/scene2.png",
    "actors": [
-    {"clip": "C27", "name": "Mom (crying)", "x": 300, "y": 1760, "h": 420, "label": "Mom:",
-     "say": [{"text": "Can you do one\nthing for me?", "t0": 0.2, "t1": 5.8}]},
-    {"clip": "D10", "name": "Dad", "x": 770, "y": 1760, "h": 400, "label": "Dad:"}]},
-  {"dur": 6, "cam": "out", "grey": true, "bg": "assets/backgrounds/moms-voice-monkey/scene3.png",
+    {
+     "clip": "C27",
+     "name": "Mom (crying)",
+     "x": 330,
+     "y": 1420,
+     "h": 380,
+     "label": "Mom:",
+     "say": [
+      {
+       "text": "Can you do one\nthing for me?",
+       "t0": 0.2,
+       "t1": 5.8
+      }
+     ]
+    },
+    {
+     "clip": "D10",
+     "name": "Dad",
+     "x": 770,
+     "y": 1760,
+     "h": 400,
+     "label": "Dad:"
+    }
+   ]
+  },
+  {
+   "dur": 6,
+   "cam": "out",
+   "grey": true,
+   "bg": "assets/backgrounds/moms-voice-monkey/scene3.png",
    "actors": [
-    {"clip": "C39", "name": "Dad (crying)", "x": 540, "y": 1760, "h": 440, "label": "Dad:",
-     "say": [{"text": "She's gone...", "t0": 2.4, "t1": 5.8}]}],
-   "subs": [{"text": "Two weeks later...", "x": 540, "y": 640, "t0": 0.2, "t1": 2.4, "color": "white", "size": 60}]},
-  {"dur": 7, "cam": "right", "bg": "assets/backgrounds/moms-voice-monkey/scene4.png",
-   "subs": [{"text": "Christmas morning", "x": 540, "y": 640, "t0": 0.1, "t1": 1.6, "color": "white", "size": 58}],
-   "props": [{"emoji": "🎁", "x": 540, "y": 1700, "h": 150, "t0": 0.3, "t1": 4.9},
-             {"emoji": "🐒", "x": 540, "y": 1700, "h": 170, "t0": 4.9, "t1": 7}],
+    {
+     "clip": "C39",
+     "name": "Dad (crying)",
+     "x": 540,
+     "y": 1760,
+     "h": 440,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "She's gone...",
+       "t0": 2.4,
+       "t1": 5.8
+      }
+     ]
+    }
+   ],
+   "subs": [
+    {
+     "text": "Two weeks later...",
+     "x": 540,
+     "y": 640,
+     "t0": 0.2,
+     "t1": 2.4,
+     "color": "white",
+     "size": 60
+    }
+   ]
+  },
+  {
+   "dur": 7,
+   "cam": "right",
+   "bg": "assets/backgrounds/moms-voice-monkey/scene4.png",
+   "subs": [
+    {
+     "text": "Christmas morning",
+     "x": 540,
+     "y": 640,
+     "t0": 0.1,
+     "t1": 1.6,
+     "color": "white",
+     "size": 58
+    }
+   ],
+   "props": [
+    {
+     "emoji": "🎁",
+     "x": 540,
+     "y": 1700,
+     "h": 150,
+     "t0": 0.3,
+     "t1": 4.9
+    },
+    {
+     "emoji": "🐒",
+     "x": 540,
+     "y": 1700,
+     "h": 170,
+     "t0": 4.9,
+     "t1": 7
+    }
+   ],
    "actors": [
-    {"clip": "D10", "name": "Dad", "x": 800, "y": 1760, "h": 400, "label": "Dad:",
-     "say": [{"text": "This one is\nfrom your mom.", "t0": 0, "t1": 4.9}]},
-    {"clip": "C26", "name": "Me", "x": 260, "y": 1760, "h": 400, "label": "Me:",
-     "say": [{"text": "...a monkey?", "t0": 5.0, "t1": 6.9}]}]},
-  {"dur": 7, "cam": "in", "flash_at": 1.4, "bg": "assets/backgrounds/moms-voice-monkey/scene5.png",
-   "props": [{"emoji": "🐒", "x": 760, "y": 1640, "h": 220, "t0": 0, "t1": 7}],
-   "subs": [{"text": "*squeezes its hand*", "x": 540, "y": 620, "t0": 0, "t1": 1.4, "color": "white", "size": 54},
-            {"text": "\"Merry Christmas, baby...\nMommy loves you.\"", "x": 540, "y": 680, "t0": 1.4, "t1": 4.6, "color": "#FFE600", "size": 58}],
+    {
+     "clip": "D10",
+     "name": "Dad",
+     "x": 800,
+     "y": 1760,
+     "h": 400,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "This one is\nfrom your mom.",
+       "t0": 0,
+       "t1": 4.9
+      }
+     ]
+    },
+    {
+     "clip": "C26",
+     "name": "Me",
+     "x": 260,
+     "y": 1760,
+     "h": 400,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "...a monkey?",
+       "t0": 5.0,
+       "t1": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 7,
+   "cam": "in",
+   "flash_at": 1.4,
+   "bg": "assets/backgrounds/moms-voice-monkey/scene5.png",
+   "props": [
+    {
+     "emoji": "🐒",
+     "x": 760,
+     "y": 1640,
+     "h": 220,
+     "t0": 0,
+     "t1": 7
+    }
+   ],
+   "subs": [
+    {
+     "text": "*squeezes its hand*",
+     "x": 540,
+     "y": 620,
+     "t0": 0,
+     "t1": 1.4,
+     "color": "white",
+     "size": 54
+    },
+    {
+     "text": "\"Merry Christmas, baby...\nMommy loves you.\"",
+     "x": 540,
+     "y": 680,
+     "t0": 1.4,
+     "t1": 4.6,
+     "color": "#FFE600",
+     "size": 58
+    }
+   ],
    "actors": [
-    {"clip": "C26", "name": "Me (shocked)", "x": 330, "y": 1760, "h": 400, "t0": 0, "t1": 4.6, "say": []},
-    {"clip": "C18", "name": "Me (crying)", "x": 330, "y": 1760, "h": 420, "t0": 4.6, "t1": 7, "swap": true, "label": "Me:",
-     "say": [{"text": "...Mom?", "t0": 4.7, "t1": 6.9}]}]},
-  {"dur": 7, "cam": "in", "dim_at": 3.5, "bg": "assets/backgrounds/moms-voice-monkey/scene6.png",
-   "props": [{"emoji": "🐒", "x": 420, "y": 1600, "h": 180, "t0": 0, "t1": 7}],
+    {
+     "clip": "C26",
+     "name": "Me (shocked)",
+     "x": 330,
+     "y": 1760,
+     "h": 400,
+     "t0": 0,
+     "t1": 4.6,
+     "say": []
+    },
+    {
+     "clip": "C18",
+     "name": "Me (crying)",
+     "x": 330,
+     "y": 1760,
+     "h": 420,
+     "t0": 4.6,
+     "t1": 7,
+     "swap": true,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "...Mom?",
+       "t0": 4.7,
+       "t1": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 7,
+   "cam": "in",
+   "dim_at": 3.5,
+   "bg": "assets/backgrounds/moms-voice-monkey/scene6.png",
+   "props": [
+    {
+     "emoji": "🐒",
+     "x": 420,
+     "y": 1600,
+     "h": 180,
+     "t0": 0,
+     "t1": 7
+    }
+   ],
    "actors": [
-    {"clip": "C27", "name": "Me (hugging it)", "x": 300, "y": 1760, "h": 440, "label": "Me:",
-     "say": [{"text": "*hugs it\ntight*", "t0": 0.2, "t1": 3.4}]},
-    {"clip": "D10", "name": "Dad", "x": 780, "y": 1760, "h": 400, "label": "Dad:",
-     "say": [{"text": "*She kept her promise.*", "t0": 3.5, "t1": 6.9}]}]}
+    {
+     "clip": "C27",
+     "name": "Me (hugging it)",
+     "x": 300,
+     "y": 1760,
+     "h": 440,
+     "label": "Me:",
+     "say": [
+      {
+       "text": "*hugs it\ntight*",
+       "t0": 0.2,
+       "t1": 3.4
+      }
+     ]
+    },
+    {
+     "clip": "D10",
+     "name": "Dad",
+     "x": 780,
+     "y": 1760,
+     "h": 400,
+     "label": "Dad:",
+     "say": [
+      {
+       "text": "*She will always\nlove you, son.*",
+       "t0": 3.5,
+       "t1": 6.9
+      }
+     ]
+    }
+   ]
+  }
  ]
 }
