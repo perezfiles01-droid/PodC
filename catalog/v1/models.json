@@ -3666,7 +3666,7 @@
         "narration"
       ],
       "sampleRateHz": 22050,
-      "sha256": "c2c7e2abb085603aa348065a86be886407c601f666bd47a31333755779eca653",
+      "sha256": "cff849fee69d7d3b22e0b0267aa6b863e32d05039a1eca963765a314a73450c0",
       "sourceUrl": "https://github.com/shivammehta25/Matcha-TTS",
       "speakers": [
         {
@@ -3869,35 +3869,35 @@
       "languages": [
         "ar",
         "bg",
-        "hr",
         "cs",
+        "hr",
         "da",
         "nl",
         "en-US",
-        "et",
         "fi",
+        "et",
         "fr-FR",
         "de-DE",
-        "el",
         "hi",
+        "el",
         "hu",
         "id",
         "it-IT",
-        "ja-JP",
-        "lt",
-        "lv",
         "ko-KR",
+        "ja-JP",
+        "lv",
+        "lt",
         "pl",
         "pt",
         "ro",
         "ru",
         "sl",
-        "es-ES",
         "sk",
-        "tr",
-        "uk",
+        "es-ES",
         "sv",
-        "vi"
+        "tr",
+        "vi",
+        "uk"
       ],
       "license": "openrail",
       "recommendedUseCases": [
@@ -5777,7 +5777,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "85dfae5a9c8143100a9106a90b0adb2f2c93682143759672b82c985e779d0d00",
+      "sha256": "e5ae18c97b566099a2a748f243d4d44ea7cd188acc34e3533a2adc2565c9f845",
       "speakers": [
         {
           "gender": "U",
@@ -5802,7 +5802,7 @@
       ],
       "license": "Apache-2.0",
       "sampleRateHz": 24000,
-      "sha256": "5872080507e1d2b3c92f5c827be94928782724f1486ed4dcda5dc662c1478efd",
+      "sha256": "93efae74fe0c72199c51b11ca7acb20b4966c2dc8b728109910266784f39f720",
       "speakers": [
         {
           "gender": "U",
